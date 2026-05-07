@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>motiv — Haustüren | Recklinghausen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080806;--off-black:#0d0d0b;
+  --white:#f5f0e8;--dim:rgba(245,240,232,.6);
+  --gold:#c8a06a;--gold-a:rgba(200,160,106,.15);
+  --border:rgba(245,240,232,.09);--border2:rgba(245,240,232,.18);
+  --ease:cubic-bezier(.16,1,.3,1);--ease2:cubic-bezier(.76,0,.24,1)
+}
+html{scroll-behavior:auto;cursor:none}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NOISE ── */
+#noise{position:fixed;inset:-200%;width:400%;height:400%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  opacity:.025;pointer-events:none;z-index:9998;
+  animation:noiseDrift 7s steps(8,end) infinite}
+@keyframes noiseDrift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-5%)}30%{transform:translate(-7%,3%)}50%{transform:translate(-3%,6%)}70%{transform:translate(-4%,4%)}90%{transform:translate(-6%,1%)}}
+
+/* ── CURSOR ── */
+#cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:10px;height:10px;background:var(--white);z-index:10000;mix-blend-mode:difference}
+#cur2{width:38px;height:38px;border:1px solid rgba(245,240,232,.3);transition:width .4s var(--ease),height .4s var(--ease),border-color .3s}
+#cur.big{width:52px;height:52px}
+#cur2.big{width:68px;height:68px;border-color:var(--gold)}
+
+/* ── SCROLL PROGRESS ── */
+#scrollBar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--gold),var(--white));z-index:9999;width:0;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:600;padding:26px 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,padding .4s,backdrop-filter .4s}
+nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 6vw;border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--white);text-decoration:none}
+.nav-logo .dot{color:var(--gold)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;cursor:none;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--gold);transition:right .3s var(--ease)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{right:0}
+.nav-btn{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:11px 26px;border:1px solid var(--border2);border-radius:100px;cursor:none;transition:background .3s,color .3s,border-color .3s}
+.nav-btn:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+.nav-mode{display:flex;gap:2px;border:1px solid var(--border2);border-radius:100px;padding:2px}
+.nav-mode-btn{font-size:9px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;padding:7px 16px;border-radius:100px;
+  transition:background .2s,color .2s;cursor:none;border:none;background:none}
+.nav-mode-btn.active{background:rgba(200,160,106,.15);color:var(--gold)}
+.nav-mode-btn:hover:not(.active){color:var(--white)}
+
+/* ─────────────────────────────────────
+   HERO SEQUENCE
+───────────────────────────────────── */
+.hero-seq{height:2800vh;background:var(--black)}
+.hero-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+
+/* Canvas */
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* Gradient overlays */
+.hero-vignette{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(to right,rgba(8,8,6,.78) 0%,rgba(8,8,6,.18) 55%,transparent 100%),
+    linear-gradient(to top,rgba(8,8,6,.7) 0%,transparent 35%),
+    linear-gradient(to bottom,rgba(8,8,6,.45) 0%,transparent 22%)
+}
+
+/* ── PHASE 1 — INTRO TEXT (fades out as door opens) ── */
+.hero-intro{
+  position:absolute;left:7vw;top:50%;transform:translateY(-52%);
+  z-index:2;max-width:800px
+}
+.h-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.h-eyebrow-bar{width:36px;height:1px;background:var(--gold);flex-shrink:0}
+.h-eyebrow-txt{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.h-title-row{display:block;overflow:hidden}
+.h-title-row span{
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(56px,8.5vw,128px);line-height:.93;font-weight:300;letter-spacing:-.03em;
+  transform:translateY(110%);transition:transform 1.3s var(--ease)
+}
+.h-title-row:nth-child(1) span{transition-delay:.55s}
+.h-title-row:nth-child(2) span{transition-delay:.72s}
+.h-title-row:nth-child(3) span{transition-delay:.89s}
+.h-title.ready .h-title-row span{transform:none}
+.italic-gold{font-style:italic;color:var(--gold)}
+.h-sub{
+  max-width:440px;margin-top:32px;
+  font-size:clamp(14px,1.3vw,18px);line-height:1.75;color:var(--dim);font-weight:300;
+  opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease) 1.15s,transform .9s var(--ease) 1.15s
+}
+.h-sub.ready{opacity:1;transform:none}
+.h-pills{
+  display:flex;gap:10px;margin-top:34px;flex-wrap:wrap;
+  opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease) 1.35s,transform .9s var(--ease) 1.35s
+}
+.h-pills.ready{opacity:1;transform:none}
+.h-pill{
+  padding:8px 18px;border:1px solid var(--border2);border-radius:100px;
+  font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)
+}
+
+/* ── SCROLL INDICATOR ── */
+.h-scroll{
+  position:absolute;bottom:48px;left:7vw;z-index:2;
+  display:flex;align-items:center;gap:14px
+}
+.scroll-wire{width:56px;height:1px;background:rgba(245,240,232,.2);position:relative;overflow:hidden}
+.scroll-wire::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:wirePulse 2.4s var(--ease2) infinite}
+@keyframes wirePulse{0%{left:-100%}100%{left:100%}}
+.scroll-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:300}
+
+/* ── PHASE 2 — REVEAL TEXT (fades in when door is open) ── */
+.hero-reveal{
+  position:absolute;inset:0;z-index:3;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  padding:0 7vw;pointer-events:none;opacity:0
+}
+.hr-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.hr-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(60px,9vw,140px);line-height:.88;font-weight:300;
+  letter-spacing:-.04em;max-width:900px;margin-bottom:36px
+}
+.hr-sub{
+  font-size:clamp(15px,1.4vw,20px);color:var(--dim);font-weight:300;
+  line-height:1.7;max-width:480px;margin-bottom:38px
+}
+.hr-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
+.hr-pill{
+  padding:9px 20px;border:1px solid rgba(200,160,106,.35);border-radius:100px;
+  font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)
+}
+.hr-cta{
+  display:inline-flex;align-items:center;gap:14px;padding:16px 40px;
+  background:var(--gold);color:var(--black);
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:100px;cursor:none;text-decoration:none;
+  transition:background .3s,color .3s;border:1px solid var(--gold)
+}
+.hr-cta:hover{background:transparent;color:var(--gold)}
+
+/* ── STATS BAR ── */
+.h-statbar{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  display:flex;border-top:1px solid var(--border);
+  background:rgba(8,8,6,.72);backdrop-filter:blur(18px);
+  opacity:0
+}
+.h-stat{flex:1;padding:18px 30px;border-right:1px solid var(--border)}
+.h-stat:last-child{border-right:none}
+.h-stat-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;letter-spacing:-.02em;line-height:1}
+.h-stat-l{font-size:10px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+
+/* ── PROGRESS LINE ── */
+.hero-prog-wrap{
+  position:absolute;bottom:82px;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;
+  opacity:0;width:180px
+}
+.hero-prog-track{width:100%;height:1px;background:rgba(245,240,232,.1);overflow:hidden}
+.hero-prog-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--white));transition:width .1s linear}
+.hero-prog-pct{font-size:10px;letter-spacing:.18em;color:var(--dim);font-weight:300}
+
+/* ─────────────────────────────────────
+   KOLLEKTION
+───────────────────────────────────── */
+.koll-section{
+  padding:140px 0 120px;
+  background:var(--off-black);
+  border-top:1px solid var(--border)
+}
+.koll-head{
+  padding:0 7vw;margin-bottom:80px;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:32px
+}
+.koll-title-block{}
+.koll-eye{
+  font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:22px
+}
+.koll-eye::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.5}
+.koll-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,5.5vw,88px);font-weight:300;line-height:.95;
+  letter-spacing:-.035em;color:var(--white)
+}
+.koll-h2 em{font-style:italic;color:var(--gold)}
+.koll-hint{
+  font-size:11px;letter-spacing:.12em;color:var(--dim);
+  display:flex;align-items:center;gap:10px;white-space:nowrap
+}
+.koll-hint::before{content:'←→';font-size:14px;color:var(--gold);opacity:.6}
+
+/* track */
+.koll-track-wrap{
+  overflow-x:auto;padding:8px 7vw 56px;
+  scrollbar-width:none;-ms-overflow-style:none;
+  cursor:grab;user-select:none
+}
+.koll-track-wrap::-webkit-scrollbar{display:none}
+.koll-track-wrap.dragging{cursor:grabbing}
+.koll-track{display:flex;gap:20px;width:max-content}
+
+/* card */
+.koll-card{
+  width:clamp(280px,22vw,360px);flex-shrink:0;
+  display:flex;flex-direction:column;cursor:none
+}
+.koll-box{
+  position:relative;border-radius:20px;overflow:hidden;
+  background:#050503;border:1px solid rgba(245,240,232,.08);
+  box-shadow:0 40px 80px rgba(0,0,0,.7),inset 0 0 40px rgba(245,240,232,.02);
+  transition:box-shadow .5s var(--ease),transform .5s var(--ease)
+}
+.koll-card:hover .koll-box{
+  box-shadow:0 60px 120px rgba(0,0,0,.8),inset 0 0 60px rgba(245,240,232,.03)
+}
+.koll-halo{
+  position:absolute;inset:-30%;pointer-events:none;z-index:0;
+  border-radius:50%;filter:blur(48px);opacity:.55;
+  transition:opacity .5s
+}
+.koll-card:hover .koll-halo{opacity:.8}
+.koll-img-wrap{
+  position:relative;z-index:1;
+  padding:28px 20px 16px;
+  aspect-ratio:3/4.5;
+  display:flex;align-items:center;justify-content:center
+}
+.koll-img{
+  width:100%;height:100%;
+  object-fit:contain;display:block;
+  transition:transform .7s var(--ease),filter .5s
+}
+.koll-card:hover .koll-img{transform:scale(1.04)}
+.koll-badge{
+  position:absolute;top:18px;right:18px;z-index:2;
+  padding:5px 12px;border-radius:100px;
+  background:rgba(200,160,106,.12);border:1px solid rgba(200,160,106,.25);
+  font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  font-weight:400
+}
+
+/* info below card */
+.koll-info{padding:24px 4px 0}
+.koll-serie{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);opacity:.7;margin-bottom:8px
+}
+.koll-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,2.2vw,30px);font-weight:300;
+  letter-spacing:-.01em;color:var(--white);margin-bottom:6px
+}
+.koll-color{font-size:12px;font-weight:300;color:var(--dim);margin-bottom:16px}
+.koll-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.koll-tag{
+  padding:5px 12px;border:1px solid var(--border);border-radius:100px;
+  font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+  transition:border-color .3s,color .3s
+}
+.koll-card:hover .koll-tag{border-color:rgba(200,160,106,.25);color:rgba(245,240,232,.55)}
+.koll-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);cursor:none;
+  transition:color .3s,gap .3s var(--ease)
+}
+.koll-link:hover{color:var(--gold);gap:14px}
+.koll-link::after{content:'→'}
+
+/* ─────────────────────────────────────
+   INFO PANELS — KOMPOtherm (scroll-driven)
+───────────────────────────────────── */
+.hero-info{position:absolute;inset:0;z-index:5;pointer-events:none}
+
+/* Panel base */
+.hi-panel{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 10vw;
+  opacity:0;pointer-events:none;
+  will-change:transform,opacity,filter
+}
+
+/* ── Panel 1: Die Visitenkarte ── */
+.hi-p1{align-items:flex-start}
+.hi-p1-eye{
+  font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:40px;
+  opacity:0;transform:translateX(-22px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)
+}
+.hi-p1-eye::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.5}
+.hi-p1.p-in .hi-p1-eye{opacity:1;transform:none}
+.hi-p1-row{overflow:hidden;line-height:1}
+.hi-p1-line{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(60px,9.5vw,148px);font-weight:300;letter-spacing:-.04em;
+  transform:translateY(108%);transition:transform 1.1s var(--ease)
+}
+.hi-p1-line em{font-style:italic;color:var(--gold)}
+.hi-p1.p-in .hi-p1-row:nth-child(2) .hi-p1-line{transform:none;transition-delay:.08s}
+.hi-p1.p-in .hi-p1-row:nth-child(3) .hi-p1-line{transform:none;transition-delay:.22s}
+.hi-p1.p-in .hi-p1-row:nth-child(4) .hi-p1-line{transform:none;transition-delay:.36s}
+
+/* ── Panel 2: Quote ── */
+.hi-p2{align-items:center;text-align:center}
+.hi-p2-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(80px,13vw,200px);line-height:.65;color:var(--gold);
+  opacity:0;display:block;margin-bottom:4px;
+  transition:opacity 1.1s var(--ease) .05s
+}
+.hi-p2.p-in .hi-p2-mark{opacity:.18}
+.hi-p2-row{overflow:hidden}
+.hi-p2-line{
+  display:block;font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(26px,3.8vw,60px);font-weight:300;letter-spacing:-.025em;
+  transform:translateY(108%);transition:transform 1.05s var(--ease)
+}
+.hi-p2.p-in .hi-p2-row:nth-child(2) .hi-p2-line{transform:none;transition-delay:.12s}
+.hi-p2.p-in .hi-p2-row:nth-child(3) .hi-p2-line{transform:none;transition-delay:.25s}
+.hi-p2.p-in .hi-p2-row:nth-child(4) .hi-p2-line{transform:none;transition-delay:.38s}
+.hi-p2-attr{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  margin-top:32px;opacity:0;transition:opacity .8s var(--ease) .55s
+}
+.hi-p2.p-in .hi-p2-attr{opacity:1}
+
+/* ── Panel 3: Modern / Bauhaus ── */
+.hi-p3{flex-direction:row;align-items:center;gap:8vw}
+.hi-p3-left{flex-shrink:0;min-width:200px}
+.hi-p3-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,7vw,110px);font-weight:300;letter-spacing:-.04em;color:var(--gold);
+  transform:translateX(-44px);opacity:0;
+  transition:transform 1.05s var(--ease),opacity 1.05s var(--ease)
+}
+.hi-p3.p-in .hi-p3-label{transform:none;opacity:1}
+.hi-p3-rule{
+  width:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);
+  margin:20px 0;transition:width 1.1s var(--ease) .18s
+}
+.hi-p3.p-in .hi-p3-rule{width:60px}
+.hi-p3-concept{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  opacity:0;transition:opacity .8s var(--ease) .34s
+}
+.hi-p3.p-in .hi-p3-concept{opacity:1}
+.hi-p3-right{flex:1;max-width:480px}
+.hi-p3-slogan{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(22px,2.8vw,42px);font-weight:300;color:var(--white);
+  margin-bottom:24px;
+  transform:translateY(28px);opacity:0;
+  transition:transform 1.05s var(--ease) .14s,opacity 1.05s var(--ease) .14s
+}
+.hi-p3.p-in .hi-p3-slogan{transform:none;opacity:1}
+.hi-p3-body{
+  font-size:clamp(13px,1.15vw,16px);line-height:1.88;color:var(--dim);font-weight:300;
+  transform:translateY(22px);opacity:0;
+  transition:transform 1.05s var(--ease) .30s,opacity 1.05s var(--ease) .30s
+}
+.hi-p3.p-in .hi-p3-body{transform:none;opacity:1}
+
+/* ── Panel 4: Gestaltungsvielfalt ── */
+.hi-p4{align-items:flex-start;justify-content:flex-end;padding-bottom:14vh}
+.hi-p4-row{overflow:hidden;line-height:1.02}
+.hi-p4-line{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(46px,7.2vw,116px);font-weight:300;letter-spacing:-.04em;
+  transform:translateY(108%);transition:transform 1.1s var(--ease)
+}
+.hi-p4-line em{font-style:italic;color:var(--gold)}
+.hi-p4.p-in .hi-p4-row:nth-child(1) .hi-p4-line{transform:none;transition-delay:.06s}
+.hi-p4.p-in .hi-p4-row:nth-child(2) .hi-p4-line{transform:none;transition-delay:.20s}
+.hi-p4-sub{
+  font-size:clamp(14px,1.35vw,19px);color:var(--dim);font-weight:300;margin-top:26px;
+  opacity:0;transition:opacity .9s var(--ease) .40s
+}
+.hi-p4.p-in .hi-p4-sub{opacity:1}
+
+/* ── Panel 5: Final ── */
+.hi-p5{padding:0 9vw}
+.hi-p5-eye{
+  font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  opacity:0;transition:opacity .8s var(--ease)
+}
+.hi-p5-eye::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.5}
+.hi-p5.p-in .hi-p5-eye{opacity:1}
+.hi-p5-intro{
+  font-size:clamp(14px,1.2vw,16px);color:var(--dim);font-weight:300;line-height:1.8;
+  max-width:480px;margin-bottom:48px;
+  transform:translateY(18px);opacity:0;
+  transition:transform .9s var(--ease) .10s,opacity .9s var(--ease) .10s
+}
+.hi-p5.p-in .hi-p5-intro{transform:none;opacity:1}
+.hi-p5-stats{
+  display:flex;border-top:1px solid var(--border);
+  width:100%;max-width:720px;margin-bottom:42px
+}
+.hi-p5-stat{
+  flex:1;padding:22px 0 22px 28px;border-right:1px solid var(--border);
+  transform:translateY(18px);opacity:0;
+  transition:transform .9s var(--ease),opacity .9s var(--ease)
+}
+.hi-p5-stat:last-child{border-right:none}
+.hi-p5.p-in .hi-p5-stat:nth-child(1){transform:none;opacity:1;transition-delay:.24s}
+.hi-p5.p-in .hi-p5-stat:nth-child(2){transform:none;opacity:1;transition-delay:.38s}
+.hi-p5.p-in .hi-p5-stat:nth-child(3){transform:none;opacity:1;transition-delay:.52s}
+.hi-p5-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,4vw,56px);font-weight:300;letter-spacing:-.03em;
+  color:var(--gold);line-height:1
+}
+.hi-p5-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.hi-p5-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:38px;max-width:720px}
+.hi-tag{
+  padding:6px 15px;border:1px solid rgba(200,160,106,.22);border-radius:100px;
+  font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+  opacity:0;transform:scale(.88);
+  transition:opacity .6s var(--ease),transform .6s var(--ease),border-color .3s
+}
+.hi-p5.p-in .hi-tag{opacity:.72;transform:none}
+.hi-p5.p-in .hi-tag:nth-child(1){transition-delay:.62s}
+.hi-p5.p-in .hi-tag:nth-child(2){transition-delay:.70s}
+.hi-p5.p-in .hi-tag:nth-child(3){transition-delay:.78s}
+.hi-p5.p-in .hi-tag:nth-child(4){transition-delay:.86s}
+.hi-p5.p-in .hi-tag:nth-child(5){transition-delay:.94s}
+.hi-p5.p-in .hi-tag:nth-child(6){transition-delay:1.02s}
+.hi-p5.p-in .hi-tag:nth-child(7){transition-delay:1.10s}
+.hi-p5.p-in .hi-tag:nth-child(8){transition-delay:1.18s}
+.hi-tag:hover{opacity:1 !important;border-color:rgba(200,160,106,.5);transform:none}
+.hi-p5-cta-group{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+  opacity:0;transform:translateY(12px);
+  transition:opacity .9s var(--ease) .22s,transform .9s var(--ease) .22s
+}
+.hi-p5.p-in .hi-p5-cta-group{opacity:1;transform:none}
+.hi-p5-cat-btn{
+  display:inline-flex;align-items:center;
+  padding:15px 30px;border:1px solid rgba(200,160,106,.4);border-radius:100px;
+  font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;cursor:none;
+  transition:border-color .3s,background .3s,color .3s
+}
+.hi-p5-cat-btn:hover{border-color:var(--gold);background:rgba(200,160,106,.12);color:var(--white)}
+.hi-p5-cta{
+  display:inline-flex;align-items:center;gap:12px;padding:15px 34px;
+  background:var(--gold);color:var(--black);
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:100px;cursor:none;text-decoration:none;border:1px solid var(--gold);
+  transition:background .3s,color .3s
+}
+.hi-p5-cta:hover{background:transparent;color:var(--gold)}
+#hiPL .hi-p3-label{font-size:clamp(28px,4vw,64px)}
+
+/* ── Panel Black Edition ── */
+.hi-pB{align-items:flex-start;padding:0 9vw}
+.hi-pB-eye{
+  font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:36px;
+  opacity:0;transition:opacity .8s var(--ease)
+}
+.hi-pB-eye::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.5}
+.hi-pB.p-in .hi-pB-eye{opacity:1}
+.hi-pB-grid{
+  display:grid;grid-template-columns:1fr 1px 1fr;gap:0 52px;
+  width:100%;max-width:1080px;align-items:start;
+  transform:translateY(28px);opacity:0;
+  transition:transform 1s var(--ease) .1s,opacity 1s var(--ease) .1s
+}
+.hi-pB.p-in .hi-pB-grid{transform:none;opacity:1}
+.hi-pB-col-head{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,7vw,108px);font-weight:300;letter-spacing:-.04em;
+  line-height:.88;color:var(--white);margin-bottom:18px
+}
+.hi-pB-col-head em{font-style:italic;color:var(--gold)}
+.hi-pB-concept{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  margin-bottom:22px
+}
+.hi-pB-text{
+  font-size:clamp(13px,1.1vw,15px);line-height:1.88;color:var(--dim);font-weight:300
+}
+.hi-pB-sep{background:rgba(245,240,232,.08)}
+.hi-pB-aktion-badge{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.hi-pB-pct{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,8vw,118px);font-weight:300;letter-spacing:-.04em;
+  color:var(--gold);line-height:1
+}
+.hi-pB-aktion-label{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);font-weight:300;line-height:1.6
+}
+.hi-pB-features{
+  list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:7px
+}
+.hi-pB-features li{
+  font-size:clamp(11px,1vw,13px);color:var(--dim);font-weight:300;
+  padding-left:16px;position:relative
+}
+.hi-pB-features li::before{content:'·';position:absolute;left:0;color:var(--gold)}
+
+/* ── Style-panel action buttons ── */
+.hi-p3-actions{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:30px;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .9s var(--ease) .46s,transform .9s var(--ease) .46s
+}
+.hi-p3.p-in .hi-p3-actions{opacity:1;transform:none}
+.hi-disc-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 24px;border:1px solid rgba(200,160,106,.35);border-radius:100px;
+  font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;cursor:none;
+  transition:border-color .3s,background .3s
+}
+.hi-disc-btn:hover{border-color:var(--gold);background:rgba(200,160,106,.1)}
+.hi-disc-cta{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 24px;border:1px solid var(--gold);border-radius:100px;
+  font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--black);background:var(--gold);text-decoration:none;cursor:none;
+  transition:background .3s,color .3s
+}
+.hi-disc-cta:hover{background:transparent;color:var(--gold)}
+#hiPE .hi-p3-label{font-size:clamp(36px,5vw,78px)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:18px 5vw}
+  nav.scrolled{padding:12px 5vw}
+  .nav-links,.nav-btn{display:none}
+  .nav-mode{display:flex}
+  .h-statbar{display:none}
+  .hero-intro{left:5vw;right:5vw}
+  .hero-reveal{padding:0 5vw}
+}
+@media(max-width:480px){
+  .hr-title{font-size:54px}
+  .h-title-row span{font-size:52px}
+}
+</style>
+</head>
+<body>
+
+<div id="noise"></div>
+<div id="cur"></div>
+<div id="cur2"></div>
+<div id="scrollBar"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="hausturen.html" class="nav-logo">motiv<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Haustüren</a></li>
+    <li><a href="#">Fenster</a></li>
+    <li><a href="#">Smart Home</a></li>
+    <li><a href="#">Ausstellung</a></li>
+  </ul>
+  <div class="nav-mode">
+    <span class="nav-mode-btn active">PC</span>
+    <a href="hausturen-m.html" class="nav-mode-btn">Mobile</a>
+  </div>
+  <a href="mailto:info@motiv-fenster.de" class="nav-btn">Beratung anfragen</a>
+</nav>
+
+<!-- ══ HERO SEQUENCE ══ -->
+<section class="hero-seq" id="heroSeq">
+  <div class="hero-stage" id="heroStage">
+
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-vignette"></div>
+
+    <!-- PHASE 1: Intro text – visible at start, fades as door opens -->
+    <div class="hero-intro" id="heroIntro">
+      <div class="h-eyebrow" id="hEye">
+        <span class="h-eyebrow-bar"></span>
+        <span class="h-eyebrow-txt">Recklinghausen · Haustüren · Seit 1999</span>
+      </div>
+      <h1 class="h-title" id="hTitle">
+        <span class="h-title-row"><span>Mehr als</span></span>
+        <span class="h-title-row"><span>eine <em class="italic-gold">Tür.</em></span></span>
+        <span class="h-title-row"><span>Ein Gefühl.</span></span>
+      </h1>
+      <p class="h-sub" id="hSub">
+        Maßgefertigte Aluminium-Haustüren für Ihr Zuhause —<br>
+        Sicherheit, Stil und Präzision in einem.
+      </p>
+      <div class="h-pills" id="hPills">
+        <span class="h-pill">Handarbeit</span>
+        <span class="h-pill">RC2 Schutz</span>
+        <span class="h-pill">Smart Home Ready</span>
+        <span class="h-pill">100% Maßanfertigung</span>
+      </div>
+    </div>
+
+    <!-- PHASE 2: Reveal text – fades in when door is fully open -->
+    <div class="hero-reveal" id="heroReveal">
+      <div class="hr-eyebrow">
+        <span class="h-eyebrow-bar"></span>
+        <span class="h-eyebrow-txt">Türen nach Maß · Recklinghausen</span>
+      </div>
+      <h2 class="hr-title">
+        Offen für<br>
+        <em class="italic-gold">Neues.</em>
+      </h2>
+      <p class="hr-sub">
+        Ihre neue Haustür — geplant, gefertigt und montiert<br>
+        von Meistern aus der Region.
+      </p>
+      <div class="hr-pills">
+        <span class="hr-pill">RC2 Einbruchschutz</span>
+        <span class="hr-pill">Wärmedämmung A+++</span>
+        <span class="hr-pill">Smart Lock Ready</span>
+      </div>
+      <a href="mailto:info@motiv-fenster.de" class="hr-cta">Beratung anfragen →</a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="h-scroll" id="hScroll">
+      <span class="scroll-wire"></span>
+      <span class="scroll-lbl">Scrollen</span>
+    </div>
+
+    <!-- Animation progress -->
+    <div class="hero-prog-wrap" id="heroProg">
+      <div class="hero-prog-track"><div class="hero-prog-fill" id="heroFill"></div></div>
+      <span class="hero-prog-pct" id="heroPct">0%</span>
+    </div>
+
+    <!-- INFO PANELS: KOMPOtherm (scroll-driven) -->
+    <div class="hero-info" id="heroInfo">
+
+      <!-- Panel 1: Die Visitenkarte -->
+      <div class="hi-panel hi-p1" id="hiP1">
+        <div class="hi-p1-eye">KOMPOtherm · Aluminium-Haustüren</div>
+        <div class="hi-p1-row"><span class="hi-p1-line">Die</span></div>
+        <div class="hi-p1-row"><span class="hi-p1-line"><em>Visitenkarte</em></span></div>
+        <div class="hi-p1-row"><span class="hi-p1-line">des Hauses.</span></div>
+      </div>
+
+      <!-- Panel 2: Quote -->
+      <div class="hi-panel hi-p2" id="hiP2">
+        <span class="hi-p2-mark">"</span>
+        <div class="hi-p2-row"><span class="hi-p2-line">Kein Bauelement prägt das Bild</span></div>
+        <div class="hi-p2-row"><span class="hi-p2-line">der Fassade so sehr, wie die</span></div>
+        <div class="hi-p2-row"><span class="hi-p2-line">Eingangstür.</span></div>
+        <div class="hi-p2-attr">— KOMPOtherm</div>
+      </div>
+
+      <!-- Panel 3: Modern / Bauhaus -->
+      <div class="hi-panel hi-p3" id="hiP3">
+        <div class="hi-p3-left">
+          <div class="hi-p3-label">Modern</div>
+          <div class="hi-p3-rule"></div>
+          <div class="hi-p3-concept">Bauhaus · 1919</div>
+        </div>
+        <div class="hi-p3-right">
+          <p class="hi-p3-slogan">"Form follows function."</p>
+          <p class="hi-p3-body">Klare Linienführung, schnörkelloses Design — Moderne Architektur als Formgebung. Aluminium, Glas und Metall in spannenden Kombinationen. Schlanke Stangengriffe und flügelüberdeckende Türblätter unterstreichen die geradlinige Ästhetik.</p>
+        </div>
+      </div>
+
+      <!-- Panel 4: Gestaltungsvielfalt -->
+      <div class="hi-panel hi-p4" id="hiP4">
+        <div class="hi-p4-row"><span class="hi-p4-line">Gestaltungsvielfalt,</span></div>
+        <div class="hi-p4-row"><span class="hi-p4-line"><em>die begeistert.</em></span></div>
+        <p class="hi-p4-sub">Jede Tür ein Unikat — kreiert nach Ihrem Wohnstil und der Einbausituation.</p>
+      </div>
+
+      <!-- Panel K: Klassisch -->
+      <div class="hi-panel hi-p3" id="hiPK">
+        <div class="hi-p3-left">
+          <div class="hi-p3-label">Klassisch</div>
+          <div class="hi-p3-rule"></div>
+          <div class="hi-p3-concept">Traditionell · Zeitlos</div>
+        </div>
+        <div class="hi-p3-right">
+          <p class="hi-p3-slogan">"Tiefgezogene Kassetten, geschwungene Linien."</p>
+          <p class="hi-p3-body">Dekorrahmen und Ornamentgläser, filigrane Sprossen für Glasausschnitte und Handhaben in klassischer Form — beliebt bei der Modernisierung des Stadthauses, der repräsentativen Villa und dem schicken Einfamilienhaus in konventioneller Bauweise.</p>
+        </div>
+      </div>
+
+      <!-- Panel E: Extravagant -->
+      <div class="hi-panel hi-p3" id="hiPE">
+        <div class="hi-p3-left">
+          <div class="hi-p3-label">Extravagant</div>
+          <div class="hi-p3-rule"></div>
+          <div class="hi-p3-concept">Kreativ · Einzigartig</div>
+        </div>
+        <div class="hi-p3-right">
+          <p class="hi-p3-slogan">"Alles ist möglich."</p>
+          <p class="hi-p3-body">Geschwungen oder geradlinig, Lizard-Oberfläche oder Feinstrukturfarbe, Griff in Edelstahl oder Bronze — Ihr Geschmack passt sich nicht dem Mainstream an. Wir lassen Ihre kreativsten Ideen Gestalt annehmen.</p>
+        </div>
+      </div>
+
+      <!-- Panel L: Ländlich / Naturverbunden -->
+      <div class="hi-panel hi-p3" id="hiPL">
+        <div class="hi-p3-left">
+          <div class="hi-p3-label">Ländlich</div>
+          <div class="hi-p3-rule"></div>
+          <div class="hi-p3-concept">Naturverbunden · Verwurzelt</div>
+        </div>
+        <div class="hi-p3-right">
+          <p class="hi-p3-slogan">"Natur, die man spürt."</p>
+          <p class="hi-p3-body">Warme Holzdekore in erdigen Tönen, organische Strukturen und natürliche Oberflächen — für Häuser, die im Einklang mit ihrer Umgebung stehen. Naturverbunden und authentisch, wie die Landschaft, aus der sie stammen. Eine Haustür, die Wärme schenkt, bevor man die Schwelle überschritten hat.</p>
+        </div>
+      </div>
+
+      <!-- Panel B: Black Edition -->
+      <div class="hi-panel hi-pB" id="hiPB">
+        <div class="hi-pB-eye">Black Edition · KOMPOtherm &amp; INOTHERM</div>
+        <div class="hi-pB-grid">
+          <div>
+            <div class="hi-pB-col-head"><em>Black</em><br>Edition</div>
+            <div class="hi-pB-concept">Mitteltür · KOMPOtherm · Stil &amp; Wertigkeit</div>
+            <p class="hi-pB-text">Schwarz steht für Stil, Eleganz und Wertigkeit. Profilzylinder, Bodenschwelle und Bänder in Schwarz — bei <span style="font-style:italic;color:var(--white)">Black Plus</span> auch Lisenen, Glasrahmen und Handhaben. Bis hin zur Keramik-Türfüllung, die durch ihre individuelle Beschaffenheit jede Haustür zum echten Unikat macht.</p>
+          </div>
+          <div class="hi-pB-sep"></div>
+          <div>
+            <div class="hi-pB-aktion-badge">
+              <span class="hi-pB-pct">5%</span>
+              <span class="hi-pB-aktion-label">Preisnachlass<br>Seitenelemente · INOTHERM</span>
+            </div>
+            <p class="hi-pB-text">Flügelüberdeckende Türfüllung, 5-fach-Verriegelung und Edelstahl-Schließleiste — mit schwarzen Applikationen: Innendrücker, Stoßgriff und Glaseinfassungen für ein durchgehend edles Erscheinungsbild.</p>
+            <ul class="hi-pB-features">
+              <li>Wärmedämmung ab UG 0,61 W/m²K</li>
+              <li>Thermisch getrennte Bodenschwelle</li>
+              <li>Bodenstatikprofil für präzise Montage</li>
+              <li>Große Farb- &amp; Glasauswahl inklusiv</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 7: Bridge into choices (seq7) -->
+      <div class="hi-panel hi-p4" id="hiP7">
+        <div class="hi-p4-row"><span class="hi-p4-line">Ihr Stil.</span></div>
+        <div class="hi-p4-row"><span class="hi-p4-line"><em>Ihre Wahl.</em></span></div>
+        <p class="hi-p4-sub">Jede Tür wird nach Maß gefertigt — genau für Sie und Ihr Zuhause.</p>
+      </div>
+
+      <!-- Panel 5: Final — focus on choice buttons -->
+      <div class="hi-panel hi-p5" id="hiP5">
+        <div class="hi-p5-eye">Welche Tür ist die Ihre?</div>
+        <p class="hi-p5-intro">
+          Wählen Sie Ihren Stil — wir planen, fertigen und montieren.
+        </p>
+        <div class="hi-p5-cta-group">
+          <a href="#" class="hi-p5-cat-btn">Moderne Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Klassische Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Elegante Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Ländliche Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Black Edition</a>
+          <a href="mailto:info@motiv-fenster.de" class="hi-p5-cta">Beratung anfragen →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats bar -->
+    <div class="h-statbar" id="heroStats">
+      <div class="h-stat"><div class="h-stat-n">25<span style="color:var(--gold);font-size:.6em">+</span></div><div class="h-stat-l">Jahre Erfahrung</div></div>
+      <div class="h-stat"><div class="h-stat-n">1.000 m²</div><div class="h-stat-l">Ausstellung</div></div>
+      <div class="h-stat"><div class="h-stat-n">RC2</div><div class="h-stat-l">Einbruchschutz</div></div>
+      <div class="h-stat"><div class="h-stat-n">100%</div><div class="h-stat-l">Maßanfertigung</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ KOLLEKTION ══ -->
+<section class="koll-section rv">
+  <div class="koll-head">
+    <div class="koll-title-block">
+      <div class="koll-eye">Unsere Kollektion</div>
+      <h2 class="koll-h2">Türen, die<br><em>bleiben.</em></h2>
+    </div>
+    <span class="koll-hint">Ziehen zum Blättern</span>
+  </div>
+
+  <div class="koll-track-wrap" id="kollWrap">
+    <div class="koll-track" id="kollTrack"></div>
+  </div>
+</section>
+
+<!-- ══ MAIN CONTENT (future sections) ══ -->
+<main id="mainContent"></main>
+
+<script>
+const $ = id => document.getElementById(id);
+const DESK = '../../Desktop/';
+
+/* ── KOLLEKTION DATA ── */
+const DOORS = [
+  {
+    img:'e_427l_bf_be_t_fs0709-0575-0501_798_24777_1200mm.jpg',
+    serie:'Serie E-427', name:'Natura',
+    color:'Moosgrün · Eiche Natur',
+    badge:'Bestseller',
+    tags:['RC2','Holz-Alu','Maßanfertigung'],
+    glow:'65,95,55'
+  },
+  {
+    img:'E-229L_FD_T_FS0673-FS0432_1141_24462.jpg',
+    serie:'Serie E-229', name:'Loft',
+    color:'Anthrazit · Mahagoni',
+    badge:'RC2 Ready',
+    tags:['RC2','Aluminium','Smart Lock'],
+    glow:'85,75,65'
+  },
+  {
+    img:'E-383L_FD_TS_R5008-FS0507_1581_24777.jpg',
+    serie:'Serie E-383', name:'Horizon',
+    color:'RAL 5008 Blaugrau · Glas',
+    badge:'Neuheit',
+    tags:['RC2','Glas','App-Steuerung'],
+    glow:'52,68,95'
+  },
+  {
+    img:'e_370r_bf-be_t_r9007_24788_14620.jpg',
+    serie:'Serie E-370', name:'Alpine',
+    color:'RAL 9007 Silbergrau',
+    badge:'Klassiker',
+    tags:['RC2','Aluminium','Wärmedämmung'],
+    glow:'128,124,118'
+  },
+  {
+    img:'EH_405_BF_T_FS0575-H0404_1633_24591_01.jpg',
+    serie:'Serie EH-405', name:'Prestige',
+    color:'Anthrazit · Holzdekor',
+    badge:'Premium',
+    tags:['RC2','Holz-Alu','Fingerprint'],
+    glow:'80,72,60'
+  },
+  {
+    img:'e_265ar_bf_be_t_fs0399-0575_1631_24836.jpg',
+    serie:'Serie E-265', name:'Classica',
+    color:'Dunkelbraun · Anthrazit',
+    badge:'Handarbeit',
+    tags:['RC2','Aluminium','Maßanfertigung'],
+    glow:'90,60,45'
+  },
+];
+
+/* ── BUILD KOLLEKTION CARDS ── */
+(function(){
+  const track = $('kollTrack');
+  if(!track) return;
+
+  DOORS.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'koll-card';
+    card.innerHTML = `
+      <div class="koll-box">
+        <div class="koll-halo" style="background:radial-gradient(ellipse at 50% 60%,rgba(${d.glow},.5),transparent 65%)"></div>
+        <div class="koll-img-wrap">
+          <img class="koll-img" src="${DESK}${encodeURIComponent(d.img)}" alt="${d.name}" loading="lazy">
+        </div>
+        <div class="koll-badge">${d.badge}</div>
+      </div>
+      <div class="koll-info">
+        <div class="koll-serie">${d.serie}</div>
+        <div class="koll-name">${d.name}</div>
+        <div class="koll-color">${d.color}</div>
+        <div class="koll-tags">${d.tags.map(t=>`<span class="koll-tag">${t}</span>`).join('')}</div>
+        <a href="mailto:info@motiv-fenster.de?subject=Anfrage ${d.name}" class="koll-link">Anfragen</a>
+      </div>`;
+    track.appendChild(card);
+
+    /* 3D tilt on hover */
+    const box = card.querySelector('.koll-box');
+    box.addEventListener('mousemove', e => {
+      const r = box.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width/2))  / (r.width/2);
+      const dy = (e.clientY - (r.top  + r.height/2)) / (r.height/2);
+      box.style.transform = `perspective(900px) rotateY(${dx*7}deg) rotateX(${-dy*5}deg) scale(1.02)`;
+    });
+    box.addEventListener('mouseleave', () => {
+      box.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)';
+    });
+  });
+})();
+
+/* ── DRAG SCROLL ── */
+(function(){
+  const wrap = $('kollWrap');
+  if(!wrap) return;
+  let down=false, startX=0, scrollLeft=0;
+  wrap.addEventListener('mousedown', e=>{
+    down=true; wrap.classList.add('dragging');
+    startX=e.pageX-wrap.offsetLeft; scrollLeft=wrap.scrollLeft;
+  });
+  wrap.addEventListener('mouseleave', ()=>{ down=false; wrap.classList.remove('dragging'); });
+  wrap.addEventListener('mouseup',    ()=>{ down=false; wrap.classList.remove('dragging'); });
+  wrap.addEventListener('mousemove',  e=>{
+    if(!down) return;
+    e.preventDefault();
+    const x = e.pageX - wrap.offsetLeft;
+    wrap.scrollLeft = scrollLeft - (x - startX) * 1.6;
+  });
+})();
+
+/* ── CURSOR ── */
+(function(){
+  const dot=$('cur'), ring=$('cur2');
+  let rx=0,ry=0,mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.cssText+=`;left:${mx}px;top:${my}px`;},{passive:true});
+  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.cssText+=`;left:${rx}px;top:${ry}px`;requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button,.h-pill,.hr-pill,.hr-cta').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{dot.classList.add('big');ring.classList.add('big');});
+    el.addEventListener('mouseleave',()=>{dot.classList.remove('big');ring.classList.remove('big');});
+  });
+})();
+
+/* ── SCROLL PROGRESS BAR ── */
+window.addEventListener('scroll',()=>{
+  const max=document.documentElement.scrollHeight-innerHeight;
+  $('scrollBar').style.width=(window.scrollY/max*100)+'%';
+  $('mainNav').classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
+
+/* ── CANVAS FRAME SEQUENCE (7 sequences: Doorhero → 02 → 03 → 04 → 05 → 06 → 07) ── */
+(function(){
+  const canvas  = $('heroCanvas');
+  const ctx     = canvas.getContext('2d');
+  const section = $('heroSeq');
+
+  const TOTAL1=271,TOTAL2=300,TOTAL3=271,TOTAL4=271,TOTAL5=271,TOTAL6=271,TOTAL7=220;
+  const FOLDER1='Doorhero',FOLDER2='Doorheo02',FOLDER3='Doorhero03',FOLDER4='Doorhero04';
+  const FOLDER5='Doorhero05',FOLDER6='Doorhero06',FOLDER7='Doorhero07';
+
+  /* 7 sequences × 0.11 = 0.77, final panel from 0.82 */
+  const P1=0.11,P2=0.22,P3=0.33,P4=0.44,P5=0.55,P6=0.66,P7=0.77;
+  const P_INTRO_OUT=0.03, P_INTRO_GONE=0.09;
+
+  const heroIntro  = $('heroIntro');
+  const heroReveal = $('heroReveal');
+  const heroStats  = $('heroStats');
+  const heroProg   = $('heroProg');
+  const heroFill   = $('heroFill');
+  const heroPct    = $('heroPct');
+  const hScroll    = $('hScroll');
+  const heroInfo   = $('heroInfo');
+  const hiP1=$('hiP1'), hiP3=$('hiP3');
+  const hiPK=$('hiPK'), hiPE=$('hiPE'), hiPL=$('hiPL');
+  const hiPB=$('hiPB'), hiP7=$('hiP7'), hiP5=$('hiP5');
+
+  let currentFrame=0, currentSeq=1;
+
+  function drawAt(i,seq){
+    const img=(seq===1?imgs1:seq===2?imgs2:seq===3?imgs3:seq===4?imgs4
+              :seq===5?imgs5:seq===6?imgs6:imgs7)[i];
+    if(!img?.complete||!img.naturalWidth)return;
+    const cw=canvas.width,ch=canvas.height,iw=img.naturalWidth,ih=img.naturalHeight;
+    const s=Math.max(cw/iw,ch/ih);
+    ctx.clearRect(0,0,cw,ch);
+    ctx.drawImage(img,(cw-iw*s)/2,(ch-ih*s)/2,iw*s,ih*s);
+  }
+
+  function resize(){
+    canvas.width =canvas.clientWidth *devicePixelRatio;
+    canvas.height=canvas.clientHeight*devicePixelRatio;
+    drawAt(currentFrame,currentSeq);
+  }
+
+  /* ── Panel state: G=0.03 cross-fade window
+     Each panel's e0 extends ~0.01 into the next sequence (≈ 20 frames),
+     and the next panel's s0 equals this e0 → smooth cross-fade handoff.
+     At the midpoint of each transition both panels are at ~50% opacity. ── */
+  function panelState(ip,s0,e0){
+    const G=0.03;
+    const ent=Math.max(0,Math.min(1,(ip-s0)/G));
+    const ex =e0>=1.0?0:Math.max(0,Math.min(1,(ip-e0)/G));
+    return{alpha:ent*(1-ex),ty:(1-ent)*64+ex*-44,blur:(1-ent)*7+ex*3,isIn:ent>0.5&&ex<0.5};
+  }
+  function applyPanel(el,s){
+    if(!el)return;
+    el.style.opacity=s.alpha;
+    el.style.transform=`translateY(${s.ty}px)`;
+    el.style.filter=`blur(${Math.round(s.blur*10)/10}px)`;
+    el.style.pointerEvents=s.alpha>0.1?'auto':'none';
+    if(s.isIn)el.classList.add('p-in');
+    else      el.classList.remove('p-in');
+  }
+
+  /* preload all 7 sequences */
+  const imgs1=[],imgs2=[],imgs3=[],imgs4=[],imgs5=[],imgs6=[],imgs7=[];
+  for(let i=0;i<TOTAL1;i++){const m=new Image();m.src=`${FOLDER1}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs1.push(m);}
+  for(let i=0;i<TOTAL2;i++){const m=new Image();m.src=`${FOLDER2}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs2.push(m);}
+  for(let i=0;i<TOTAL3;i++){const m=new Image();m.src=`${FOLDER3}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs3.push(m);}
+  for(let i=0;i<TOTAL4;i++){const m=new Image();m.src=`${FOLDER4}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs4.push(m);}
+  for(let i=0;i<TOTAL5;i++){const m=new Image();m.src=`${FOLDER5}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs5.push(m);}
+  for(let i=0;i<TOTAL6;i++){const m=new Image();m.src=`${FOLDER6}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs6.push(m);}
+  for(let i=0;i<TOTAL7;i++){const m=new Image();m.src=`${FOLDER7}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs7.push(m);}
+
+  function tick(){
+    const r=section.getBoundingClientRect();
+    const p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
+
+    /* ── seven-sequence frame picker ── */
+    if(p<=P1){
+      const idx=Math.min(TOTAL1-1,Math.floor((p/P1)*TOTAL1));
+      if(idx!==currentFrame||currentSeq!==1){currentFrame=idx;currentSeq=1;drawAt(idx,1);}
+    }else if(p<=P2){
+      const idx=Math.min(TOTAL2-1,Math.floor(((p-P1)/(P2-P1))*TOTAL2));
+      if(idx!==currentFrame||currentSeq!==2){currentFrame=idx;currentSeq=2;drawAt(idx,2);}
+    }else if(p<=P3){
+      const idx=Math.min(TOTAL3-1,Math.floor(((p-P2)/(P3-P2))*TOTAL3));
+      if(idx!==currentFrame||currentSeq!==3){currentFrame=idx;currentSeq=3;drawAt(idx,3);}
+    }else if(p<=P4){
+      const idx=Math.min(TOTAL4-1,Math.floor(((p-P3)/(P4-P3))*TOTAL4));
+      if(idx!==currentFrame||currentSeq!==4){currentFrame=idx;currentSeq=4;drawAt(idx,4);}
+    }else if(p<=P5){
+      const idx=Math.min(TOTAL5-1,Math.floor(((p-P4)/(P5-P4))*TOTAL5));
+      if(idx!==currentFrame||currentSeq!==5){currentFrame=idx;currentSeq=5;drawAt(idx,5);}
+    }else if(p<=P6){
+      const idx=Math.min(TOTAL6-1,Math.floor(((p-P5)/(P6-P5))*TOTAL6));
+      if(idx!==currentFrame||currentSeq!==6){currentFrame=idx;currentSeq=6;drawAt(idx,6);}
+    }else{
+      const idx=Math.min(TOTAL7-1,Math.floor(Math.min(1,(p-P6)/(P7-P6))*TOTAL7));
+      if(idx!==currentFrame||currentSeq!==7){currentFrame=idx;currentSeq=7;drawAt(idx,7);}
+    }
+
+    /* ── progress indicator (7 sequences × ~14.3%) ── */
+    const seg=1/7;
+    const ap=p<=P1?Math.round((p/P1)*seg*100)
+      :p<=P2?Math.round(seg*100+((p-P1)/(P2-P1))*seg*100)
+      :p<=P3?Math.round(2*seg*100+((p-P2)/(P3-P2))*seg*100)
+      :p<=P4?Math.round(3*seg*100+((p-P3)/(P4-P3))*seg*100)
+      :p<=P5?Math.round(4*seg*100+((p-P4)/(P5-P4))*seg*100)
+      :p<=P6?Math.round(5*seg*100+((p-P5)/(P6-P5))*seg*100)
+      :Math.min(100,Math.round(6*seg*100+((p-P6)/(P7-P6))*seg*100));
+    heroFill.style.width=ap+'%';
+    heroPct.textContent=ap+'%';
+    heroProg.style.opacity=p<P7?String(Math.min(1,p*9)):String(Math.max(0,(P7+0.02-p)*25));
+
+    /* ── intro text ── */
+    const introFade=p<P_INTRO_OUT?1:Math.max(0,1-(p-P_INTRO_OUT)/(P_INTRO_GONE-P_INTRO_OUT));
+    heroIntro.style.opacity=introFade;
+    heroIntro.style.transform=`translateY(calc(-52% + ${(1-introFade)*-32}px))`;
+    heroIntro.style.pointerEvents=introFade>0.05?'auto':'none';
+
+    hScroll.style.opacity=Math.max(0,1-p*10);
+    heroReveal.style.opacity='0';heroReveal.style.pointerEvents='none';
+    heroStats.style.opacity='0';
+
+    /* ─────────────────────────────────────────────────────────────────────
+       Panel timings — cross-fade handoff (G=0.03):
+       Each s0[N] = e0[N-1], and e0[N] = seq_end + 0.01 (≈20 frames stay into next seq).
+       Panels cross-fade briefly at the boundary — never both at full opacity.
+
+       seq1 (0.00–0.11): hiP1 →  s0=0.01, e0=0.12
+       seq2 (0.11–0.22): hiP3 →  s0=0.12, e0=0.23
+       seq3 (0.22–0.33): hiPK →  s0=0.23, e0=0.34
+       seq4 (0.33–0.44): hiPE →  s0=0.34, e0=0.45
+       seq5 (0.44–0.55): hiPL →  s0=0.45, e0=0.56
+       seq6 (0.55–0.66): hiPB →  s0=0.56, e0=0.67
+       seq7 (0.66–0.77): hiP7 →  s0=0.67, e0=0.78
+       final (0.82–1.0): hiP5 →  stays
+    ───────────────────────────────────────────────────────────────────── */
+    heroInfo.style.pointerEvents=p>=0.01?'auto':'none';
+    applyPanel(hiP1, panelState(p, 0.01, 0.12));
+    applyPanel(hiP3, panelState(p, 0.12, 0.23));
+    applyPanel(hiPK, panelState(p, 0.23, 0.34));
+    applyPanel(hiPE, panelState(p, 0.34, 0.45));
+    applyPanel(hiPL, panelState(p, 0.45, 0.56));
+    applyPanel(hiPB, panelState(p, 0.56, 0.67));
+    applyPanel(hiP7, panelState(p, 0.67, 0.78));
+    applyPanel(hiP5, panelState(p, 0.82, 1.01));
+
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('resize',resize,{passive:true});
+  resize();
+  tick();
+
+  setTimeout(()=>{
+    $('hTitle')?.classList.add('ready');
+    $('hSub')?.classList.add('ready');
+    $('hPills')?.classList.add('ready');
+  },300);
+})();
+</script>
+</body>
+</html>

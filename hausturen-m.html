@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080806">
+<title>Haustüren | motiv · Recklinghausen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080806;--off-black:#0d0d0b;
+  --white:#f5f0e8;--dim:rgba(245,240,232,.6);
+  --gold:#c8a06a;--gold-a:rgba(200,160,106,.15);
+  --border:rgba(245,240,232,.09);--border2:rgba(245,240,232,.18);
+  --ease:cubic-bezier(.16,1,.3,1);--ease2:cubic-bezier(.76,0,.24,1)
+}
+html{scroll-behavior:auto}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent}
+
+/* ── SCROLL PROGRESS ── */
+#scrollBar{position:fixed;top:0;left:0;height:2px;
+  background:linear-gradient(to right,var(--gold),var(--white));
+  z-index:9999;width:0;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:600;
+  padding:20px 6vw;display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,padding .4s}
+nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);
+  padding:13px 6vw;border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--white);text-decoration:none}
+.nav-logo .dot{color:var(--gold)}
+.nav-btn{font-size:10px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;padding:10px 20px;
+  border:1px solid var(--border2);border-radius:100px}
+.nav-mode{display:flex;gap:2px;border:1px solid var(--border2);border-radius:100px;padding:2px}
+.nav-mode-btn{font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;padding:7px 14px;border-radius:100px;
+  transition:background .2s,color .2s;border:none;background:none}
+.nav-mode-btn.active{background:rgba(200,160,106,.15);color:var(--gold)}
+.nav-mode-btn:active:not(.active){color:var(--white)}
+
+/* ─────────────────────────────────────
+   HERO SEQUENCE  (same structure as desktop)
+───────────────────────────────────── */
+.hero-seq{height:2400vh;background:var(--black)}
+.hero-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* Vignette — portrait-optimised: stronger bottom for text readability */
+.hero-vignette{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(to right,rgba(8,8,6,.82) 0%,rgba(8,8,6,.22) 60%,transparent 100%),
+    linear-gradient(to top,rgba(8,8,6,.78) 0%,transparent 42%),
+    linear-gradient(to bottom,rgba(8,8,6,.5) 0%,transparent 20%)
+}
+
+/* ── PHASE 1 — INTRO TEXT ── */
+.hero-intro{
+  position:absolute;left:6vw;top:50%;transform:translateY(-52%);
+  z-index:2;max-width:90vw
+}
+.h-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.h-eyebrow-bar{width:28px;height:1px;background:var(--gold);flex-shrink:0}
+.h-eyebrow-txt{font-size:10px;font-weight:400;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold)}
+.h-title-row{display:block;overflow:hidden}
+.h-title-row span{
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,12vw,64px);line-height:.93;font-weight:300;letter-spacing:-.03em;
+  transform:translateY(110%);transition:transform 1.3s var(--ease)
+}
+.h-title-row:nth-child(1) span{transition-delay:.55s}
+.h-title-row:nth-child(2) span{transition-delay:.72s}
+.h-title-row:nth-child(3) span{transition-delay:.89s}
+.h-title.ready .h-title-row span{transform:none}
+.italic-gold{font-style:italic;color:var(--gold)}
+.h-sub{
+  max-width:80vw;margin-top:20px;
+  font-size:clamp(13px,3.5vw,15px);line-height:1.75;color:var(--dim);font-weight:300;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .9s var(--ease) 1.15s,transform .9s var(--ease) 1.15s
+}
+.h-sub.ready{opacity:1;transform:none}
+.h-pills{
+  display:flex;gap:8px;margin-top:22px;flex-wrap:wrap;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .9s var(--ease) 1.35s,transform .9s var(--ease) 1.35s
+}
+.h-pills.ready{opacity:1;transform:none}
+.h-pill{
+  padding:6px 14px;border:1px solid var(--border2);border-radius:100px;
+  font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)
+}
+
+/* ── SCROLL INDICATOR ── */
+.h-scroll{
+  position:absolute;bottom:40px;left:6vw;z-index:2;
+  display:flex;align-items:center;gap:12px
+}
+.scroll-wire{width:44px;height:1px;background:rgba(245,240,232,.2);
+  position:relative;overflow:hidden}
+.scroll-wire::after{content:'';position:absolute;top:0;left:-100%;
+  width:100%;height:100%;background:var(--gold);
+  animation:wirePulse 2.4s var(--ease2) infinite}
+@keyframes wirePulse{0%{left:-100%}100%{left:100%}}
+.scroll-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);font-weight:300}
+
+/* ── PROGRESS LINE ── */
+.hero-prog-wrap{
+  position:absolute;bottom:72px;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;width:140px
+}
+.hero-prog-track{width:100%;height:1px;background:rgba(245,240,232,.1);overflow:hidden}
+.hero-prog-fill{height:100%;width:0;
+  background:linear-gradient(90deg,var(--gold),var(--white));transition:width .1s linear}
+.hero-prog-pct{font-size:9px;letter-spacing:.16em;color:var(--dim);font-weight:300}
+
+/* ── INFO PANELS ── */
+.hero-info{position:absolute;inset:0;z-index:5;pointer-events:none}
+
+.hi-panel{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 6vw;
+  opacity:0;pointer-events:none;
+  will-change:transform,opacity,filter
+}
+
+/* Panel 1: Die Visitenkarte */
+.hi-p1{align-items:flex-start}
+.hi-p1-eye{
+  font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:28px;
+  opacity:0;transform:translateX(-16px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)
+}
+.hi-p1-eye::before{content:'';width:22px;height:1px;background:var(--gold);opacity:.5}
+.hi-p1.p-in .hi-p1-eye{opacity:1;transform:none}
+.hi-p1-row{overflow:hidden;line-height:1}
+.hi-p1-line{
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,13vw,72px);font-weight:300;letter-spacing:-.04em;
+  transform:translateY(108%);transition:transform 1.1s var(--ease)
+}
+.hi-p1-line em{font-style:italic;color:var(--gold)}
+.hi-p1.p-in .hi-p1-row:nth-child(2) .hi-p1-line{transform:none;transition-delay:.08s}
+.hi-p1.p-in .hi-p1-row:nth-child(3) .hi-p1-line{transform:none;transition-delay:.22s}
+.hi-p1.p-in .hi-p1-row:nth-child(4) .hi-p1-line{transform:none;transition-delay:.36s}
+
+/* Panel 3: Style panels (Modern / Klassisch / etc.) — column on mobile */
+.hi-p3{flex-direction:column;align-items:flex-start;gap:16px;justify-content:center}
+.hi-p3-left{flex-shrink:0}
+.hi-p3-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,11vw,64px);font-weight:300;letter-spacing:-.04em;color:var(--gold);
+  transform:translateX(-30px);opacity:0;
+  transition:transform 1.05s var(--ease),opacity 1.05s var(--ease)
+}
+.hi-p3.p-in .hi-p3-label{transform:none;opacity:1}
+.hi-p3-rule{
+  width:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);
+  margin:14px 0;transition:width 1.1s var(--ease) .18s
+}
+.hi-p3.p-in .hi-p3-rule{width:48px}
+.hi-p3-concept{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  opacity:0;transition:opacity .8s var(--ease) .34s
+}
+.hi-p3.p-in .hi-p3-concept{opacity:1}
+.hi-p3-right{flex:1;max-width:90vw}
+.hi-p3-slogan{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(18px,5vw,26px);font-weight:300;color:var(--white);
+  margin-bottom:16px;
+  transform:translateY(20px);opacity:0;
+  transition:transform 1.05s var(--ease) .14s,opacity 1.05s var(--ease) .14s
+}
+.hi-p3.p-in .hi-p3-slogan{transform:none;opacity:1}
+.hi-p3-body{
+  font-size:clamp(13px,3.5vw,15px);line-height:1.82;color:var(--dim);font-weight:300;
+  transform:translateY(16px);opacity:0;
+  transition:transform 1.05s var(--ease) .30s,opacity 1.05s var(--ease) .30s
+}
+.hi-p3.p-in .hi-p3-body{transform:none;opacity:1}
+
+/* Panel 4: big bottom text */
+.hi-p4{align-items:flex-start;justify-content:flex-end;padding-bottom:12vh}
+.hi-p4-row{overflow:hidden;line-height:1.02}
+.hi-p4-line{
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,11vw,62px);font-weight:300;letter-spacing:-.04em;
+  transform:translateY(108%);transition:transform 1.1s var(--ease)
+}
+.hi-p4-line em{font-style:italic;color:var(--gold)}
+.hi-p4.p-in .hi-p4-row:nth-child(1) .hi-p4-line{transform:none;transition-delay:.06s}
+.hi-p4.p-in .hi-p4-row:nth-child(2) .hi-p4-line{transform:none;transition-delay:.20s}
+.hi-p4-sub{
+  font-size:clamp(13px,3.5vw,15px);color:var(--dim);font-weight:300;margin-top:20px;
+  opacity:0;transition:opacity .9s var(--ease) .40s
+}
+.hi-p4.p-in .hi-p4-sub{opacity:1}
+
+/* Panel 5: Final — buttons */
+.hi-p5{padding:0 6vw}
+.hi-p5-eye{
+  font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:14px;
+  opacity:0;transition:opacity .8s var(--ease)
+}
+.hi-p5-eye::before{content:'';width:22px;height:1px;background:var(--gold);opacity:.5}
+.hi-p5.p-in .hi-p5-eye{opacity:1}
+.hi-p5-intro{
+  font-size:clamp(13px,3.5vw,15px);color:var(--dim);font-weight:300;line-height:1.78;
+  max-width:85vw;margin-bottom:32px;
+  transform:translateY(14px);opacity:0;
+  transition:transform .9s var(--ease) .10s,opacity .9s var(--ease) .10s
+}
+.hi-p5.p-in .hi-p5-intro{transform:none;opacity:1}
+.hi-p5-cta-group{
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .9s var(--ease) .22s,transform .9s var(--ease) .22s
+}
+.hi-p5.p-in .hi-p5-cta-group{opacity:1;transform:none}
+.hi-p5-cat-btn{
+  display:inline-flex;align-items:center;
+  padding:12px 22px;border:1px solid rgba(200,160,106,.4);border-radius:100px;
+  font-size:10px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  transition:border-color .2s,background .2s
+}
+.hi-p5-cat-btn:active{border-color:var(--gold);background:rgba(200,160,106,.12)}
+.hi-p5-cta{
+  display:inline-flex;align-items:center;gap:10px;padding:13px 28px;
+  background:var(--gold);color:var(--black);
+  font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:100px;text-decoration:none;border:1px solid var(--gold);
+  transition:opacity .2s
+}
+.hi-p5-cta:active{opacity:.85}
+
+/* Panel Black Edition — single column on mobile */
+.hi-pB{align-items:flex-start;padding:0 6vw}
+.hi-pB-eye{
+  font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:24px;
+  opacity:0;transition:opacity .8s var(--ease)
+}
+.hi-pB-eye::before{content:'';width:22px;height:1px;background:var(--gold);opacity:.5}
+.hi-pB.p-in .hi-pB-eye{opacity:1}
+.hi-pB-grid{
+  display:flex;flex-direction:column;gap:28px;
+  transform:translateY(22px);opacity:0;
+  transition:transform 1s var(--ease) .1s,opacity 1s var(--ease) .1s
+}
+.hi-pB.p-in .hi-pB-grid{transform:none;opacity:1}
+.hi-pB-col-head{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,11vw,60px);font-weight:300;letter-spacing:-.04em;
+  line-height:.88;color:var(--white);margin-bottom:12px
+}
+.hi-pB-col-head em{font-style:italic;color:var(--gold)}
+.hi-pB-concept{font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:14px}
+.hi-pB-text{font-size:clamp(13px,3.5vw,15px);line-height:1.82;color:var(--dim);font-weight:300}
+.hi-pB-sep{display:none}
+.hi-pB-aktion-badge{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.hi-pB-pct{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,12vw,68px);font-weight:300;letter-spacing:-.04em;
+  color:var(--gold);line-height:1
+}
+.hi-pB-aktion-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);font-weight:300;line-height:1.6}
+.hi-pB-features{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.hi-pB-features li{font-size:clamp(11px,3vw,13px);color:var(--dim);font-weight:300;
+  padding-left:14px;position:relative}
+.hi-pB-features li::before{content:'·';position:absolute;left:0;color:var(--gold)}
+
+/* mobile overrides for specific label sizes */
+#hiPL .hi-p3-label,#hiPE .hi-p3-label{font-size:clamp(36px,10vw,56px)}
+</style>
+</head>
+<body>
+
+<div id="scrollBar"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="hausturen.html" class="nav-logo">motiv<span class="dot">.</span></a>
+  <div class="nav-mode">
+    <a href="hausturen.html" class="nav-mode-btn">PC</a>
+    <span class="nav-mode-btn active">Mobile</span>
+  </div>
+  <a href="mailto:info@motiv-fenster.de" class="nav-btn">Beratung</a>
+</nav>
+
+<!-- ══ HERO SEQUENCE ══ -->
+<section class="hero-seq" id="heroSeq">
+  <div class="hero-stage" id="heroStage">
+
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-vignette"></div>
+
+    <!-- PHASE 1: Intro -->
+    <div class="hero-intro" id="heroIntro">
+      <div class="h-eyebrow" id="hEye">
+        <span class="h-eyebrow-bar"></span>
+        <span class="h-eyebrow-txt">Recklinghausen · Haustüren · Seit 1999</span>
+      </div>
+      <h1 class="h-title" id="hTitle">
+        <span class="h-title-row"><span>Mehr als</span></span>
+        <span class="h-title-row"><span>eine <em class="italic-gold">Tür.</em></span></span>
+        <span class="h-title-row"><span>Ein Gefühl.</span></span>
+      </h1>
+      <p class="h-sub" id="hSub">
+        Maßgefertigte Aluminium-Haustüren für Ihr Zuhause —
+        Sicherheit, Stil und Präzision in einem.
+      </p>
+      <div class="h-pills" id="hPills">
+        <span class="h-pill">Handarbeit</span>
+        <span class="h-pill">RC2 Schutz</span>
+        <span class="h-pill">Maßanfertigung</span>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="h-scroll" id="hScroll">
+      <span class="scroll-wire"></span>
+      <span class="scroll-lbl">Scrollen</span>
+    </div>
+
+    <!-- Progress -->
+    <div class="hero-prog-wrap" id="heroProg">
+      <div class="hero-prog-track">
+        <div class="hero-prog-fill" id="heroFill"></div>
+      </div>
+      <span class="hero-prog-pct" id="heroPct">0%</span>
+    </div>
+
+    <!-- INFO PANELS -->
+    <div class="hero-info" id="heroInfo">
+
+      <!-- Panel 1: Die Visitenkarte -->
+      <div class="hi-panel hi-p1" id="hiP1">
+        <div class="hi-p1-eye">KOMPOtherm · Aluminium-Haustüren</div>
+        <div class="hi-p1-row"><span class="hi-p1-line">Die</span></div>
+        <div class="hi-p1-row"><span class="hi-p1-line"><em>Visitenkarte</em></span></div>
+        <div class="hi-p1-row"><span class="hi-p1-line">des Hauses.</span></div>
+      </div>
+
+      <!-- Panel: Style panel — seq 2 (Handy-Door-02) -->
+      <div class="hi-panel hi-p3" id="hiP3">
+        <div class="hi-p3-left">
+          <div class="hi-p3-label">Modern</div>
+          <div class="hi-p3-rule"></div>
+          <div class="hi-p3-concept">Bauhaus · Präzision</div>
+        </div>
+        <div class="hi-p3-right">
+          <p class="hi-p3-slogan">Form folgt Funktion.</p>
+          <p class="hi-p3-body">Klare Linien, hochwertige Aluminium-Profile und zeitloser Stil — moderne Haustüren von motiv setzen ein klares Zeichen.</p>
+        </div>
+      </div>
+
+      <!-- Panel: Holzoptik — seq 3 (Handy-Door-03) -->
+      <div class="hi-panel hi-p3" id="hiPW">
+        <div class="hi-p3-left">
+          <div class="hi-p3-label">Holz</div>
+          <div class="hi-p3-rule"></div>
+          <div class="hi-p3-concept">Naturoptik · KOMPOtherm</div>
+        </div>
+        <div class="hi-p3-right">
+          <p class="hi-p3-slogan">Die Natur. Täuschend echt.</p>
+          <p class="hi-p3-body">Das warme Erscheinungsbild von Holz, die Robustheit von Aluminium — Holzoptik-Haustüren von motiv sind witterungsbeständig, pflegeleicht und einzigartig in ihrer Maserung.</p>
+        </div>
+      </div>
+
+      <!-- Panel 5: Final — Stilauswahl -->
+      <div class="hi-panel hi-p5" id="hiP5">
+        <div class="hi-p5-eye">Welche Tür ist die Ihre?</div>
+        <p class="hi-p5-intro">
+          Wählen Sie Ihren Stil — wir planen, fertigen und montieren.
+        </p>
+        <div class="hi-p5-cta-group">
+          <a href="#" class="hi-p5-cat-btn">Moderne Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Klassische Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Elegante Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Ländliche Türen</a>
+          <a href="#" class="hi-p5-cat-btn">Black Edition</a>
+          <a href="mailto:info@motiv-fenster.de" class="hi-p5-cta">Beratung anfragen →</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+const $ = id => document.getElementById(id);
+
+/* ── CANVAS FRAME SEQUENCE ── */
+(function(){
+  const canvas  = $('heroCanvas');
+  const ctx     = canvas.getContext('2d');
+  const section = $('heroSeq');
+
+  const TOTAL1  = 235, TOTAL2  = 235, TOTAL3  = 235;
+  const FOLDER1 = 'Handy-Door-1', FOLDER2 = 'Handy-Door-02', FOLDER3 = 'Handy-Door-03';
+
+  /* sequence boundaries: 3 equal thirds */
+  const P1 = 0.33, P2 = 0.67;
+
+  const P_INTRO_OUT  = 0.06;
+  const P_INTRO_GONE = 0.16;
+
+  const heroIntro = $('heroIntro');
+  const heroFill  = $('heroFill');
+  const heroPct   = $('heroPct');
+  const heroProg  = $('heroProg');
+  const hScroll   = $('hScroll');
+  const heroInfo  = $('heroInfo');
+  const hiP1      = $('hiP1');
+  const hiP3      = $('hiP3');
+  const hiPW      = $('hiPW');
+  const hiP5      = $('hiP5');
+
+  let currentFrame = 0, currentSeq = 1;
+
+  function drawAt(i, seq){
+    const img = (seq === 3 ? imgs3 : seq === 2 ? imgs2 : imgs1)[i];
+    if(!img?.complete || !img.naturalWidth) return;
+    const cw=canvas.width, ch=canvas.height;
+    const iw=img.naturalWidth, ih=img.naturalHeight;
+    const s = Math.max(cw/iw, ch/ih);
+    ctx.clearRect(0,0,cw,ch);
+    ctx.drawImage(img,(cw-iw*s)/2,(ch-ih*s)/2,iw*s,ih*s);
+  }
+
+  function resize(){
+    canvas.width  = canvas.clientWidth  * devicePixelRatio;
+    canvas.height = canvas.clientHeight * devicePixelRatio;
+    drawAt(currentFrame, currentSeq);
+  }
+
+  /* identical pattern to motiv-tur.html */
+  function panelState(ip, s0, e0){
+    const G = 0.05;
+    const ent = Math.max(0, Math.min(1, (ip - s0) / G));
+    const ex  = e0 >= 1.0 ? 0 : Math.max(0, Math.min(1, (ip - e0) / G));
+    return { alpha: ent*(1-ex), ty: (1-ent)*64+ex*-44, blur: (1-ent)*7+ex*3,
+             isIn: ent > 0.5 && ex < 0.5 };
+  }
+  function applyPanel(el, s){
+    if(!el) return;
+    el.style.opacity    = s.alpha;
+    el.style.transform  = `translateY(${s.ty}px)`;
+    el.style.filter     = `blur(${Math.round(s.blur*10)/10}px)`;
+    el.style.pointerEvents = s.alpha > 0.1 ? 'auto' : 'none';
+    if(s.isIn) el.classList.add('p-in');
+    else       el.classList.remove('p-in');
+  }
+
+  /* preload */
+  const imgs1 = [], imgs2 = [], imgs3 = [];
+  for(let i = 0; i < TOTAL1; i++){
+    const m = new Image();
+    m.src = `${FOLDER1}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;
+    imgs1.push(m);
+  }
+  for(let i = 0; i < TOTAL2; i++){
+    const m = new Image();
+    m.src = `${FOLDER2}/ezgif-frame-${String(i+1).padStart(3,'0')}.png`;
+    imgs2.push(m);
+  }
+  for(let i = 0; i < TOTAL3; i++){
+    const m = new Image();
+    m.src = `${FOLDER3}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;
+    imgs3.push(m);
+  }
+
+  function tick(){
+    const r = section.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+
+    /* ── three-sequence frame picker ── */
+    if(p <= P1){
+      const idx = Math.min(TOTAL1-1, Math.floor((p/P1)*TOTAL1));
+      if(idx !== currentFrame || currentSeq !== 1){ currentFrame=idx; currentSeq=1; drawAt(idx,1); }
+    } else if(p <= P2){
+      const idx = Math.min(TOTAL2-1, Math.floor(((p-P1)/(P2-P1))*TOTAL2));
+      if(idx !== currentFrame || currentSeq !== 2){ currentFrame=idx; currentSeq=2; drawAt(idx,2); }
+    } else {
+      const idx = Math.min(TOTAL3-1, Math.floor(((p-P2)/(1-P2))*TOTAL3));
+      if(idx !== currentFrame || currentSeq !== 3){ currentFrame=idx; currentSeq=3; drawAt(idx,3); }
+    }
+
+    /* progress (3 sequences) */
+    const ap = Math.round(p * 100);
+    heroFill.style.width   = ap + '%';
+    heroPct.textContent    = ap + '%';
+    heroProg.style.opacity = p < 0.85
+      ? String(Math.min(1, p * 8))
+      : String(Math.max(0, (0.87 - p) * 20));
+
+    /* intro */
+    const introFade = p < P_INTRO_OUT ? 1
+      : Math.max(0, 1 - (p - P_INTRO_OUT) / (P_INTRO_GONE - P_INTRO_OUT));
+    heroIntro.style.opacity      = introFade;
+    heroIntro.style.transform    = `translateY(calc(-52% + ${(1-introFade)*-24}px))`;
+    heroIntro.style.pointerEvents = introFade > 0.05 ? 'auto' : 'none';
+
+    hScroll.style.opacity = Math.max(0, 1 - p * 10);
+
+    /* panels
+       seq1 (0.00–0.33): hiP1  → s0=0.07, e0=0.34
+       seq2 (0.33–0.67): hiP3  → s0=0.34, e0=0.68
+       seq3 (0.67–1.00): hiPW  → s0=0.68, e0=0.82
+       final:            hiP5  → s0=0.82, e0=1.01  */
+    heroInfo.style.pointerEvents = p >= 0.07 ? 'auto' : 'none';
+    applyPanel(hiP1, panelState(p, 0.07, 0.34));  /* Visitenkarte — seq 1  */
+    applyPanel(hiP3, panelState(p, 0.34, 0.68));  /* Modern      — seq 2  */
+    applyPanel(hiPW, panelState(p, 0.68, 0.82));  /* Holz        — seq 3  */
+    applyPanel(hiP5, panelState(p, 0.82, 1.01));  /* Final buttons — stays */
+
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('resize', resize, {passive:true});
+  resize();
+  tick();
+
+  setTimeout(() => {
+    $('hTitle')?.classList.add('ready');
+    $('hEye')?.classList.add('ready');
+    $('hSub')?.classList.add('ready');
+    $('hPills')?.classList.add('ready');
+  }, 300);
+})();
+
+/* nav + scrollbar */
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  $('scrollBar').style.width = (window.scrollY / max * 100) + '%';
+  $('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+}, {passive:true});
+</script>
+</body>
+</html>
