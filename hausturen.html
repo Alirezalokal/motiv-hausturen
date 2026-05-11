@@ -57,6 +57,28 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .nav-mode-btn.active{background:rgba(200,160,106,.15);color:var(--gold)}
 .nav-mode-btn:hover:not(.active){color:var(--white)}
 
+/* ── DOOR TOOLTIP ── */
+#doorTip{
+  position:fixed;pointer-events:none;z-index:400;
+  padding:9px 16px;border-radius:8px;
+  background:rgba(8,8,6,.82);border:1px solid rgba(200,160,106,.25);
+  backdrop-filter:blur(12px);
+  opacity:0;transition:opacity .18s;
+  transform:translate(18px,-50%);
+  white-space:nowrap
+}
+#doorTip.visible{opacity:1}
+.dt-models{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-weight:300;letter-spacing:.04em;
+  color:var(--white);line-height:1
+}
+.dt-models em{font-style:italic;color:var(--gold)}
+.dt-brand{
+  font-size:9px;font-weight:400;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim);margin-top:5px
+}
+
 /* ─────────────────────────────────────
    HERO SEQUENCE
 ───────────────────────────────────── */
@@ -589,6 +611,10 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 
     <canvas id="heroCanvas"></canvas>
     <div class="hero-vignette"></div>
+    <div id="doorTip">
+      <div class="dt-models" id="dtModels"></div>
+      <div class="dt-brand" id="dtBrand"></div>
+    </div>
 
     <!-- PHASE 1: Intro text – visible at start, fades as door opens -->
     <div class="hero-intro" id="heroIntro">
@@ -967,6 +993,32 @@ window.addEventListener('scroll',()=>{
 
   let currentFrame=0, currentSeq=1;
 
+  /* ── DOOR TOOLTIP DATA ── */
+  const DOOR_DATA = [
+    { models:'<em>E-100</em> · EH 360 · Matisse 54', brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 1
+    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 2
+    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 3
+    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 4
+    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 5
+    null, // seq 6 — Black Edition (eigenes Panel)
+    null, // seq 7 — Bridge
+  ];
+  const doorTip   = $('doorTip');
+  const dtModels  = $('dtModels');
+  const dtBrand   = $('dtBrand');
+  const heroStage = $('heroStage');
+  let tipVisible = false, lastTipSeq = -1;
+
+  heroStage.addEventListener('mousemove', e => {
+    doorTip.style.top  = e.clientY + 'px';
+    doorTip.style.left = e.clientX + 'px';
+  });
+  heroStage.addEventListener('mouseenter', () => { tipVisible = true; });
+  heroStage.addEventListener('mouseleave', () => {
+    tipVisible = false;
+    doorTip.classList.remove('visible');
+  });
+
   function drawAt(i,seq){
     const img=(seq===1?imgs1:seq===2?imgs2:seq===3?imgs3:seq===4?imgs4
               :seq===5?imgs5:seq===6?imgs6:imgs7)[i];
@@ -1087,6 +1139,16 @@ window.addEventListener('scroll',()=>{
     applyPanel(hiPB, panelState(p, 0.56, 0.67));
     applyPanel(hiP7, panelState(p, 0.67, 0.78));
     applyPanel(hiP5, panelState(p, 0.82, 1.01));
+
+    /* ── tooltip update ── */
+    if(tipVisible && currentSeq !== lastTipSeq){
+      lastTipSeq = currentSeq;
+      const d = DOOR_DATA[currentSeq - 1];
+      if(d){ dtModels.innerHTML = d.models; dtBrand.textContent = d.brand; }
+      doorTip.classList.toggle('visible', !!d && p < 0.82);
+    } else if(!tipVisible || p >= 0.82){
+      doorTip.classList.remove('visible');
+    }
 
     requestAnimationFrame(tick);
   }
