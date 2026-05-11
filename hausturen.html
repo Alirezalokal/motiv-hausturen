@@ -993,31 +993,49 @@ window.addEventListener('scroll',()=>{
 
   let currentFrame=0, currentSeq=1;
 
-  /* ── DOOR TOOLTIP DATA ── */
+  /* ── DOOR TOOLTIP DATA
+     Seq 1: 3 Türen nebeneinander → position-based (mouseX 0–1)
+     Seq 2–5: E-Design 319 rechts → ganzer Canvas
+     Seq 6–7: kein Tooltip
+  ── */
   const DOOR_DATA = [
-    { models:'<em>E-100</em> · EH 360 · Matisse 54', brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 1
-    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 2
-    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 3
-    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 4
-    { models:'<em>E-Design 319</em>',                 brand:'KOMPOtherm · Aluminium-Haustür' },  // seq 5
-    null, // seq 6 — Black Edition (eigenes Panel)
-    null, // seq 7 — Bridge
+    // seq 1 — 3 zones: links / mitte / rechts
+    [
+      { from:0,    to:0.36, models:'<em>Modell E-100</em>', brand:'KOMPOtherm · Aluminium-Haustür' },
+      { from:0.30, to:0.68, models:'<em>EH 360</em>',       brand:'KOMPOtherm · Aluminium-Haustür' },
+      { from:0.62, to:1.0,  models:'<em>Matisse 54</em>',   brand:'KOMPOtherm · Aluminium-Haustür' },
+    ],
+    // seq 2–5 — single door
+    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
+    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
+    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
+    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
+    null, // seq 6 Black Edition
+    null, // seq 7 Bridge
   ];
-  const doorTip   = $('doorTip');
-  const dtModels  = $('dtModels');
-  const dtBrand   = $('dtBrand');
+
+  const doorTip  = $('doorTip');
+  const dtModels = $('dtModels');
+  const dtBrand  = $('dtBrand');
   const heroStage = $('heroStage');
-  let tipVisible = false, lastTipSeq = -1;
+  let tipVisible = false, mouseX = 0.5;
+
+  function updateTip(p){
+    const zones = DOOR_DATA[currentSeq - 1];
+    if(!tipVisible || !zones || p >= 0.82){ doorTip.classList.remove('visible'); return; }
+    const zone = zones.find(z => mouseX >= z.from && mouseX <= z.to);
+    if(zone){ dtModels.innerHTML = zone.models; dtBrand.textContent = zone.brand; }
+    doorTip.classList.toggle('visible', !!zone);
+  }
 
   heroStage.addEventListener('mousemove', e => {
+    const r = heroStage.getBoundingClientRect();
+    mouseX = (e.clientX - r.left) / r.width;
     doorTip.style.top  = e.clientY + 'px';
     doorTip.style.left = e.clientX + 'px';
   });
   heroStage.addEventListener('mouseenter', () => { tipVisible = true; });
-  heroStage.addEventListener('mouseleave', () => {
-    tipVisible = false;
-    doorTip.classList.remove('visible');
-  });
+  heroStage.addEventListener('mouseleave', () => { tipVisible = false; doorTip.classList.remove('visible'); });
 
   function drawAt(i,seq){
     const img=(seq===1?imgs1:seq===2?imgs2:seq===3?imgs3:seq===4?imgs4
@@ -1140,15 +1158,7 @@ window.addEventListener('scroll',()=>{
     applyPanel(hiP7, panelState(p, 0.67, 0.78));
     applyPanel(hiP5, panelState(p, 0.82, 1.01));
 
-    /* ── tooltip update ── */
-    if(tipVisible && currentSeq !== lastTipSeq){
-      lastTipSeq = currentSeq;
-      const d = DOOR_DATA[currentSeq - 1];
-      if(d){ dtModels.innerHTML = d.models; dtBrand.textContent = d.brand; }
-      doorTip.classList.toggle('visible', !!d && p < 0.82);
-    } else if(!tipVisible || p >= 0.82){
-      doorTip.classList.remove('visible');
-    }
+    updateTip(p);
 
     requestAnimationFrame(tick);
   }
