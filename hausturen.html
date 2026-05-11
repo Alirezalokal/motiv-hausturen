@@ -1018,24 +1018,22 @@ window.addEventListener('scroll',()=>{
   const dtModels = $('dtModels');
   const dtBrand  = $('dtBrand');
   const heroStage = $('heroStage');
-  let tipVisible = false, mouseX = 0.5;
+  let currentP = 0;
 
-  function updateTip(p){
+  function updateTip(clientX, clientY){
+    const r = heroStage.getBoundingClientRect();
+    const mx = (clientX - r.left) / r.width;
+    doorTip.style.top  = clientY + 'px';
+    doorTip.style.left = clientX + 'px';
     const zones = DOOR_DATA[currentSeq - 1];
-    if(!tipVisible || !zones || p >= 0.82){ doorTip.classList.remove('visible'); return; }
-    const zone = zones.find(z => mouseX >= z.from && mouseX <= z.to);
+    if(!zones || currentP >= 0.82){ doorTip.classList.remove('visible'); return; }
+    const zone = zones.find(z => mx >= z.from && mx <= z.to);
     if(zone){ dtModels.innerHTML = zone.models; dtBrand.textContent = zone.brand; }
     doorTip.classList.toggle('visible', !!zone);
   }
 
-  heroStage.addEventListener('mousemove', e => {
-    const r = heroStage.getBoundingClientRect();
-    mouseX = (e.clientX - r.left) / r.width;
-    doorTip.style.top  = e.clientY + 'px';
-    doorTip.style.left = e.clientX + 'px';
-  });
-  heroStage.addEventListener('mouseenter', () => { tipVisible = true; });
-  heroStage.addEventListener('mouseleave', () => { tipVisible = false; doorTip.classList.remove('visible'); });
+  heroStage.addEventListener('mousemove', e => updateTip(e.clientX, e.clientY));
+  heroStage.addEventListener('mouseleave', () => doorTip.classList.remove('visible'));
 
   function drawAt(i,seq){
     const img=(seq===1?imgs1:seq===2?imgs2:seq===3?imgs3:seq===4?imgs4
@@ -1158,7 +1156,7 @@ window.addEventListener('scroll',()=>{
     applyPanel(hiP7, panelState(p, 0.67, 0.78));
     applyPanel(hiP5, panelState(p, 0.82, 1.01));
 
-    updateTip(p);
+    currentP = p;
 
     requestAnimationFrame(tick);
   }
