@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>motiv — Stil Modern | Aluminium-Haustüren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080806;--off-black:#0d0d0b;
+  --white:#f5f0e8;--dim:rgba(245,240,232,.6);
+  --gold:#c8a06a;--gold-a:rgba(200,160,106,.15);
+  --border:rgba(245,240,232,.09);--border2:rgba(245,240,232,.18);
+  --ease:cubic-bezier(.16,1,.3,1);--ease2:cubic-bezier(.76,0,.24,1)
+}
+html{scroll-behavior:auto;cursor:none}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NOISE ── */
+#noise{position:fixed;inset:-200%;width:400%;height:400%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  opacity:.025;pointer-events:none;z-index:9998;
+  animation:noiseDrift 7s steps(8,end) infinite}
+@keyframes noiseDrift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-5%)}30%{transform:translate(-7%,3%)}50%{transform:translate(-3%,6%)}70%{transform:translate(-4%,4%)}90%{transform:translate(-6%,1%)}}
+
+/* ── CURSOR ── */
+#cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:10px;height:10px;background:var(--white);z-index:10000;mix-blend-mode:difference}
+#cur2{width:38px;height:38px;border:1px solid rgba(245,240,232,.3);transition:width .4s var(--ease),height .4s var(--ease),border-color .3s}
+#cur.big{width:52px;height:52px}
+#cur2.big{width:68px;height:68px;border-color:var(--gold)}
+
+/* ── SCROLL PROGRESS ── */
+#scrollBar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--gold),var(--white));z-index:9999;width:0;pointer-events:none}
+
+/* ─────────────────────────────────────
+   LOADING SCREEN
+───────────────────────────────────── */
+#loadScreen{
+  position:fixed;inset:0;z-index:10000;
+  background:var(--black);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;
+  transition:opacity .6s var(--ease)
+}
+.ls-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:38px;font-weight:300;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--white)
+}
+.ls-logo span{color:var(--gold)}
+.ls-bar-wrap{
+  width:200px;height:1px;background:var(--border);
+  position:relative;overflow:hidden
+}
+.ls-bar{
+  position:absolute;top:0;left:0;height:100%;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--white));
+  transition:width .1s linear
+}
+.ls-pct{
+  font-size:11px;font-weight:300;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim)
+}
+
+/* ─────────────────────────────────────
+   NAV
+───────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:600;padding:26px 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,padding .4s,backdrop-filter .4s}
+nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 6vw;border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--white);text-decoration:none}
+.nav-logo .dot{color:var(--gold)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;cursor:none;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--gold);transition:right .3s var(--ease)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{right:0}
+.nav-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);border:1px solid var(--border);border-radius:100px;padding:6px 14px;
+  cursor:none
+}
+.nav-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.nav-btn{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:11px 26px;border:1px solid var(--border2);border-radius:100px;cursor:none;transition:background .3s,color .3s,border-color .3s}
+.nav-btn:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+
+/* ─────────────────────────────────────
+   ROTATION SECTION
+───────────────────────────────────── */
+.rot-seq{height:600vh;background:var(--black)}
+.rot-stage{
+  position:sticky;top:0;height:100svh;
+  display:flex;overflow:hidden
+}
+
+/* Left text area — floats over full-width canvas */
+.rot-left{
+  width:48%;position:relative;
+  z-index:2;flex-shrink:0;
+  overflow:hidden;
+  background:linear-gradient(to right,
+    rgba(8,8,6,1)   0%,
+    rgba(8,8,6,1)   62%,
+    rgba(8,8,6,.72) 80%,
+    rgba(8,8,6,.18) 92%,
+    transparent     100%)
+}
+.rot-panel{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 5vw 0 7vw;
+  opacity:1;pointer-events:none;
+  transform:translateY(100%)
+}
+.transitions-on .rot-panel{
+  transition:transform .72s cubic-bezier(.16,1,.3,1)
+}
+
+/* Canvas behind everything — full stage width */
+.rot-right{
+  position:absolute;inset:0;
+  background:var(--black);z-index:1
+}
+#rotCanvas{
+  position:absolute;inset:0;
+  width:100%;height:100%;display:block
+}
+
+/* Vignette on canvas edges */
+.rot-vignette{
+  position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:
+    linear-gradient(to bottom,rgba(8,8,6,.5) 0%,transparent 14%),
+    linear-gradient(to top,rgba(8,8,6,.5) 0%,transparent 14%),
+    linear-gradient(to left,rgba(8,8,6,1) 0%,rgba(8,8,6,.5) 18%,transparent 38%)
+}
+
+/* Progress indicator */
+.rot-progress{
+  position:absolute;bottom:36px;right:32px;z-index:3;
+  display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+  opacity:0;transition:opacity .4s
+}
+.rot-progress.vis{opacity:1}
+.rot-prog-track{width:120px;height:1px;background:rgba(245,240,232,.1)}
+.rot-prog-fill{height:100%;width:0%;background:var(--gold);transition:width .12s linear}
+.rot-prog-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+
+/* ── PANEL ELEMENTS ── */
+.rp-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.rp-eye-bar{width:32px;height:1px;background:var(--gold);flex-shrink:0}
+.rp-eye-txt{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+
+.rp-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(54px,7vw,108px);
+  line-height:.9;font-weight:300;letter-spacing:-.03em;
+  margin-bottom:28px
+}
+.rp-title em{font-style:italic;color:var(--gold)}
+
+.rp-body{
+  font-size:clamp(14px,1.2vw,17px);line-height:1.75;
+  color:var(--dim);font-weight:300;max-width:400px;margin-bottom:30px
+}
+
+.rp-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:38px}
+.rp-pill{
+  padding:7px 17px;border:1px solid var(--border2);border-radius:100px;
+  font-size:10px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)
+}
+
+.rp-scroll-hint{display:flex;align-items:center;gap:14px}
+.scroll-wire{width:48px;height:1px;background:rgba(245,240,232,.2);position:relative;overflow:hidden}
+.scroll-wire::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:wirePulse 2.4s var(--ease2) infinite}
+@keyframes wirePulse{0%{left:-100%}100%{left:100%}}
+.scroll-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:300}
+
+/* Feature list */
+.rp-features{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:0;max-width:380px}
+.rp-features li{
+  display:flex;align-items:center;gap:14px;
+  font-size:clamp(13px,1.1vw,15px);font-weight:300;color:var(--dim);
+  line-height:1.4;padding-bottom:14px;border-bottom:1px solid var(--border)
+}
+.rp-features li:last-child{border-bottom:none;padding-bottom:0}
+.feat-icon{color:var(--gold);font-size:18px;flex-shrink:0;line-height:1;margin-top:1px}
+
+/* Model list */
+.rp-models{display:flex;flex-direction:column;gap:2px;margin-bottom:34px}
+.rp-model{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,2.8vw,38px);font-weight:300;letter-spacing:.02em;
+  color:var(--white);padding:10px 0;
+  border-bottom:1px solid var(--border);
+  transition:color .2s,padding-left .3s var(--ease)
+}
+.rp-model:hover{color:var(--gold);padding-left:12px;cursor:none}
+
+.rp-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:15px 38px;
+  background:var(--gold);color:var(--black);
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:100px;text-decoration:none;cursor:none;
+  border:1px solid var(--gold);transition:background .3s,color .3s
+}
+.rp-cta:hover{background:transparent;color:var(--gold)}
+
+/* ─────────────────────────────────────
+   BREADCRUMB DIVIDER
+───────────────────────────────────── */
+.divider{
+  height:1px;background:var(--border);
+  margin:0 7vw;position:relative
+}
+.divider::before{
+  content:'';position:absolute;top:0;left:0;
+  width:80px;height:1px;background:var(--gold)
+}
+
+/* ─────────────────────────────────────
+   COLOR CONFIGURATOR
+───────────────────────────────────── */
+.cfg-section{
+  background:var(--off-black);
+  padding:120px 0 120px;
+  position:relative;overflow:hidden
+}
+.cfg-section::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)
+}
+.cfg-section::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border2),transparent)
+}
+.cfg-inner{
+  max-width:1360px;margin:0 auto;
+  padding:0 7vw;
+  display:flex;gap:8vw;align-items:center
+}
+
+/* left text col */
+.cfg-text{flex:1;min-width:280px}
+.cfg-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.cfg-eye-bar{width:32px;height:1px;background:var(--gold);flex-shrink:0}
+.cfg-eye-txt{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.cfg-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(50px,6vw,94px);
+  line-height:.9;font-weight:300;letter-spacing:-.03em;
+  margin-bottom:24px
+}
+.cfg-title em{font-style:italic;color:var(--gold)}
+.cfg-sub{
+  font-size:clamp(13px,1.1vw,16px);line-height:1.75;
+  color:var(--dim);font-weight:300;max-width:360px;
+  margin-bottom:36px
+}
+.cfg-ral-info{margin-bottom:22px}
+.cfg-ral-code{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:300;letter-spacing:-.01em;
+  color:var(--white);line-height:1
+}
+.cfg-ral-name{
+  font-size:11px;font-weight:300;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);margin-top:5px
+}
+.cfg-swatches{
+  display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px
+}
+.cfg-swatch{
+  width:44px;height:44px;border-radius:8px;cursor:none;background:none;
+  border:2px solid transparent;
+  transition:transform .2s var(--ease),border-color .2s;
+  position:relative
+}
+.cfg-swatch:hover{transform:scale(1.12)}
+.cfg-swatch.active{border-color:var(--gold);transform:scale(1.08)}
+.cfg-swatch.active::after{
+  content:'';position:absolute;inset:-6px;
+  border-radius:12px;border:1px solid rgba(200,160,106,.4)
+}
+.cfg-note{
+  font-size:10px;font-weight:300;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)
+}
+
+/* right canvas col */
+.cfg-canvas-wrap{
+  flex-shrink:0;width:min(38vw,480px);
+  position:relative;
+  border-radius:4px;overflow:hidden
+}
+#cfgCanvas{
+  display:block;width:100%;
+  border-radius:4px
+}
+.cfg-canvas-label{
+  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  font-size:10px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim);white-space:nowrap;
+  background:rgba(8,8,6,.6);backdrop-filter:blur(8px);
+  padding:6px 16px;border-radius:100px;border:1px solid var(--border)
+}
+
+/* ─────────────────────────────────────
+   CTA SECTION
+───────────────────────────────────── */
+/* ─────────────────────────────────────
+   SUNSET CINEMATIC BANNER
+───────────────────────────────────── */
+.sunset-section{
+  position:relative;
+  height:190vh;
+  background:var(--black);
+}
+.sunset-sticky{
+  position:sticky;top:0;height:100svh;
+  overflow:hidden;
+}
+.sunset-img-wrap{
+  position:absolute;inset:0;
+}
+.sunset-img{
+  width:100%;height:116%;
+  object-fit:cover;object-position:center 40%;
+  transform:translateY(-8%);
+  will-change:transform;
+}
+.sunset-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(8,8,6,.45) 0%,
+    rgba(8,8,6,.08) 25%,
+    rgba(8,8,6,.08) 72%,
+    rgba(8,8,6,.72) 100%
+  );
+}
+.sunset-content{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:0 7vw;
+}
+.sunset-eyebrow{
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:28px;
+  display:flex;align-items:center;gap:16px;
+}
+.sunset-eyebrow::before,.sunset-eyebrow::after{
+  content:'';width:36px;height:1px;background:var(--gold);opacity:.5;flex-shrink:0;
+}
+.sunset-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,7.2vw,124px);
+  font-weight:300;line-height:.92;
+  letter-spacing:-.03em;color:var(--white);
+  margin:0 0 52px;
+  text-shadow:0 6px 48px rgba(0,0,0,.5);
+}
+.sunset-title em{font-style:italic;color:var(--gold)}
+.sunset-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 34px;border-radius:100px;
+  background:rgba(8,8,6,.35);color:var(--white);
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;border:1px solid rgba(245,240,232,.35);
+  cursor:none;backdrop-filter:blur(12px);
+  transition:border-color .35s,background .35s,color .35s;
+}
+.sunset-cta:hover{
+  border-color:rgba(200,160,106,.6);
+  background:rgba(200,160,106,.12);
+  color:var(--gold);
+}
+.sunset-scroll-hint{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:.4;pointer-events:none;
+}
+.sunset-scroll-hint span{
+  font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--white);
+}
+.sunset-scroll-line{
+  width:1px;height:40px;background:linear-gradient(to bottom,var(--white),transparent);
+  animation:sunsetPulse 1.8s ease-in-out infinite;
+}
+@keyframes sunsetPulse{
+  0%,100%{opacity:.4;transform:scaleY(1)}
+  50%{opacity:.8;transform:scaleY(.7)}
+}
+@media(max-width:700px){
+  .sunset-title{font-size:clamp(38px,10vw,72px)}
+  .sunset-section{height:160vh}
+}
+
+/* ─────────────────────────────────────
+   INOTHERM VIDEO SECTION
+───────────────────────────────────── */
+.ino-section{
+  background:var(--black);
+  border-top:1px solid var(--border);
+  padding:0;overflow:hidden;
+}
+.ino-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:100svh;
+  align-items:stretch;
+}
+/* LEFT — video */
+.ino-video-col{
+  position:relative;overflow:hidden;
+  background:#000;
+}
+.ino-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  display:block;
+}
+.ino-video-edge{
+  position:absolute;top:0;right:0;bottom:0;width:120px;
+  background:linear-gradient(to right,transparent,var(--black));
+  z-index:2;pointer-events:none;
+}
+/* RIGHT — text */
+.ino-text-col{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 8vw 80px 6vw;
+  position:relative;
+}
+.ino-eyebrow{
+  display:flex;align-items:center;gap:14px;margin-bottom:28px;
+}
+.ino-eye-bar{width:28px;height:1px;background:var(--gold);flex-shrink:0;opacity:.6}
+.ino-eye-txt{
+  font-size:9px;font-weight:400;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);
+}
+.ino-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,5.5vw,88px);
+  font-weight:300;line-height:.92;
+  letter-spacing:-.03em;color:var(--white);
+  margin:0 0 28px;
+}
+.ino-title em{font-style:italic;color:var(--gold)}
+.ino-lead{
+  font-size:15px;line-height:1.82;color:var(--dim);
+  max-width:440px;margin:0 0 40px;
+}
+.ino-features{
+  display:flex;flex-direction:column;gap:14px;
+  margin-bottom:52px;
+}
+.ino-feat{
+  display:flex;align-items:flex-start;gap:14px;
+}
+.ino-feat-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+  margin-top:8px;opacity:.7;
+}
+.ino-feat-text{
+  font-size:13px;line-height:1.65;color:var(--dim);letter-spacing:.02em;
+}
+.ino-feat-text strong{
+  color:var(--white);font-weight:400;display:block;
+  font-size:14px;letter-spacing:.01em;margin-bottom:2px;
+}
+.ino-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ino-btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 30px;border-radius:100px;
+  background:transparent;color:var(--white);
+  font-size:10px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;border:1px solid var(--border2);cursor:none;
+  transition:border-color .3s,background .3s,color .3s;
+}
+.ino-btn-primary:hover{
+  border-color:rgba(200,160,106,.5);
+  background:rgba(200,160,106,.1);color:var(--gold);
+}
+.ino-btn-secondary{
+  font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;cursor:none;
+  border-bottom:1px solid var(--border);padding-bottom:2px;
+  transition:color .3s,border-color .3s;
+}
+.ino-btn-secondary:hover{color:var(--white);border-color:var(--border2)}
+.ino-badge{
+  margin-top:56px;padding-top:32px;border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:16px;
+}
+.ino-badge-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--white);
+}
+.ino-badge-line{width:1px;height:32px;background:var(--border2)}
+.ino-badge-tag{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim);line-height:1.6;
+}
+
+@media(max-width:900px){
+  .ino-inner{grid-template-columns:1fr;min-height:auto}
+  .ino-video-col{height:62svh;}
+  .ino-video-edge{display:none}
+  .ino-text-col{padding:56px 5vw 64px}
+  .ino-title{font-size:clamp(38px,9vw,68px)}
+}
+
+.cta-section{
+  padding:140px 0 120px;
+  text-align:center;position:relative;overflow:hidden
+}
+.cta-inner{max-width:700px;margin:0 auto;padding:0 7vw}
+.cta-eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:32px}
+.cta-eye-bar{width:32px;height:1px;background:var(--gold);flex-shrink:0}
+.cta-eye-txt{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.cta-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(56px,7.5vw,120px);
+  line-height:.88;font-weight:300;letter-spacing:-.04em;
+  margin-bottom:30px
+}
+.cta-title em{font-style:italic;color:var(--gold)}
+.cta-sub{
+  font-size:clamp(14px,1.3vw,18px);line-height:1.75;
+  color:var(--dim);font-weight:300;margin-bottom:50px
+}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-btn-primary{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:16px 44px;
+  background:var(--gold);color:var(--black);
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:100px;text-decoration:none;cursor:none;
+  border:1px solid var(--gold);transition:background .3s,color .3s
+}
+.cta-btn-primary:hover{background:transparent;color:var(--gold)}
+.cta-btn-sec{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 44px;
+  background:transparent;color:var(--dim);
+  font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:100px;text-decoration:none;cursor:none;
+  border:1px solid var(--border);transition:color .3s,border-color .3s
+}
+.cta-btn-sec:hover{color:var(--white);border-color:var(--border2)}
+
+/* ── FOOTER LINE ── */
+.footer-line{
+  border-top:1px solid var(--border);
+  padding:28px 7vw;
+  display:flex;align-items:center;justify-content:space-between
+}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none}
+.footer-copy{font-size:10px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.3)}
+
+/* ─────────────────────────────────────
+   TÜREN KATALOG
+───────────────────────────────────── */
+.dr-section{
+  position:relative;width:100%;
+  padding:120px 7vw 100px;overflow:hidden;
+  background:var(--off-black);
+  border-top:1px solid var(--border);
+}
+.dr-ambient{position:absolute;inset:0;pointer-events:none;z-index:0}
+.dr-amb{
+  position:absolute;inset:-8%;z-index:0;pointer-events:none;
+  background-size:cover;background-position:center;
+  filter:blur(70px) brightness(.12) saturate(2.8);
+  opacity:0;transition:opacity 2s ease;
+  will-change:opacity;
+}
+.dr-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(200,160,106,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,160,106,.04) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,#000 30%,transparent 80%);
+  opacity:.7;
+}
+.dr-orb{position:absolute;border-radius:50%;filter:blur(100px)}
+.dr-orb-1{
+  width:500px;height:500px;top:-120px;right:-120px;
+  background:radial-gradient(circle,rgba(200,160,106,.13),transparent 70%);
+  animation:drOrbFloat 18s ease-in-out infinite;
+}
+.dr-orb-2{
+  width:420px;height:420px;bottom:-140px;left:-100px;
+  background:radial-gradient(circle,rgba(200,160,106,.09),transparent 70%);
+  animation:drOrbFloat 22s ease-in-out -9s infinite reverse;
+}
+@keyframes drOrbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-40px,30px) scale(1.1)}
+}
+.dr-shell{position:relative;z-index:1;width:min(1400px,100%);margin:0 auto}
+.dr-header{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:60px;
+  align-items:end;padding-bottom:48px;margin-bottom:56px;
+  border-bottom:1px solid var(--border);
+}
+.dr-kicker{
+  display:inline-flex;align-items:center;min-height:26px;padding:0 12px;
+  border-radius:100px;background:var(--gold-a);border:1px solid rgba(200,160,106,.28);
+  color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.dr-title{
+  margin:0;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,5.6vw,86px);
+  font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--white);
+}
+.dr-title-word{display:block}
+.dr-title-word--accent{font-style:italic;color:var(--gold)}
+.dr-lead{color:var(--dim);font-size:16px;line-height:1.75;margin:0 0 26px;max-width:480px}
+.dr-stats{display:flex;gap:40px}
+.dr-stat{display:flex;flex-direction:column;gap:4px}
+.dr-stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:300;color:var(--white);line-height:1;
+}
+.dr-stat-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.dr-experience{display:grid;grid-template-columns:256px minmax(0,1fr);gap:40px;align-items:start}
+.dr-brand-nav{position:sticky;top:30px}
+.dr-brand-nav-label{
+  color:var(--dim);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:16px;padding-left:4px;
+}
+.dr-brand-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.dr-brand-btn{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;gap:12px;padding:13px 10px;
+  border:none;background:transparent;border-left:2px solid var(--border);
+  color:var(--dim);text-align:left;cursor:none;font-family:'Inter',sans-serif;
+  transition:color .3s,border-color .3s,padding .4s var(--ease),background .3s;
+}
+.dr-brand-btn:hover{
+  color:var(--white);border-color:rgba(200,160,106,.3);padding-left:16px;
+  background:linear-gradient(90deg,var(--gold-a),transparent);
+}
+.dr-brand-btn.is-active{
+  color:var(--white);border-color:var(--gold);padding-left:16px;
+  background:linear-gradient(90deg,rgba(200,160,106,.12),transparent 70%);
+}
+.dr-brand-idx{font-size:9px;font-weight:400;letter-spacing:.14em;color:rgba(245,240,232,.35)}
+.dr-brand-btn.is-active .dr-brand-idx{color:var(--gold)}
+.dr-brand-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.dr-brand-name{font-size:14px;font-weight:400;line-height:1.2}
+.dr-brand-sub{font-size:11px;color:rgba(245,240,232,.38);line-height:1.4}
+.dr-brand-arrow{
+  opacity:0;transform:translateX(-6px);color:var(--gold);
+  transition:opacity .3s,transform .3s;display:inline-flex;
+}
+.dr-brand-btn:hover .dr-brand-arrow,.dr-brand-btn.is-active .dr-brand-arrow{opacity:1;transform:translateX(0)}
+.dr-stage{min-width:0;display:flex;flex-direction:column;gap:26px}
+.dr-stage-info{max-width:720px}
+.dr-stage-meta-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.dr-chip{
+  display:inline-flex;align-items:center;min-height:26px;padding:0 11px;
+  border-radius:100px;background:var(--gold-a);border:1px solid rgba(200,160,106,.28);
+  color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
+}
+.dr-chip-divider{width:18px;height:1px;background:var(--border2)}
+.dr-chip-sub{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.dr-stage-title{
+  margin:0 0 10px;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4.2vw,62px);font-weight:300;line-height:.98;
+  letter-spacing:-.025em;color:var(--white);
+}
+.dr-stage-text{margin:0 0 16px;color:var(--dim);font-size:15px;line-height:1.8}
+.dr-stage-tags{display:flex;flex-wrap:wrap;gap:6px}
+.dr-stage-tags span{
+  display:inline-flex;align-items:center;min-height:26px;padding:0 10px;
+  border-radius:100px;background:transparent;border:1px solid var(--border);
+  color:var(--dim);font-size:10px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+}
+.dr-carousel-wrap{
+  position:relative;width:100%;height:700px;
+  perspective:1800px;perspective-origin:50% 50%;user-select:none;
+}
+.dr-carousel{position:absolute;inset:0;transform-style:preserve-3d}
+.dr-card{
+  position:absolute;top:50%;left:50%;
+  width:420px;height:620px;margin:-310px 0 0 -210px;
+  transform-style:preserve-3d;
+  transition:transform .9s var(--ease),opacity .9s ease,filter .9s ease;
+  will-change:transform,opacity,filter;cursor:none;
+}
+.dr-card-inner{
+  position:relative;width:100%;height:100%;border-radius:22px;overflow:hidden;
+  background:rgba(8,8,6,.85);border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  transition:border-color .5s,box-shadow .5s,transform .55s var(--ease);
+  transform-origin:center center;
+}
+.dr-card.is-active .dr-card-inner{
+  border-color:rgba(200,160,106,.45);
+  box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(200,160,106,.22),0 0 60px rgba(200,160,106,.10);
+}
+.dr-card.is-active .dr-card-inner:hover{
+  transform:scale(1.06);
+  box-shadow:0 55px 110px rgba(0,0,0,.7),0 0 0 1px rgba(200,160,106,.4),0 0 90px rgba(200,160,106,.18);
+}
+.dr-card-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease),filter .6s;
+  filter:brightness(.72) saturate(.9);
+}
+.dr-card.is-active .dr-card-img{filter:brightness(1) saturate(1)}
+.dr-card.is-active .dr-card-inner:hover .dr-card-img{transform:scale(1.06)}
+.dr-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 0%,transparent 45%,rgba(8,8,6,.88) 100%);
+  pointer-events:none;
+}
+.dr-card-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 30%,rgba(200,160,106,.07) 48%,rgba(245,240,232,.14) 50%,rgba(200,160,106,.07) 52%,transparent 70%);
+  transform:translateX(-130%);pointer-events:none;mix-blend-mode:screen;opacity:0;
+}
+.dr-card.is-active:hover .dr-card-shine{animation:drShine 1.1s var(--ease)}
+@keyframes drShine{
+  0%{transform:translateX(-130%);opacity:1}
+  100%{transform:translateX(130%);opacity:0}
+}
+.dr-card-caption{position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2}
+.dr-card-num{
+  display:inline-block;font-size:9px;font-weight:400;letter-spacing:.2em;
+  color:var(--gold);margin-bottom:7px;
+}
+.dr-card-title{
+  margin:0 0 5px;font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;color:var(--white);line-height:1.1;
+}
+.dr-card-tag{font-size:11px;color:var(--dim);letter-spacing:.06em}
+.dr-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--border2);background:rgba(8,8,6,.75);
+  color:var(--white);cursor:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(10px);
+  transition:transform .3s,border-color .3s,background .3s;z-index:10;
+}
+.dr-nav:hover{
+  transform:translateY(-50%) scale(1.06);
+  border-color:rgba(200,160,106,.4);background:rgba(200,160,106,.1);
+}
+.dr-nav--prev{left:10px}
+.dr-nav--next{right:10px}
+.dr-stage-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:40px;
+  padding-top:22px;border-top:1px solid var(--border);flex-wrap:wrap;
+}
+.dr-progress{display:flex;align-items:center;gap:16px;flex:1;min-width:180px}
+.dr-progress-track{
+  flex:1;height:1px;background:rgba(245,240,232,.09);border-radius:100px;overflow:hidden;max-width:280px;
+}
+.dr-progress-fill{
+  height:100%;background:var(--gold);border-radius:100px;
+  width:25%;transition:width .7s var(--ease);
+}
+.dr-progress-counter{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-weight:300;letter-spacing:.1em;color:var(--dim);
+  display:flex;gap:4px;
+}
+.dr-progress-slash{color:var(--gold)}
+.dr-cta{
+  display:inline-flex;align-items:center;gap:10px;padding:12px 26px;border-radius:100px;
+  background:transparent;color:var(--dim);font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;border:1px solid var(--border2);
+  transition:color .3s,border-color .3s;cursor:none;
+}
+.dr-cta:hover{color:var(--white);border-color:var(--border2)}
+.dr-cta-icon{display:inline-flex;align-items:center;transition:transform .4s var(--ease)}
+.dr-cta:hover .dr-cta-icon{transform:translateX(4px)}
+
+@media(max-width:1100px){
+  .dr-section{padding:80px 5vw 80px}
+  .dr-header{grid-template-columns:1fr;gap:24px}
+  .dr-experience{grid-template-columns:1fr;gap:28px}
+  .dr-brand-nav{position:relative;top:auto}
+  .dr-brand-list{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px;scrollbar-width:none}
+  .dr-brand-list::-webkit-scrollbar{display:none}
+  .dr-brand-btn{flex:0 0 auto;padding:11px 14px;border-left:none;border-bottom:2px solid var(--border)}
+  .dr-brand-btn:hover,.dr-brand-btn.is-active{padding-left:14px;border-bottom-color:var(--gold)}
+  .dr-brand-arrow{display:none}
+}
+@media(max-width:767px){
+  .dr-header{padding-bottom:28px;margin-bottom:32px}
+  .dr-stat-num{font-size:42px}
+  .dr-carousel-wrap{height:560px}
+  .dr-card{width:300px;height:460px;margin:-230px 0 0 -150px}
+  .dr-nav{width:42px;height:42px}
+  .dr-stage-foot{flex-direction:column;align-items:stretch}
+  .dr-cta{justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .dr-orb,.dr-card{animation:none !important;transition-duration:.2s !important}
+}
+</style>
+</head>
+<body>
+
+<div id="noise"></div>
+<div id="cur"></div>
+<div id="cur2"></div>
+<div id="scrollBar"></div>
+
+<!-- ─── LOADING SCREEN ─── -->
+<div id="loadScreen">
+  <div class="ls-logo">motiv<span>.</span></div>
+  <div class="ls-bar-wrap"><div class="ls-bar" id="loadBar"></div></div>
+  <div class="ls-pct" id="loadPct">0 %</div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav">
+  <a href="hausturen.html" class="nav-logo">motiv<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="hausturen.html">← Alle Stile</a></li>
+    <li><a href="#">Fenster</a></li>
+    <li><a href="#">Ausstellung</a></li>
+  </ul>
+  <div class="nav-pill">
+    <span class="nav-pill-dot"></span>
+    <span>Stil Modern</span>
+  </div>
+  <a href="mailto:info@motiv-fenster.de" class="nav-btn">Beratung anfragen</a>
+</nav>
+
+<!-- ─── ROTATION SECTION ─── -->
+<section class="rot-seq" id="rotSeq">
+  <div class="rot-stage" id="rotStage">
+
+    <!-- left text panels -->
+    <div class="rot-left" id="rotLeft">
+
+      <!-- Panel 1 -->
+      <div class="rot-panel" id="rp1">
+        <div class="rp-eyebrow">
+          <span class="rp-eye-bar"></span>
+          <span class="rp-eye-txt">KOMPOtherm · Aluminium</span>
+        </div>
+        <h1 class="rp-title">Stil<br><em>Modern.</em></h1>
+        <p class="rp-body">Eine Tür, die auf den ersten Blick überzeugt — reduziert, klar und dauerhaft schön.</p>
+        <div class="rp-scroll-hint">
+          <div class="scroll-wire"></div>
+          <span class="scroll-lbl">Scrollen</span>
+        </div>
+      </div>
+
+      <!-- Panel 2 -->
+      <div class="rot-panel" id="rp2">
+        <div class="rp-eyebrow">
+          <span class="rp-eye-bar"></span>
+          <span class="rp-eye-txt">Warum Aluminium</span>
+        </div>
+        <h2 class="rp-title">Langlebig.<br><em>Pflegeleicht.</em></h2>
+        <p class="rp-body">Aluminium verwittert nicht, verbiegt sich nicht und behält seine Form — jahrzehntelang. Dazu über 200 Farben, ganz nach Ihrem Geschmack.</p>
+      </div>
+
+      <!-- Panel 3 -->
+      <div class="rot-panel" id="rp3">
+        <div class="rp-eyebrow">
+          <span class="rp-eye-bar"></span>
+          <span class="rp-eye-txt">motiv · Recklinghausen</span>
+        </div>
+        <h2 class="rp-title">Bereit für<br><em>Ihre Tür?</em></h2>
+        <p class="rp-body">Wir beraten Sie persönlich — von der ersten Idee bis zur fertigen Montage, alles aus einer Hand.</p>
+        <a href="mailto:info@motiv-fenster.de" class="rp-cta">Beratung anfragen</a>
+      </div>
+
+    </div>
+
+    <!-- right rotating door -->
+    <div class="rot-right" id="rotRight">
+      <canvas id="rotCanvas"></canvas>
+      <div class="rot-vignette"></div>
+      <div class="rot-progress" id="rotProgress">
+        <div class="rot-prog-track"><div class="rot-prog-fill" id="rotProgFill"></div></div>
+        <div class="rot-prog-lbl" id="rotProgLbl">0 °</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TÜREN KATALOG ─── -->
+<section class="dr-section" id="tueren-katalog-3d">
+  <div class="dr-ambient" aria-hidden="true">
+    <div class="dr-amb" id="dr-amb-1"></div>
+    <div class="dr-amb" id="dr-amb-2"></div>
+    <div class="dr-grid"></div>
+    <div class="dr-orb dr-orb-1"></div>
+    <div class="dr-orb dr-orb-2"></div>
+  </div>
+  <div class="dr-shell">
+    <header class="dr-header">
+      <div class="dr-header-left">
+        <div class="dr-kicker">Türen Kollektion</div>
+        <h2 class="dr-title">
+          <span class="dr-title-word">Eingänge,</span>
+          <span class="dr-title-word dr-title-word--accent">die bleiben.</span>
+        </h2>
+      </div>
+      <div class="dr-header-right">
+        <p class="dr-lead">Haustüren sorgfältig ausgewählt aus führenden Herstellerwelten. Durchlaufen Sie die Kollektion und finden Sie Ihren Stil.</p>
+        <div class="dr-stats">
+          <div class="dr-stat">
+            <span class="dr-stat-num" id="dr-stat-brand">01</span>
+            <span class="dr-stat-lbl">Aktive Marke</span>
+          </div>
+          <div class="dr-stat">
+            <span class="dr-stat-num" id="dr-stat-total">28</span>
+            <span class="dr-stat-lbl">Stilwelten</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="dr-experience">
+      <nav class="dr-brand-nav" aria-label="Markenauswahl">
+        <div class="dr-brand-nav-label">Marke wählen</div>
+        <ol class="dr-brand-list">
+          <li><button class="dr-brand-btn is-active" data-brand="kompotherm" type="button">
+            <span class="dr-brand-idx">01</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">KOMPOtherm</span><span class="dr-brand-sub">Aluminium-Haustüren</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="inotherm" type="button">
+            <span class="dr-brand-idx">02</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">INOTHERM</span><span class="dr-brand-sub">Design &amp; Technik</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="internorm" type="button">
+            <span class="dr-brand-idx">03</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Internorm</span><span class="dr-brand-sub">Moderne Türsysteme</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="aip" type="button">
+            <span class="dr-brand-idx">04</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">AiP</span><span class="dr-brand-sub">Klare Linien &amp; Vielfalt</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+        </ol>
+      </nav>
+      <div class="dr-stage">
+        <div class="dr-stage-info">
+          <div class="dr-stage-meta-row">
+            <span class="dr-chip" id="dr-chip-brand">KOMPOtherm</span>
+            <span class="dr-chip-divider"></span>
+            <span class="dr-chip-sub" id="dr-chip-sub">Aluminium-Haustüren</span>
+          </div>
+          <h3 class="dr-stage-title" id="dr-stage-title">E-264 AL</h3>
+          <p class="dr-stage-text" id="dr-stage-text"></p>
+          <div class="dr-stage-tags" id="dr-stage-tags"></div>
+        </div>
+        <div class="dr-carousel-wrap">
+          <div class="dr-carousel" id="dr-carousel"></div>
+          <button class="dr-nav dr-nav--prev" id="dr-nav-prev" type="button" aria-label="Zurück">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="dr-nav dr-nav--next" id="dr-nav-next" type="button" aria-label="Weiter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="dr-stage-foot">
+          <div class="dr-progress">
+            <div class="dr-progress-track"><div class="dr-progress-fill" id="dr-progress-fill"></div></div>
+            <div class="dr-progress-counter">
+              <span id="dr-counter-current">01</span>
+              <span class="dr-progress-slash">/</span>
+              <span id="dr-counter-total">07</span>
+            </div>
+          </div>
+          <a href="mailto:info@motiv-fenster.de" class="dr-cta" id="dr-cta">
+            <span class="dr-cta-txt">Beratung anfragen</span>
+            <span class="dr-cta-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SUNSET CINEMATIC ─── -->
+<section class="sunset-section" id="sunsetSection">
+  <div class="sunset-sticky">
+    <div class="sunset-img-wrap">
+      <img src="Modern-Tür/E_434R_sunset.jpg" alt="KOMPOtherm E-434 R · Sunset" id="sunsetImg" class="sunset-img">
+    </div>
+    <div class="sunset-overlay"></div>
+    <div class="sunset-content">
+      <div class="sunset-eyebrow">KOMPOtherm · E-434 R · Aluminium-Haustür</div>
+      <h2 class="sunset-title">Die Tür,<br><em>die alles verändert.</em></h2>
+      <a href="mailto:info@motiv-fenster.de" class="sunset-cta">Beratung anfragen</a>
+    </div>
+    <div class="sunset-scroll-hint">
+      <span>Weiter</span>
+      <div class="sunset-scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INOTHERM VIDEO ─── -->
+<section class="ino-section">
+  <div class="ino-inner">
+
+    <div class="ino-video-col">
+      <video class="ino-video" autoplay muted loop playsinline preload="auto">
+        <source src="inotherm-door.mp4" type="video/mp4">
+      </video>
+      <div class="ino-video-edge"></div>
+    </div>
+
+    <div class="ino-text-col">
+      <div class="ino-eyebrow">
+        <span class="ino-eye-bar"></span>
+        <span class="ino-eye-txt">INOTHERM · Design &amp; Technik</span>
+      </div>
+
+      <h2 class="ino-title">Präzision in<br><em>Bewegung.</em></h2>
+
+      <p class="ino-lead">INOTHERM Aluminium-Haustüren verbinden österreichisches Ingenieurwissen mit ausdrucksstarkem Design — für Eingänge, die bleiben.</p>
+
+      <div class="ino-features">
+        <div class="ino-feat">
+          <div class="ino-feat-dot"></div>
+          <div class="ino-feat-text">
+            <strong>Flügelüberdeckende Füllung</strong>
+            Beidseitig bündige Oberfläche — kein sichtbarer Rahmen, maximale Eleganz.
+          </div>
+        </div>
+        <div class="ino-feat">
+          <div class="ino-feat-dot"></div>
+          <div class="ino-feat-text">
+            <strong>Wärmedämmung Uw bis 0,5 W/m²K</strong>
+            Energieeffizienz auf höchstem Niveau, zertifiziert nach europäischer Norm.
+          </div>
+        </div>
+        <div class="ino-feat">
+          <div class="ino-feat-dot"></div>
+          <div class="ino-feat-text">
+            <strong>Einbruchhemmung RC 2 / RC 3</strong>
+            Geprüfte Sicherheit — für ein Zuhause, das schützt.
+          </div>
+        </div>
+      </div>
+
+      <div class="ino-actions">
+        <a href="mailto:info@motiv-fenster.de" class="ino-btn-primary">
+          Beratung anfragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#tueren-katalog-3d" class="ino-btn-secondary">Kollektion ansehen</a>
+      </div>
+
+      <div class="ino-badge">
+        <span class="ino-badge-logo">INOTHERM</span>
+        <div class="ino-badge-line"></div>
+        <span class="ino-badge-tag">Österreichisches<br>Premium-Segment</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">
+      <span class="cta-eye-bar"></span>
+      <span class="cta-eye-txt">Recklinghausen · Seit 1999</span>
+      <span class="cta-eye-bar"></span>
+    </div>
+    <h2 class="cta-title">Ihre neue<br><em>Haustür</em><br>wartet.</h2>
+    <p class="cta-sub">Persönliche Beratung, Aufmaß vor Ort und Montage — alles aus einer Hand. Wir begleiten Sie von der ersten Idee bis zur fertigen Tür.</p>
+    <div class="cta-btns">
+      <a href="mailto:info@motiv-fenster.de" class="cta-btn-primary">Beratung anfragen</a>
+      <a href="hausturen.html" class="cta-btn-sec">Alle Stile entdecken →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-line">
+  <a href="hausturen.html" class="footer-logo">motiv<span style="color:var(--gold)">.</span></a>
+  <span class="footer-copy">© 2026 motiv Fenster & Türen · Recklinghausen</span>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════ */
+const TOTAL  = 170;
+const FOLDER = 'door-modern-grey';
+
+/* ═══════════════════════════════════════
+   DOM REFS
+═══════════════════════════════════════ */
+const sunsetSection = document.getElementById('sunsetSection');
+const sunsetImg     = document.getElementById('sunsetImg');
+const loadScreen  = document.getElementById('loadScreen');
+const loadBar     = document.getElementById('loadBar');
+const loadPct     = document.getElementById('loadPct');
+const mainNav     = document.getElementById('mainNav');
+const scrollBar   = document.getElementById('scrollBar');
+const rotSeq      = document.getElementById('rotSeq');
+const rotLeft     = document.getElementById('rotLeft');
+const rotRight    = document.getElementById('rotRight');
+const rotCanvas   = document.getElementById('rotCanvas');
+const rotCtx      = rotCanvas.getContext('2d');
+const rotProgress = document.getElementById('rotProgress');
+const rotProgFill = document.getElementById('rotProgFill');
+const rotProgLbl  = document.getElementById('rotProgLbl');
+const panels      = [
+  document.getElementById('rp1'),
+  document.getElementById('rp2'),
+  document.getElementById('rp3'),
+];
+
+/* ═══════════════════════════════════════
+   FRAME LOADING
+═══════════════════════════════════════ */
+const frames = new Array(TOTAL);
+let loadedCount = 0;
+
+function pad3(n){ return String(n).padStart(3,'0'); }
+
+function preloadAll(onDone){
+  for(let i = 0; i < TOTAL; i++){
+    const img = new Image();
+    frames[i] = img;
+    img.onload = img.onerror = () => {
+      loadedCount++;
+      const pct = loadedCount / TOTAL;
+      loadBar.style.width = (pct * 100) + '%';
+      loadPct.textContent = Math.round(pct * 100) + ' %';
+      if(loadedCount === TOTAL) onDone();
+    };
+    img.src = FOLDER + '/frame_' + pad3(i + 1) + '.jpg';
+  }
+}
+
+/* ═══════════════════════════════════════
+   CANVAS RESIZE
+═══════════════════════════════════════ */
+let dpr = window.devicePixelRatio || 1;
+
+function resizeRotCanvas(){
+  dpr = window.devicePixelRatio || 1;
+  const w = rotRight.clientWidth;
+  const h = rotRight.clientHeight;
+  rotCanvas.width  = Math.round(w * dpr);
+  rotCanvas.height = Math.round(h * dpr);
+  rotCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+/* ═══════════════════════════════════════
+   DRAW
+═══════════════════════════════════════ */
+function drawFrame(img){
+  if(!img || !img.complete || !img.naturalWidth) return;
+  const W = rotRight.clientWidth;
+  const H = rotRight.clientHeight;
+  rotCtx.clearRect(0, 0, W, H);
+  const ir = img.naturalWidth / img.naturalHeight;
+  let dw, dh;
+  if(W / H > ir){ dh = H; dw = H * ir; }
+  else          { dw = W; dh = W / ir; }
+  // center door at 62% — bleeds left under text gradient, stays in right half
+  const cx = W * 0.62;
+  rotCtx.drawImage(img, cx - dw * 0.5, (H - dh) * 0.5, dw, dh);
+}
+
+/* ═══════════════════════════════════════
+   PANELS — slide-up, no fade
+═══════════════════════════════════════ */
+const T1 = 1 / 3, T2 = 2 / 3;
+let lastPanelIdx = -1;
+
+function updatePanels(p){
+  const idx = p < T1 ? 0 : p < T2 ? 1 : 2;
+
+  // panel 0: visible until T1, then exits up
+  // panel 1: enters from below at T1, exits up at T2
+  // panel 2: enters from below at T2, stays
+  const transforms = [
+    p < T1 ? '0%'   : '-100%',
+    p < T1 ? '100%' : p < T2 ? '0%' : '-100%',
+    p < T2 ? '100%' : '0%',
+  ];
+
+  panels.forEach((panel, i) => {
+    panel.style.transform = 'translateY(' + transforms[i] + ')';
+    panel.style.pointerEvents = i === idx ? 'auto' : 'none';
+  });
+
+  lastPanelIdx = idx;
+}
+
+/* ═══════════════════════════════════════
+   TICK
+═══════════════════════════════════════ */
+let lastFrameIdx = -1;
+
+function tick(){
+  const rect   = rotSeq.getBoundingClientRect();
+  const trackH = rotSeq.offsetHeight - window.innerHeight;
+  const p      = Math.max(0, Math.min(1, -rect.top / trackH));
+
+  // Canvas frame
+  const frameIdx = Math.min(TOTAL - 1, Math.round(p * (TOTAL - 1)));
+  if(frameIdx !== lastFrameIdx){ drawFrame(frames[frameIdx]); lastFrameIdx = frameIdx; }
+
+  // Text panels
+  updatePanels(p);
+
+  // Progress indicator
+  if(p > 0.01 && p < 0.99){
+    rotProgress.classList.add('vis');
+    rotProgFill.style.width = (p * 100) + '%';
+    rotProgLbl.textContent  = Math.round(p * 360) + ' °';
+  } else {
+    rotProgress.classList.remove('vis');
+  }
+
+  // Global scroll bar + nav
+  const totalH = document.documentElement.scrollHeight - window.innerHeight;
+  scrollBar.style.width = (window.scrollY / totalH * 100) + '%';
+  mainNav.classList.toggle('scrolled', window.scrollY > 60);
+
+  // Sunset parallax
+  if(sunsetImg){
+    const sr = sunsetSection.getBoundingClientRect();
+    const scrollable = sr.height - window.innerHeight;
+    if(scrollable > 0){
+      const sp = Math.max(0, Math.min(1, -sr.top / scrollable));
+      sunsetImg.style.transform = 'translateY(' + (-8 + sp * 8) + '%)';
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+/* ═══════════════════════════════════════
+   CURSOR
+═══════════════════════════════════════ */
+const cur  = document.getElementById('cur');
+const cur2 = document.getElementById('cur2');
+let mx = 0, my = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function cursorLoop(){
+  cx += (mx - cx) * 0.14;
+  cy += (my - cy) * 0.14;
+  cur.style.left  = mx + 'px'; cur.style.top  = my + 'px';
+  cur2.style.left = cx + 'px'; cur2.style.top = cy + 'px';
+  requestAnimationFrame(cursorLoop);
+})();
+document.addEventListener('mouseover', e => {
+  const hit = e.target.closest('a,button,.rp-model');
+  cur.classList.toggle('big', !!hit);
+  cur2.classList.toggle('big', !!hit);
+});
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+resizeRotCanvas();
+
+// Set panel 1 visible instantly (no transition yet)
+panels[0].style.transform = 'translateY(0%)';
+panels[1].style.transform = 'translateY(100%)';
+panels[2].style.transform = 'translateY(100%)';
+
+preloadAll(() => {
+  loadScreen.style.opacity = '0';
+  loadScreen.style.pointerEvents = 'none';
+  setTimeout(() => { loadScreen.style.display = 'none'; }, 650);
+
+  drawFrame(frames[0]);
+
+  // Enable CSS transitions after first draw
+  requestAnimationFrame(() => { rotLeft.classList.add('transitions-on'); });
+
+  requestAnimationFrame(tick);
+});
+
+window.addEventListener('resize', () => {
+  resizeRotCanvas();
+  lastFrameIdx = -1;
+}, { passive: true });
+
+/* ═══════════════════════════════════════
+   TÜREN KATALOG
+═══════════════════════════════════════ */
+;(function(){
+  var section = document.querySelector('#tueren-katalog-3d');
+  if(!section) return;
+
+  var carousel       = section.querySelector('#dr-carousel');
+  var brandButtons   = Array.from(section.querySelectorAll('.dr-brand-btn'));
+  var chipBrand      = section.querySelector('#dr-chip-brand');
+  var chipSub        = section.querySelector('#dr-chip-sub');
+  var stageTitle     = section.querySelector('#dr-stage-title');
+  var stageText      = section.querySelector('#dr-stage-text');
+  var stageTags      = section.querySelector('#dr-stage-tags');
+  var navPrev        = section.querySelector('#dr-nav-prev');
+  var navNext        = section.querySelector('#dr-nav-next');
+  var progressFill   = section.querySelector('#dr-progress-fill');
+  var counterCurrent = section.querySelector('#dr-counter-current');
+  var counterTotal   = section.querySelector('#dr-counter-total');
+  var statBrand      = section.querySelector('#dr-stat-brand');
+  var statTotal      = section.querySelector('#dr-stat-total');
+
+  var doorData = {
+    kompotherm: {
+      label:'KOMPOtherm', sub:'Aluminium-Haustüren',
+      styles:[
+        { title:'E-264 AL',  tags:['RAL 9007/7016','Edelstahl'],
+          text:'Zweifarblackierung in Weiß und Anthrazit mit Edelstahloberfläche – klare Linienführung und hochwertige Materialität.',
+          img:'Modern-Tür/E_264AL_R9007-7016-1475_23152_KV_300_Milieu.jpg' },
+        { title:'E-370 L',   tags:['RAL 7016','Linear'],
+          text:'Flächenbündige Festverglasung in Anthrazitgrau mit linearem Griffsystem – reduziert und ausdrucksstark.',
+          img:'Modern-Tür/E_370L_FD_STS_R7016_1585_24788_Milieu.jpg' },
+        { title:'E-339 FD',  tags:['Float-Glas','Festverglasung'],
+          text:'Großflächige Float-Verglasung mit Edelstahlstruktur – maximale Transparenz und zeitlose Eleganz.',
+          img:'Modern-Tür/E_339_FD_STS_R7016-0502_Float_24716_Milieu.jpg' },
+        { title:'E-283 FD',  tags:['Edelstahlstruktur','Designlinie'],
+          text:'Moderne Festverglasung mit strukturierter Edelstahloberfläche für einen exklusiven Eingangsbereich.',
+          img:'Modern-Tür/E_283_FD_STS_FS0683-0430_1523_23152_Milieu.jpg' },
+        { title:'E-260',     tags:['Edelstahlstruktur','Milieu'],
+          text:'Klare Formensprache mit Edelstahlstruktur – ein zeitloser Klassiker der modernen Haustür.',
+          img:'Modern-Tür/E_260_STS_FS673_1251_22158_Milieu.jpg' },
+        { title:'E-394 L',   tags:['RAL 7039','Premium'],
+          text:'Warmgrauer Farbton mit Festverglasung – Design Premium Linie für anspruchsvolle Architektur.',
+          img:'Modern-Tür/E_394L_FD_TS_R7039-K0209_1586_24832_Milieu.jpg' },
+        { title:'M-3410 L',  tags:['RAL 9007','Massiv'],
+          text:'Silbergraue Massivausführung mit großer Griffstange – Qualität und Charakter in einem.',
+          img:'Modern-Tür/M_3410L_FD_T_R9007-0477_1444_24477_Milieu.jpg' },
+        { title:'E-Design Modern',   tags:['Anthrazit','Glas-Edelstahl'],
+          text:'Zeitgemäße Interpretation mit anthrazitfarbenem Aluminium und großflächigen Glas- und Edelstahlelementen.',
+          img:'Modern-Tür/ChatGPT Image 23. März 2026, 14_12_33.png' },
+        { title:'E-Design Exclusiv', tags:['Schwarz','Sonderausführung'],
+          text:'Exklusive Schwarzausführung mit besonderen Designdetails – für einen unverwechselbaren Eingang.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_00_11.png' },
+        { title:'E-Design Premium',  tags:['Titansilber','Glas-Element'],
+          text:'Premium-Variante mit Titansilber-Oberfläche und edlem Glaselement für maximale Wertigkeit.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_22_57.png' },
+        { title:'E-Design Series',   tags:['Weiß','Edelstahlgriff'],
+          text:'Zeitloser Weiß-Ton mit hochwertigem Edelstahlgriff – klar, ruhig und elegant.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_40_15.png' },
+        { title:'E-Design Linear',   tags:['Anthrazit','Linear-Design'],
+          text:'Konsequente Linienführung in Anthrazit – das reduzierte Design für die moderne Architektur.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_43_38.png' },
+      ]
+    },
+    inotherm:{
+      label:'INOTHERM', sub:'Design & Technik',
+      styles:[
+        { title:'EXCLUSIV',    tags:['Flügelüberdeckend','Stark gedämmt'],
+          text:'Aluminium-Haustüren mit beidseitig flügelüberdeckender Füllung, einheitlicher Optik, hoher Stabilität und sehr guten Wärme- und Schalldämmeigenschaften.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c144ec266f10c67d2a1bc0_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_49_07.png' },
+        { title:'EXCLUSIV 3D', tags:['3-D-Effekt','Exklusiv'],
+          text:'Aluminium-Haustüren mit exklusiven Türfüllungen und betontem 3-D-Effekt – auffällig, hochwertig und mit beeindruckender Wärmedämmung.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c26dd8dfc4c49b9569b015_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2011_56_11.png' },
+        { title:'SELECT',      tags:['Geradlinig','Glas & Aluminium'],
+          text:'Geradlinige Aluminium-Haustüren mit glatten Oberflächen, klarer Linienführung und vielseitigen Glas- oder Aluminiumfüllungen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c270d4c54e36076aa98439_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_08_51.png' },
+        { title:'SELECT Glas', tags:['Licht','Transparenz'],
+          text:'SELECT mit großzügigen Glasflächen für lichtdurchflutete Eingangsbereiche und eine offene, moderne Ausstrahlung.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2741dfd681d98ba7bf45d_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_22_57.png' },
+        { title:'SELECT Line', tags:['Reduziert','Klar'],
+          text:'Minimalistische Formensprache mit feinen Details und hochwertigen Materialien für einen klaren, architektonischen Auftritt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c274edbf6e4d42f18c53a2_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_26_25.png' },
+        { title:'SELECT Pro',  tags:['Flächig','Modern'],
+          text:'Konsequent flächige Gestaltung mit starker Präsenz – perfekt für moderne und anspruchsvolle Architektur.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c275d0bf1eb62572b292aa_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_30_04.png' },
+      ]
+    },
+    internorm:{
+      label:'Internorm', sub:'Moderne Türsysteme',
+      styles:[
+        { title:'STUDIO',    tags:['Modern','Bauhaus-Stil'],
+          text:'Diese Modellreihe ist die konsequente Entsprechung moderner Architektur und wird von der schnörkellosen Formsprache des Bauhausstils geprägt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c146f390e67762485eea36_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_57_44.png' },
+        { title:'HOME PURE', tags:['Geradlinig','Glaselemente'],
+          text:'Auch diese Modellreihe orientiert sich am geradlinigen Stil unserer Zeit und zeichnet sich durch große Glaselemente aus, die viel Licht in den Raum lassen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14160b50a460f4cf4051a_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_33_51.png' },
+        { title:'HOME SOFT', tags:['Gemütlich','Elegant'],
+          text:'Wer es lieber gemütlich mag, sollte einen Blick auf diese Modellreihe werfen. Die Gestaltungsmöglichkeiten reichen von elegant bis verspielt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27830b58584b25168b68e_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_40_15.png' },
+        { title:'AMBIENTE',  tags:['Traditionell','Landhausstil'],
+          text:'Das Design dieser Haustüren ist durch traditionelle Formen geprägt, wie sie häufig beim Haus im Landhausstil oder bei der Stadtvilla zu finden sind.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c1434db142026f588593f6_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_42_09.png' },
+      ]
+    },
+    aip:{
+      label:'AiP', sub:'Klare Linien & Vielfalt',
+      styles:[
+        { title:'Smart Line',        tags:['Modern','Attraktiver Preis'],
+          text:'Die Produktlinie Smart Line bietet solide Qualität, modernen Look und zahlreiche Ausstattungsmöglichkeiten zu einem attraktiven Preis.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14bacacece52079cba44e_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_18_01.png' },
+        { title:'Art-Beton',         tags:['Beton-Optik','Unikat'],
+          text:'Diese Oberfläche sieht aus wie Beton, fühlt sich an wie Beton, ist aber leichter und witterungsbeständiger. Jede Tür wirkt dadurch wie ein Unikat.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c15200153624111516a6fd_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_44_41.png' },
+        { title:'Echtholz',          tags:['Natürlich','Vintage-Look'],
+          text:'Für alle, die Natürlichkeit lieben: Echtholz-Füllungen im rustikalen Vintage-Look mit sichtbarer Maserung und individuellem Charakter.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27d92c12432552b993a90_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2013_02_59.png' },
+        { title:'Art Decor-Line',    tags:['Holz-Look','Lebendig'],
+          text:'Diese Modellreihe lebt vom natürlichen Look verschiedener Holzarten und einer lebendigen Wirkung durch Maserungen in unterschiedlichen Richtungen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2790af4785f06e0ea2776_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_43_38.png' },
+        { title:'Keramik Art-Steel', tags:['Puristisch','Edelstahl'],
+          text:'Zeitlos schöne Ästhetik und hohe Funktionalität: Die Kombination aus Keramik und Edelstahl wirkt puristisch, robust und pflegeleicht.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2741dfd681d98ba7bf45d_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_22_57.png' },
+        { title:'Keramik Art-Corten',tags:['Corten-Optik','Kontrastreich'],
+          text:'Diese Keramik-Oberfläche imitiert den Look von rostigem Stahl und erzeugt in Kombination mit Edelstahl und Glas einen spannenden Kontrast.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c274edbf6e4d42f18c53a2_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_26_25.png' },
+      ]
+    },
+  };
+
+  var activeBrand = 'kompotherm';
+  var activeIndex = 0;
+  var cards = [];
+  var pad = function(n){ return String(n).padStart(2,'0'); };
+
+  var amb1 = section.querySelector('#dr-amb-1');
+  var amb2 = section.querySelector('#dr-amb-2');
+  var ambToggle = false;
+  var lastAmbImg = null;
+
+  function updateAmbient(imgSrc){
+    if(imgSrc === lastAmbImg) return;
+    lastAmbImg = imgSrc;
+    var next = ambToggle ? amb1 : amb2;
+    var prev = ambToggle ? amb2 : amb1;
+    next.style.backgroundImage = "url('" + imgSrc.replace(/'/g,"\\'") + "')";
+    next.style.opacity = '1';
+    prev.style.opacity = '0';
+    ambToggle = !ambToggle;
+  }
+
+  function buildCarousel(brandKey){
+    carousel.innerHTML = '';
+    cards = [];
+    var styles = doorData[brandKey].styles;
+    styles.forEach(function(style, i){
+      var card = document.createElement('article');
+      card.className = 'dr-card';
+      card.innerHTML =
+        '<div class="dr-card-inner">' +
+          '<img class="dr-card-img" src="' + style.img + '" alt="' + doorData[brandKey].label + ' – ' + style.title + '" loading="lazy">' +
+          '<div class="dr-card-overlay"></div>' +
+          '<div class="dr-card-shine"></div>' +
+          '<div class="dr-card-caption">' +
+            '<span class="dr-card-num">' + pad(i+1) + ' / ' + pad(styles.length) + '</span>' +
+            '<h4 class="dr-card-title">' + style.title + '</h4>' +
+            '<span class="dr-card-tag">' + (style.tags[0]||'') + '</span>' +
+          '</div>' +
+        '</div>';
+      card.addEventListener('click', function(){ if(i!==activeIndex){ activeIndex=i; updateCarousel(); } });
+      carousel.appendChild(card);
+      cards.push(card);
+    });
+  }
+
+  function updateCarousel(){
+    var styles = doorData[activeBrand].styles;
+    var total = styles.length;
+    cards.forEach(function(card, i){
+      var offset = i - activeIndex;
+      if(offset >  total/2) offset -= total;
+      if(offset < -total/2) offset += total;
+      var absOff = Math.abs(offset);
+      var tx    = offset * 240;
+      var tz    = -absOff * 180;
+      var rotY  = offset * -18;
+      var scale = absOff===0 ? 1 : absOff===1 ? 0.78 : 0.6;
+      var op    = absOff > 2 ? 0 : absOff===0 ? 1 : 0.55;
+      var bl    = absOff===0 ? 0 : absOff===1 ? 1 : 3;
+      card.style.transform = 'translate3d('+tx+'px,0,'+tz+'px) rotateY('+rotY+'deg) scale('+scale+')';
+      card.style.opacity = op;
+      card.style.filter  = 'blur('+bl+'px)';
+      card.style.zIndex  = 100 - absOff;
+      card.classList.toggle('is-active', offset===0);
+    });
+    var current = styles[activeIndex];
+    updateAmbient(current.img);
+    chipBrand.textContent  = doorData[activeBrand].label;
+    chipSub.textContent    = doorData[activeBrand].sub;
+    stageTitle.textContent = current.title;
+    stageText.textContent  = current.text;
+    stageTags.innerHTML = '';
+    current.tags.forEach(function(t){
+      var s = document.createElement('span');
+      s.textContent = t;
+      stageTags.appendChild(s);
+    });
+    counterCurrent.textContent = pad(activeIndex+1);
+    counterTotal.textContent   = pad(total);
+    progressFill.style.width   = ((activeIndex+1)/total*100) + '%';
+  }
+
+  function switchBrand(brandKey){
+    if(!doorData[brandKey]) return;
+    activeBrand = brandKey;
+    activeIndex = 0;
+    brandButtons.forEach(function(b){ b.classList.toggle('is-active', b.dataset.brand===brandKey); });
+    var idx = Object.keys(doorData).indexOf(brandKey)+1;
+    statBrand.textContent = pad(idx);
+    buildCarousel(brandKey);
+    requestAnimationFrame(updateCarousel);
+  }
+
+  brandButtons.forEach(function(b){ b.addEventListener('click', function(){ switchBrand(b.dataset.brand); }); });
+  navPrev.addEventListener('click', function(){ var t=doorData[activeBrand].styles.length; activeIndex=(activeIndex-1+t)%t; updateCarousel(); });
+  navNext.addEventListener('click', function(){ var t=doorData[activeBrand].styles.length; activeIndex=(activeIndex+1)%t; updateCarousel(); });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowLeft') navPrev.click();
+    if(e.key==='ArrowRight') navNext.click();
+  });
+
+  var carouselWrap = section.querySelector('.dr-carousel-wrap');
+  var touchStartX=0, touchDeltaX=0, isDragging=false;
+  var onStart = function(x){ touchStartX=x; touchDeltaX=0; isDragging=true; };
+  var onMove  = function(x){ if(isDragging) touchDeltaX=x-touchStartX; };
+  var onEnd   = function(){
+    if(!isDragging) return; isDragging=false;
+    if(Math.abs(touchDeltaX)>60){ if(touchDeltaX<0) navNext.click(); else navPrev.click(); }
+    touchDeltaX=0;
+  };
+  carouselWrap.addEventListener('touchstart', function(e){ onStart(e.touches[0].clientX); }, {passive:true});
+  carouselWrap.addEventListener('touchmove',  function(e){ onMove(e.touches[0].clientX); },  {passive:true});
+  carouselWrap.addEventListener('touchend', onEnd);
+  carouselWrap.addEventListener('mousedown', function(e){ if(!e.target.closest('button,a')) onStart(e.clientX); });
+  window.addEventListener('mousemove', function(e){ onMove(e.clientX); });
+  window.addEventListener('mouseup', onEnd);
+
+  var totalStyles = Object.values(doorData).reduce(function(s,b){ return s+b.styles.length; }, 0);
+  statTotal.textContent = totalStyles;
+
+  switchBrand('kompotherm');
+})();
+
+</script>
+</body>
+</html>
