@@ -714,6 +714,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .dr-carousel-wrap::-webkit-scrollbar{display:none}
 .dr-carousel{
   display:flex;gap:20px;align-items:center;
+  padding-left:calc(50% - 210px);padding-right:calc(50% - 210px);
 }
 .dr-card{
   position:relative;flex-shrink:0;scroll-snap-align:center;
@@ -836,7 +837,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   .dr-stage-info{display:none}
   .dr-stage-foot{display:none}
   .dr-carousel-wrap{padding:20px 0}
-  .dr-carousel{gap:14px}
+  .dr-carousel{gap:14px;padding-left:calc(50% - 150px);padding-right:calc(50% - 150px)}
   .dr-card{width:300px;height:460px}
   .dr-nav{width:42px;height:42px}
 }
@@ -2069,15 +2070,6 @@ window.addEventListener('scroll',()=>{
     scrollToCard(activeIndex, smooth);
   }
 
-  function setCarouselPadding(){
-    var wrapW = carouselWrap.getBoundingClientRect().width;
-    var cardW = cards[0] ? cards[0].getBoundingClientRect().width || cards[0].offsetWidth : 420;
-    if(!wrapW){ setTimeout(function(){ setCarouselPadding(); scrollToCard(activeIndex,false); },80); return; }
-    var p = Math.max(0, Math.round(wrapW / 2 - cardW / 2));
-    carousel.style.paddingLeft  = p + 'px';
-    carousel.style.paddingRight = p + 'px';
-  }
-
   function switchBrand(brandKey){
     if(!doorData[brandKey]) return;
     activeBrand = brandKey;
@@ -2088,7 +2080,6 @@ window.addEventListener('scroll',()=>{
     buildCarousel(brandKey);
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
-        setCarouselPadding();
         carouselWrap.scrollLeft = 0;
         updateCarousel(false);
       });
@@ -2096,7 +2087,6 @@ window.addEventListener('scroll',()=>{
   }
 
   window.addEventListener('resize', function(){
-    setCarouselPadding();
     scrollToCard(activeIndex, false);
   }, {passive:true});
 
