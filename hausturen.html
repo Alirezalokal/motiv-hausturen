@@ -706,9 +706,10 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .dr-carousel-wrap{
   position:relative;width:100%;
-  overflow-x:auto;
+  overflow-x:auto;scroll-snap-type:none;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;
   cursor:grab;padding:40px 0;user-select:none;
+  touch-action:pan-x;
 }
 .dr-carousel-wrap:active{cursor:grabbing}
 .dr-carousel-wrap::-webkit-scrollbar{display:none}
