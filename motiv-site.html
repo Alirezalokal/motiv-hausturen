@@ -1720,6 +1720,9 @@ function makeSeq(canvas, section, imgs, total, mode, onProg){
       'opacity:0;transition:opacity 1s ease .2s;';
     exp.appendChild(eOv);
 
+    /* update background immediately so old image never shows behind the expanding card */
+    bgA.src=imgSrc;
+
     heroEl.appendChild(exp);
     /* force reflow — commits initial transform and clip-path before animation */
     exp.getBoundingClientRect();
@@ -1738,7 +1741,6 @@ function makeSeq(canvas, section, imgs, total, mode, onProg){
     requestAnimationFrame(function(){ eOv.style.opacity='1'; });
 
     setTimeout(function(){
-      bgA.src=imgSrc;
       if(heroEl.contains(exp)) heroEl.removeChild(exp);
       if(done) done();
     },1250);
