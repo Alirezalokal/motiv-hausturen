@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>motiv — Haustüren | Recklinghausen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,8 +41,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;padding:26px 6vw;
   display:flex;align-items:center;justify-content:space-between;
   transition:background .4s,padding .4s,backdrop-filter .4s}
 nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 6vw;border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--white);text-decoration:none}
-.nav-logo .dot{color:var(--gold)}
+.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:38px;width:auto;filter:brightness(0) invert(1);opacity:.9;transition:opacity .2s}
+.nav-logo:hover img{opacity:1}
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;cursor:none;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--gold);transition:right .3s var(--ease)}
@@ -50,40 +51,12 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .nav-links a:hover::after{right:0}
 .nav-btn{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:11px 26px;border:1px solid var(--border2);border-radius:100px;cursor:none;transition:background .3s,color .3s,border-color .3s}
 .nav-btn:hover{background:var(--white);color:var(--black);border-color:var(--white)}
-.nav-mode{display:flex;gap:2px;border:1px solid var(--border2);border-radius:100px;padding:2px}
-.nav-mode-btn{font-size:9px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--dim);text-decoration:none;padding:7px 16px;border-radius:100px;
-  transition:background .2s,color .2s;cursor:none;border:none;background:none}
-.nav-mode-btn.active{background:rgba(200,160,106,.15);color:var(--gold)}
-.nav-mode-btn:hover:not(.active){color:var(--white)}
-
-/* ── DOOR TOOLTIP ── */
-#doorTip{
-  position:fixed;pointer-events:none;z-index:400;
-  padding:9px 16px;border-radius:8px;
-  background:rgba(8,8,6,.82);border:1px solid rgba(200,160,106,.25);
-  backdrop-filter:blur(12px);
-  opacity:0;transition:opacity .18s;
-  transform:translate(18px,-50%);
-  white-space:nowrap
-}
-#doorTip.visible{opacity:1}
-.dt-models{
-  font-family:'Cormorant Garamond',serif;
-  font-size:15px;font-weight:300;letter-spacing:.04em;
-  color:var(--white);line-height:1
-}
-.dt-models em{font-style:italic;color:var(--gold)}
-.dt-brand{
-  font-size:9px;font-weight:400;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--dim);margin-top:5px
-}
 
 /* ─────────────────────────────────────
    HERO SEQUENCE
 ───────────────────────────────────── */
 .hero-seq{height:2800vh;background:var(--black)}
-.hero-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.hero-stage{position:sticky;top:0;height:100svh;height:100dvh;overflow:hidden}
 
 /* Canvas */
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -571,14 +544,550 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   nav{padding:18px 5vw}
   nav.scrolled{padding:12px 5vw}
   .nav-links,.nav-btn{display:none}
-  .nav-mode{display:flex}
   .h-statbar{display:none}
-  .hero-intro{left:5vw;right:5vw}
-  .hero-reveal{padding:0 5vw}
+
+  /* Hero Intro: oben positionieren, weniger Text */
+  .hero-intro{top:88px;left:5vw;right:5vw;transform:none}
+  .h-title-row span{font-size:46px}
+  .h-sub{display:none}
+  .h-pills{display:none}
+
+  /* Hero Reveal: unten positionieren, weniger Text */
+  .hero-reveal{padding:0 5vw 88px;justify-content:flex-end;align-items:flex-start}
+  .hr-eyebrow{display:none}
+  .hr-sub{display:none}
+  .hr-pills{display:none}
+  .hr-title{font-size:44px;margin-bottom:22px}
+
+  /* Info panels: nur Label + Slogan, kein langer Text */
+  .hi-p3{flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:88px 5vw 0;gap:8px}
+  .hi-p3-right{display:none}
+  .hi-panel{padding:0 5vw}
+  .hi-p4{padding-bottom:88px}
+  .hi-p4-sub{display:none}
+  .hi-pB{padding:0 5vw}
+  .hi-pB-grid{grid-template-columns:1fr}
+  .hi-pB-sep{display:none}
+  .hi-pB-text{display:none}
+  .hi-pB-features{display:none}
+  .hi-p5{padding:0 5vw}
+  .hi-p5-intro{display:none}
+  .hi-p5-stats{display:none}
+  .hi-p5-tags{display:none}
+  .hi-p5-cta-group{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:480px){
-  .hr-title{font-size:54px}
-  .h-title-row span{font-size:52px}
+  .hr-title{font-size:38px}
+  .h-title-row span{font-size:40px}
+}
+
+/* ─────────────────────────────────────
+   TÜREN KATALOG
+───────────────────────────────────── */
+.dr-section{
+  position:relative;width:100%;
+  padding:120px 7vw 100px;overflow:hidden;
+  background:var(--off-black);
+  border-top:1px solid var(--border);
+}
+.dr-ambient{position:absolute;inset:0;pointer-events:none;z-index:0}
+.dr-amb{
+  position:absolute;inset:-8%;z-index:0;pointer-events:none;
+  background-size:cover;background-position:center;
+  filter:blur(70px) brightness(.12) saturate(2.8);
+  opacity:0;transition:opacity 2s ease;
+  will-change:opacity;
+}
+.dr-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(200,160,106,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,160,106,.04) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,#000 30%,transparent 80%);
+  opacity:.7;
+}
+.dr-orb{position:absolute;border-radius:50%;filter:blur(100px)}
+.dr-orb-1{
+  width:500px;height:500px;top:-120px;right:-120px;
+  background:radial-gradient(circle,rgba(200,160,106,.13),transparent 70%);
+  animation:drOrbFloat 18s ease-in-out infinite;
+}
+.dr-orb-2{
+  width:420px;height:420px;bottom:-140px;left:-100px;
+  background:radial-gradient(circle,rgba(200,160,106,.09),transparent 70%);
+  animation:drOrbFloat 22s ease-in-out -9s infinite reverse;
+}
+@keyframes drOrbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-40px,30px) scale(1.1)}
+}
+.dr-shell{position:relative;z-index:1;width:min(1400px,100%);margin:0 auto}
+.dr-header{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:60px;
+  align-items:end;padding-bottom:48px;margin-bottom:56px;
+  border-bottom:1px solid var(--border);
+}
+.dr-kicker{
+  display:inline-flex;align-items:center;min-height:26px;padding:0 12px;
+  border-radius:100px;background:var(--gold-a);border:1px solid rgba(200,160,106,.28);
+  color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.dr-title{
+  margin:0;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,5.6vw,86px);
+  font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--white);
+}
+.dr-title-word{display:block}
+.dr-title-word--accent{font-style:italic;color:var(--gold)}
+.dr-lead{color:var(--dim);font-size:16px;line-height:1.75;margin:0 0 26px;max-width:480px}
+.dr-stats{display:flex;gap:40px}
+.dr-stat{display:flex;flex-direction:column;gap:4px}
+.dr-stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:300;color:var(--white);line-height:1;
+}
+.dr-stat-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.dr-experience{display:grid;grid-template-columns:256px minmax(0,1fr);gap:80px;align-items:start}
+.dr-brand-nav{position:sticky;top:30px}
+.dr-brand-nav-label{
+  color:var(--dim);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:16px;padding-left:4px;
+}
+.dr-brand-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.dr-brand-btn{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;gap:12px;padding:13px 10px;
+  border:none;background:transparent;border-left:2px solid var(--border);
+  color:var(--dim);text-align:left;cursor:none;font-family:'Inter',sans-serif;
+  transition:color .3s,border-color .3s,padding .4s var(--ease),background .3s;
+}
+.dr-brand-btn:hover{
+  color:var(--white);border-color:rgba(200,160,106,.3);padding-left:16px;
+  background:linear-gradient(90deg,var(--gold-a),transparent);
+}
+.dr-brand-btn.is-active{
+  color:var(--white);border-color:var(--gold);padding-left:16px;
+  background:linear-gradient(90deg,rgba(200,160,106,.12),transparent 70%);
+}
+.dr-brand-idx{font-size:9px;font-weight:400;letter-spacing:.14em;color:rgba(245,240,232,.35)}
+.dr-brand-btn.is-active .dr-brand-idx{color:var(--gold)}
+.dr-brand-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.dr-brand-name{font-size:14px;font-weight:400;line-height:1.2}
+.dr-brand-sub{font-size:11px;color:rgba(245,240,232,.38);line-height:1.4}
+.dr-brand-arrow{
+  opacity:0;transform:translateX(-6px);color:var(--gold);
+  transition:opacity .3s,transform .3s;display:inline-flex;
+}
+.dr-brand-btn:hover .dr-brand-arrow,.dr-brand-btn.is-active .dr-brand-arrow{opacity:1;transform:translateX(0)}
+.dr-stage{min-width:0;display:flex;flex-direction:column;gap:26px}
+.dr-stage-info{max-width:720px}
+.dr-stage-meta-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.dr-chip{
+  display:inline-flex;align-items:center;min-height:26px;padding:0 11px;
+  border-radius:100px;background:var(--gold-a);border:1px solid rgba(200,160,106,.28);
+  color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
+}
+.dr-chip-divider{width:18px;height:1px;background:var(--border2)}
+.dr-chip-sub{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.dr-stage-title{
+  margin:0 0 10px;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4.2vw,62px);font-weight:300;line-height:.98;
+  letter-spacing:-.025em;color:var(--white);
+}
+.dr-stage-text{margin:0 0 16px;color:var(--dim);font-size:15px;line-height:1.8}
+.dr-stage-tags{display:flex;flex-wrap:wrap;gap:6px}
+.dr-stage-tags span{
+  display:inline-flex;align-items:center;min-height:26px;padding:0 10px;
+  border-radius:100px;background:transparent;border:1px solid var(--border);
+  color:var(--dim);font-size:10px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+}
+.dr-carousel-wrap{
+  position:relative;width:100%;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  cursor:grab;padding:40px 0;user-select:none;
+}
+.dr-carousel-wrap:active{cursor:grabbing}
+.dr-carousel-wrap::-webkit-scrollbar{display:none}
+.dr-carousel{
+  display:flex;gap:20px;align-items:center;
+}
+.dr-card{
+  position:relative;flex-shrink:0;scroll-snap-align:center;
+  width:420px;height:620px;
+  transition:opacity .55s ease,transform .55s var(--ease);
+  will-change:transform,opacity;cursor:none;
+}
+.dr-card:not(.is-active){opacity:.45;transform:scale(0.93)}
+.dr-card.is-active{opacity:1;transform:scale(1)}
+.dr-card-inner{
+  position:relative;width:100%;height:100%;border-radius:22px;overflow:hidden;
+  background:rgba(8,8,6,.85);border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  transition:border-color .5s,box-shadow .5s,transform .55s var(--ease);
+  transform-origin:center center;
+}
+.dr-card.is-active .dr-card-inner{
+  border-color:rgba(200,160,106,.45);
+  box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(200,160,106,.22),0 0 60px rgba(200,160,106,.10);
+}
+.dr-card.is-active .dr-card-inner:hover{
+  transform:scale(1.06);
+  box-shadow:0 55px 110px rgba(0,0,0,.7),0 0 0 1px rgba(200,160,106,.4),0 0 90px rgba(200,160,106,.18);
+}
+.dr-card-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease),filter .6s;
+  filter:brightness(.72) saturate(.9);
+}
+.dr-card.is-active .dr-card-img{filter:brightness(1) saturate(1)}
+.dr-card.is-active .dr-card-inner:hover .dr-card-img{transform:scale(1.06)}
+.dr-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 0%,transparent 45%,rgba(8,8,6,.88) 100%);
+  pointer-events:none;
+}
+.dr-card-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 30%,rgba(200,160,106,.07) 48%,rgba(245,240,232,.14) 50%,rgba(200,160,106,.07) 52%,transparent 70%);
+  transform:translateX(-130%);pointer-events:none;mix-blend-mode:screen;opacity:0;
+}
+.dr-card.is-active:hover .dr-card-shine{animation:drShine 1.1s var(--ease)}
+@keyframes drShine{
+  0%{transform:translateX(-130%);opacity:1}
+  100%{transform:translateX(130%);opacity:0}
+}
+.dr-card-caption{position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2}
+.dr-card-num{
+  display:inline-block;font-size:9px;font-weight:400;letter-spacing:.2em;
+  color:var(--gold);margin-bottom:7px;
+}
+.dr-card-title{
+  margin:0 0 5px;font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;color:var(--white);line-height:1.1;
+}
+.dr-card-tag{font-size:11px;color:var(--dim);letter-spacing:.06em}
+.dr-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--border2);background:rgba(8,8,6,.75);
+  color:var(--white);cursor:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(10px);
+  transition:transform .3s,border-color .3s,background .3s;z-index:10;
+}
+.dr-nav:hover{
+  transform:translateY(-50%) scale(1.06);
+  border-color:rgba(200,160,106,.4);background:rgba(200,160,106,.1);
+}
+.dr-nav--prev{left:10px}
+.dr-nav--next{right:10px}
+.dr-stage-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:40px;
+  padding-top:22px;border-top:1px solid var(--border);flex-wrap:wrap;
+}
+.dr-progress{display:flex;align-items:center;gap:16px;flex:1;min-width:180px}
+.dr-progress-track{
+  flex:1;height:1px;background:rgba(245,240,232,.09);border-radius:100px;overflow:hidden;max-width:280px;
+}
+.dr-progress-fill{
+  height:100%;background:var(--gold);border-radius:100px;
+  width:25%;transition:width .7s var(--ease);
+}
+.dr-progress-counter{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-weight:300;letter-spacing:.1em;color:var(--dim);
+  display:flex;gap:4px;
+}
+.dr-progress-slash{color:var(--gold)}
+.dr-cta{
+  display:inline-flex;align-items:center;gap:10px;padding:12px 26px;border-radius:100px;
+  background:transparent;color:var(--dim);font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;border:1px solid var(--border2);
+  transition:color .3s,border-color .3s;cursor:none;
+}
+.dr-cta:hover{color:var(--white);border-color:var(--border2)}
+.dr-cta-icon{display:inline-flex;align-items:center;transition:transform .4s var(--ease)}
+.dr-cta:hover .dr-cta-icon{transform:translateX(4px)}
+@media(max-width:1100px){
+  .dr-section{padding:80px 5vw 80px}
+  .dr-header{grid-template-columns:1fr;gap:24px}
+  .dr-experience{grid-template-columns:1fr;gap:28px}
+  .dr-brand-nav{position:relative;top:auto}
+  .dr-brand-list{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:6px;scrollbar-width:none}
+  .dr-brand-list::-webkit-scrollbar{display:none}
+  .dr-brand-btn{
+    flex:0 0 auto;width:auto;display:flex;flex-direction:column;align-items:flex-start;
+    gap:2px;padding:10px 16px 10px;min-width:110px;
+    border-left:none;border-bottom:2px solid var(--border)
+  }
+  .dr-brand-btn:hover,.dr-brand-btn.is-active{padding-left:16px;border-bottom-color:var(--gold)}
+  .dr-brand-idx{display:none}
+  .dr-brand-arrow{display:none}
+  .dr-brand-info{min-width:0;width:100%}
+}
+@media(max-width:767px){
+  .dr-section{overflow:clip;padding:40px 5vw}
+  .dr-header{display:none}
+  .dr-stage-info{display:none}
+  .dr-stage-foot{display:none}
+  .dr-carousel-wrap{padding:20px 0}
+  .dr-carousel{gap:14px}
+  .dr-card{width:300px;height:460px}
+  .dr-nav{width:42px;height:42px}
+}
+@media(prefers-reduced-motion:reduce){
+  .dr-orb,.dr-card{animation:none !important;transition-duration:.2s !important}
+}
+
+/* ─────────────────────────────────────
+   SUNSET CINEMATIC BANNER
+───────────────────────────────────── */
+.sunset-section{
+  position:relative;
+  height:190vh;
+  background:var(--black);
+}
+.sunset-sticky{
+  position:sticky;top:0;height:100svh;
+  overflow:hidden;
+}
+.sunset-img-wrap{
+  position:absolute;inset:0;
+}
+.sunset-img{
+  width:100%;height:116%;
+  object-fit:cover;object-position:center 40%;
+  transform:translateY(-8%);
+  will-change:transform;
+}
+.sunset-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(8,8,6,.45) 0%,
+    rgba(8,8,6,.08) 25%,
+    rgba(8,8,6,.08) 72%,
+    rgba(8,8,6,.72) 100%
+  );
+}
+.sunset-content{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:0 7vw;
+}
+.sunset-eyebrow{
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:28px;
+  display:flex;align-items:center;gap:16px;
+}
+.sunset-eyebrow::before,.sunset-eyebrow::after{
+  content:'';width:36px;height:1px;background:var(--gold);opacity:.5;flex-shrink:0;
+}
+.sunset-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,7.2vw,124px);
+  font-weight:300;line-height:.92;
+  letter-spacing:-.03em;color:var(--white);
+  margin:0 0 52px;
+  text-shadow:0 6px 48px rgba(0,0,0,.5);
+}
+.sunset-title em{font-style:italic;color:var(--gold)}
+.sunset-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 34px;border-radius:100px;
+  background:rgba(8,8,6,.35);color:var(--white);
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;border:1px solid rgba(245,240,232,.35);
+  cursor:none;backdrop-filter:blur(12px);
+  transition:border-color .35s,background .35s,color .35s;
+}
+.sunset-cta:hover{
+  border-color:rgba(200,160,106,.6);
+  background:rgba(200,160,106,.12);
+  color:var(--gold);
+}
+.sunset-scroll-hint{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:.4;pointer-events:none;
+}
+.sunset-scroll-hint span{
+  font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--white);
+}
+.sunset-scroll-line{
+  width:1px;height:40px;background:linear-gradient(to bottom,var(--white),transparent);
+  animation:sunsetPulse 1.8s ease-in-out infinite;
+}
+@keyframes sunsetPulse{
+  0%,100%{opacity:.4;transform:scaleY(1)}
+  50%{opacity:.8;transform:scaleY(.7)}
+}
+@media(max-width:700px){
+  .sunset-title{font-size:clamp(38px,10vw,72px)}
+  .sunset-section{height:160vh}
+}
+
+/* ─────────────────────────────────────
+   INOTHERM VIDEO SECTION
+───────────────────────────────────── */
+.ino-section{
+  background:var(--black);
+  border-top:1px solid var(--border);
+  padding:0;overflow:hidden;
+}
+.ino-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:100svh;
+  align-items:stretch;
+}
+.ino-video-col{
+  position:relative;overflow:hidden;
+  background:#000;
+  display:flex;align-items:center;justify-content:center;
+}
+.ino-video{
+  position:relative;
+  width:100%;height:100%;
+  object-fit:contain;object-position:center center;
+  display:block;
+  max-height:100svh;
+}
+.ino-text-col{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 8vw 80px 6vw;
+  position:relative;
+}
+.ino-eyebrow{
+  display:flex;align-items:center;gap:14px;margin-bottom:28px;
+}
+.ino-eye-bar{width:28px;height:1px;background:var(--gold);flex-shrink:0;opacity:.6}
+.ino-eye-txt{
+  font-size:9px;font-weight:400;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);
+}
+.ino-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,5.5vw,88px);
+  font-weight:300;line-height:.92;
+  letter-spacing:-.03em;color:var(--white);
+  margin:0 0 28px;
+}
+.ino-title em{font-style:italic;color:var(--gold)}
+.ino-lead{
+  font-size:15px;line-height:1.82;color:var(--dim);
+  max-width:440px;margin:0 0 40px;
+}
+.ino-features{
+  display:flex;flex-direction:column;gap:14px;
+  margin-bottom:52px;
+}
+.ino-feat{
+  display:flex;align-items:flex-start;gap:14px;
+}
+.ino-feat-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+  margin-top:8px;opacity:.7;
+}
+.ino-feat-text{
+  font-size:13px;line-height:1.65;color:var(--dim);letter-spacing:.02em;
+}
+.ino-feat-text strong{
+  color:var(--white);font-weight:400;display:block;
+  font-size:14px;letter-spacing:.01em;margin-bottom:2px;
+}
+.ino-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ino-btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 30px;border-radius:100px;
+  background:transparent;color:var(--white);
+  font-size:10px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;border:1px solid var(--border2);cursor:none;
+  transition:border-color .3s,background .3s,color .3s;
+}
+.ino-btn-primary:hover{
+  border-color:rgba(200,160,106,.5);
+  background:rgba(200,160,106,.1);color:var(--gold);
+}
+.ino-btn-secondary{
+  font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;cursor:none;
+  border-bottom:1px solid var(--border);padding-bottom:2px;
+  transition:color .3s,border-color .3s;
+}
+.ino-btn-secondary:hover{color:var(--white);border-color:var(--border2)}
+.ino-badge{
+  margin-top:56px;padding-top:32px;border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:16px;
+}
+.ino-badge-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--white);
+}
+.ino-badge-line{width:1px;height:32px;background:var(--border2)}
+.ino-badge-tag{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim);line-height:1.6;
+}
+@media(max-width:900px){
+  .ino-inner{grid-template-columns:1fr;min-height:auto}
+  .ino-video-col{height:70svh}
+  .ino-video{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:contain}
+  .ino-text-col{padding:56px 5vw 64px}
+  .ino-title{font-size:clamp(38px,9vw,68px)}
+}
+
+/* ── FOOTER ── */
+.ft{background:var(--black);position:relative;overflow:hidden}
+.ft::before{content:'';position:absolute;top:0;left:7vw;right:7vw;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,106,.38) 30%,rgba(200,160,106,.38) 70%,transparent)}
+.ft-brand-bar{display:flex;align-items:flex-start;gap:64px;padding:64px 7vw 48px;border-bottom:1px solid rgba(245,240,232,.06)}
+.ft-brand-logo{height:34px;width:auto;flex-shrink:0;filter:brightness(0) invert(1);opacity:.75}
+.ft-brand-info{flex:1;display:flex;gap:56px;align-items:flex-start}
+.ft-brand-sub{font-size:13px;font-weight:300;color:var(--dim);line-height:1.82;flex:1;min-width:200px}
+.ft-brand-badges{display:flex;flex-wrap:wrap;gap:7px;flex:1}
+.ft-badge{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px;border:1px solid rgba(200,160,106,.2);color:rgba(200,160,106,.5);white-space:nowrap}
+.ft-cols{display:grid;grid-template-columns:1fr 1fr 1fr;padding:48px 7vw 56px;gap:0}
+.ft-col{padding-right:56px}
+.ft-col:last-child{padding-right:0}
+.ft-col-head{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.ft-col-head::after{content:'';flex:1;height:1px;background:rgba(200,160,106,.18)}
+.ft-nav{display:flex;flex-direction:column;gap:12px}
+.ft-nav a{font-size:13px;font-weight:300;color:rgba(245,240,232,.5);text-decoration:none;transition:color .22s;display:flex;align-items:center;gap:8px}
+.ft-nav a::before{content:'';width:4px;height:1px;background:var(--gold);opacity:.35;transition:width .22s,opacity .22s;flex-shrink:0}
+.ft-nav a:hover{color:var(--white)}
+.ft-nav a:hover::before{width:10px;opacity:.7}
+.ft-contact{display:flex;flex-direction:column;gap:18px}
+.ft-citem{display:flex;flex-direction:column;gap:3px}
+.ft-citem-lbl{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,160,106,.4);margin-bottom:2px}
+.ft-citem-val{font-size:13px;font-weight:300;color:rgba(245,240,232,.65);line-height:1.7}
+.ft-citem-val a{color:inherit;text-decoration:none;transition:color .2s}
+.ft-citem-val a:hover{color:var(--gold)}
+.ft-hours{display:grid;grid-template-columns:auto 1fr;column-gap:12px;font-size:12px;font-weight:300;color:rgba(245,240,232,.42);line-height:1.8}
+.ft-hours strong{color:rgba(245,240,232,.6);font-weight:400}
+.ft-bottom{padding:18px 7vw;border-top:1px solid rgba(245,240,232,.06);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.ft-copy{font-size:11px;font-weight:300;color:rgba(245,240,232,.2);letter-spacing:.04em}
+.ft-legal{display:flex;gap:20px}
+.ft-legal a{font-size:11px;font-weight:300;color:rgba(245,240,232,.26);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.ft-legal a:hover{color:var(--gold)}
+@media(max-width:900px){
+  .ft-brand-bar{flex-direction:column;gap:24px;padding:52px 5vw 40px}
+  .ft-brand-info{flex-direction:column;gap:18px}
+  .ft-cols{grid-template-columns:1fr 1fr;gap:40px;padding:40px 5vw 48px}
+  .ft-col{padding-right:0}
+  .ft-col:last-child{grid-column:1 / -1}
+}
+@media(max-width:560px){
+  .ft-cols{grid-template-columns:1fr;gap:36px}
+  .ft-col:last-child{grid-column:auto}
+  .ft-bottom{flex-direction:column;align-items:flex-start;gap:12px}
 }
 </style>
 </head>
@@ -591,18 +1100,14 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="hausturen.html" class="nav-logo">motiv<span class="dot">.</span></a>
+  <a href="../motiv-site.html" class="nav-logo"><img src="../Logos/motiv-logo.svg" alt="motiv"></a>
   <ul class="nav-links">
     <li><a href="#">Haustüren</a></li>
-    <li><a href="#">Fenster</a></li>
+    <li><a href="../markiese.html">Markisen</a></li>
     <li><a href="#">Smart Home</a></li>
     <li><a href="#">Ausstellung</a></li>
   </ul>
-  <div class="nav-mode">
-    <span class="nav-mode-btn active">PC</span>
-    <a href="hausturen-m.html" class="nav-mode-btn">Mobile</a>
-  </div>
-  <a href="mailto:info@motiv-fenster.de" class="nav-btn">Beratung anfragen</a>
+  <a href="../motiv-site.html#kontakt" class="nav-btn">Beratung anfragen</a>
 </nav>
 
 <!-- ══ HERO SEQUENCE ══ -->
@@ -611,11 +1116,6 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 
     <canvas id="heroCanvas"></canvas>
     <div class="hero-vignette"></div>
-    <div id="doorTip">
-      <div class="dt-models" id="dtModels"></div>
-      <div class="dt-brand" id="dtBrand"></div>
-    </div>
-
     <!-- PHASE 1: Intro text – visible at start, fades as door opens -->
     <div class="hero-intro" id="heroIntro">
       <div class="h-eyebrow" id="hEye">
@@ -792,11 +1292,11 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
           Wählen Sie Ihren Stil — wir planen, fertigen und montieren.
         </p>
         <div class="hi-p5-cta-group">
-          <a href="#" class="hi-p5-cat-btn">Moderne Türen</a>
-          <a href="#" class="hi-p5-cat-btn">Klassische Türen</a>
-          <a href="#" class="hi-p5-cat-btn">Elegante Türen</a>
-          <a href="#" class="hi-p5-cat-btn">Ländliche Türen</a>
-          <a href="#" class="hi-p5-cat-btn">Black Edition</a>
+          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="modern" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('modern'),400)">Moderne Türen</a>
+          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="holz" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('holz'),400)">Holz Türen</a>
+          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="elegant" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('elegant'),400)">Elegante Türen</a>
+          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="laendlich" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('laendlich'),400)">Ländliche Türen</a>
+          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="klassik" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('klassik'),400)">Klassische Türen</a>
           <a href="mailto:info@motiv-fenster.de" class="hi-p5-cta">Beratung anfragen →</a>
         </div>
       </div>
@@ -814,23 +1314,236 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   </div>
 </section>
 
-<!-- ══ KOLLEKTION ══ -->
-<section class="koll-section rv">
-  <div class="koll-head">
-    <div class="koll-title-block">
-      <div class="koll-eye">Unsere Kollektion</div>
-      <h2 class="koll-h2">Türen, die<br><em>bleiben.</em></h2>
-    </div>
-    <span class="koll-hint">Ziehen zum Blättern</span>
+<!-- ─── TÜREN KATALOG ─── -->
+<section class="dr-section" id="tueren-katalog-3d">
+  <div class="dr-ambient" aria-hidden="true">
+    <div class="dr-amb" id="dr-amb-1"></div>
+    <div class="dr-amb" id="dr-amb-2"></div>
+    <div class="dr-grid"></div>
+    <div class="dr-orb dr-orb-1"></div>
+    <div class="dr-orb dr-orb-2"></div>
   </div>
-
-  <div class="koll-track-wrap" id="kollWrap">
-    <div class="koll-track" id="kollTrack"></div>
+  <div class="dr-shell">
+    <header class="dr-header">
+      <div class="dr-header-left">
+        <div class="dr-kicker">Türen Kollektion</div>
+        <h2 class="dr-title">
+          <span class="dr-title-word">Eingänge,</span>
+          <span class="dr-title-word dr-title-word--accent">die bleiben.</span>
+        </h2>
+      </div>
+      <div class="dr-header-right">
+        <p class="dr-lead">Haustüren sorgfältig ausgewählt aus führenden Herstellerwelten. Durchlaufen Sie die Kollektion und finden Sie Ihren Stil.</p>
+        <div class="dr-stats">
+          <div class="dr-stat">
+            <span class="dr-stat-num" id="dr-stat-brand">01</span>
+            <span class="dr-stat-lbl">Aktiver Stil</span>
+          </div>
+          <div class="dr-stat">
+            <span class="dr-stat-num" id="dr-stat-total">28</span>
+            <span class="dr-stat-lbl">Stilwelten</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="dr-experience">
+      <nav class="dr-brand-nav" aria-label="Stilauswahl">
+        <div class="dr-brand-nav-label">Stil wählen</div>
+        <ol class="dr-brand-list">
+          <li><button class="dr-brand-btn is-active" data-brand="modern" type="button">
+            <span class="dr-brand-idx">01</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Modern</span><span class="dr-brand-sub">Klare Formen &amp; Aluminium</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="holz" type="button">
+            <span class="dr-brand-idx">02</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Holz</span><span class="dr-brand-sub">Natürlich &amp; Warm</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="elegant" type="button">
+            <span class="dr-brand-idx">03</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Elegant</span><span class="dr-brand-sub">Exklusiv &amp; Hochwertig</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="laendlich" type="button">
+            <span class="dr-brand-idx">04</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Ländlich</span><span class="dr-brand-sub">Rustikal &amp; Traditionell</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="klassik" type="button">
+            <span class="dr-brand-idx">05</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Klassisch</span><span class="dr-brand-sub">Zeitlos &amp; Beständig</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+        </ol>
+      </nav>
+      <div class="dr-stage">
+        <div class="dr-stage-info">
+          <div class="dr-stage-meta-row">
+            <span class="dr-chip" id="dr-chip-brand">Modern</span>
+            <span class="dr-chip-divider"></span>
+            <span class="dr-chip-sub" id="dr-chip-sub">Klare Formen &amp; Aluminium</span>
+          </div>
+          <h3 class="dr-stage-title" id="dr-stage-title">E-264 AL</h3>
+          <p class="dr-stage-text" id="dr-stage-text"></p>
+          <div class="dr-stage-tags" id="dr-stage-tags"></div>
+        </div>
+        <div class="dr-carousel-wrap">
+          <div class="dr-carousel" id="dr-carousel"></div>
+          <button class="dr-nav dr-nav--prev" id="dr-nav-prev" type="button" aria-label="Zurück">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="dr-nav dr-nav--next" id="dr-nav-next" type="button" aria-label="Weiter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="dr-stage-foot">
+          <div class="dr-progress">
+            <div class="dr-progress-track"><div class="dr-progress-fill" id="dr-progress-fill"></div></div>
+            <div class="dr-progress-counter">
+              <span id="dr-counter-current">01</span>
+              <span class="dr-progress-slash">/</span>
+              <span id="dr-counter-total">07</span>
+            </div>
+          </div>
+          <a href="mailto:info@motiv-fenster.de" class="dr-cta" id="dr-cta">
+            <span class="dr-cta-txt">Beratung anfragen</span>
+            <span class="dr-cta-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ══ MAIN CONTENT (future sections) ══ -->
-<main id="mainContent"></main>
+<!-- ─── SIMULATION ─── -->
+
+<style>
+.sim-sec{position:relative;overflow:hidden;padding:110px 7vw;background:var(--off-black);border-top:1px solid var(--border)}
+.sim-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.sim-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,160,106,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(200,160,106,.035) 1px,transparent 1px);background-size:60px 60px;opacity:.5;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,#000 30%,transparent 80%)}
+.sim-orb{position:absolute;border-radius:50%;filter:blur(100px)}
+.sim-orb-l{width:480px;height:480px;top:-120px;left:-100px;background:radial-gradient(circle,rgba(200,160,106,.1),transparent 70%)}
+.sim-orb-r{width:360px;height:360px;bottom:-80px;right:-80px;background:radial-gradient(circle,rgba(200,160,106,.07),transparent 70%)}
+.sim-shell{position:relative;z-index:1;width:min(1380px,100%);margin:0 auto}
+.sim-wrap{padding:32px;border-radius:34px;background:rgba(13,13,11,.7);border:1px solid rgba(200,160,106,.12);box-shadow:0 30px 70px rgba(0,0,0,.35);backdrop-filter:blur(14px)}
+.sim-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.sim-kicker{display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:100px;background:rgba(200,160,106,.1);border:1px solid rgba(200,160,106,.24);color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px}
+.sim-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4.2vw,62px);font-weight:300;line-height:1;letter-spacing:-.03em;color:var(--white);margin:0 0 18px}
+.sim-title span{display:block;font-style:italic;color:var(--gold)}
+.sim-text{color:var(--dim);font-size:15px;line-height:1.85;margin:0 0 14px}
+.sim-points{display:grid;gap:10px;margin:20px 0}
+.sim-point{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start;padding:14px;border-radius:18px;background:rgba(200,160,106,.03);border:1px solid var(--border);transition:border-color .3s,background .3s}
+.sim-point:hover{border-color:rgba(200,160,106,.22);background:rgba(200,160,106,.06)}
+.sim-pt-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(200,160,106,.1);border:1px solid rgba(200,160,106,.2);color:var(--gold);font-size:13px;font-weight:500;letter-spacing:.06em}
+.sim-pt-copy strong{display:block;color:var(--white);font-size:14px;margin-bottom:4px}
+.sim-pt-copy span{display:block;color:var(--dim);font-size:13px;line-height:1.6}
+.sim-note{margin:0 0 24px;padding:15px 18px;border-radius:16px;background:rgba(200,160,106,.05);border:1px solid rgba(200,160,106,.15);color:var(--dim);font-size:13px;line-height:1.75}
+.sim-actions{display:flex;flex-wrap:wrap;gap:14px}
+.sim-btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 30px;border-radius:100px;text-decoration:none;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:all .3s var(--ease);cursor:none}
+.sim-btn-gold{background:var(--gold);color:var(--black);border:1px solid var(--gold)}
+.sim-btn-gold:hover{background:transparent;color:var(--gold)}
+.sim-btn-outline{background:transparent;color:var(--white);border:1px solid var(--border2)}
+.sim-btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.sim-img-wrap{position:relative;overflow:hidden;border-radius:28px;min-height:640px;border:1px solid rgba(200,160,106,.12);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.sim-img{width:100%;height:100%;min-height:640px;object-fit:cover;display:block}
+.sim-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,6,.08) 0%,rgba(8,8,6,.72) 100%);z-index:2}
+.sim-glow{position:absolute;inset:auto 10% -40px 10%;height:140px;background:radial-gradient(circle,rgba(200,160,106,.18),transparent 70%);filter:blur(30px);z-index:1;pointer-events:none}
+.sim-card{position:absolute;z-index:4;background:rgba(8,8,6,.82);border:1px solid rgba(200,160,106,.18);box-shadow:0 16px 40px rgba(0,0,0,.3);backdrop-filter:blur(12px);border-radius:20px;padding:13px 16px}
+.sim-card-lbl{display:block;color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px}
+.sim-card strong{display:block;color:var(--white);font-size:14px;margin-bottom:3px}
+.sim-card small{display:block;color:var(--dim);font-size:11px;line-height:1.4}
+.sim-card-top{top:18px;left:18px;min-width:175px;animation:simF1 5.8s ease-in-out infinite}
+.sim-card-mid{right:18px;top:110px;min-width:195px;animation:simF2 6.2s ease-in-out infinite}
+.sim-card-bot{right:18px;bottom:18px;min-width:200px;display:flex;align-items:center;gap:14px;animation:simF3 6.6s ease-in-out infinite}
+.sim-stat{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold);line-height:1}
+@keyframes simF1{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes simF2{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes simF3{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media(max-width:1100px){.sim-layout{grid-template-columns:1fr}}
+@media(max-width:768px){.sim-sec{padding:70px 5vw}.sim-wrap{padding:18px;border-radius:22px}.sim-img-wrap,.sim-img{min-height:380px}.sim-actions{flex-direction:column}}
+</style>
+
+<!-- ─── SUNSET CINEMATIC ─── -->
+<section class="sunset-section" id="sunsetSection">
+  <div class="sunset-sticky">
+    <div class="sunset-img-wrap">
+      <img src="Modern-Tür/E_434R_sunset.jpg" alt="KOMPOtherm E-434 R · Sunset" id="sunsetImg" class="sunset-img">
+    </div>
+    <div class="sunset-overlay"></div>
+    <div class="sunset-content">
+      <div class="sunset-eyebrow">KOMPOtherm · E-434 R · Aluminium-Haustür</div>
+      <h2 class="sunset-title">Die Tür,<br><em>die alles verändert.</em></h2>
+      <a href="mailto:info@motiv-fenster.de" class="sunset-cta">Beratung anfragen</a>
+    </div>
+    <div class="sunset-scroll-hint">
+      <span>Weiter</span>
+      <div class="sunset-scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INOTHERM VIDEO ─── -->
+<section class="ino-section">
+  <div class="ino-inner">
+
+    <div class="ino-video-col">
+      <video class="ino-video" autoplay muted loop playsinline preload="auto">
+        <source src="inotherm-door.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="ino-text-col">
+      <div class="ino-eyebrow">
+        <span class="ino-eye-bar"></span>
+        <span class="ino-eye-txt">INOTHERM · Design &amp; Technik</span>
+      </div>
+
+      <h2 class="ino-title">Präzision in<br><em>Bewegung.</em></h2>
+
+      <p class="ino-lead">INOTHERM Aluminium-Haustüren verbinden österreichisches Ingenieurwissen mit ausdrucksstarkem Design — für Eingänge, die bleiben.</p>
+
+      <div class="ino-features">
+        <div class="ino-feat">
+          <div class="ino-feat-dot"></div>
+          <div class="ino-feat-text">
+            <strong>Flügelüberdeckende Füllung</strong>
+            Beidseitig bündige Oberfläche — kein sichtbarer Rahmen, maximale Eleganz.
+          </div>
+        </div>
+        <div class="ino-feat">
+          <div class="ino-feat-dot"></div>
+          <div class="ino-feat-text">
+            <strong>Wärmedämmung Uw bis 0,5 W/m²K</strong>
+            Energieeffizienz auf höchstem Niveau, zertifiziert nach europäischer Norm.
+          </div>
+        </div>
+        <div class="ino-feat">
+          <div class="ino-feat-dot"></div>
+          <div class="ino-feat-text">
+            <strong>Einbruchhemmung RC 2 / RC 3</strong>
+            Geprüfte Sicherheit — für ein Zuhause, das schützt.
+          </div>
+        </div>
+      </div>
+
+      <div class="ino-actions">
+        <a href="mailto:info@motiv-fenster.de" class="ino-btn-primary">
+          Beratung anfragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#tueren-katalog-3d" class="ino-btn-secondary">Kollektion ansehen</a>
+      </div>
+
+      <div class="ino-badge">
+        <span class="ino-badge-logo">INOTHERM</span>
+        <div class="ino-badge-line"></div>
+        <span class="ino-badge-tag">Österreichisches<br>Premium-Segment</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -959,10 +1672,21 @@ const DOORS = [
 })();
 
 /* ── SCROLL PROGRESS BAR ── */
+const sunsetSection = document.getElementById('sunsetSection');
+const sunsetImg     = document.getElementById('sunsetImg');
+
 window.addEventListener('scroll',()=>{
   const max=document.documentElement.scrollHeight-innerHeight;
   $('scrollBar').style.width=(window.scrollY/max*100)+'%';
   $('mainNav').classList.toggle('scrolled',window.scrollY>60);
+  if(sunsetImg){
+    const sr=sunsetSection.getBoundingClientRect();
+    const scrollable=sr.height-window.innerHeight;
+    if(scrollable>0){
+      const sp=Math.max(0,Math.min(1,-sr.top/scrollable));
+      sunsetImg.style.transform='translateY('+(-8+sp*8)+'%)';
+    }
+  }
 },{passive:true});
 
 /* ── CANVAS FRAME SEQUENCE (7 sequences: Doorhero → 02 → 03 → 04 → 05 → 06 → 07) ── */
@@ -993,68 +1717,23 @@ window.addEventListener('scroll',()=>{
 
   let currentFrame=0, currentSeq=1;
 
-  /* ── DOOR TOOLTIP DATA
-     Seq 1: 3 Türen nebeneinander → position-based (mouseX 0–1)
-     Seq 2–5: E-Design 319 rechts → ganzer Canvas
-     Seq 6–7: kein Tooltip
-  ── */
-  const DOOR_DATA = [
-    // seq 1 — 3 zones: links / mitte / rechts
-    [
-      { from:0,    to:0.36, models:'<em>Modell E-100</em>', brand:'KOMPOtherm · Aluminium-Haustür' },
-      { from:0.30, to:0.68, models:'<em>EH 360</em>',       brand:'KOMPOtherm · Aluminium-Haustür' },
-      { from:0.62, to:1.0,  models:'<em>Matisse 54</em>',   brand:'KOMPOtherm · Aluminium-Haustür' },
-    ],
-    // seq 2–5 — single door
-    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
-    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
-    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
-    [{ from:0, to:1, models:'<em>E-Design 319</em>', brand:'KOMPOtherm · Aluminium-Haustür' }],
-    null, // seq 6 Black Edition
-    null, // seq 7 Bridge
-  ];
-
-  const doorTip  = $('doorTip');
-  const dtModels = $('dtModels');
-  const dtBrand  = $('dtBrand');
-  const heroStage = $('heroStage');
-  let currentP = 0;
-
-  function updateTip(clientX, clientY){
-    const r = heroStage.getBoundingClientRect();
-    const mx = (clientX - r.left) / r.width;
-    doorTip.style.top  = clientY + 'px';
-    doorTip.style.left = clientX + 'px';
-    const zones = DOOR_DATA[currentSeq - 1];
-    if(!zones || currentP >= 0.82){ doorTip.classList.remove('visible'); return; }
-    const zone = zones.find(z => mx >= z.from && mx <= z.to);
-    if(zone){ dtModels.innerHTML = zone.models; dtBrand.textContent = zone.brand; }
-    doorTip.classList.toggle('visible', !!zone);
-  }
-
-  heroStage.addEventListener('mousemove', e => updateTip(e.clientX, e.clientY));
-  heroStage.addEventListener('mouseleave', () => doorTip.classList.remove('visible'));
-
   function drawAt(i,seq){
     const img=(seq===1?imgs1:seq===2?imgs2:seq===3?imgs3:seq===4?imgs4
               :seq===5?imgs5:seq===6?imgs6:imgs7)[i];
     if(!img?.complete||!img.naturalWidth)return;
     const cw=canvas.width,ch=canvas.height,iw=img.naturalWidth,ih=img.naturalHeight;
-    const s=Math.max(cw/iw,ch/ih);
+    const s=cw<ch?cw/iw:Math.max(cw/iw,ch/ih);
     ctx.clearRect(0,0,cw,ch);
     ctx.drawImage(img,(cw-iw*s)/2,(ch-ih*s)/2,iw*s,ih*s);
   }
 
   function resize(){
-    canvas.width =canvas.clientWidth *devicePixelRatio;
-    canvas.height=canvas.clientHeight*devicePixelRatio;
+    const dpr=Math.min(devicePixelRatio,2);
+    canvas.width =canvas.clientWidth *dpr;
+    canvas.height=canvas.clientHeight*dpr;
     drawAt(currentFrame,currentSeq);
   }
 
-  /* ── Panel state: G=0.03 cross-fade window
-     Each panel's e0 extends ~0.01 into the next sequence (≈ 20 frames),
-     and the next panel's s0 equals this e0 → smooth cross-fade handoff.
-     At the midpoint of each transition both panels are at ~50% opacity. ── */
   function panelState(ip,s0,e0){
     const G=0.03;
     const ent=Math.max(0,Math.min(1,(ip-s0)/G));
@@ -1071,37 +1750,48 @@ window.addEventListener('scroll',()=>{
     else      el.classList.remove('p-in');
   }
 
-  /* preload all 7 sequences */
+  /* lazy-load: only load next seq when current is 60% through */
+  const FOLDERS=[FOLDER1,FOLDER2,FOLDER3,FOLDER4,FOLDER5,FOLDER6,FOLDER7];
+  const TOTALS =[TOTAL1, TOTAL2, TOTAL3, TOTAL4, TOTAL5, TOTAL6, TOTAL7];
   const imgs1=[],imgs2=[],imgs3=[],imgs4=[],imgs5=[],imgs6=[],imgs7=[];
-  for(let i=0;i<TOTAL1;i++){const m=new Image();m.src=`${FOLDER1}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs1.push(m);}
-  for(let i=0;i<TOTAL2;i++){const m=new Image();m.src=`${FOLDER2}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs2.push(m);}
-  for(let i=0;i<TOTAL3;i++){const m=new Image();m.src=`${FOLDER3}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs3.push(m);}
-  for(let i=0;i<TOTAL4;i++){const m=new Image();m.src=`${FOLDER4}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs4.push(m);}
-  for(let i=0;i<TOTAL5;i++){const m=new Image();m.src=`${FOLDER5}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs5.push(m);}
-  for(let i=0;i<TOTAL6;i++){const m=new Image();m.src=`${FOLDER6}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs6.push(m);}
-  for(let i=0;i<TOTAL7;i++){const m=new Image();m.src=`${FOLDER7}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs7.push(m);}
+  const allImgs=[imgs1,imgs2,imgs3,imgs4,imgs5,imgs6,imgs7];
+  const loaded=[false,false,false,false,false,false,false];
+
+  function loadSeq(n){
+    if(loaded[n])return;
+    loaded[n]=true;
+    const arr=allImgs[n],folder=FOLDERS[n],total=TOTALS[n];
+    for(let i=0;i<total;i++){const m=new Image();m.src=`${folder}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;arr.push(m);}
+  }
+  loadSeq(0);
 
   function tick(){
     const r=section.getBoundingClientRect();
     const p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
 
-    /* ── seven-sequence frame picker ── */
+    /* ── seven-sequence frame picker, lazy-load next at 60% ── */
     if(p<=P1){
+      if(p/P1>0.6)loadSeq(1);
       const idx=Math.min(TOTAL1-1,Math.floor((p/P1)*TOTAL1));
       if(idx!==currentFrame||currentSeq!==1){currentFrame=idx;currentSeq=1;drawAt(idx,1);}
     }else if(p<=P2){
+      if((p-P1)/(P2-P1)>0.6)loadSeq(2);
       const idx=Math.min(TOTAL2-1,Math.floor(((p-P1)/(P2-P1))*TOTAL2));
       if(idx!==currentFrame||currentSeq!==2){currentFrame=idx;currentSeq=2;drawAt(idx,2);}
     }else if(p<=P3){
+      if((p-P2)/(P3-P2)>0.6)loadSeq(3);
       const idx=Math.min(TOTAL3-1,Math.floor(((p-P2)/(P3-P2))*TOTAL3));
       if(idx!==currentFrame||currentSeq!==3){currentFrame=idx;currentSeq=3;drawAt(idx,3);}
     }else if(p<=P4){
+      if((p-P3)/(P4-P3)>0.6)loadSeq(4);
       const idx=Math.min(TOTAL4-1,Math.floor(((p-P3)/(P4-P3))*TOTAL4));
       if(idx!==currentFrame||currentSeq!==4){currentFrame=idx;currentSeq=4;drawAt(idx,4);}
     }else if(p<=P5){
+      if((p-P4)/(P5-P4)>0.6)loadSeq(5);
       const idx=Math.min(TOTAL5-1,Math.floor(((p-P4)/(P5-P4))*TOTAL5));
       if(idx!==currentFrame||currentSeq!==5){currentFrame=idx;currentSeq=5;drawAt(idx,5);}
     }else if(p<=P6){
+      if((p-P5)/(P6-P5)>0.6)loadSeq(6);
       const idx=Math.min(TOTAL6-1,Math.floor(((p-P5)/(P6-P5))*TOTAL6));
       if(idx!==currentFrame||currentSeq!==6){currentFrame=idx;currentSeq=6;drawAt(idx,6);}
     }else{
@@ -1156,8 +1846,6 @@ window.addEventListener('scroll',()=>{
     applyPanel(hiP7, panelState(p, 0.67, 0.78));
     applyPanel(hiP5, panelState(p, 0.82, 1.01));
 
-    currentP = p;
-
     requestAnimationFrame(tick);
   }
 
@@ -1171,6 +1859,449 @@ window.addEventListener('scroll',()=>{
     $('hPills')?.classList.add('ready');
   },300);
 })();
+
+/* ── TÜREN KATALOG 3D ── */
+;(function(){
+  var section = document.querySelector('#tueren-katalog-3d');
+  if(!section) return;
+
+  var carousel       = section.querySelector('#dr-carousel');
+  var brandButtons   = Array.from(section.querySelectorAll('.dr-brand-btn'));
+  var chipBrand      = section.querySelector('#dr-chip-brand');
+  var chipSub        = section.querySelector('#dr-chip-sub');
+  var stageTitle     = section.querySelector('#dr-stage-title');
+  var stageText      = section.querySelector('#dr-stage-text');
+  var stageTags      = section.querySelector('#dr-stage-tags');
+  var navPrev        = section.querySelector('#dr-nav-prev');
+  var navNext        = section.querySelector('#dr-nav-next');
+  var progressFill   = section.querySelector('#dr-progress-fill');
+  var counterCurrent = section.querySelector('#dr-counter-current');
+  var counterTotal   = section.querySelector('#dr-counter-total');
+  var statBrand      = section.querySelector('#dr-stat-brand');
+  var statTotal      = section.querySelector('#dr-stat-total');
+
+  var doorData = {
+    modern: {
+      label:'Modern', sub:'Klare Formen & Aluminium',
+      styles:[
+        { title:'E-264 AL',        tags:['RAL 9007/7016','Edelstahl'],
+          text:'Zweifarblackierung in Weiß und Anthrazit mit Edelstahloberfläche – klare Linienführung und hochwertige Materialität.',
+          img:'Modern-Tür/E_264AL_R9007-7016-1475_23152_KV_300_Milieu.jpg' },
+        { title:'E-370 L',         tags:['RAL 7016','Linear'],
+          text:'Flächenbündige Festverglasung in Anthrazitgrau mit linearem Griffsystem – reduziert und ausdrucksstark.',
+          img:'Modern-Tür/E_370L_FD_STS_R7016_1585_24788_Milieu.jpg' },
+        { title:'E-339 FD',        tags:['Float-Glas','Festverglasung'],
+          text:'Großflächige Float-Verglasung mit Edelstahlstruktur – maximale Transparenz und zeitlose Eleganz.',
+          img:'Modern-Tür/E_339_FD_STS_R7016-0502_Float_24716_Milieu.jpg' },
+        { title:'SELECT',          tags:['Geradlinig','Glas & Aluminium'],
+          text:'Geradlinige Aluminium-Haustüren mit glatten Oberflächen, klarer Linienführung und vielseitigen Glas- oder Aluminiumfüllungen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c270d4c54e36076aa98439_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_08_51.png' },
+        { title:'STUDIO',          tags:['Modern','Bauhaus-Stil'],
+          text:'Diese Modellreihe ist die konsequente Entsprechung moderner Architektur und wird von der schnörkellosen Formsprache des Bauhausstils geprägt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c146f390e67762485eea36_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_57_44.png' },
+        { title:'Smart Line',      tags:['Modern','Attraktiver Preis'],
+          text:'Die Produktlinie Smart Line bietet solide Qualität, modernen Look und zahlreiche Ausstattungsmöglichkeiten zu einem attraktiven Preis.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14bacacece52079cba44e_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_18_01.png' },
+        { title:'E-Design Modern', tags:['Anthrazit','Glas-Edelstahl'],
+          text:'Zeitgemäße Interpretation mit anthrazitfarbenem Aluminium und großflächigen Glas- und Edelstahlelementen.',
+          img:'Modern-Tür/ChatGPT Image 23. März 2026, 14_12_33.png' },
+      ]
+    },
+    holz:{
+      label:'Holz', sub:'Natürlich & Warm',
+      styles:[
+        { title:'Echtholz',       tags:['Natürlich','Vintage-Look'],
+          text:'Für alle, die Natürlichkeit lieben: Echtholz-Füllungen im rustikalen Vintage-Look mit sichtbarer Maserung und individuellem Charakter.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27d92c12432552b993a90_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2013_02_59.png' },
+        { title:'Art Decor-Line', tags:['Holz-Look','Lebendig'],
+          text:'Diese Modellreihe lebt vom natürlichen Look verschiedener Holzarten und einer lebendigen Wirkung durch Maserungen in unterschiedlichen Richtungen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2790af4785f06e0ea2776_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_43_38.png' },
+        { title:'HOME SOFT',      tags:['Gemütlich','Elegant'],
+          text:'Wer es lieber gemütlich mag, sollte einen Blick auf diese Modellreihe werfen. Die Gestaltungsmöglichkeiten reichen von elegant bis verspielt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27830b58584b25168b68e_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_40_15.png' },
+      ]
+    },
+    elegant:{
+      label:'Elegant', sub:'Exklusiv & Hochwertig',
+      styles:[
+        { title:'E-Design Premium',  tags:['Titansilber','Glas-Element'],
+          text:'Premium-Variante mit Titansilber-Oberfläche und edlem Glaselement für maximale Wertigkeit.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_22_57.png' },
+        { title:'E-Design Exclusiv', tags:['Schwarz','Sonderausführung'],
+          text:'Exklusive Schwarzausführung mit besonderen Designdetails – für einen unverwechselbaren Eingang.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_00_11.png' },
+        { title:'E-283 FD',          tags:['Edelstahlstruktur','Designlinie'],
+          text:'Moderne Festverglasung mit strukturierter Edelstahloberfläche für einen exklusiven Eingangsbereich.',
+          img:'Modern-Tür/E_283_FD_STS_FS0683-0430_1523_23152_Milieu.jpg' },
+        { title:'EXCLUSIV',          tags:['Flügelüberdeckend','Stark gedämmt'],
+          text:'Aluminium-Haustüren mit beidseitig flügelüberdeckender Füllung, einheitlicher Optik, hoher Stabilität und sehr guten Wärme- und Schalldämmeigenschaften.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c144ec266f10c67d2a1bc0_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_49_07.png' },
+        { title:'EXCLUSIV 3D',       tags:['3-D-Effekt','Exklusiv'],
+          text:'Aluminium-Haustüren mit exklusiven Türfüllungen und betontem 3-D-Effekt – auffällig, hochwertig und mit beeindruckender Wärmedämmung.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c26dd8dfc4c49b9569b015_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2011_56_11.png' },
+        { title:'SELECT Glas',       tags:['Licht','Transparenz'],
+          text:'SELECT mit großzügigen Glasflächen für lichtdurchflutete Eingangsbereiche und eine offene, moderne Ausstrahlung.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2741dfd681d98ba7bf45d_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_22_57.png' },
+        { title:'Keramik Art-Steel', tags:['Puristisch','Edelstahl'],
+          text:'Zeitlos schöne Ästhetik und hohe Funktionalität: Die Kombination aus Keramik und Edelstahl wirkt puristisch, robust und pflegeleicht.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2741dfd681d98ba7bf45d_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_22_57.png' },
+      ]
+    },
+    laendlich:{
+      label:'Ländlich', sub:'Rustikal & Traditionell',
+      styles:[
+        { title:'AMBIENTE',          tags:['Traditionell','Landhausstil'],
+          text:'Das Design dieser Haustüren ist durch traditionelle Formen geprägt, wie sie häufig beim Haus im Landhausstil oder bei der Stadtvilla zu finden sind.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c1434db142026f588593f6_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_42_09.png' },
+        { title:'E-394 L',           tags:['RAL 7039','Premium'],
+          text:'Warmgrauer Farbton mit Festverglasung – Design Premium Linie für anspruchsvolle Architektur.',
+          img:'Modern-Tür/E_394L_FD_TS_R7039-K0209_1586_24832_Milieu.jpg' },
+        { title:'Art-Beton',         tags:['Beton-Optik','Unikat'],
+          text:'Diese Oberfläche sieht aus wie Beton, fühlt sich an wie Beton, ist aber leichter und witterungsbeständiger. Jede Tür wirkt dadurch wie ein Unikat.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c15200153624111516a6fd_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_44_41.png' },
+        { title:'Keramik Art-Corten',tags:['Corten-Optik','Kontrastreich'],
+          text:'Diese Keramik-Oberfläche imitiert den Look von rostigem Stahl und erzeugt in Kombination mit Edelstahl und Glas einen spannenden Kontrast.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c274edbf6e4d42f18c53a2_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_26_25.png' },
+      ]
+    },
+    klassik:{
+      label:'Klassisch', sub:'Zeitlos & Beständig',
+      styles:[
+        { title:'E-260',           tags:['Edelstahlstruktur','Milieu'],
+          text:'Klare Formensprache mit Edelstahlstruktur – ein zeitloser Klassiker der modernen Haustür.',
+          img:'Modern-Tür/E_260_STS_FS673_1251_22158_Milieu.jpg' },
+        { title:'M-3410 L',        tags:['RAL 9007','Massiv'],
+          text:'Silbergraue Massivausführung mit großer Griffstange – Qualität und Charakter in einem.',
+          img:'Modern-Tür/M_3410L_FD_T_R9007-0477_1444_24477_Milieu.jpg' },
+        { title:'E-Design Series', tags:['Weiß','Edelstahlgriff'],
+          text:'Zeitloser Weiß-Ton mit hochwertigem Edelstahlgriff – klar, ruhig und elegant.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_40_15.png' },
+        { title:'E-Design Linear', tags:['Anthrazit','Linear-Design'],
+          text:'Konsequente Linienführung in Anthrazit – das reduzierte Design für die moderne Architektur.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_43_38.png' },
+        { title:'SELECT Pro',      tags:['Flächig','Modern'],
+          text:'Konsequent flächige Gestaltung mit starker Präsenz – perfekt für moderne und anspruchsvolle Architektur.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c275d0bf1eb62572b292aa_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_30_04.png' },
+        { title:'HOME PURE',       tags:['Geradlinig','Glaselemente'],
+          text:'Auch diese Modellreihe orientiert sich am geradlinigen Stil unserer Zeit und zeichnet sich durch große Glaselemente aus, die viel Licht in den Raum lassen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14160b50a460f4cf4051a_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_33_51.png' },
+        { title:'SELECT Line',     tags:['Reduziert','Klar'],
+          text:'Minimalistische Formensprache mit feinen Details und hochwertigen Materialien für einen klaren, architektonischen Auftritt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c274edbf6e4d42f18c53a2_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_26_25.png' },
+      ]
+    },
+  };
+
+  var activeBrand = 'modern';
+  var activeIndex = 0;
+  var cards = [];
+  var pad = function(n){ return String(n).padStart(2,'0'); };
+
+  var amb1 = section.querySelector('#dr-amb-1');
+  var amb2 = section.querySelector('#dr-amb-2');
+  var ambToggle = false;
+  var lastAmbImg = null;
+
+  function updateAmbient(imgSrc){
+    if(imgSrc === lastAmbImg) return;
+    lastAmbImg = imgSrc;
+    var next = ambToggle ? amb1 : amb2;
+    var prev = ambToggle ? amb2 : amb1;
+    next.style.backgroundImage = "url('" + imgSrc.replace(/'/g,"\\'") + "')";
+    next.style.opacity = '1';
+    prev.style.opacity = '0';
+    ambToggle = !ambToggle;
+  }
+
+  function buildCarousel(brandKey){
+    carousel.innerHTML = '';
+    cards = [];
+    var styles = doorData[brandKey].styles;
+    styles.forEach(function(style, i){
+      var card = document.createElement('article');
+      card.className = 'dr-card';
+      card.innerHTML =
+        '<div class="dr-card-inner">' +
+          '<img class="dr-card-img" src="' + style.img + '" alt="' + doorData[brandKey].label + ' – ' + style.title + '" loading="lazy">' +
+          '<div class="dr-card-overlay"></div>' +
+          '<div class="dr-card-shine"></div>' +
+          '<div class="dr-card-caption">' +
+            '<span class="dr-card-num">' + pad(i+1) + ' / ' + pad(styles.length) + '</span>' +
+            '<h4 class="dr-card-title">' + style.title + '</h4>' +
+            '<span class="dr-card-tag">' + (style.tags[0]||'') + '</span>' +
+          '</div>' +
+        '</div>';
+      card.addEventListener('click', function(){ if(i!==activeIndex){ activeIndex=i; updateCarousel(); } });
+      card.style.transform=''; card.style.opacity='';
+      carousel.appendChild(card);
+      cards.push(card);
+    });
+  }
+
+  function updateStageInfo(){
+    var styles = doorData[activeBrand].styles;
+    var total  = styles.length;
+    var current = styles[activeIndex];
+    cards.forEach(function(c,i){ c.classList.toggle('is-active', i===activeIndex); });
+    updateAmbient(current.img);
+    chipBrand.textContent  = doorData[activeBrand].label;
+    chipSub.textContent    = doorData[activeBrand].sub;
+    stageTitle.textContent = current.title;
+    stageText.textContent  = current.text;
+    stageTags.innerHTML = '';
+    current.tags.forEach(function(t){
+      var s=document.createElement('span'); s.textContent=t; stageTags.appendChild(s);
+    });
+    counterCurrent.textContent = pad(activeIndex+1);
+    counterTotal.textContent   = pad(total);
+    progressFill.style.width   = ((activeIndex+1)/total*100)+'%';
+  }
+
+  function scrollToCard(idx, smooth){
+    var card = cards[idx];
+    if(!card) return;
+    var target = card.offsetLeft - carouselWrap.offsetWidth/2 + card.offsetWidth/2;
+    carouselWrap.scrollTo({left: target, behavior: smooth===false ? 'auto' : 'smooth'});
+  }
+
+  function updateCarousel(smooth){
+    updateStageInfo();
+    scrollToCard(activeIndex, smooth);
+  }
+
+  function setCarouselPadding(){
+    var cardW = cards[0] ? cards[0].offsetWidth : 420;
+    var pad = Math.max(0, Math.round(carouselWrap.offsetWidth / 2 - cardW / 2));
+    carousel.style.paddingLeft  = pad + 'px';
+    carousel.style.paddingRight = pad + 'px';
+  }
+
+  function switchBrand(brandKey){
+    if(!doorData[brandKey]) return;
+    activeBrand = brandKey;
+    activeIndex = 0;
+    brandButtons.forEach(function(b){ b.classList.toggle('is-active', b.dataset.brand===brandKey); });
+    var idx = Object.keys(doorData).indexOf(brandKey)+1;
+    statBrand.textContent = pad(idx);
+    buildCarousel(brandKey);
+    requestAnimationFrame(function(){
+      setCarouselPadding();
+      carouselWrap.scrollLeft = 0;
+      updateCarousel(false);
+    });
+  }
+
+  window.addEventListener('resize', function(){
+    setCarouselPadding();
+    scrollToCard(activeIndex, false);
+  }, {passive:true});
+
+  brandButtons.forEach(function(b){ b.addEventListener('click', function(){ switchBrand(b.dataset.brand); }); });
+  navPrev.addEventListener('click', function(){ var t=doorData[activeBrand].styles.length; activeIndex=(activeIndex-1+t)%t; updateCarousel(); });
+  navNext.addEventListener('click', function(){ var t=doorData[activeBrand].styles.length; activeIndex=(activeIndex+1)%t; updateCarousel(); });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowLeft') navPrev.click();
+    if(e.key==='ArrowRight') navNext.click();
+  });
+
+  var carouselWrap = section.querySelector('.dr-carousel-wrap');
+
+  /* ── SCROLL DETECTION (native scroll → update stage info) ── */
+  var scrollRaf = null;
+  carouselWrap.addEventListener('scroll', function(){
+    if(scrollRaf) cancelAnimationFrame(scrollRaf);
+    scrollRaf = requestAnimationFrame(function(){
+      if(!cards.length) return;
+      var center = carouselWrap.scrollLeft + carouselWrap.offsetWidth/2;
+      var closest = 0, minDist = Infinity;
+      cards.forEach(function(card,i){
+        var cardCenter = card.offsetLeft + card.offsetWidth/2;
+        var dist = Math.abs(center - cardCenter);
+        if(dist < minDist){ minDist=dist; closest=i; }
+      });
+      if(closest !== activeIndex){
+        activeIndex = closest;
+        updateStageInfo();
+      }
+    });
+  },{passive:true});
+
+  /* ── MOUSE DRAG (desktop) ── */
+  var dragStartX=0, dragStartScroll=0, dragging=false;
+  carouselWrap.addEventListener('mousedown', function(e){
+    if(e.target.closest('button,a')) return;
+    dragging=true; dragStartX=e.clientX; dragStartScroll=carouselWrap.scrollLeft;
+    carouselWrap.style.scrollBehavior='auto';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    carouselWrap.scrollLeft = dragStartScroll - (e.clientX - dragStartX);
+  });
+  window.addEventListener('mouseup', function(){
+    if(!dragging) return;
+    dragging=false; carouselWrap.style.scrollBehavior='';
+  });
+
+  var totalStyles = Object.values(doorData).reduce(function(s,b){ return s+b.styles.length; }, 0);
+  statTotal.textContent = totalStyles;
+
+  switchBrand('modern');
+})();
 </script>
+
+<!-- SIMULATION -->
+<section class="sim-sec" id="simulation">
+  <div class="sim-bg">
+    <div class="sim-orb sim-orb-l"></div>
+    <div class="sim-orb sim-orb-r"></div>
+    <div class="sim-grid"></div>
+  </div>
+  <div class="sim-shell">
+    <div class="sim-wrap">
+      <div class="sim-layout">
+
+        <!-- LEFT: TEXT -->
+        <div class="sim-copy">
+          <div class="sim-kicker">motiv SERVICEPLUS</div>
+          <h2 class="sim-title">Computer-Simulation<span>gratis in unserer Ausstellung</span></h2>
+          <p class="sim-text">Eine Haustür kauft man nicht oft im Leben. Deshalb hilft Ihnen unsere kostenlose Computer-Simulation dabei, die richtige Entscheidung mit einem guten Gefühl zu treffen.</p>
+          <p class="sim-text">Gemeinsam mit unserem Fachberater setzen wir Ihre Wunsch-Haustür digital in ein Frontalfoto Ihres Eingangsbereichs ein — so sehen Sie sofort, welche Bauform, Farbe und Gestaltung am besten zu Ihrem Zuhause passt.</p>
+
+          <div class="sim-points">
+            <article class="sim-point">
+              <div class="sim-pt-icon">01</div>
+              <div class="sim-pt-copy">
+                <strong>Mit Ihrem eigenen Hausfoto</strong>
+                <span>Sie sehen direkt, wie Ihre neue Haustür an Ihrem Zuhause wirkt.</span>
+              </div>
+            </article>
+            <article class="sim-point">
+              <div class="sim-pt-icon">02</div>
+              <div class="sim-pt-copy">
+                <strong>Persönliche Beratung vor Ort</strong>
+                <span>Gemeinsam mit unserem Fachberater gestalten Sie die passende Türlösung.</span>
+              </div>
+            </article>
+            <article class="sim-point">
+              <div class="sim-pt-icon">03</div>
+              <div class="sim-pt-copy">
+                <strong>Mehr Sicherheit bei der Auswahl</strong>
+                <span>Farben, Formen und Designvarianten lassen sich live viel besser beurteilen.</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="sim-note">Bitte vereinbaren Sie für die Computer-Simulation vorab einen Termin und senden Sie uns das Foto Ihres Eingangsbereiches vorab zu — oder bringen Sie es auf einem USB-Stick mit.</div>
+
+          <div class="sim-actions">
+            <a href="mailto:info@motiv-fenster.de?subject=Termin Computer-Simulation" class="sim-btn sim-btn-gold">Termin für Gratis-Simulation →</a>
+            <a href="tel:+4923619042400" class="sim-btn sim-btn-outline">02361 / 90424-0</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: IMAGE -->
+        <div class="sim-visual">
+          <div class="sim-img-wrap">
+            <img class="sim-img" src="simulation-image.png" alt="Computer-Simulation Haustür">
+            <div class="sim-img-overlay"></div>
+            <div class="sim-card sim-card-top">
+              <span class="sim-card-lbl">Gratis</span>
+              <strong>Live-Simulation</strong>
+              <small>mit Ihrem eigenen Eingangsbereich</small>
+            </div>
+            <div class="sim-card sim-card-mid">
+              <span class="sim-card-lbl">Vor Ort</span>
+              <strong>Persönliche Beratung</strong>
+              <small>gemeinsam mit unserem Fachberater</small>
+            </div>
+            <div class="sim-card sim-card-bot">
+              <div class="sim-stat">100%</div>
+              <div>
+                <strong>besseres Gefühl</strong>
+                <small>bei der Auswahl Ihrer Haustür</small>
+              </div>
+            </div>
+            <div class="sim-glow"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-brand-bar">
+    <img src="../Logos/motiv-logo.svg" alt="motiv" class="ft-brand-logo">
+    <div class="ft-brand-info">
+      <p class="ft-brand-sub">Ihr Fachbetrieb für Fenster, Türen und Sonnenschutz in Recklinghausen — seit über 20 Jahren Qualität aus einer Hand.</p>
+      <div class="ft-brand-badges">
+        <span class="ft-badge">Seit 2001</span>
+        <span class="ft-badge">Familienbetrieb</span>
+        <span class="ft-badge">1.000 m² Ausstellung</span>
+        <span class="ft-badge">Internorm Partner Plus</span>
+      </div>
+    </div>
+  </div>
+  <div class="ft-cols">
+    <div class="ft-col">
+      <div class="ft-col-head">Leistungen</div>
+      <div class="ft-nav">
+        <a href="hausturen.html">Haustüren</a>
+        <a href="../motiv-site.html#fensterSec">Fenster</a>
+        <a href="../markiese.html">Markisen &amp; Pergolas</a>
+        <a href="../motiv-site.html#smartSec">Smart Home</a>
+        <a href="../motiv-site.html#kontakt">Beratungstermin</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-head">Unternehmen</div>
+      <div class="ft-nav">
+        <a href="../motiv-site.html#willkommenSec">Über uns</a>
+        <a href="../motiv-site.html#bewertungenSec">Referenzen</a>
+        <a href="../motiv-site.html#partnerSec">Unsere Partner</a>
+        <a href="../motiv-site.html#kontakt">Kontakt</a>
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-head">Kontakt</div>
+      <div class="ft-contact">
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Adresse</span>
+          <span class="ft-citem-val">Hubertusstraße 65<br>45657 Recklinghausen</span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Telefon</span>
+          <span class="ft-citem-val"><a href="tel:+4923619042400">02361 / 90424-0</a></span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">E-Mail</span>
+          <span class="ft-citem-val"><a href="mailto:info@motiv-fenster.de">info@motiv-fenster.de</a></span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Öffnungszeiten</span>
+          <div class="ft-hours">
+            <strong>Mo – Fr</strong><span>09:00 – 18:00 Uhr</span>
+            <strong>Samstag</strong><span>10:00 – 14:00 Uhr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span class="ft-copy">© 2025 motiv Bauelemente GmbH · Recklinghausen · Alle Rechte vorbehalten.</span>
+    <div class="ft-legal">
+      <a href="../impressum.html">Impressum</a>
+      <a href="../datenschutz.html">Datenschutz</a>
+      <a href="mailto:info@motiv-fenster.de">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
