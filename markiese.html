@@ -1984,10 +1984,9 @@ window.addEventListener('scroll',()=>{
   }
 
   function cardCenter(i){
-    var p   = parseFloat(carousel.style.paddingLeft) || 0;
-    var gap = 20;
-    var cw  = (cards[0] && cards[0].offsetWidth > 10) ? cards[0].offsetWidth : 560;
-    return p + i*(cw+gap) + cw/2;
+    var card = cards[i];
+    if(!card) return 0;
+    return card.offsetLeft + card.offsetWidth / 2;
   }
 
   function scrollToCard(idx, smooth){
