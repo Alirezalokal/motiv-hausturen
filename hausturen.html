@@ -1392,12 +1392,6 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
         </div>
         <div class="dr-carousel-wrap">
           <div class="dr-carousel" id="dr-carousel"></div>
-          <button class="dr-nav dr-nav--prev" id="dr-nav-prev" type="button" aria-label="Zurück">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="dr-nav dr-nav--next" id="dr-nav-next" type="button" aria-label="Weiter">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
         </div>
         <div class="dr-stage-foot">
           <div class="dr-progress">
@@ -1874,8 +1868,6 @@ window.addEventListener('scroll',()=>{
   var stageTitle     = section.querySelector('#dr-stage-title');
   var stageText      = section.querySelector('#dr-stage-text');
   var stageTags      = section.querySelector('#dr-stage-tags');
-  var navPrev        = section.querySelector('#dr-nav-prev');
-  var navNext        = section.querySelector('#dr-nav-next');
   var progressFill   = section.querySelector('#dr-progress-fill');
   var counterCurrent = section.querySelector('#dr-counter-current');
   var counterTotal   = section.querySelector('#dr-counter-total');
@@ -2092,13 +2084,6 @@ window.addEventListener('scroll',()=>{
   }, {passive:true});
 
   brandButtons.forEach(function(b){ b.addEventListener('click', function(){ switchBrand(b.dataset.brand); }); });
-  navPrev.addEventListener('click', function(){ var t=doorData[activeBrand].styles.length; activeIndex=(activeIndex-1+t)%t; updateCarousel(); });
-  navNext.addEventListener('click', function(){ var t=doorData[activeBrand].styles.length; activeIndex=(activeIndex+1)%t; updateCarousel(); });
-
-  document.addEventListener('keydown', function(e){
-    if(e.key==='ArrowLeft') navPrev.click();
-    if(e.key==='ArrowRight') navNext.click();
-  });
 
   var carouselWrap = section.querySelector('.dr-carousel-wrap');
 
