@@ -2070,10 +2070,12 @@ window.addEventListener('scroll',()=>{
   }
 
   function setCarouselPadding(){
-    var cardW = cards[0] ? cards[0].offsetWidth : 420;
-    var pad = Math.max(0, Math.round(carouselWrap.offsetWidth / 2 - cardW / 2));
-    carousel.style.paddingLeft  = pad + 'px';
-    carousel.style.paddingRight = pad + 'px';
+    var wrapW = carouselWrap.getBoundingClientRect().width;
+    var cardW = cards[0] ? cards[0].getBoundingClientRect().width || cards[0].offsetWidth : 420;
+    if(!wrapW){ setTimeout(function(){ setCarouselPadding(); scrollToCard(activeIndex,false); },80); return; }
+    var p = Math.max(0, Math.round(wrapW / 2 - cardW / 2));
+    carousel.style.paddingLeft  = p + 'px';
+    carousel.style.paddingRight = p + 'px';
   }
 
   function switchBrand(brandKey){
@@ -2085,9 +2087,11 @@ window.addEventListener('scroll',()=>{
     statBrand.textContent = pad(idx);
     buildCarousel(brandKey);
     requestAnimationFrame(function(){
-      setCarouselPadding();
-      carouselWrap.scrollLeft = 0;
-      updateCarousel(false);
+      requestAnimationFrame(function(){
+        setCarouselPadding();
+        carouselWrap.scrollLeft = 0;
+        updateCarousel(false);
+      });
     });
   }
 
