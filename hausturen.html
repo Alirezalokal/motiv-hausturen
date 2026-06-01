@@ -55,11 +55,9 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 /* ─────────────────────────────────────
    HERO SEQUENCE
 ───────────────────────────────────── */
-.hero-seq{height:2800vh;background:var(--black)}
-.hero-stage{position:sticky;top:0;height:100svh;height:100dvh;overflow:hidden}
-
-/* Canvas */
-#heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-vid{height:100svh;height:100dvh;background:var(--black)}
+.hero-stage{position:relative;height:100svh;height:100dvh;overflow:hidden}
+.hero-vid-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 
 /* Gradient overlays */
 .hero-vignette{
@@ -150,7 +148,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   position:absolute;bottom:0;left:0;right:0;z-index:3;
   display:flex;border-top:1px solid var(--border);
   background:rgba(8,8,6,.72);backdrop-filter:blur(18px);
-  opacity:0
+  opacity:1
 }
 .h-stat{flex:1;padding:18px 30px;border-right:1px solid var(--border)}
 .h-stat:last-child{border-right:none}
@@ -1112,13 +1110,14 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   <a href="motiv-site.html#kontakt" class="nav-btn">Beratung anfragen</a>
 </nav>
 
-<!-- ══ HERO SEQUENCE ══ -->
-<section class="hero-seq" id="heroSeq">
+<!-- ══ HERO VIDEO ══ -->
+<section class="hero-vid" id="heroSeq">
   <div class="hero-stage" id="heroStage">
 
-    <canvas id="heroCanvas"></canvas>
+    <video class="hero-vid-bg" id="heroVideo" autoplay muted loop playsinline>
+      <source src="hero-bg.mp4" type="video/mp4">
+    </video>
     <div class="hero-vignette"></div>
-    <!-- PHASE 1: Intro text – visible at start, fades as door opens -->
     <div class="hero-intro" id="heroIntro">
       <div class="h-eyebrow" id="hEye">
         <span class="h-eyebrow-bar"></span>
@@ -1141,168 +1140,10 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
       </div>
     </div>
 
-    <!-- PHASE 2: Reveal text – fades in when door is fully open -->
-    <div class="hero-reveal" id="heroReveal">
-      <div class="hr-eyebrow">
-        <span class="h-eyebrow-bar"></span>
-        <span class="h-eyebrow-txt">Türen nach Maß · Recklinghausen</span>
-      </div>
-      <h2 class="hr-title">
-        Offen für<br>
-        <em class="italic-gold">Neues.</em>
-      </h2>
-      <p class="hr-sub">
-        Ihre neue Haustür — geplant, gefertigt und montiert<br>
-        von Meistern aus der Region.
-      </p>
-      <div class="hr-pills">
-        <span class="hr-pill">RC2 Einbruchschutz</span>
-        <span class="hr-pill">Wärmedämmung A+++</span>
-        <span class="hr-pill">Smart Lock Ready</span>
-      </div>
-      <a href="mailto:info@motiv-fenster.de" class="hr-cta">Beratung anfragen →</a>
-    </div>
-
     <!-- Scroll indicator -->
     <div class="h-scroll" id="hScroll">
       <span class="scroll-wire"></span>
       <span class="scroll-lbl">Scrollen</span>
-    </div>
-
-    <!-- Animation progress -->
-    <div class="hero-prog-wrap" id="heroProg">
-      <div class="hero-prog-track"><div class="hero-prog-fill" id="heroFill"></div></div>
-      <span class="hero-prog-pct" id="heroPct">0%</span>
-    </div>
-
-    <!-- INFO PANELS: KOMPOtherm (scroll-driven) -->
-    <div class="hero-info" id="heroInfo">
-
-      <!-- Panel 1: Die Visitenkarte -->
-      <div class="hi-panel hi-p1" id="hiP1">
-        <div class="hi-p1-eye">KOMPOtherm · Aluminium-Haustüren</div>
-        <div class="hi-p1-row"><span class="hi-p1-line">Die</span></div>
-        <div class="hi-p1-row"><span class="hi-p1-line"><em>Visitenkarte</em></span></div>
-        <div class="hi-p1-row"><span class="hi-p1-line">des Hauses.</span></div>
-      </div>
-
-      <!-- Panel 2: Quote -->
-      <div class="hi-panel hi-p2" id="hiP2">
-        <span class="hi-p2-mark">"</span>
-        <div class="hi-p2-row"><span class="hi-p2-line">Kein Bauelement prägt das Bild</span></div>
-        <div class="hi-p2-row"><span class="hi-p2-line">der Fassade so sehr, wie die</span></div>
-        <div class="hi-p2-row"><span class="hi-p2-line">Eingangstür.</span></div>
-        <div class="hi-p2-attr">— KOMPOtherm</div>
-      </div>
-
-      <!-- Panel 3: Modern / Bauhaus -->
-      <div class="hi-panel hi-p3" id="hiP3">
-        <div class="hi-p3-left">
-          <div class="hi-p3-label">Modern</div>
-          <div class="hi-p3-rule"></div>
-          <div class="hi-p3-concept">Bauhaus · 1919</div>
-        </div>
-        <div class="hi-p3-right">
-          <p class="hi-p3-slogan">"Form follows function."</p>
-          <p class="hi-p3-body">Klare Linienführung, schnörkelloses Design — Moderne Architektur als Formgebung. Aluminium, Glas und Metall in spannenden Kombinationen. Schlanke Stangengriffe und flügelüberdeckende Türblätter unterstreichen die geradlinige Ästhetik.</p>
-        </div>
-      </div>
-
-      <!-- Panel 4: Gestaltungsvielfalt -->
-      <div class="hi-panel hi-p4" id="hiP4">
-        <div class="hi-p4-row"><span class="hi-p4-line">Gestaltungsvielfalt,</span></div>
-        <div class="hi-p4-row"><span class="hi-p4-line"><em>die begeistert.</em></span></div>
-        <p class="hi-p4-sub">Jede Tür ein Unikat — kreiert nach Ihrem Wohnstil und der Einbausituation.</p>
-      </div>
-
-      <!-- Panel K: Klassisch -->
-      <div class="hi-panel hi-p3" id="hiPK">
-        <div class="hi-p3-left">
-          <div class="hi-p3-label">Klassisch</div>
-          <div class="hi-p3-rule"></div>
-          <div class="hi-p3-concept">Traditionell · Zeitlos</div>
-        </div>
-        <div class="hi-p3-right">
-          <p class="hi-p3-slogan">"Tiefgezogene Kassetten, geschwungene Linien."</p>
-          <p class="hi-p3-body">Dekorrahmen und Ornamentgläser, filigrane Sprossen für Glasausschnitte und Handhaben in klassischer Form — beliebt bei der Modernisierung des Stadthauses, der repräsentativen Villa und dem schicken Einfamilienhaus in konventioneller Bauweise.</p>
-        </div>
-      </div>
-
-      <!-- Panel E: Extravagant -->
-      <div class="hi-panel hi-p3" id="hiPE">
-        <div class="hi-p3-left">
-          <div class="hi-p3-label">Extravagant</div>
-          <div class="hi-p3-rule"></div>
-          <div class="hi-p3-concept">Kreativ · Einzigartig</div>
-        </div>
-        <div class="hi-p3-right">
-          <p class="hi-p3-slogan">"Alles ist möglich."</p>
-          <p class="hi-p3-body">Geschwungen oder geradlinig, Lizard-Oberfläche oder Feinstrukturfarbe, Griff in Edelstahl oder Bronze — Ihr Geschmack passt sich nicht dem Mainstream an. Wir lassen Ihre kreativsten Ideen Gestalt annehmen.</p>
-        </div>
-      </div>
-
-      <!-- Panel L: Ländlich / Naturverbunden -->
-      <div class="hi-panel hi-p3" id="hiPL">
-        <div class="hi-p3-left">
-          <div class="hi-p3-label">Ländlich</div>
-          <div class="hi-p3-rule"></div>
-          <div class="hi-p3-concept">Naturverbunden · Verwurzelt</div>
-        </div>
-        <div class="hi-p3-right">
-          <p class="hi-p3-slogan">"Natur, die man spürt."</p>
-          <p class="hi-p3-body">Warme Holzdekore in erdigen Tönen, organische Strukturen und natürliche Oberflächen — für Häuser, die im Einklang mit ihrer Umgebung stehen. Naturverbunden und authentisch, wie die Landschaft, aus der sie stammen. Eine Haustür, die Wärme schenkt, bevor man die Schwelle überschritten hat.</p>
-        </div>
-      </div>
-
-      <!-- Panel B: Black Edition -->
-      <div class="hi-panel hi-pB" id="hiPB">
-        <div class="hi-pB-eye">Black Edition · KOMPOtherm &amp; INOTHERM</div>
-        <div class="hi-pB-grid">
-          <div>
-            <div class="hi-pB-col-head"><em>Black</em><br>Edition</div>
-            <div class="hi-pB-concept">Mitteltür · KOMPOtherm · Stil &amp; Wertigkeit</div>
-            <p class="hi-pB-text">Schwarz steht für Stil, Eleganz und Wertigkeit. Profilzylinder, Bodenschwelle und Bänder in Schwarz — bei <span style="font-style:italic;color:var(--white)">Black Plus</span> auch Lisenen, Glasrahmen und Handhaben. Bis hin zur Keramik-Türfüllung, die durch ihre individuelle Beschaffenheit jede Haustür zum echten Unikat macht.</p>
-          </div>
-          <div class="hi-pB-sep"></div>
-          <div>
-            <div class="hi-pB-aktion-badge">
-              <span class="hi-pB-pct">5%</span>
-              <span class="hi-pB-aktion-label">Preisnachlass<br>Seitenelemente · INOTHERM</span>
-            </div>
-            <p class="hi-pB-text">Flügelüberdeckende Türfüllung, 5-fach-Verriegelung und Edelstahl-Schließleiste — mit schwarzen Applikationen: Innendrücker, Stoßgriff und Glaseinfassungen für ein durchgehend edles Erscheinungsbild.</p>
-            <ul class="hi-pB-features">
-              <li>Wärmedämmung ab UG 0,61 W/m²K</li>
-              <li>Thermisch getrennte Bodenschwelle</li>
-              <li>Bodenstatikprofil für präzise Montage</li>
-              <li>Große Farb- &amp; Glasauswahl inklusiv</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 7: Bridge into choices (seq7) -->
-      <div class="hi-panel hi-p4" id="hiP7">
-        <div class="hi-p4-row"><span class="hi-p4-line">Ihr Stil.</span></div>
-        <div class="hi-p4-row"><span class="hi-p4-line"><em>Ihre Wahl.</em></span></div>
-        <p class="hi-p4-sub">Jede Tür wird nach Maß gefertigt — genau für Sie und Ihr Zuhause.</p>
-      </div>
-
-      <!-- Panel 5: Final — focus on choice buttons -->
-      <div class="hi-panel hi-p5" id="hiP5">
-        <div class="hi-p5-eye">Welche Tür ist die Ihre?</div>
-        <p class="hi-p5-intro">
-          Wählen Sie Ihren Stil — wir planen, fertigen und montieren.
-        </p>
-        <div class="hi-p5-cta-group">
-          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="modern" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('modern'),400)">Moderne Türen</a>
-          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="holz" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('holz'),400)">Holz Türen</a>
-          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="elegant" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('elegant'),400)">Elegante Türen</a>
-          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="laendlich" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('laendlich'),400)">Ländliche Türen</a>
-          <a href="#tueren-katalog-3d" class="hi-p5-cat-btn" data-brand="klassik" onclick="event.preventDefault();document.getElementById('tueren-katalog-3d').scrollIntoView({behavior:'smooth'});setTimeout(()=>switchBrand('klassik'),400)">Klassische Türen</a>
-          <a href="mailto:info@motiv-fenster.de" class="hi-p5-cta">Beratung anfragen →</a>
-        </div>
-      </div>
-
     </div>
 
     <!-- Stats bar -->
@@ -1685,175 +1526,20 @@ window.addEventListener('scroll',()=>{
   }
 },{passive:true});
 
-/* ── CANVAS FRAME SEQUENCE (7 sequences: Doorhero → 02 → 03 → 04 → 05 → 06 → 07) ── */
+/* ── VIDEO HERO INIT ── */
 (function(){
-  const canvas  = $('heroCanvas');
-  const ctx     = canvas.getContext('2d');
-  const section = $('heroSeq');
-
-  const TOTAL1=271,TOTAL2=300,TOTAL3=271,TOTAL4=271,TOTAL5=271,TOTAL6=271,TOTAL7=220;
-  const FOLDER1='Doorhero',FOLDER2='Doorheo02',FOLDER3='Doorhero03',FOLDER4='Doorhero04';
-  const FOLDER5='Doorhero05',FOLDER6='Doorhero06',FOLDER7='Doorhero07';
-
-  /* 7 sequences × 0.11 = 0.77, final panel from 0.82 */
-  const P1=0.11,P2=0.22,P3=0.33,P4=0.44,P5=0.55,P6=0.66,P7=0.77;
-  const P_INTRO_OUT=0.03, P_INTRO_GONE=0.09;
-
-  const heroIntro  = $('heroIntro');
-  const heroReveal = $('heroReveal');
-  const heroStats  = $('heroStats');
-  const heroProg   = $('heroProg');
-  const heroFill   = $('heroFill');
-  const heroPct    = $('heroPct');
-  const hScroll    = $('hScroll');
-  const heroInfo   = $('heroInfo');
-  const hiP1=$('hiP1'), hiP3=$('hiP3');
-  const hiPK=$('hiPK'), hiPE=$('hiPE'), hiPL=$('hiPL');
-  const hiPB=$('hiPB'), hiP7=$('hiP7'), hiP5=$('hiP5');
-
-  let currentFrame=0, currentSeq=1;
-
-  function drawAt(i,seq){
-    const img=(seq===1?imgs1:seq===2?imgs2:seq===3?imgs3:seq===4?imgs4
-              :seq===5?imgs5:seq===6?imgs6:imgs7)[i];
-    if(!img?.complete||!img.naturalWidth)return;
-    const cw=canvas.width,ch=canvas.height,iw=img.naturalWidth,ih=img.naturalHeight;
-    const s=cw<ch?cw/iw:Math.max(cw/iw,ch/ih);
-    ctx.clearRect(0,0,cw,ch);
-    ctx.drawImage(img,(cw-iw*s)/2,(ch-ih*s)/2,iw*s,ih*s);
-  }
-
-  function resize(){
-    const dpr=Math.min(devicePixelRatio,2);
-    canvas.width =canvas.clientWidth *dpr;
-    canvas.height=canvas.clientHeight*dpr;
-    drawAt(currentFrame,currentSeq);
-  }
-
-  function panelState(ip,s0,e0){
-    const G=0.03;
-    const ent=Math.max(0,Math.min(1,(ip-s0)/G));
-    const ex =e0>=1.0?0:Math.max(0,Math.min(1,(ip-e0)/G));
-    return{alpha:ent*(1-ex),ty:(1-ent)*64+ex*-44,blur:(1-ent)*7+ex*3,isIn:ent>0.5&&ex<0.5};
-  }
-  function applyPanel(el,s){
-    if(!el)return;
-    el.style.opacity=s.alpha;
-    el.style.transform=`translateY(${s.ty}px)`;
-    el.style.filter=`blur(${Math.round(s.blur*10)/10}px)`;
-    el.style.pointerEvents=s.alpha>0.1?'auto':'none';
-    if(s.isIn)el.classList.add('p-in');
-    else      el.classList.remove('p-in');
-  }
-
-  /* lazy-load: only load next seq when current is 60% through */
-  const FOLDERS=[FOLDER1,FOLDER2,FOLDER3,FOLDER4,FOLDER5,FOLDER6,FOLDER7];
-  const TOTALS =[TOTAL1, TOTAL2, TOTAL3, TOTAL4, TOTAL5, TOTAL6, TOTAL7];
-  const imgs1=[],imgs2=[],imgs3=[],imgs4=[],imgs5=[],imgs6=[],imgs7=[];
-  const allImgs=[imgs1,imgs2,imgs3,imgs4,imgs5,imgs6,imgs7];
-  const loaded=[false,false,false,false,false,false,false];
-
-  function loadSeq(n){
-    if(loaded[n])return;
-    loaded[n]=true;
-    const arr=allImgs[n],folder=FOLDERS[n],total=TOTALS[n];
-    for(let i=0;i<total;i++){const m=new Image();m.src=`${folder}/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;arr.push(m);}
-  }
-  loadSeq(0);
-
-  function tick(){
-    const r=section.getBoundingClientRect();
-    const p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
-
-    /* ── seven-sequence frame picker, lazy-load next at 60% ── */
-    if(p<=P1){
-      if(p/P1>0.6)loadSeq(1);
-      const idx=Math.min(TOTAL1-1,Math.floor((p/P1)*TOTAL1));
-      if(idx!==currentFrame||currentSeq!==1){currentFrame=idx;currentSeq=1;drawAt(idx,1);}
-    }else if(p<=P2){
-      if((p-P1)/(P2-P1)>0.6)loadSeq(2);
-      const idx=Math.min(TOTAL2-1,Math.floor(((p-P1)/(P2-P1))*TOTAL2));
-      if(idx!==currentFrame||currentSeq!==2){currentFrame=idx;currentSeq=2;drawAt(idx,2);}
-    }else if(p<=P3){
-      if((p-P2)/(P3-P2)>0.6)loadSeq(3);
-      const idx=Math.min(TOTAL3-1,Math.floor(((p-P2)/(P3-P2))*TOTAL3));
-      if(idx!==currentFrame||currentSeq!==3){currentFrame=idx;currentSeq=3;drawAt(idx,3);}
-    }else if(p<=P4){
-      if((p-P3)/(P4-P3)>0.6)loadSeq(4);
-      const idx=Math.min(TOTAL4-1,Math.floor(((p-P3)/(P4-P3))*TOTAL4));
-      if(idx!==currentFrame||currentSeq!==4){currentFrame=idx;currentSeq=4;drawAt(idx,4);}
-    }else if(p<=P5){
-      if((p-P4)/(P5-P4)>0.6)loadSeq(5);
-      const idx=Math.min(TOTAL5-1,Math.floor(((p-P4)/(P5-P4))*TOTAL5));
-      if(idx!==currentFrame||currentSeq!==5){currentFrame=idx;currentSeq=5;drawAt(idx,5);}
-    }else if(p<=P6){
-      if((p-P5)/(P6-P5)>0.6)loadSeq(6);
-      const idx=Math.min(TOTAL6-1,Math.floor(((p-P5)/(P6-P5))*TOTAL6));
-      if(idx!==currentFrame||currentSeq!==6){currentFrame=idx;currentSeq=6;drawAt(idx,6);}
-    }else{
-      const idx=Math.min(TOTAL7-1,Math.floor(Math.min(1,(p-P6)/(P7-P6))*TOTAL7));
-      if(idx!==currentFrame||currentSeq!==7){currentFrame=idx;currentSeq=7;drawAt(idx,7);}
-    }
-
-    /* ── progress indicator (7 sequences × ~14.3%) ── */
-    const seg=1/7;
-    const ap=p<=P1?Math.round((p/P1)*seg*100)
-      :p<=P2?Math.round(seg*100+((p-P1)/(P2-P1))*seg*100)
-      :p<=P3?Math.round(2*seg*100+((p-P2)/(P3-P2))*seg*100)
-      :p<=P4?Math.round(3*seg*100+((p-P3)/(P4-P3))*seg*100)
-      :p<=P5?Math.round(4*seg*100+((p-P4)/(P5-P4))*seg*100)
-      :p<=P6?Math.round(5*seg*100+((p-P5)/(P6-P5))*seg*100)
-      :Math.min(100,Math.round(6*seg*100+((p-P6)/(P7-P6))*seg*100));
-    heroFill.style.width=ap+'%';
-    heroPct.textContent=ap+'%';
-    heroProg.style.opacity=p<P7?String(Math.min(1,p*9)):String(Math.max(0,(P7+0.02-p)*25));
-
-    /* ── intro text ── */
-    const introFade=p<P_INTRO_OUT?1:Math.max(0,1-(p-P_INTRO_OUT)/(P_INTRO_GONE-P_INTRO_OUT));
-    heroIntro.style.opacity=introFade;
-    heroIntro.style.transform=`translateY(calc(-52% + ${(1-introFade)*-32}px))`;
-    heroIntro.style.pointerEvents=introFade>0.05?'auto':'none';
-
-    hScroll.style.opacity=Math.max(0,1-p*10);
-    heroReveal.style.opacity='0';heroReveal.style.pointerEvents='none';
-    heroStats.style.opacity='0';
-
-    /* ─────────────────────────────────────────────────────────────────────
-       Panel timings — cross-fade handoff (G=0.03):
-       Each s0[N] = e0[N-1], and e0[N] = seq_end + 0.01 (≈20 frames stay into next seq).
-       Panels cross-fade briefly at the boundary — never both at full opacity.
-
-       seq1 (0.00–0.11): hiP1 →  s0=0.01, e0=0.12
-       seq2 (0.11–0.22): hiP3 →  s0=0.12, e0=0.23
-       seq3 (0.22–0.33): hiPK →  s0=0.23, e0=0.34
-       seq4 (0.33–0.44): hiPE →  s0=0.34, e0=0.45
-       seq5 (0.44–0.55): hiPL →  s0=0.45, e0=0.56
-       seq6 (0.55–0.66): hiPB →  s0=0.56, e0=0.67
-       seq7 (0.66–0.77): hiP7 →  s0=0.67, e0=0.78
-       final (0.82–1.0): hiP5 →  stays
-    ───────────────────────────────────────────────────────────────────── */
-    heroInfo.style.pointerEvents=p>=0.01?'auto':'none';
-    applyPanel(hiP1, panelState(p, 0.01, 0.12));
-    applyPanel(hiP3, panelState(p, 0.12, 0.23));
-    applyPanel(hiPK, panelState(p, 0.23, 0.34));
-    applyPanel(hiPE, panelState(p, 0.34, 0.45));
-    applyPanel(hiPL, panelState(p, 0.45, 0.56));
-    applyPanel(hiPB, panelState(p, 0.56, 0.67));
-    applyPanel(hiP7, panelState(p, 0.67, 0.78));
-    applyPanel(hiP5, panelState(p, 0.82, 1.01));
-
-    requestAnimationFrame(tick);
-  }
-
-  window.addEventListener('resize',resize,{passive:true});
-  resize();
-  tick();
-
   setTimeout(()=>{
     $('hTitle')?.classList.add('ready');
     $('hSub')?.classList.add('ready');
     $('hPills')?.classList.add('ready');
-  },300);
+  },200);
+  /* iOS: ensure video plays on user interaction if autoplay blocked */
+  const vid=$('heroVideo');
+  if(vid){
+    vid.play().catch(()=>{
+      document.addEventListener('touchstart',()=>vid.play(),{once:true});
+    });
+  }
 })();
 
 /* ── TÜREN KATALOG 3D ── */
