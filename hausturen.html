@@ -544,10 +544,17 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   .nav-links,.nav-btn{display:none}
   .h-statbar{display:none}
 
-  /* Hero Intro: oben positionieren, weniger Text */
-  .hero-intro{top:88px;left:5vw;right:5vw;transform:none}
-  .h-title-row span{font-size:46px}
-  .h-sub{display:none}
+  /* Hero Intro */
+  .hero-intro{top:50%;left:5vw;right:5vw;transform:translateY(-50%)}
+  .h-eyebrow{margin-bottom:16px}
+  .h-eyebrow-txt{font-size:10px;letter-spacing:.14em}
+  .h-title-row{overflow:visible}
+  .h-title-row span{font-size:44px;line-height:1;transform:none;opacity:0;transition:opacity .9s ease}
+  .h-title.ready .h-title-row span{opacity:1}
+  .h-title-row:nth-child(1) span{transition-delay:.2s}
+  .h-title-row:nth-child(2) span{transition-delay:.38s}
+  .h-title-row:nth-child(3) span{transition-delay:.56s}
+  .h-sub{margin-top:20px;font-size:14px;line-height:1.65}
   .h-pills{display:none}
 
   /* Hero Reveal: unten positionieren, weniger Text */
@@ -576,7 +583,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 @media(max-width:480px){
   .hr-title{font-size:38px}
-  .h-title-row span{font-size:40px}
+  .h-title-row span{font-size:36px}
 }
 
 /* ─────────────────────────────────────
