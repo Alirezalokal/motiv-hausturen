@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<!-- Consent Mode v2 default – muss VOR GTM stehen -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{
+  ad_storage:'denied',
+  analytics_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:500
+});
+if(localStorage.getItem('motiv_consent')==='accepted'){
+  gtag('consent','update',{
+    ad_storage:'granted',
+    analytics_storage:'granted',
+    ad_user_data:'granted',
+    ad_personalization:'granted'
+  });
+}
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSXMBDGV');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>motiv — Stil Modern | Aluminium-Haustüren</title>
@@ -638,7 +665,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   font-size:48px;font-weight:300;color:var(--white);line-height:1;
 }
 .dr-stat-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-.dr-experience{display:grid;grid-template-columns:256px minmax(0,1fr);gap:40px;align-items:start}
+.dr-experience{display:grid;grid-template-columns:256px minmax(0,1fr);gap:80px;align-items:start}
 .dr-brand-nav{position:sticky;top:30px}
 .dr-brand-nav-label{
   color:var(--dim);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
@@ -840,6 +867,10 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSXMBDGV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <div id="noise"></div>
 <div id="cur"></div>
@@ -879,7 +910,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
       <div class="rot-panel" id="rp1">
         <div class="rp-eyebrow">
           <span class="rp-eye-bar"></span>
-          <span class="rp-eye-txt">KOMPOtherm · Aluminium</span>
+          <span class="rp-eye-txt">Aluminium</span>
         </div>
         <h1 class="rp-title">Stil<br><em>Modern.</em></h1>
         <p class="rp-body">Eine Tür, die auf den ersten Blick überzeugt — reduziert, klar und dauerhaft schön.</p>
@@ -948,7 +979,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
         <div class="dr-stats">
           <div class="dr-stat">
             <span class="dr-stat-num" id="dr-stat-brand">01</span>
-            <span class="dr-stat-lbl">Aktive Marke</span>
+            <span class="dr-stat-lbl">Aktiver Stil</span>
           </div>
           <div class="dr-stat">
             <span class="dr-stat-num" id="dr-stat-total">28</span>
@@ -959,26 +990,31 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
     </header>
     <div class="dr-experience">
       <nav class="dr-brand-nav" aria-label="Markenauswahl">
-        <div class="dr-brand-nav-label">Marke wählen</div>
+        <div class="dr-brand-nav-label">Stil wählen</div>
         <ol class="dr-brand-list">
-          <li><button class="dr-brand-btn is-active" data-brand="kompotherm" type="button">
+          <li><button class="dr-brand-btn is-active" data-brand="modern" type="button">
             <span class="dr-brand-idx">01</span>
-            <span class="dr-brand-info"><span class="dr-brand-name">KOMPOtherm</span><span class="dr-brand-sub">Aluminium-Haustüren</span></span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Modern</span><span class="dr-brand-sub">Klare Formen &amp; Aluminium</span></span>
             <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button></li>
-          <li><button class="dr-brand-btn" data-brand="inotherm" type="button">
+          <li><button class="dr-brand-btn" data-brand="holz" type="button">
             <span class="dr-brand-idx">02</span>
-            <span class="dr-brand-info"><span class="dr-brand-name">INOTHERM</span><span class="dr-brand-sub">Design &amp; Technik</span></span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Holz</span><span class="dr-brand-sub">Natürlich &amp; Warm</span></span>
             <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button></li>
-          <li><button class="dr-brand-btn" data-brand="internorm" type="button">
+          <li><button class="dr-brand-btn" data-brand="elegant" type="button">
             <span class="dr-brand-idx">03</span>
-            <span class="dr-brand-info"><span class="dr-brand-name">Internorm</span><span class="dr-brand-sub">Moderne Türsysteme</span></span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Elegant</span><span class="dr-brand-sub">Exklusiv &amp; Hochwertig</span></span>
             <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button></li>
-          <li><button class="dr-brand-btn" data-brand="aip" type="button">
+          <li><button class="dr-brand-btn" data-brand="laendlich" type="button">
             <span class="dr-brand-idx">04</span>
-            <span class="dr-brand-info"><span class="dr-brand-name">AiP</span><span class="dr-brand-sub">Klare Linien &amp; Vielfalt</span></span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Ländlich</span><span class="dr-brand-sub">Rustikal &amp; Traditionell</span></span>
+            <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button></li>
+          <li><button class="dr-brand-btn" data-brand="klassik" type="button">
+            <span class="dr-brand-idx">05</span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Klassisch</span><span class="dr-brand-sub">Zeitlos &amp; Beständig</span></span>
             <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button></li>
         </ol>
@@ -986,9 +1022,9 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
       <div class="dr-stage">
         <div class="dr-stage-info">
           <div class="dr-stage-meta-row">
-            <span class="dr-chip" id="dr-chip-brand">KOMPOtherm</span>
+            <span class="dr-chip" id="dr-chip-brand">Modern</span>
             <span class="dr-chip-divider"></span>
-            <span class="dr-chip-sub" id="dr-chip-sub">Aluminium-Haustüren</span>
+            <span class="dr-chip-sub" id="dr-chip-sub">Klare Formen &amp; Aluminium</span>
           </div>
           <h3 class="dr-stage-title" id="dr-stage-title">E-264 AL</h3>
           <p class="dr-stage-text" id="dr-stage-text"></p>
@@ -1030,7 +1066,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
     </div>
     <div class="sunset-overlay"></div>
     <div class="sunset-content">
-      <div class="sunset-eyebrow">KOMPOtherm · E-434 R · Aluminium-Haustür</div>
+      <div class="sunset-eyebrow">E-434 R · Aluminium-Haustür</div>
       <h2 class="sunset-title">Die Tür,<br><em>die alles verändert.</em></h2>
       <a href="mailto:info@motiv-fenster.de" class="sunset-cta">Beratung anfragen</a>
     </div>
@@ -1060,7 +1096,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 
       <h2 class="ino-title">Präzision in<br><em>Bewegung.</em></h2>
 
-      <p class="ino-lead">INOTHERM Aluminium-Haustüren verbinden österreichisches Ingenieurwissen mit ausdrucksstarkem Design — für Eingänge, die bleiben.</p>
+      <p class="ino-lead">INOTHERM Aluminium-Haustüren verbinden slowenisches Ingenieurwissen mit ausdrucksstarkem Design — für Eingänge, die bleiben.</p>
 
       <div class="ino-features">
         <div class="ino-feat">
@@ -1097,7 +1133,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
       <div class="ino-badge">
         <span class="ino-badge-logo">INOTHERM</span>
         <div class="ino-badge-line"></div>
-        <span class="ino-badge-tag">Österreichisches<br>Premium-Segment</span>
+        <span class="ino-badge-tag">Slowenisches<br>Premium-Segment</span>
       </div>
     </div>
 
@@ -1352,113 +1388,118 @@ window.addEventListener('resize', () => {
   var statTotal      = section.querySelector('#dr-stat-total');
 
   var doorData = {
-    kompotherm: {
-      label:'KOMPOtherm', sub:'Aluminium-Haustüren',
+    modern: {
+      label:'Modern', sub:'Klare Formen & Aluminium',
       styles:[
-        { title:'E-264 AL',  tags:['RAL 9007/7016','Edelstahl'],
+        { title:'E-264 AL',        tags:['RAL 9007/7016','Edelstahl'],
           text:'Zweifarblackierung in Weiß und Anthrazit mit Edelstahloberfläche – klare Linienführung und hochwertige Materialität.',
           img:'Modern-Tür/E_264AL_R9007-7016-1475_23152_KV_300_Milieu.jpg' },
-        { title:'E-370 L',   tags:['RAL 7016','Linear'],
+        { title:'E-370 L',         tags:['RAL 7016','Linear'],
           text:'Flächenbündige Festverglasung in Anthrazitgrau mit linearem Griffsystem – reduziert und ausdrucksstark.',
           img:'Modern-Tür/E_370L_FD_STS_R7016_1585_24788_Milieu.jpg' },
-        { title:'E-339 FD',  tags:['Float-Glas','Festverglasung'],
+        { title:'E-339 FD',        tags:['Float-Glas','Festverglasung'],
           text:'Großflächige Float-Verglasung mit Edelstahlstruktur – maximale Transparenz und zeitlose Eleganz.',
           img:'Modern-Tür/E_339_FD_STS_R7016-0502_Float_24716_Milieu.jpg' },
-        { title:'E-283 FD',  tags:['Edelstahlstruktur','Designlinie'],
-          text:'Moderne Festverglasung mit strukturierter Edelstahloberfläche für einen exklusiven Eingangsbereich.',
-          img:'Modern-Tür/E_283_FD_STS_FS0683-0430_1523_23152_Milieu.jpg' },
-        { title:'E-260',     tags:['Edelstahlstruktur','Milieu'],
-          text:'Klare Formensprache mit Edelstahlstruktur – ein zeitloser Klassiker der modernen Haustür.',
-          img:'Modern-Tür/E_260_STS_FS673_1251_22158_Milieu.jpg' },
-        { title:'E-394 L',   tags:['RAL 7039','Premium'],
-          text:'Warmgrauer Farbton mit Festverglasung – Design Premium Linie für anspruchsvolle Architektur.',
-          img:'Modern-Tür/E_394L_FD_TS_R7039-K0209_1586_24832_Milieu.jpg' },
-        { title:'M-3410 L',  tags:['RAL 9007','Massiv'],
-          text:'Silbergraue Massivausführung mit großer Griffstange – Qualität und Charakter in einem.',
-          img:'Modern-Tür/M_3410L_FD_T_R9007-0477_1444_24477_Milieu.jpg' },
-        { title:'E-Design Modern',   tags:['Anthrazit','Glas-Edelstahl'],
+        { title:'SELECT',          tags:['Geradlinig','Glas & Aluminium'],
+          text:'Geradlinige Aluminium-Haustüren mit glatten Oberflächen, klarer Linienführung und vielseitigen Glas- oder Aluminiumfüllungen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c270d4c54e36076aa98439_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_08_51.png' },
+        { title:'STUDIO',          tags:['Modern','Bauhaus-Stil'],
+          text:'Diese Modellreihe ist die konsequente Entsprechung moderner Architektur und wird von der schnörkellosen Formsprache des Bauhausstils geprägt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c146f390e67762485eea36_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_57_44.png' },
+        { title:'Smart Line',      tags:['Modern','Attraktiver Preis'],
+          text:'Die Produktlinie Smart Line bietet solide Qualität, modernen Look und zahlreiche Ausstattungsmöglichkeiten zu einem attraktiven Preis.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14bacacece52079cba44e_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_18_01.png' },
+        { title:'E-Design Modern', tags:['Anthrazit','Glas-Edelstahl'],
           text:'Zeitgemäße Interpretation mit anthrazitfarbenem Aluminium und großflächigen Glas- und Edelstahlelementen.',
           img:'Modern-Tür/ChatGPT Image 23. März 2026, 14_12_33.png' },
-        { title:'E-Design Exclusiv', tags:['Schwarz','Sonderausführung'],
-          text:'Exklusive Schwarzausführung mit besonderen Designdetails – für einen unverwechselbaren Eingang.',
-          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_00_11.png' },
+      ]
+    },
+    holz:{
+      label:'Holz', sub:'Natürlich & Warm',
+      styles:[
+        { title:'Echtholz',       tags:['Natürlich','Vintage-Look'],
+          text:'Für alle, die Natürlichkeit lieben: Echtholz-Füllungen im rustikalen Vintage-Look mit sichtbarer Maserung und individuellem Charakter.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27d92c12432552b993a90_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2013_02_59.png' },
+        { title:'Art Decor-Line', tags:['Holz-Look','Lebendig'],
+          text:'Diese Modellreihe lebt vom natürlichen Look verschiedener Holzarten und einer lebendigen Wirkung durch Maserungen in unterschiedlichen Richtungen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2790af4785f06e0ea2776_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_43_38.png' },
+        { title:'HOME SOFT',      tags:['Gemütlich','Elegant'],
+          text:'Wer es lieber gemütlich mag, sollte einen Blick auf diese Modellreihe werfen. Die Gestaltungsmöglichkeiten reichen von elegant bis verspielt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27830b58584b25168b68e_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_40_15.png' },
+      ]
+    },
+    elegant:{
+      label:'Elegant', sub:'Exklusiv & Hochwertig',
+      styles:[
         { title:'E-Design Premium',  tags:['Titansilber','Glas-Element'],
           text:'Premium-Variante mit Titansilber-Oberfläche und edlem Glaselement für maximale Wertigkeit.',
           img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_22_57.png' },
-        { title:'E-Design Series',   tags:['Weiß','Edelstahlgriff'],
-          text:'Zeitloser Weiß-Ton mit hochwertigem Edelstahlgriff – klar, ruhig und elegant.',
-          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_40_15.png' },
-        { title:'E-Design Linear',   tags:['Anthrazit','Linear-Design'],
-          text:'Konsequente Linienführung in Anthrazit – das reduzierte Design für die moderne Architektur.',
-          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_43_38.png' },
-      ]
-    },
-    inotherm:{
-      label:'INOTHERM', sub:'Design & Technik',
-      styles:[
-        { title:'EXCLUSIV',    tags:['Flügelüberdeckend','Stark gedämmt'],
+        { title:'E-Design Exclusiv', tags:['Schwarz','Sonderausführung'],
+          text:'Exklusive Schwarzausführung mit besonderen Designdetails – für einen unverwechselbaren Eingang.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_00_11.png' },
+        { title:'E-283 FD',          tags:['Edelstahlstruktur','Designlinie'],
+          text:'Moderne Festverglasung mit strukturierter Edelstahloberfläche für einen exklusiven Eingangsbereich.',
+          img:'Modern-Tür/E_283_FD_STS_FS0683-0430_1523_23152_Milieu.jpg' },
+        { title:'EXCLUSIV',          tags:['Flügelüberdeckend','Stark gedämmt'],
           text:'Aluminium-Haustüren mit beidseitig flügelüberdeckender Füllung, einheitlicher Optik, hoher Stabilität und sehr guten Wärme- und Schalldämmeigenschaften.',
           img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c144ec266f10c67d2a1bc0_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_49_07.png' },
-        { title:'EXCLUSIV 3D', tags:['3-D-Effekt','Exklusiv'],
+        { title:'EXCLUSIV 3D',       tags:['3-D-Effekt','Exklusiv'],
           text:'Aluminium-Haustüren mit exklusiven Türfüllungen und betontem 3-D-Effekt – auffällig, hochwertig und mit beeindruckender Wärmedämmung.',
           img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c26dd8dfc4c49b9569b015_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2011_56_11.png' },
-        { title:'SELECT',      tags:['Geradlinig','Glas & Aluminium'],
-          text:'Geradlinige Aluminium-Haustüren mit glatten Oberflächen, klarer Linienführung und vielseitigen Glas- oder Aluminiumfüllungen.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c270d4c54e36076aa98439_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_08_51.png' },
-        { title:'SELECT Glas', tags:['Licht','Transparenz'],
+        { title:'SELECT Glas',       tags:['Licht','Transparenz'],
           text:'SELECT mit großzügigen Glasflächen für lichtdurchflutete Eingangsbereiche und eine offene, moderne Ausstrahlung.',
           img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2741dfd681d98ba7bf45d_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_22_57.png' },
-        { title:'SELECT Line', tags:['Reduziert','Klar'],
-          text:'Minimalistische Formensprache mit feinen Details und hochwertigen Materialien für einen klaren, architektonischen Auftritt.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c274edbf6e4d42f18c53a2_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_26_25.png' },
-        { title:'SELECT Pro',  tags:['Flächig','Modern'],
-          text:'Konsequent flächige Gestaltung mit starker Präsenz – perfekt für moderne und anspruchsvolle Architektur.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c275d0bf1eb62572b292aa_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_30_04.png' },
-      ]
-    },
-    internorm:{
-      label:'Internorm', sub:'Moderne Türsysteme',
-      styles:[
-        { title:'STUDIO',    tags:['Modern','Bauhaus-Stil'],
-          text:'Diese Modellreihe ist die konsequente Entsprechung moderner Architektur und wird von der schnörkellosen Formsprache des Bauhausstils geprägt.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c146f390e67762485eea36_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_57_44.png' },
-        { title:'HOME PURE', tags:['Geradlinig','Glaselemente'],
-          text:'Auch diese Modellreihe orientiert sich am geradlinigen Stil unserer Zeit und zeichnet sich durch große Glaselemente aus, die viel Licht in den Raum lassen.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14160b50a460f4cf4051a_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_33_51.png' },
-        { title:'HOME SOFT', tags:['Gemütlich','Elegant'],
-          text:'Wer es lieber gemütlich mag, sollte einen Blick auf diese Modellreihe werfen. Die Gestaltungsmöglichkeiten reichen von elegant bis verspielt.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27830b58584b25168b68e_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_40_15.png' },
-        { title:'AMBIENTE',  tags:['Traditionell','Landhausstil'],
-          text:'Das Design dieser Haustüren ist durch traditionelle Formen geprägt, wie sie häufig beim Haus im Landhausstil oder bei der Stadtvilla zu finden sind.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c1434db142026f588593f6_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_42_09.png' },
-      ]
-    },
-    aip:{
-      label:'AiP', sub:'Klare Linien & Vielfalt',
-      styles:[
-        { title:'Smart Line',        tags:['Modern','Attraktiver Preis'],
-          text:'Die Produktlinie Smart Line bietet solide Qualität, modernen Look und zahlreiche Ausstattungsmöglichkeiten zu einem attraktiven Preis.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14bacacece52079cba44e_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_18_01.png' },
-        { title:'Art-Beton',         tags:['Beton-Optik','Unikat'],
-          text:'Diese Oberfläche sieht aus wie Beton, fühlt sich an wie Beton, ist aber leichter und witterungsbeständiger. Jede Tür wirkt dadurch wie ein Unikat.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c15200153624111516a6fd_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_44_41.png' },
-        { title:'Echtholz',          tags:['Natürlich','Vintage-Look'],
-          text:'Für alle, die Natürlichkeit lieben: Echtholz-Füllungen im rustikalen Vintage-Look mit sichtbarer Maserung und individuellem Charakter.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c27d92c12432552b993a90_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2013_02_59.png' },
-        { title:'Art Decor-Line',    tags:['Holz-Look','Lebendig'],
-          text:'Diese Modellreihe lebt vom natürlichen Look verschiedener Holzarten und einer lebendigen Wirkung durch Maserungen in unterschiedlichen Richtungen.',
-          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2790af4785f06e0ea2776_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_43_38.png' },
         { title:'Keramik Art-Steel', tags:['Puristisch','Edelstahl'],
           text:'Zeitlos schöne Ästhetik und hohe Funktionalität: Die Kombination aus Keramik und Edelstahl wirkt puristisch, robust und pflegeleicht.',
           img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c2741dfd681d98ba7bf45d_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_22_57.png' },
+      ]
+    },
+    laendlich:{
+      label:'Ländlich', sub:'Rustikal & Traditionell',
+      styles:[
+        { title:'AMBIENTE',          tags:['Traditionell','Landhausstil'],
+          text:'Das Design dieser Haustüren ist durch traditionelle Formen geprägt, wie sie häufig beim Haus im Landhausstil oder bei der Stadtvilla zu finden sind.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c1434db142026f588593f6_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_42_09.png' },
+        { title:'E-394 L',           tags:['RAL 7039','Premium'],
+          text:'Warmgrauer Farbton mit Festverglasung – Design Premium Linie für anspruchsvolle Architektur.',
+          img:'Modern-Tür/E_394L_FD_TS_R7039-K0209_1586_24832_Milieu.jpg' },
+        { title:'Art-Beton',         tags:['Beton-Optik','Unikat'],
+          text:'Diese Oberfläche sieht aus wie Beton, fühlt sich an wie Beton, ist aber leichter und witterungsbeständiger. Jede Tür wirkt dadurch wie ein Unikat.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c15200153624111516a6fd_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2015_44_41.png' },
         { title:'Keramik Art-Corten',tags:['Corten-Optik','Kontrastreich'],
           text:'Diese Keramik-Oberfläche imitiert den Look von rostigem Stahl und erzeugt in Kombination mit Edelstahl und Glas einen spannenden Kontrast.',
           img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c274edbf6e4d42f18c53a2_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_26_25.png' },
       ]
     },
+    klassik:{
+      label:'Klassisch', sub:'Zeitlos & Beständig',
+      styles:[
+        { title:'E-260',           tags:['Edelstahlstruktur','Milieu'],
+          text:'Klare Formensprache mit Edelstahlstruktur – ein zeitloser Klassiker der modernen Haustür.',
+          img:'Modern-Tür/E_260_STS_FS673_1251_22158_Milieu.jpg' },
+        { title:'M-3410 L',        tags:['RAL 9007','Massiv'],
+          text:'Silbergraue Massivausführung mit großer Griffstange – Qualität und Charakter in einem.',
+          img:'Modern-Tür/M_3410L_FD_T_R9007-0477_1444_24477_Milieu.jpg' },
+        { title:'E-Design Series', tags:['Weiß','Edelstahlgriff'],
+          text:'Zeitloser Weiß-Ton mit hochwertigem Edelstahlgriff – klar, ruhig und elegant.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_40_15.png' },
+        { title:'E-Design Linear', tags:['Anthrazit','Linear-Design'],
+          text:'Konsequente Linienführung in Anthrazit – das reduzierte Design für die moderne Architektur.',
+          img:'Modern-Tür/ChatGPT Image 24. März 2026, 12_43_38.png' },
+        { title:'SELECT Pro',      tags:['Flächig','Modern'],
+          text:'Konsequent flächige Gestaltung mit starker Präsenz – perfekt für moderne und anspruchsvolle Architektur.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c275d0bf1eb62572b292aa_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_30_04.png' },
+        { title:'HOME PURE',       tags:['Geradlinig','Glaselemente'],
+          text:'Auch diese Modellreihe orientiert sich am geradlinigen Stil unserer Zeit und zeichnet sich durch große Glaselemente aus, die viel Licht in den Raum lassen.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c14160b50a460f4cf4051a_ChatGPT%20Image%2023.%20Ma%CC%88rz%202026%2C%2014_33_51.png' },
+        { title:'SELECT Line',     tags:['Reduziert','Klar'],
+          text:'Minimalistische Formensprache mit feinen Details und hochwertigen Materialien für einen klaren, architektonischen Auftritt.',
+          img:'https://cdn.prod.website-files.com/69afd3944cb1661d32a312da/69c274edbf6e4d42f18c53a2_ChatGPT%20Image%2024.%20Ma%CC%88rz%202026%2C%2012_26_25.png' },
+      ]
+    },
   };
 
-  var activeBrand = 'kompotherm';
+  var activeBrand = 'modern';
   var activeIndex = 0;
   var cards = [];
   var pad = function(n){ return String(n).padStart(2,'0'); };
@@ -1579,7 +1620,7 @@ window.addEventListener('resize', () => {
   var totalStyles = Object.values(doorData).reduce(function(s,b){ return s+b.styles.length; }, 0);
   statTotal.textContent = totalStyles;
 
-  switchBrand('kompotherm');
+  switchBrand('modern');
 })();
 
 </script>

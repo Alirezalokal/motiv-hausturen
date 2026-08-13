@@ -1,17 +1,122 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<!-- Consent Mode v2 default – muss VOR GTM stehen -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{
+  ad_storage:'denied',
+  analytics_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:500
+});
+if(localStorage.getItem('motiv_consent')==='accepted'){
+  gtag('consent','update',{
+    ad_storage:'granted',
+    analytics_storage:'granted',
+    ad_user_data:'granted',
+    ad_personalization:'granted'
+  });
+}
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSXMBDGV');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>motiv — Markisen | Recklinghausen</title>
+<title>Markisen & Terrassendach Recklinghausen – Fachpartner | motiv</title>
+  <!-- ═══ SEO META ═══ -->
+  <meta name="description" content="Markisen, Terrassendächer und Sonnenschutz in Recklinghausen. Fachpartner – elektrisch, mit Sensor-Steuerung, smarthome-fähig. Kostenlose Beratung vor Ort.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://www.motiv-fenster.de/markiese.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="motiv Fenster Recklinghausen">
+  <meta property="og:title" content="Markisen & Terrassendach Recklinghausen – Fachpartner | motiv">
+  <meta property="og:description" content="Markisen, Terrassendächer und Sonnenschutz in Recklinghausen. Fachpartner – elektrisch, mit Sensor-Steuerung, smarthome-fähig. Kostenlose Beratung vor Ort.">
+  <meta property="og:url" content="https://www.motiv-fenster.de/markiese.html">
+  <meta property="og:image" content="https://www.motiv-fenster.de/Gallery/33919_191210_ROMA_Schlafzimmer_Morgen.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Markisen & Terrassendach Recklinghausen – Fachpartner | motiv">
+  <meta name="twitter:description" content="Markisen, Terrassendächer und Sonnenschutz in Recklinghausen. Fachpartner – elektrisch, mit Sensor-Steuerung, smarthome-fähig. Kostenlose Beratung vor Ort.">
+  <meta name="twitter:image" content="https://www.motiv-fenster.de/Gallery/33919_191210_ROMA_Schlafzimmer_Morgen.jpg">
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.motiv-fenster.de/#business",
+  "name": "motiv Fenster",
+  "legalName": "motiv Fenster GmbH",
+  "description": "Fachbetrieb für Fenster, Haustüren, Markisen und Rollläden in Recklinghausen. Internorm Partner Plus, Familienbetrieb seit 2001, 1.000 m² Ausstellung.",
+  "url": "https://www.motiv-fenster.de",
+  "telephone": "+492361904240",
+  "email": "info@motiv-fenster.de",
+  "foundingDate": "2001",
+  "priceRange": "€€€",
+  "image": "https://www.motiv-fenster.de/Gallery/E_260_FD_TS_FS673-477_Olive_1450_23152_Milieu.jpg",
+  "logo": "https://www.motiv-fenster.de/Logos/motiv-logo-transparent.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hubertusstraße 65",
+    "addressLocality": "Recklinghausen",
+    "postalCode": "45657",
+    "addressRegion": "Nordrhein-Westfalen",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.5869,
+    "longitude": 7.1952
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "10:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "13:00"
+    }
+  ],
+  "hasMap": "https://maps.google.com/?q=Hubertusstraße+65,+45657+Recklinghausen",
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {"@type": "GeoCoordinates", "latitude": 51.5869, "longitude": 7.1952},
+    "geoRadius": "50000"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"motiv Fenster","item":"https://www.motiv-fenster.de/"},
+    {"@type":"ListItem","position":2,"name":"Terrassen & Markisen","item":"https://www.motiv-fenster.de/markiese.html"}
+  ]}
+  </script>
+  <!-- ═══════════════ -->
+<script>document.documentElement.classList.toggle('is-mobile',window.innerWidth<=900);window.addEventListener('resize',()=>document.documentElement.classList.toggle('is-mobile',window.innerWidth<=900),{passive:true});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#080806;--off-black:#0d0d0b;
-  --white:#f5f0e8;--dim:rgba(245,240,232,.6);
+  --black:#101d32;--off-black:#162540;
+  --white:#f5f0e8;--dim:rgba(245,240,232,.72);
   --gold:#c8a06a;--gold-a:rgba(200,160,106,.15);
   --border:rgba(245,240,232,.09);--border2:rgba(245,240,232,.18);
   --ease:cubic-bezier(.16,1,.3,1);--ease2:cubic-bezier(.76,0,.24,1)
@@ -37,18 +142,18 @@ body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;o
 #scrollBar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--gold),var(--white));z-index:9999;width:0;pointer-events:none}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;padding:26px 6vw;
+nav{position:fixed;top:0;left:0;right:0;z-index:600;padding:11px 6vw;
   display:flex;align-items:center;justify-content:space-between;
   transition:background .4s,padding .4s,backdrop-filter .4s}
 nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 6vw;border-bottom:1px solid var(--border)}
-.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
-.nav-logo img{height:38px;width:auto;filter:brightness(0) invert(1);opacity:.9;transition:opacity .2s}
+.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;position:relative;z-index:700;overflow:visible}
+.nav-logo img{height:80px;width:auto;opacity:1;transition:opacity .2s;transform:scale(1.8);transform-origin:left center}
 .nav-logo:hover img{opacity:1}
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;cursor:none;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--gold);transition:right .3s var(--ease)}
-.nav-links a:hover{color:var(--white)}
-.nav-links a:hover::after{right:0}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-links a:hover::after,.nav-links a.active::after{right:0}
 .nav-btn{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:11px 26px;border:1px solid var(--border2);border-radius:100px;cursor:none;transition:background .3s,color .3s,border-color .3s}
 .nav-btn:hover{background:var(--white);color:var(--black);border-color:var(--white)}
 
@@ -78,18 +183,18 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .h-eyebrow-txt{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 .h-title-row{display:block;overflow:hidden}
 .h-title-row span{
-  display:block;font-family:'Cormorant Garamond',serif;
-  font-size:clamp(56px,8.5vw,128px);line-height:.93;font-weight:300;letter-spacing:-.03em;
+  display:block;font-family:'Inter',serif;
+  font-size:clamp(42px,6.5vw,96px);line-height:.93;font-weight:300;letter-spacing:-.03em;
   transform:translateY(110%);transition:transform 1.3s var(--ease)
 }
 .h-title-row:nth-child(1) span{transition-delay:.55s}
 .h-title-row:nth-child(2) span{transition-delay:.72s}
 .h-title-row:nth-child(3) span{transition-delay:.89s}
 .h-title.ready .h-title-row span{transform:none}
-.italic-gold{font-style:italic;color:var(--gold)}
+.italic-gold{font-style:normal;color:var(--gold)}
 .h-sub{
   max-width:440px;margin-top:32px;
-  font-size:clamp(14px,1.3vw,18px);line-height:1.75;color:var(--dim);font-weight:300;
+  font-size:clamp(0.875rem,1.3vw,1.125rem);line-height:1.75;color:var(--dim);font-weight:300;
   opacity:0;transform:translateY(18px);
   transition:opacity .9s var(--ease) 1.15s,transform .9s var(--ease) 1.15s
 }
@@ -134,7 +239,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .h-stat{flex:1;padding:18px 30px;border-right:1px solid var(--border)}
 .h-stat:last-child{border-right:none}
-.h-stat-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;letter-spacing:-.02em;line-height:1}
+.h-stat-n{font-family:'Inter',serif;font-size:30px;font-weight:400;letter-spacing:-.02em;line-height:1}
 .h-stat-l{font-size:10px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:4px}
 
 /* ══════════════════════════════════
@@ -163,11 +268,11 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .hi-p1-row{overflow:hidden;line-height:1}
 .hi-p1-line{
   display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(60px,9.5vw,148px);font-weight:300;letter-spacing:-.04em;
+  font-family:'Inter',serif;
+  font-size:clamp(46px,7vw,110px);font-weight:300;letter-spacing:-.04em;
   transform:translateY(108%);transition:transform 1.1s var(--ease)
 }
-.hi-p1-line em{font-style:italic;color:var(--gold)}
+.hi-p1-line em{font-style:normal;color:var(--gold)}
 .hi-p1.p-in .hi-p1-row:nth-child(2) .hi-p1-line{transform:none;transition-delay:.08s}
 .hi-p1.p-in .hi-p1-row:nth-child(3) .hi-p1-line{transform:none;transition-delay:.22s}
 .hi-p1.p-in .hi-p1-row:nth-child(4) .hi-p1-line{transform:none;transition-delay:.36s}
@@ -175,16 +280,16 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 /* Panel 2 — centered quote */
 .hi-p2{align-items:center;text-align:center}
 .hi-p2-mark{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(80px,13vw,200px);line-height:.65;color:var(--gold);
+  font-family:'Inter',serif;
+  font-size:clamp(60px,10vw,150px);line-height:.65;color:var(--gold);
   opacity:0;display:block;margin-bottom:4px;
   transition:opacity 1.1s var(--ease) .05s
 }
 .hi-p2.p-in .hi-p2-mark{opacity:.18}
 .hi-p2-row{overflow:hidden}
 .hi-p2-line{
-  display:block;font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:clamp(26px,3.8vw,60px);font-weight:300;letter-spacing:-.025em;
+  display:block;font-family:'Inter',serif;font-style:italic;
+  font-size:clamp(20px,2.9vw,46px);font-weight:300;letter-spacing:-.025em;
   transform:translateY(108%);transition:transform 1.05s var(--ease)
 }
 .hi-p2.p-in .hi-p2-row:nth-child(2) .hi-p2-line{transform:none;transition-delay:.12s}
@@ -200,8 +305,8 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .hi-p3{flex-direction:row;align-items:center;gap:8vw}
 .hi-p3-left{flex-shrink:0;min-width:200px}
 .hi-p3-label{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(48px,7vw,110px);font-weight:300;letter-spacing:-.04em;color:var(--gold);
+  font-family:'Inter',serif;
+  font-size:clamp(36px,5.2vw,82px);font-weight:300;letter-spacing:-.04em;color:var(--gold);
   transform:translateX(-44px);opacity:0;
   transition:transform 1.05s var(--ease),opacity 1.05s var(--ease)
 }
@@ -218,7 +323,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .hi-p3.p-in .hi-p3-concept{opacity:1}
 .hi-p3-right{flex:1;max-width:480px}
 .hi-p3-slogan{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-family:'Inter',serif;font-style:italic;
   font-size:clamp(22px,2.8vw,42px);font-weight:300;color:var(--white);
   margin-bottom:24px;
   transform:translateY(28px);opacity:0;
@@ -226,7 +331,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .hi-p3.p-in .hi-p3-slogan{transform:none;opacity:1}
 .hi-p3-body{
-  font-size:clamp(13px,1.15vw,16px);line-height:1.88;color:var(--dim);font-weight:300;
+  font-size:clamp(0.8125rem,1.15vw,1rem);line-height:1.88;color:var(--dim);font-weight:300;
   transform:translateY(22px);opacity:0;
   transition:transform 1.05s var(--ease) .30s,opacity 1.05s var(--ease) .30s
 }
@@ -237,15 +342,15 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .hi-p4-row{overflow:hidden;line-height:1.02}
 .hi-p4-line{
   display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(46px,7.2vw,116px);font-weight:300;letter-spacing:-.04em;
+  font-family:'Inter',serif;
+  font-size:clamp(36px,5.5vw,88px);font-weight:300;letter-spacing:-.04em;
   transform:translateY(108%);transition:transform 1.1s var(--ease)
 }
-.hi-p4-line em{font-style:italic;color:var(--gold)}
+.hi-p4-line em{font-style:normal;color:var(--gold)}
 .hi-p4.p-in .hi-p4-row:nth-child(1) .hi-p4-line{transform:none;transition-delay:.06s}
 .hi-p4.p-in .hi-p4-row:nth-child(2) .hi-p4-line{transform:none;transition-delay:.20s}
 .hi-p4-sub{
-  font-size:clamp(14px,1.35vw,19px);color:var(--dim);font-weight:300;margin-top:26px;
+  font-size:clamp(0.875rem,1.35vw,1.1875rem);color:var(--dim);font-weight:300;margin-top:26px;
   opacity:0;transition:opacity .9s var(--ease) .40s
 }
 .hi-p4.p-in .hi-p4-sub{opacity:1}
@@ -260,7 +365,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .hi-p5-eye::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.5}
 .hi-p5.p-in .hi-p5-eye{opacity:1}
 .hi-p5-intro{
-  font-size:clamp(14px,1.2vw,16px);color:var(--dim);font-weight:300;line-height:1.8;
+  font-size:clamp(0.875rem,1.2vw,1rem);color:var(--dim);font-weight:300;line-height:1.8;
   max-width:480px;margin-bottom:44px;
   transform:translateY(18px);opacity:0;
   transition:transform .9s var(--ease) .10s,opacity .9s var(--ease) .10s
@@ -305,7 +410,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .hi-p5-cta:hover{background:transparent;color:var(--gold)}
 
 /* smaller label for long words */
-#hiPH .hi-p3-label{font-size:clamp(30px,4.5vw,72px)}
+#hiPH .hi-p3-label{font-size:clamp(22px,3.3vw,54px)}
 
 /* ── Responsive ── */
 @media(max-width:768px){
@@ -313,43 +418,30 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   nav.scrolled{padding:12px 5vw}
   .nav-links,.nav-btn{display:none}
   .h-statbar{display:none}
-
-  /* Hero intro: fix at top like hausturen */
-  .hero-intro{top:88px;left:5vw;right:5vw;transform:none}
-  .h-title-row span{font-size:46px}
-  .h-sub{display:none}
-  .h-pills{display:none}
-
-  /* Info panels */
+  .hero-intro{left:5vw;right:5vw}
   .hi-panel{padding:0 5vw}
-  .hi-p1-eye{margin-bottom:16px}
-  .hi-p1-line{font-size:46px}
-
-  /* Panel 2: quote */
-  .hi-p2-mark{font-size:44px;margin-bottom:0}
-  .hi-p2-attr{margin-top:12px}
-
-  /* Panel 3 (Kassette/Pergola/Halbkassette): only label, hide body */
-  .hi-p3{flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:88px 5vw 0;gap:6px}
-  .hi-p3-right{display:none}
-  .hi-p3-label{font-size:clamp(36px,9vw,60px)}
-  #hiPH .hi-p3-label{font-size:clamp(28px,7vw,46px)}
-
-  /* Panel 4 */
-  .hi-p4{padding-bottom:88px}
-  .hi-p4-sub{display:none}
-
-  /* Panel 5: CTA — minimal */
-  .hi-p5{padding:0 5vw;justify-content:flex-start;padding-top:88px}
-  .hi-p5-intro{display:none}
-  .hi-p5-tags{display:none}
-  .hi-p5-cta-group{flex-direction:column;align-items:flex-start;gap:10px}
+  .hi-p3{flex-direction:column;gap:24px}
+  .hi-p4{padding-bottom:10vh}
+  .hi-p5{padding:0 5vw}
 }
 @media(max-width:480px){
-  .h-title-row span{font-size:40px}
+  .h-title-row span{font-size:38px}
   .hi-p1-line{font-size:40px}
-  .hi-p4-line{font-size:34px}
+  .hi-p4-line{font-size:32px}
 }
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;outline:none;-webkit-appearance:none;appearance:none}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s}
+.nav-mobile-menu{display:none;position:fixed;top:98px;left:0;right:0;background:rgba(6,10,20,.96);backdrop-filter:blur(16px);z-index:590;flex-direction:column;padding:20px 5vw 24px;gap:0;border-bottom:1px solid var(--border)}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{font-size:15px;font-weight:300;letter-spacing:.06em;color:rgba(245,240,232,.6);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(245,240,232,.06)}
+.nav-mobile-menu a:last-child{border-bottom:none;color:var(--gold);margin-top:8px}
+.nav-mobile-close{background:none;border:none;color:rgba(245,240,232,.5);font-size:13px;letter-spacing:.08em;text-align:right;padding:0 0 14px;cursor:pointer;align-self:flex-end}
+html.is-mobile #mainNav{padding:14px 5vw!important;background:rgba(6,10,20,.75)!important;backdrop-filter:blur(12px)!important}
+html.is-mobile #mainNav.scrolled{padding:12px 5vw!important}
+html.is-mobile .nav-links,html.is-mobile .nav-btn{display:none!important}
+html.is-mobile .nav-hamburger{display:flex!important}
+html.is-mobile .nav-logo img{height:70px!important;transform:scale(1)!important}html.is-mobile nav.scrolled .nav-logo img{height:70px!important;transform:scale(1)!important}@media(max-width:1300px){.nav-logo img{height:70px!important;transform:scale(1)!important}}
+@media(max-width:900px){.nav-hamburger{display:flex}}
 
 /* ─────────────────────────────────────
    MARKISEN KATALOG
@@ -382,13 +474,13 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .dr-shell{position:relative;z-index:1;width:min(1400px,100%);margin:0 auto}
 .dr-header{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:end;padding-bottom:48px;margin-bottom:56px;border-bottom:1px solid var(--border)}
 .dr-kicker{display:inline-flex;align-items:center;min-height:26px;padding:0 12px;border-radius:100px;background:var(--gold-a);border:1px solid rgba(200,160,106,.28);color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px}
-.dr-title{margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5.6vw,86px);font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--white)}
+.dr-title{margin:0;font-family:'Inter',serif;font-size:clamp(42px,5.6vw,86px);font-weight:400;line-height:.95;letter-spacing:-.03em;color:var(--white)}
 .dr-title-word{display:block}
-.dr-title-word--accent{font-style:italic;color:var(--gold)}
-.dr-lead{color:var(--dim);font-size:16px;line-height:1.75;margin:0 0 26px;max-width:480px}
+.dr-title-word--accent{font-style:normal;color:var(--gold)}
+.dr-lead{color:var(--dim);font-size:1rem;line-height:1.75;margin:0 0 26px;max-width:480px}
 .dr-stats{display:flex;gap:40px}
 .dr-stat{display:flex;flex-direction:column;gap:4px}
-.dr-stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--white);line-height:1}
+.dr-stat-num{font-family:'Inter',serif;font-size:48px;font-weight:400;color:var(--white);line-height:1}
 .dr-stat-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
 .dr-experience{display:grid;grid-template-columns:256px minmax(0,1fr);gap:80px;align-items:start}
 .dr-brand-nav{position:sticky;top:30px}
@@ -410,15 +502,16 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .dr-chip{display:inline-flex;align-items:center;min-height:26px;padding:0 11px;border-radius:100px;background:var(--gold-a);border:1px solid rgba(200,160,106,.28);color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase}
 .dr-chip-divider{width:18px;height:1px;background:var(--border2)}
 .dr-chip-sub{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
-.dr-stage-title{margin:0 0 10px;font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.2vw,62px);font-weight:300;line-height:.98;letter-spacing:-.025em;color:var(--white)}
-.dr-stage-text{margin:0 0 16px;color:var(--dim);font-size:15px;line-height:1.8}
+.dr-stage-title{margin:0 0 10px;font-family:'Inter',serif;font-size:clamp(36px,4.2vw,62px);font-weight:400;line-height:.98;letter-spacing:-.025em;color:var(--white)}
+.dr-stage-text{margin:0 0 16px;color:var(--dim);font-size:1rem;line-height:1.8;letter-spacing:.12em;word-spacing:.16em}
 .dr-stage-tags{display:flex;flex-wrap:wrap;gap:6px}
 .dr-stage-tags span{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:100px;background:transparent;border:1px solid var(--border);color:var(--dim);font-size:10px;font-weight:400;letter-spacing:.1em;text-transform:uppercase}
-.dr-carousel-wrap{position:relative;width:100%;overflow-x:auto;scroll-snap-type:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;padding:40px 0;user-select:none;touch-action:pan-x}
+.dr-carousel-outer{position:relative}
+.dr-carousel-wrap{position:relative;width:100%;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;padding:40px 0;user-select:none}
 .dr-carousel-wrap:active{cursor:grabbing}
 .dr-carousel-wrap::-webkit-scrollbar{display:none}
-.dr-carousel{display:flex;gap:20px;align-items:center;padding-left:calc(50% - 280px);padding-right:calc(50% - 280px)}
-.dr-card{position:relative;flex-shrink:0;width:560px;height:396px;transition:opacity .55s ease,transform .55s var(--ease);will-change:transform,opacity;cursor:none}
+.dr-carousel{display:flex;gap:20px;align-items:center}
+.dr-card{position:relative;flex-shrink:0;scroll-snap-align:center;width:560px;height:396px;transition:opacity .55s ease,transform .55s var(--ease);will-change:transform,opacity;cursor:none}
 .dr-card:not(.is-active){opacity:.45;transform:scale(0.93)}
 .dr-card.is-active{opacity:1;transform:scale(1)}
 .dr-card-inner{position:relative;width:100%;height:100%;border-radius:22px;overflow:hidden;background:rgba(8,8,6,.85);border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5);transition:border-color .5s,box-shadow .5s,transform .55s var(--ease);transform-origin:center center}
@@ -433,7 +526,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 @keyframes drShine{0%{transform:translateX(-130%);opacity:1}100%{transform:translateX(130%);opacity:0}}
 .dr-card-caption{position:absolute;left:0;right:0;bottom:0;padding:16px 20px;z-index:2}
 .dr-card-num{display:inline-block;font-size:9px;font-weight:400;letter-spacing:.2em;color:var(--gold);margin-bottom:7px}
-.dr-card-title{margin:0 0 5px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--white);line-height:1.1}
+.dr-card-title{margin:0 0 5px;font-family:'Inter',serif;font-size:22px;font-weight:400;color:var(--white);line-height:1.1}
 .dr-card-tag{font-size:11px;color:var(--dim);letter-spacing:.06em}
 .dr-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--border2);background:rgba(8,8,6,.75);color:var(--white);cursor:none;display:inline-flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);transition:transform .3s,border-color .3s,background .3s;z-index:10}
 .dr-nav:hover{transform:translateY(-50%) scale(1.06);border-color:rgba(200,160,106,.4);background:rgba(200,160,106,.1)}
@@ -443,7 +536,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .dr-progress{display:flex;align-items:center;gap:16px;flex:1;min-width:180px}
 .dr-progress-track{flex:1;height:1px;background:rgba(245,240,232,.09);border-radius:100px;overflow:hidden;max-width:280px}
 .dr-progress-fill{height:100%;background:var(--gold);border-radius:100px;width:100%;transition:width .7s var(--ease)}
-.dr-progress-counter{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;letter-spacing:.1em;color:var(--dim);display:flex;gap:4px}
+.dr-progress-counter{font-family:'Inter',serif;font-size:15px;font-weight:400;letter-spacing:.1em;color:var(--dim);display:flex;gap:4px}
 .dr-progress-slash{color:var(--gold)}
 .dr-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 26px;border-radius:100px;background:transparent;color:var(--dim);font-family:'Inter',sans-serif;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border2);transition:color .3s,border-color .3s;cursor:none}
 .dr-cta:hover{color:var(--white);border-color:var(--border2)}
@@ -453,10 +546,10 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   .dr-section{padding:80px 5vw 80px}
   .dr-header{grid-template-columns:1fr;gap:24px}
   .dr-experience{grid-template-columns:1fr;gap:28px}
-  .dr-brand-nav{position:relative;top:auto}
-  .dr-brand-list{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:6px;scrollbar-width:none}
-  .dr-brand-list::-webkit-scrollbar{display:none}
-  .dr-brand-btn{flex:0 0 auto;width:auto;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 16px;min-width:110px;border-left:none;border-bottom:2px solid var(--border)}
+  .dr-brand-nav{position:relative;top:auto;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x;padding-bottom:6px}
+  .dr-brand-nav::-webkit-scrollbar{display:none}
+  .dr-brand-list{flex-direction:row;width:max-content;gap:6px;padding-bottom:0}
+  .dr-brand-btn{flex:0 0 auto;width:auto;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 16px;min-width:0;border-left:none;border-bottom:2px solid var(--border)}
   .dr-brand-btn:hover,.dr-brand-btn.is-active{padding-left:16px;border-bottom-color:var(--gold)}
   .dr-brand-idx{display:none}
   .dr-brand-arrow{display:none}
@@ -468,9 +561,9 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   .dr-stage-info{display:none}
   .dr-stage-foot{display:none}
   .dr-carousel-wrap{padding:20px 0}
-  .dr-carousel{gap:14px;padding-left:calc(50% - 170px);padding-right:calc(50% - 170px)}
+  .dr-carousel{gap:14px}
   .dr-card{width:340px;height:240px}
-  .dr-nav{width:42px;height:42px}
+  .dr-nav{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   .dr-orb,.dr-card{animation:none !important;transition-duration:.2s !important}
@@ -482,9 +575,9 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .mod-sec.vis .mod-hd{opacity:1;transform:none}
 .mod-eye{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:20px}
 .mod-eye::before{content:'';display:block;width:36px;height:1px;background:var(--gold)}
-.mod-title-sec{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,88px);font-weight:300;letter-spacing:-.02em;line-height:.9;color:var(--white)}
-.mod-title-sec em{font-style:italic;color:var(--gold)}
-.mod-intro-txt{margin-top:18px;max-width:500px;font-size:13px;font-weight:300;line-height:1.8;color:var(--dim)}
+.mod-title-sec{font-family:'Inter',serif;font-size:clamp(48px,6vw,88px);font-weight:400;letter-spacing:-.02em;line-height:.9;color:var(--white)}
+.mod-title-sec em{font-style:normal;color:var(--gold)}
+.mod-intro-txt{margin-top:18px;max-width:500px;font-size:0.8125rem;font-weight:300;line-height:1.8;color:var(--dim)}
 .mod-scroll{overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 8vw;cursor:grab}
 .mod-scroll:active{cursor:grabbing}
 .mod-scroll::-webkit-scrollbar{display:none}
@@ -498,21 +591,25 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .mod-sec.vis .mod-card:nth-child(5){opacity:1;transform:none;transition-delay:.40s}
 .mod-sec.vis .mod-card:nth-child(6){opacity:1;transform:none;transition-delay:.48s}
 .mod-sec.vis .mod-card:nth-child(7){opacity:1;transform:none;transition-delay:.56s}
+.mod-sec.vis .mod-card:nth-child(8){opacity:1;transform:none;transition-delay:.64s}
 .mod-vis{height:210px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
 .mod-vis img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.7);transform:scale(1.07);transition:transform 1.1s var(--ease),filter .8s ease}
 .mod-card:hover .mod-vis img:not(.mod-hi){transform:scale(1);filter:brightness(.88) saturate(1)}
 .mod-vis .mod-hi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:1;filter:brightness(.62) saturate(.7);transform:scale(1.07);transition:opacity .55s var(--ease),transform 1.1s var(--ease),filter .8s ease}
 .mod-card:hover .mod-vis .mod-hi{opacity:1;transform:scale(1);filter:brightness(.88) saturate(1)}
-.mod-vis-num{z-index:2;position:absolute;right:14px;top:10px;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:rgba(200,160,106,.055);line-height:1;pointer-events:none;letter-spacing:-.04em}
+.mod-vis-num{z-index:2;position:absolute;right:14px;top:10px;font-family:'Inter',serif;font-size:80px;font-weight:400;color:rgba(200,160,106,.055);line-height:1;pointer-events:none;letter-spacing:-.04em}
 .mod-body{padding:24px 26px 30px}
 .mod-cat{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:11px}
-.mod-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;letter-spacing:-.01em;color:var(--white);line-height:1;margin-bottom:20px}
+.mod-name{font-family:'Inter',serif;font-size:30px;font-weight:400;letter-spacing:-.01em;color:var(--white);line-height:1;margin-bottom:8px}
+.mod-model{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:16px;font-weight:300}
 .mod-dims{display:flex;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:18px}
 .mod-dim{flex:1;padding:12px 0 12px 14px}
 .mod-dim:not(:last-child){border-right:1px solid var(--border)}
-.mod-dim-v{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:var(--gold);line-height:1}
+.mod-dim-v{font-family:'Inter',serif;font-size:19px;font-weight:400;color:var(--gold);line-height:1}
 .mod-dim-l{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:4px}
-.mod-feat{font-size:11px;font-weight:300;color:var(--dim);line-height:1.65}
+.mod-feat{font-size:0.6875rem;font-weight:300;color:var(--dim);line-height:1.65;letter-spacing:.12em;word-spacing:.16em}
+.mod-auswahl{display:inline-block;margin-top:16px;padding:9px 20px;font-size:0.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,160,106,.4);text-decoration:none;transition:background .25s,color .25s,border-color .25s}
+.mod-auswahl:hover{background:var(--gold);color:#03060e;border-color:var(--gold)}
 .mod-scroll-hint{display:flex;align-items:center;gap:10px;padding:24px 8vw 0;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);opacity:0;transition:opacity .8s var(--ease) .7s}
 .mod-sec.vis .mod-scroll-hint{opacity:1}
 @media(max-width:720px){.mod-card{width:270px}.mod-sec{padding:80px 0 80px}}
@@ -560,7 +657,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .sm-spot.vis .sm-eye{opacity:1;transform:none}
 
 .sm-title{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:clamp(80px,9.5vw,148px);
   font-weight:300;letter-spacing:-.04em;line-height:.85;
   color:var(--white);margin-bottom:18px;overflow:hidden;
@@ -573,7 +670,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .sm-spot.vis .sm-title span{transform:none}
 
 .sm-sub{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-family:'Inter',serif;font-style:italic;
   font-size:clamp(18px,1.8vw,26px);font-weight:300;
   color:var(--gold);margin-bottom:44px;
   opacity:0;transition:opacity .9s var(--ease) .3s;
@@ -618,7 +715,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .sm-spec{flex:1;padding:20px 0 20px 22px;border-right:1px solid var(--border)}
 .sm-spec:last-child{border-right:none}
 .sm-spec-n{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:clamp(24px,2.8vw,38px);font-weight:300;letter-spacing:-.02em;
   color:var(--gold);line-height:1;
 }
@@ -700,11 +797,11 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .bp-eye::before,.bp-eye::after{content:'';display:block;width:28px;height:1px;background:var(--gold)}
 .bp-title{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:clamp(44px,5.5vw,80px);font-weight:300;letter-spacing:-.02em;line-height:.95;
   color:var(--white);
 }
-.bp-title em{font-style:italic;color:var(--gold)}
+.bp-title em{font-style:normal;color:var(--gold)}
 .bp-steps{
   display:grid;grid-template-columns:1fr 1fr 1fr;
   gap:0;position:relative;
@@ -724,7 +821,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .bp-sec.vis .bp-step:nth-child(2){opacity:1;transform:none;transition-delay:.26s}
 .bp-sec.vis .bp-step:nth-child(3){opacity:1;transform:none;transition-delay:.42s}
 .bp-num{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:58px;font-weight:300;line-height:1;
   color:transparent;-webkit-text-stroke:1px rgba(200,160,106,.35);
   margin-bottom:32px;display:block;
@@ -739,7 +836,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .bp-step:hover .bp-icon{border-color:rgba(200,160,106,.6);background:rgba(200,160,106,.1)}
 .bp-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .bp-step-title{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:28px;font-weight:300;letter-spacing:-.01em;
   color:var(--white);margin-bottom:16px;
 }
@@ -794,12 +891,12 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .cta-eye::before,.cta-eye::after{content:'';display:block;width:28px;height:1px;background:var(--gold)}
 .cta-title{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:clamp(52px,7.5vw,110px);font-weight:300;
   letter-spacing:-.02em;line-height:.9;
   color:var(--white);margin-bottom:32px;
 }
-.cta-title em{font-style:italic;color:var(--gold)}
+.cta-title em{font-style:normal;color:var(--gold)}
 .cta-sub{
   font-size:13px;font-weight:300;line-height:1.85;
   color:var(--dim);max-width:480px;margin:0 auto 52px;
@@ -811,7 +908,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .cta-line-bar{flex:1;height:1px;background:var(--border)}
 .cta-tel{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:15px;font-weight:300;letter-spacing:.06em;
   color:rgba(245,240,232,.35);white-space:nowrap;
 }
@@ -838,11 +935,11 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .tk-eye::before{content:'';display:block;width:36px;height:1px;background:var(--gold)}
 .tk-title{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:clamp(52px,6.5vw,96px);font-weight:300;letter-spacing:-.02em;line-height:.9;
   color:var(--white);
 }
-.tk-title em{font-style:italic;color:var(--gold)}
+.tk-title em{font-style:normal;color:var(--gold)}
 .tk-intro{
   margin-top:20px;max-width:520px;
   font-size:13px;font-weight:300;line-height:1.8;color:var(--dim);
@@ -885,7 +982,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 }
 .tk-card:hover .tk-card-badge{opacity:1;transform:none}
 .tk-card-name{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Inter',serif;
   font-size:clamp(26px,3vw,40px);font-weight:300;letter-spacing:-.01em;
   color:var(--white);line-height:1;margin-bottom:8px;
 }
@@ -925,7 +1022,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .ft{background:var(--black);position:relative;overflow:hidden}
 .ft::before{content:'';position:absolute;top:0;left:7vw;right:7vw;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,106,.38) 30%,rgba(200,160,106,.38) 70%,transparent)}
 .ft-brand-bar{display:flex;align-items:flex-start;gap:64px;padding:64px 7vw 48px;border-bottom:1px solid rgba(245,240,232,.06)}
-.ft-brand-logo{height:34px;width:auto;flex-shrink:0;filter:brightness(0) invert(1);opacity:.75}
+.ft-brand-logo{height:80px;width:auto;flex-shrink:0;opacity:.9}
 .ft-brand-info{flex:1;display:flex;gap:56px;align-items:flex-start}
 .ft-brand-sub{font-size:13px;font-weight:300;color:var(--dim);line-height:1.82;flex:1;min-width:200px}
 .ft-brand-badges{display:flex;flex-wrap:wrap;gap:7px;flex:1}
@@ -953,22 +1050,74 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 .ft-legal{display:flex;gap:20px}
 .ft-legal a{font-size:11px;font-weight:300;color:rgba(245,240,232,.26);text-decoration:none;letter-spacing:.04em;transition:color .2s}
 .ft-legal a:hover{color:var(--gold)}
-@media(max-width:900px){
-  .ft-brand-bar{flex-direction:column;gap:24px;padding:52px 5vw 40px}
-  .ft-brand-info{flex-direction:column;gap:18px}
-  .ft-cols{grid-template-columns:1fr 1fr;gap:40px;padding:40px 5vw 48px}
-  .ft-col{padding-right:0}
-  .ft-col:last-child{grid-column:1 / -1}
-}
-@media(max-width:560px){
-  .ft-cols{grid-template-columns:1fr;gap:36px}
-  .ft-col:last-child{grid-column:auto}
-  .ft-bottom{flex-direction:column;align-items:flex-start;gap:12px}
-}
+@media(max-width:900px){.ft-brand-bar{flex-direction:column;gap:24px;padding:52px 5vw 40px}.ft-brand-info{flex-direction:column;gap:18px}.ft-cols{grid-template-columns:1fr 1fr;gap:40px;padding:40px 5vw 48px}.ft-col{padding-right:0}.ft-col:last-child{grid-column:1/-1}}
+@media(max-width:560px){.ft-cols{grid-template-columns:1fr;gap:36px}.ft-col:last-child{grid-column:auto}.ft-bottom{flex-direction:column;align-items:flex-start;gap:12px}}.td-sec{padding:120px 7vw 100px;border-top:1px solid var(--border);overflow:hidden;background:var(--off-black);position:relative}
+.td-hd{margin-bottom:72px;opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.td-sec.vis .td-hd{opacity:1;transform:none}
+.td-eye{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.td-eye::before{content:'';display:block;width:36px;height:1px;background:var(--gold)}
+.td-title{font-family:'Inter',serif;font-size:clamp(48px,6vw,88px);font-weight:400;letter-spacing:-.02em;line-height:.9;color:var(--white)}
+.td-title em{font-style:normal;color:var(--gold)}
+.td-lead{margin-top:18px;max-width:560px;font-size:14px;font-weight:300;line-height:1.8;color:var(--dim)}
+.td-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.td-card{position:relative;height:480px;border-radius:16px;overflow:hidden;border:1px solid var(--border);cursor:none;opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease),border-color .4s}
+.td-card:hover{border-color:rgba(200,160,106,.38)}
+.td-sec.vis .td-card:nth-child(1){opacity:1;transform:none;transition-delay:.10s}
+.td-sec.vis .td-card:nth-child(2){opacity:1;transform:none;transition-delay:.22s}
+.td-sec.vis .td-card:nth-child(3){opacity:1;transform:none;transition-delay:.34s}
+.td-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.68) saturate(.8);transition:transform 1.1s var(--ease),filter .6s}
+.td-card:hover .td-card-img{transform:scale(1.06);filter:brightness(.92) saturate(1.05)}
+.td-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,6,.92) 0%,rgba(8,8,6,.28) 55%,transparent 100%)}
+.td-card-body{position:absolute;bottom:0;left:0;right:0;padding:28px 28px 32px}
+.td-card-num{font-size:9px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+.td-card-name{font-family:'Inter',serif;font-size:30px;font-weight:400;letter-spacing:-.02em;color:var(--white);line-height:1.05;margin-bottom:12px}
+.td-card-desc{font-size:12px;font-weight:300;line-height:1.7;color:var(--dim);margin-bottom:18px}
+.td-card-tag{display:inline-flex;align-items:center;padding:6px 14px;border:1px solid rgba(200,160,106,.3);border-radius:100px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+@media(max-width:900px){.td-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.td-grid{grid-template-columns:1fr}.td-card{height:360px}.td-sec{padding:60px 5vw 60px}}
 
+/* ══ VIDEO HERO ══ */
+.mk-hero{position:relative;min-height:88svh;overflow:hidden}
+.mk-hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.mk-hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to right,rgba(8,8,6,.88) 0%,rgba(8,8,6,.55) 45%,rgba(8,8,6,.18) 75%,transparent 100%),
+    linear-gradient(to top,rgba(8,8,6,.72) 0%,transparent 40%),
+    linear-gradient(to bottom,rgba(8,8,6,.48) 0%,transparent 24%)
+}
+.mk-hero .hero-intro{z-index:2}
+.mk-hero .h-statbar{opacity:1}
+
+html.is-mobile .mk-hero{min-height:82svh!important}
+html.is-mobile .mk-hero-vid{object-fit:cover!important;object-position:center center!important}
+@media(max-width:480px){
+  .mk-hero{min-height:100svh!important}
+  .mk-hero-vid{top:44%!important;bottom:0!important;left:0!important;right:0!important;height:auto!important;object-fit:cover!important;object-position:center top!important}
+  .mk-hero .hero-intro{top:90px!important}
+}
+html.is-mobile .mk-hero-overlay{background:linear-gradient(to top,rgba(8,8,6,.8) 0%,transparent 40%),linear-gradient(to bottom,rgba(8,8,6,.6) 0%,transparent 30%)!important}
+html.is-mobile .mk-hero .hero-intro{top:100px!important;left:5vw!important;right:5vw!important;max-width:none!important;transform:none!important;text-align:left!important}
+html.is-mobile .mk-hero .h-statbar{display:none!important}
+html.is-mobile .mk-hero .h-pills{display:none!important}
+html.is-mobile .mk-hero .h-sub{display:none!important}
+html.is-mobile .mk-hero .h-title-row span{font-size:30px!important;line-height:1.0!important}
+.mk-hero-mobile-cta{display:none;position:absolute;bottom:32px;left:5vw;right:5vw;z-index:4;text-align:center}
+html.is-mobile .mk-hero-mobile-cta{display:block!important}
+/* Flash-Fix: CSS media query setzt contain sofort vor JS-Klasse */
+@media(max-width:900px){
+  .mk-hero-vid{object-fit:contain!important;background:var(--black);object-position:center center!important}
+}
+.mk-hero-mobile-cta a{display:block;padding:15px;border:1px solid rgba(200,160,106,.5);color:var(--gold);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;background:rgba(8,8,6,.4);backdrop-filter:blur(8px)}
+
+@media(max-width:1300px){.nav-links,.nav-btn{display:none!important}.nav-hamburger{display:flex!important}}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSXMBDGV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <div id="noise"></div>
 <div id="cur"></div>
@@ -977,164 +1126,110 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
-  <a href="motiv-site.html" class="nav-logo"><img src="Logos/motiv-logo.svg" alt="motiv"></a>
+  <a href="motiv-site.html" class="nav-logo"><img src="Logos/motiv-logo-transparent.png" alt="motiv"></a>
   <ul class="nav-links">
-    <li><a href="#">Markisen</a></li>
     <li><a href="hausturen.html">Haustüren</a></li>
-    <li><a href="#">Smart Home</a></li>
-    <li><a href="#">Ausstellung</a></li>
+    <li><a href="fenster.html">Fenster</a></li>
+    <li><a href="markiese.html" class="active">Terrassen</a></li>
+    <li><a href="rolllaeden.html">Sonnenschutz</a></li>
+    <li><a href="service-reparatur.html">Service</a></li>
+    <li><a href="ueber-uns.html">Über uns</a></li>
   </ul>
-  <a href="motiv-site.html#kontakt" class="nav-btn">Beratung anfragen</a>
+  <a href="motiv-site.html?von=markisen#kontakt" class="nav-btn">Beratung anfragen</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <button class="nav-mobile-close" id="navMobileClose">✕ Schließen</button>
+  <a href="hausturen.html">Haustüren</a>
+  <a href="fenster.html">Fenster</a>
+  <a href="markiese.html">Terrassen</a>
+  <a href="rolllaeden.html">Sonnenschutz</a>
+  <a href="service-reparatur.html">Service</a>
+  <a href="ueber-uns.html">Über uns</a>
+  <a href="motiv-site.html?von=markisen#kontakt" style="color:var(--gold)">Beratung anfragen</a>
+</div>
 
-<!-- ══ HERO SEQUENCE ══ -->
-<section class="hero-seq" id="heroSeq">
-  <div class="hero-stage" id="heroStage">
+<!-- ══ HERO ══ -->
+<section class="mk-hero" id="mkHero">
+  <video class="mk-hero-vid" autoplay muted loop playsinline>
+    <source src="Markise/markise-hero.mp4" type="video/mp4">
+  </video>
+  <div class="mk-hero-overlay"></div>
 
-    <canvas id="heroCanvas"></canvas>
+  <div class="hero-intro" id="heroIntro">
+    <div class="h-eyebrow">
+      <span class="h-eyebrow-bar"></span>
+      <span class="h-eyebrow-txt">Recklinghausen · Terrassen · Sonnenschutz</span>
+    </div>
+    <h1 class="h-title" id="hTitle">
+      <span class="h-title-row"><span>Mehr als</span></span>
+      <span class="h-title-row"><span>ein <em class="italic-gold">Schatten.</em></span></span>
+      <span class="h-title-row"><span>Ein Gefühl.</span></span>
+    </h1>
+    <p class="h-sub" id="hSub">
+      Terassendachlösungen &amp; Sonnenschutz —<br>
+      Stil, Komfort und Langlebigkeit in einem.
+    </p>
+    <div class="h-pills" id="hPills">
+      <span class="h-pill">Handarbeit</span>
+      <span class="h-pill">Motorisiert</span>
+      <span class="h-pill">Smart Home Ready</span>
+      <span class="h-pill">100% Maßanfertigung</span>
+    </div>
+  </div>
 
+  <div class="mk-hero-mobile-cta">
+    <a href="#tdSec">Terassendachlösungen ↓</a>
+  </div>
 
-    <div class="hero-vignette"></div>
+  <div class="h-statbar" id="heroStats">
+    <div class="h-stat"><div class="h-stat-n">25<span style="color:var(--gold);font-size:.6em">+</span></div><div class="h-stat-l">Jahre Erfahrung</div></div>
+    <div class="h-stat"><div class="h-stat-n">1.000 m²</div><div class="h-stat-l">Ausstellung</div></div>
+    <div class="h-stat"><div class="h-stat-n">Motorisiert</div><div class="h-stat-l">&amp; Smart Home</div></div>
+    <div class="h-stat"><div class="h-stat-n">100%</div><div class="h-stat-l">Maßanfertigung</div></div>
+  </div>
 
-    <!-- Phase 1: Intro text (fades out as user starts scrolling) -->
-    <div class="hero-intro" id="heroIntro">
-      <div class="h-eyebrow">
-        <span class="h-eyebrow-bar"></span>
-        <span class="h-eyebrow-txt">Recklinghausen · Markisen · Sonnenschutz</span>
-      </div>
-      <h1 class="h-title" id="hTitle">
-        <span class="h-title-row"><span>Mehr als</span></span>
-        <span class="h-title-row"><span>ein <em class="italic-gold">Schatten.</em></span></span>
-        <span class="h-title-row"><span>Ein Gefühl.</span></span>
-      </h1>
-      <p class="h-sub" id="hSub">
-        Maßgefertigte Markisen für Ihre Terrasse —<br>
-        Stil, Komfort und Langlebigkeit in einem.
-      </p>
-      <div class="h-pills" id="hPills">
-        <span class="h-pill">Handarbeit</span>
-        <span class="h-pill">Motorisiert</span>
-        <span class="h-pill">Smart Home Ready</span>
-        <span class="h-pill">100% Maßanfertigung</span>
+</section>
+
+<!-- ══ TERASSENDACHLÖSUNG ══ -->
+<section class="td-sec" id="tdSec">
+  <div class="td-hd">
+    <div class="td-eye">Terrassengestaltung · · Recklinghausen</div>
+    <h2 class="td-title">Die Terrasse,<br><em>vollständig gedacht.</em></h2>
+    <p class="td-lead">Vom motorisierten Lamellendach bis zum eleganten Terrassendach — wir schaffen wetterunabhängige Außenräume, die das ganze Jahr nutzbar sind.</p>
+  </div>
+  <div class="td-grid">
+
+    <div class="td-card">
+      <img class="td-card-img" src="Markise/pergola/artares-lamellendach-neu.jpg" alt="Artares Lamellendach">
+      <div class="td-card-overlay"></div>
+      <div class="td-card-body">
+        <div class="td-card-num">01</div>
+        <div class="td-card-name">Lamellendach</div>
+        <p class="td-card-desc">Lamellen auf Knopfdruck — Lüftung, Beschattung und Regenschutz in einem System. Ganzjährig nutzbar.</p>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="h-scroll" id="hScroll">
-      <span class="scroll-wire"></span>
-      <span class="scroll-lbl">Scrollen</span>
+    <div class="td-card">
+      <img class="td-card-img" src="Markise/pergola/plaza-viva-neu.jpg" alt="Plaza Viva">
+      <div class="td-card-overlay"></div>
+      <div class="td-card-body">
+        <div class="td-card-num">02</div>
+        <div class="td-card-name">Pergola-Markise</div>
+        <p class="td-card-desc">Freistehende Pergola-Markise mit Tuchbespannung — elegant, wetterfest und in hunderten Tuchdesigns erhältlich.</p>
+      </div>
     </div>
 
-    <!-- Animation progress -->
-    <div class="hero-prog-wrap" id="heroProg">
-      <div class="hero-prog-track"><div class="hero-prog-fill" id="heroFill"></div></div>
-      <span class="hero-prog-pct" id="heroPct">0%</span>
-    </div>
-
-    <!-- ── INFO PANELS ── -->
-    <div class="hero-info" id="heroInfo">
-
-      <!-- Panel 1: Die Terrasse, neu gedacht -->
-      <div class="hi-panel hi-p1" id="hiP1">
-        <div class="hi-p1-eye">Sonnenschutz · Markisen · Recklinghausen</div>
-        <div class="hi-p1-row"><span class="hi-p1-line">Die Terrasse,</span></div>
-        <div class="hi-p1-row"><span class="hi-p1-line">neu</span></div>
-        <div class="hi-p1-row"><span class="hi-p1-line"><em>gedacht.</em></span></div>
+    <div class="td-card">
+      <img class="td-card-img" src="Markise/pergola/terrassendach-glas-neu.webp" alt="Weinor Terrassendach">
+      <div class="td-card-overlay"></div>
+      <div class="td-card-body">
+        <div class="td-card-num">03</div>
+        <div class="td-card-name">Terrassendach</div>
+        <p class="td-card-desc">Festes Aluminium-Dach — maßgefertigt, wetterfest und langlebig. Maximaler Schutz für Ihre Terrasse das ganze Jahr.</p>
       </div>
-
-      <!-- Panel 2: Quote -->
-      <div class="hi-panel hi-p2" id="hiP2">
-        <span class="hi-p2-mark">"</span>
-        <div class="hi-p2-row"><span class="hi-p2-line">Eine Markise verwandelt</span></div>
-        <div class="hi-p2-row"><span class="hi-p2-line">jeden Außenraum in ein</span></div>
-        <div class="hi-p2-row"><span class="hi-p2-line">Zuhause.</span></div>
-        <div class="hi-p2-attr">— motiv · Recklinghausen</div>
-      </div>
-
-      <!-- Panel 3: Kassette (video 1→2 crossfade happens mid-panel at 45%) -->
-      <div class="hi-panel hi-p3" id="hiP3">
-        <div class="hi-p3-left">
-          <div class="hi-p3-label">Kassette</div>
-          <div class="hi-p3-rule"></div>
-          <div class="hi-p3-concept">Zeitlos · Raffiniert</div>
-        </div>
-        <div class="hi-p3-right">
-          <p class="hi-p3-slogan">"Eleganz, die sich entfaltet."</p>
-          <p class="hi-p3-body">Die Kassetten-Markise schützt Tuch und Mechanik vollständig im geschlossenen Zustand. Schlichte Eleganz trifft auf maximale Langlebigkeit — ideal für anspruchsvolle Architektur. Ob manuell, per Funk oder mit Smart-Home-Integration: Komfort nach Maß.</p>
-        </div>
-      </div>
-
-      <!-- Panel 4: Pergola -->
-      <div class="hi-panel hi-p3" id="hiP4">
-        <div class="hi-p3-left">
-          <div class="hi-p3-label">Pergola</div>
-          <div class="hi-p3-rule"></div>
-          <div class="hi-p3-concept">Offen · Großzügig</div>
-        </div>
-        <div class="hi-p3-right">
-          <p class="hi-p3-slogan">"Raum ohne Grenzen."</p>
-          <p class="hi-p3-body">Die Pergola-Markise überspannt große Flächen und schafft großzügige Freiräume unter freiem Himmel. Robust genug für Wind und Wetter, elegant genug für höchste Ansprüche. Ein echtes Architekturstück für Ihre Außenanlage.</p>
-        </div>
-      </div>
-
-      <!-- Panel 5: Ihr Stil, Ihre Markise -->
-      <div class="hi-panel hi-p4" id="hiPV">
-        <div class="hi-p4-row"><span class="hi-p4-line">Ihr Stil.</span></div>
-        <div class="hi-p4-row"><span class="hi-p4-line"><em>Ihre Markise.</em></span></div>
-        <p class="hi-p4-sub">Jede Markise ein Unikat — kreiert nach Ihrem Geschmack und den Gegebenheiten vor Ort.</p>
-      </div>
-
-      <!-- Panel 6: Halbkassette -->
-      <div class="hi-panel hi-p3" id="hiPH">
-        <div class="hi-p3-left">
-          <div class="hi-p3-label">Halbkassette</div>
-          <div class="hi-p3-rule"></div>
-          <div class="hi-p3-concept">Kompakt · Vielseitig</div>
-        </div>
-        <div class="hi-p3-right">
-          <p class="hi-p3-slogan">"Flexibel. Funktional. Schön."</p>
-          <p class="hi-p3-body">Die Halbkassetten-Markise vereint Schutz und Ästhetik auf engstem Raum. Das Tuch wird halb geborgen — kompakt in der Montage, flexibel in der Nutzung. Ideal für Balkone und Terrassen, wo Platz und Stil gleichermaßen zählen.</p>
-        </div>
-      </div>
-
-      <!-- Panel 7: Bridge -->
-      <div class="hi-panel hi-p4" id="hiP7">
-        <div class="hi-p4-row"><span class="hi-p4-line">Sonnenschutz,</span></div>
-        <div class="hi-p4-row"><span class="hi-p4-line"><em>der begeistert.</em></span></div>
-        <p class="hi-p4-sub">Jede Markise wird nach Maß geplant, gefertigt und montiert — für Sie und Ihr Zuhause.</p>
-      </div>
-
-      <!-- Panel 8: Final CTA -->
-      <div class="hi-panel hi-p5" id="hiP5">
-        <div class="hi-p5-eye">Welche Markise ist die Ihre?</div>
-        <p class="hi-p5-intro">
-          Wählen Sie Ihren Sonnenschutz — wir planen, liefern und montieren.<br>
-          Besuchen Sie uns in unserer 1.000 m² Ausstellung in Recklinghausen.
-        </p>
-        <div class="hi-p5-tags">
-          <span class="hi-tag">Kassetten-Markise</span>
-          <span class="hi-tag">Halbkassette</span>
-          <span class="hi-tag">Pergola</span>
-          <span class="hi-tag">Sonnensegel</span>
-          <span class="hi-tag">Motorisiert</span>
-          <span class="hi-tag">Smart Home</span>
-        </div>
-        <div class="hi-p5-cta-group">
-          <a href="#" class="hi-p5-cat-btn">Kassetten-Markisen</a>
-          <a href="#" class="hi-p5-cat-btn">Pergola-Markisen</a>
-          <a href="#" class="hi-p5-cat-btn">Sonnensegel</a>
-          <a href="mailto:info@motiv-fenster.de" class="hi-p5-cta">Beratung anfragen →</a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Stats bar -->
-    <div class="h-statbar" id="heroStats">
-      <div class="h-stat"><div class="h-stat-n">25<span style="color:var(--gold);font-size:.6em">+</span></div><div class="h-stat-l">Jahre Erfahrung</div></div>
-      <div class="h-stat"><div class="h-stat-n">1.000 m²</div><div class="h-stat-l">Ausstellung</div></div>
-      <div class="h-stat"><div class="h-stat-n">Motorisiert</div><div class="h-stat-l">&amp; Smart Home</div></div>
-      <div class="h-stat"><div class="h-stat-n">100%</div><div class="h-stat-l">Maßanfertigung</div></div>
     </div>
 
   </div>
@@ -1144,7 +1239,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 <section class="mod-sec" id="modSec">
 
   <div class="mod-hd">
-    <div class="mod-eye">weinor · 7 Systeme · Maßanfertigung</div>
+    <div class="mod-eye">· 7 Systeme · Maßanfertigung</div>
     <h2 class="mod-title-sec">Unsere <em>Modelle</em></h2>
     <p class="mod-intro-txt">Von der offenen Markise bis zum kubischen Kassettensystem — sieben Markisen für jeden Stil, jede Fassade, jedes Maß.</p>
   </div>
@@ -1152,59 +1247,64 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   <div class="mod-scroll">
     <div class="mod-row">
 
-      <!-- 1: TOPAS II -->
+      <!-- 1: CASSITA II -->
       <div class="mod-card">
         <div class="mod-vis">
           <span class="mod-vis-num">01</span>
-          <img src="Markise/modelle/offene-markise-topas.jpg" alt="Topas II Offenmarkise" loading="lazy">
-          <img class="mod-hi" src="Markise/modelle/topas2-hover.webp" alt="Topas II Detail" loading="lazy">
-        </div>
-        <div class="mod-body">
-          <div class="mod-cat">Offenmarkise</div>
-          <div class="mod-name">Topas II</div>
-          <div class="mod-dims">
-            <div class="mod-dim"><div class="mod-dim-v">12 m</div><div class="mod-dim-l">Breite</div></div>
-            <div class="mod-dim"><div class="mod-dim-v">4 m</div><div class="mod-dim-l">Ausfall</div></div>
-          </div>
-          <p class="mod-feat">Ohne Kassette — ideal für überdachte Terrassen, Hotels &amp; Gastronomie. Konfigurierbar als Mehrfeld-Anlage.</p>
-        </div>
-      </div>
-
-      <!-- 2: SEMINA -->
-      <div class="mod-card">
-        <div class="mod-vis">
-          <span class="mod-vis-num">02</span>
-          <img src="Markise/modelle/halbkassetten-markise-semina.jpg" alt="Semina Halbkassette" loading="lazy">
-          <img class="mod-hi" src="Markise/modelle/semina-hover.jpg" alt="Semina Detail" loading="lazy">
-        </div>
-        <div class="mod-body">
-          <div class="mod-cat">Halbkassette</div>
-          <div class="mod-name">Semina</div>
-          <div class="mod-dims">
-            <div class="mod-dim"><div class="mod-dim-v">7 m</div><div class="mod-dim-l">Breite</div></div>
-            <div class="mod-dim"><div class="mod-dim-v">3,5 m</div><div class="mod-dim-l">Ausfall</div></div>
-          </div>
-          <p class="mod-feat">Halbrunde Kassette schützt das Tuch halb. Besonders beliebt für Balkone — kompakt, stilvoll, wandsicher.</p>
-        </div>
-      </div>
-
-      <!-- 3: CASSITA II -->
-      <div class="mod-card">
-        <div class="mod-vis">
-          <span class="mod-vis-num">03</span>
           <img src="Markise/modelle/kassetten-markise-cassita2-gruen.jpg" alt="Cassita II Kassette" loading="lazy">
           <img class="mod-hi" src="Markise/modelle/kassetten-markise-cassita2-kassette.jpg" alt="Cassita II Detail" loading="lazy">
         </div>
         <div class="mod-body">
           <div class="mod-cat">Kassette</div>
-          <div class="mod-name">Cassita II</div>
+          <div class="mod-name">Kassetten-Markise</div>
+          <div class="mod-model">Cassita II</div>
           <div class="mod-dims">
             <div class="mod-dim"><div class="mod-dim-v">5,5 m</div><div class="mod-dim-l">Breite</div></div>
             <div class="mod-dim"><div class="mod-dim-v">3 m</div><div class="mod-dim-l">Ausfall</div></div>
           </div>
           <p class="mod-feat">Ovale Kassette mit verzerrungsfreier OptiNut-Welle. Tuch vollständig geborgen — maximaler Schutz &amp; LED-Option.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Kassetten-Markise#kontakt">Auswählen →</a>
         </div>
       </div>
+      <!-- 2: SMAILA -->
+      <div class="mod-card">
+        <div class="mod-vis">
+          <span class="mod-vis-num">02</span>
+          <img src="Markise/modelle/kassetten-markise-smaila1.jpg" alt="Smaila Kassette LED" loading="lazy">
+          <img class="mod-hi" src="Markise/modelle/kassetten-markise-smaila2.jpg" alt="Smaila Detail" loading="lazy">
+        </div>
+        <div class="mod-body">
+          <div class="mod-cat">Kassette · LED · NEU</div>
+          <div class="mod-name">Kassette mit LED</div>
+          <div class="mod-model">Smaila</div>
+          <div class="mod-dims">
+            <div class="mod-dim"><div class="mod-dim-v">5,5 m</div><div class="mod-dim-l">Breite</div></div>
+            <div class="mod-dim"><div class="mod-dim-v">3,5 m</div><div class="mod-dim-l">Ausfall</div></div>
+          </div>
+          <p class="mod-feat">Kompakte Kubik-Kassette mit LED, Solar-Option &amp; BiConnect Smart Home. Neu bei motiv.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Kassette+mit+LED#kontakt">Auswählen →</a>
+        </div>
+      </div>
+      <!-- 3: SEMINA LIFE -->
+      <div class="mod-card">
+        <div class="mod-vis">
+          <span class="mod-vis-num">03</span>
+          <img src="Markise/modelle/semina-life-lifestyle.jpg" alt="Semina Life Kassette LED Abend" loading="lazy">
+          <img class="mod-hi" src="Markise/modelle/semina-life-led.jpg" alt="Semina Life mit LED Detail" loading="lazy">
+        </div>
+        <div class="mod-body">
+          <div class="mod-cat">Kassette · LED · Einstieg</div>
+          <div class="mod-name">Einstiegs-Kassette</div>
+          <div class="mod-model">Semina Life</div>
+          <div class="mod-dims">
+            <div class="mod-dim"><div class="mod-dim-v">6,5 m</div><div class="mod-dim-l">Breite</div></div>
+            <div class="mod-dim"><div class="mod-dim-v">4 m</div><div class="mod-dim-l">Ausfall</div></div>
+          </div>
+          <p class="mod-feat">Kassette in Edelstahloptik mit LongLife-Arm &amp; integrierter LED. 171 Tuchdessins, über 200 Gestellfarben — reddot award 2016.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Einstiegs-Kassette#kontakt">Auswählen →</a>
+        </div>
+      </div>
+
 
       <!-- 4: OPAL DESIGN II -->
       <div class="mod-card">
@@ -1215,15 +1315,16 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
         </div>
         <div class="mod-body">
           <div class="mod-cat">Kassette · LED</div>
-          <div class="mod-name">Opal Design II</div>
+          <div class="mod-name">Design-Kassette</div>
+          <div class="mod-model">Opal Design II</div>
           <div class="mod-dims">
             <div class="mod-dim"><div class="mod-dim-v">6,5 m</div><div class="mod-dim-l">Breite</div></div>
             <div class="mod-dim"><div class="mod-dim-v">4 m</div><div class="mod-dim-l">Ausfall</div></div>
           </div>
           <p class="mod-feat">Volant Plus blockiert Blendung &amp; Einblicke. Als Doppelanlage bis 12 m Breite — Windstärke Bft 5.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Design-Kassette#kontakt">Auswählen →</a>
         </div>
       </div>
-
       <!-- 5: KUBATA -->
       <div class="mod-card">
         <div class="mod-vis">
@@ -1233,16 +1334,17 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
         </div>
         <div class="mod-body">
           <div class="mod-cat">Kassette · LED</div>
-          <div class="mod-name">Kubata</div>
+          <div class="mod-name">Kubische Kassette</div>
+          <div class="mod-model">Kubata</div>
           <div class="mod-dims">
             <div class="mod-dim"><div class="mod-dim-v">6,5 m</div><div class="mod-dim-l">Breite</div></div>
             <div class="mod-dim"><div class="mod-dim-v">4 m</div><div class="mod-dim-l">Ausfall</div></div>
           </div>
           <p class="mod-feat">Kubisches Bauhaus-Design mit integriertem Entwässerungssystem — markante Linien für moderne Architektur.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Kubische-Kassette#kontakt">Auswählen →</a>
         </div>
       </div>
-
-      <!-- 6: I/K/N 2000 -->
+      <!-- 6: I · K · N 2000 -->
       <div class="mod-card">
         <div class="mod-vis">
           <span class="mod-vis-num">06</span>
@@ -1251,30 +1353,52 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
         </div>
         <div class="mod-body">
           <div class="mod-cat">Kassette · Klassisch</div>
-          <div class="mod-name">I · K · N 2000</div>
+          <div class="mod-name">Klassische Kassette</div>
+          <div class="mod-model">I·K·N 2000</div>
           <div class="mod-dims">
             <div class="mod-dim"><div class="mod-dim-v">7 m</div><div class="mod-dim-l">Breite</div></div>
             <div class="mod-dim"><div class="mod-dim-v">3,5 m</div><div class="mod-dim-l">Ausfall</div></div>
           </div>
           <p class="mod-feat">Drei Varianten für jede Wandsituation: I (glatt), K (uneben), N (Einputz). Das bewährte Klassiker-System.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Klassische-Kassette#kontakt">Auswählen →</a>
         </div>
       </div>
-
-      <!-- 7: SMAILA -->
+      <!-- 7: TOPAS II -->
       <div class="mod-card">
         <div class="mod-vis">
           <span class="mod-vis-num">07</span>
-          <img src="Markise/modelle/kassetten-markise-smaila1.jpg" alt="Smaila Kassette LED" loading="lazy">
-          <img class="mod-hi" src="Markise/modelle/kassetten-markise-smaila2.jpg" alt="Smaila Detail" loading="lazy">
+          <img src="Gallery/topas2-new.jpg" alt="Topas II Offenmarkise" loading="lazy">
+          <img class="mod-hi" src="Markise/modelle/topas2-hover.webp" alt="Topas II Detail" loading="lazy">
         </div>
         <div class="mod-body">
-          <div class="mod-cat">Kassette · LED · NEU</div>
-          <div class="mod-name">Smaila</div>
+          <div class="mod-cat">Offenmarkise</div>
+          <div class="mod-name">Offenmarkise</div>
+          <div class="mod-model">Topas II</div>
           <div class="mod-dims">
-            <div class="mod-dim"><div class="mod-dim-v">5,5 m</div><div class="mod-dim-l">Breite</div></div>
+            <div class="mod-dim"><div class="mod-dim-v">12 m</div><div class="mod-dim-l">Breite</div></div>
+            <div class="mod-dim"><div class="mod-dim-v">4 m</div><div class="mod-dim-l">Ausfall</div></div>
+          </div>
+          <p class="mod-feat">Ohne Kassette — ideal für überdachte Terrassen, Hotels &amp; Gastronomie. Konfigurierbar als Mehrfeld-Anlage.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Topas-II-Offenmarkise#kontakt">Auswählen →</a>
+        </div>
+      </div>
+      <!-- 8: SEMINA -->
+      <div class="mod-card">
+        <div class="mod-vis">
+          <span class="mod-vis-num">08</span>
+          <img src="Markise/modelle/halbkassetten-markise-semina.jpg" alt="Semina Halbkassette" loading="lazy">
+          <img class="mod-hi" src="Markise/modelle/semina-hover.jpg" alt="Semina Detail" loading="lazy">
+        </div>
+        <div class="mod-body">
+          <div class="mod-cat">Halbkassette</div>
+          <div class="mod-name">Halbkassette</div>
+          <div class="mod-model">Semina</div>
+          <div class="mod-dims">
+            <div class="mod-dim"><div class="mod-dim-v">7 m</div><div class="mod-dim-l">Breite</div></div>
             <div class="mod-dim"><div class="mod-dim-v">3,5 m</div><div class="mod-dim-l">Ausfall</div></div>
           </div>
-          <p class="mod-feat">Kompakte Kubik-Kassette mit LED, Solar-Option &amp; weinor BiConnect Smart Home. Neu bei motiv.</p>
+          <p class="mod-feat">Halbrunde Kassette schützt das Tuch halb. Besonders beliebt für Balkone — kompakt, stilvoll, wandsicher.</p>
+          <a class="mod-auswahl" href="motiv-site.html?von=markiesen&modell=Semina-Halbkassette#kontakt">Auswählen →</a>
         </div>
       </div>
 
@@ -1291,63 +1415,6 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
 
 </section>
 
-<!-- ══ TUCHKOLLEKTION ══ -->
-<section class="tk-sec" id="tkSec">
-  <div class="tk-hd">
-    <div class="tk-eye">Weinor · Exklusive Kollektion</div>
-    <h2 class="tk-title">Tuch<em>kollektion</em></h2>
-    <p class="tk-intro">Stimmungsvolle Designs, nachhaltige Materialien und ausdrucksstarke Farben — die Weinor Tuchkollektionen machen Ihre Markise zum Designobjekt.</p>
-  </div>
-
-  <div class="tk-grid">
-
-    <div class="tk-card">
-      <img src="Markise/collections/col-modern-basics.jpg" alt="modern basics blue Kollektion" loading="lazy">
-      <div class="tk-card-ov"></div>
-      <div class="tk-card-info">
-        <div class="tk-card-badge">Sustainable</div>
-        <div class="tk-card-name">modern basics blue<sup style="font-size:.55em;vertical-align:super">®</sup></div>
-        <div class="tk-card-tag">Sustainable Sun Protection</div>
-        <p class="tk-card-desc">Nachhaltig produzierte Stoffe in zeitlosen Grau- und Blautönen. Zertifiziert nach Global Recycled Standard — Sonnenschutz mit gutem Gewissen.</p>
-      </div>
-    </div>
-
-    <div class="tk-card">
-      <img src="Markise/collections/col-evermore.jpg" alt="evermore Kollektion" loading="lazy">
-      <div class="tk-card-ov"></div>
-      <div class="tk-card-info">
-        <div class="tk-card-badge">Premium</div>
-        <div class="tk-card-name">evermore</div>
-        <div class="tk-card-tag">Modern Greys &amp; Beiges</div>
-        <p class="tk-card-desc">Ruhige, erdige Töne für eine zeitlose Ästhetik. Die evermore-Kollektion bringt natürliche Eleganz auf Ihre Terrasse — Jahr für Jahr.</p>
-      </div>
-    </div>
-
-    <div class="tk-card">
-      <img src="Markise/collections/col-hi-hello.jpg" alt="hi hello! Kollektion" loading="lazy">
-      <div class="tk-card-ov"></div>
-      <div class="tk-card-info">
-        <div class="tk-card-badge">Modern Colours</div>
-        <div class="tk-card-name">hi hello!</div>
-        <div class="tk-card-tag">Modern Colours</div>
-        <p class="tk-card-desc">Lebendige Farben für ausdrucksstarke Außenräume. Türkis, Orange, Grün — die hi hello!-Kollektion setzt Akzente und bringt Freude ins Freie.</p>
-      </div>
-    </div>
-
-    <div class="tk-card">
-      <img src="Markise/collections/col-my-lines.jpg" alt="my lines Kollektion" loading="lazy">
-      <div class="tk-card-ov"></div>
-      <div class="tk-card-info">
-        <div class="tk-card-badge">NEU · Exklusiv</div>
-        <div class="tk-card-name">my lines</div>
-        <div class="tk-card-tag">NEU — exklusiv bei weinor</div>
-        <p class="tk-card-desc">Klare Linien, starke Kontraste. Die neue my lines-Kollektion kombiniert geometrische Muster mit neutralen Grundtönen — exklusiv erhältlich bei weinor.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <!-- ══ MARKISEN KATALOG ══ -->
 <section class="dr-section" id="markiesen-katalog">
   <div class="dr-ambient" aria-hidden="true">
@@ -1360,14 +1427,14 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   <div class="dr-shell">
     <header class="dr-header">
       <div class="dr-header-left">
-        <div class="dr-kicker">weinor · Markisen Kollektion</div>
+        <div class="dr-kicker">· Markisen Kollektion</div>
         <h2 class="dr-title">
           <span class="dr-title-word">Markisen,</span>
           <span class="dr-title-word dr-title-word--accent">die begeistern.</span>
         </h2>
       </div>
       <div class="dr-header-right">
-        <p class="dr-lead">Vom Balkon bis zum Wintergarten, von der Terrasse bis zum Fenster — fünf weinor Produktlinien für jeden Außenraum.</p>
+        <p class="dr-lead">Vom Balkon bis zum Lamellendach, von der Pergola bis zur Terrassenüberdachung — fünf Produktlinien für jeden Außenraum.</p>
         <div class="dr-stats">
           <div class="dr-stat">
             <span class="dr-stat-num" id="dr-stat-brand">01</span>
@@ -1396,17 +1463,17 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
           </button></li>
           <li><button class="dr-brand-btn" data-brand="seiten" type="button">
             <span class="dr-brand-idx">03</span>
-            <span class="dr-brand-info"><span class="dr-brand-name">Seiten-Markise</span><span class="dr-brand-sub">Windschutz · Sichtschutz · Sonne</span></span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Sicht- &amp; Sonnenschutz</span><span class="dr-brand-sub">Screens · Zip · Seitenmarkise</span></span>
             <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button></li>
           <li><button class="dr-brand-btn" data-brand="wintergarten" type="button">
             <span class="dr-brand-idx">04</span>
-            <span class="dr-brand-info"><span class="dr-brand-name">Wintergarten</span><span class="dr-brand-sub">Innen · Außen · Ganzjährig</span></span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Terrassendach</span><span class="dr-brand-sub">Terrazza · Terrazza PUR · Ganzjährig</span></span>
             <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button></li>
-          <li><button class="dr-brand-btn" data-brand="fenster" type="button">
+          <li><button class="dr-brand-btn" data-brand="lamellendach" type="button">
             <span class="dr-brand-idx">05</span>
-            <span class="dr-brand-info"><span class="dr-brand-name">Fenster-Markise</span><span class="dr-brand-sub">UV-Schutz · Blendschutz · Sichtschutz</span></span>
+            <span class="dr-brand-info"><span class="dr-brand-name">Lamellendächer</span><span class="dr-brand-sub">Artares · Motorisiert · Ganzjährig</span></span>
             <span class="dr-brand-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </button></li>
         </ol>
@@ -1422,8 +1489,16 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
           <p class="dr-stage-text" id="dr-stage-text"></p>
           <div class="dr-stage-tags" id="dr-stage-tags"></div>
         </div>
-        <div class="dr-carousel-wrap">
-          <div class="dr-carousel" id="dr-carousel"></div>
+        <div class="dr-carousel-outer">
+          <button class="dr-nav dr-nav--prev" id="dr-nav-prev" aria-label="Zurück">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="dr-carousel-wrap">
+            <div class="dr-carousel" id="dr-carousel"></div>
+          </div>
+          <button class="dr-nav dr-nav--next" id="dr-nav-next" aria-label="Weiter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
         <div class="dr-stage-foot">
           <div class="dr-progress">
@@ -1434,7 +1509,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
               <span id="dr-counter-total">01</span>
             </div>
           </div>
-          <a href="mailto:info@motiv-fenster.de" class="dr-cta">
+          <a href="motiv-site.html?von=markisen#kontakt" class="dr-cta">
             <span>Beratung anfragen</span>
             <span class="dr-cta-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
@@ -1454,6 +1529,63 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   </button>
 </div>
 
+<!-- ══ TUCHKOLLEKTION ══ -->
+<section class="tk-sec" id="tkSec">
+  <div class="tk-hd">
+    <div class="tk-eye">Exklusive Kollektion</div>
+    <h2 class="tk-title">Tuch<em>kollektion</em></h2>
+    <p class="tk-intro">Stimmungsvolle Designs, nachhaltige Materialien und ausdrucksstarke Farben — die Tuchkollektionen machen Ihre Markise zum Designobjekt.</p>
+  </div>
+
+  <div class="tk-grid">
+
+    <div class="tk-card">
+      <img src="Markise/collections/col-modern-basics.jpg" alt="modern basics blue Kollektion" loading="lazy">
+      <div class="tk-card-ov"></div>
+      <div class="tk-card-info">
+        <div class="tk-card-badge">Nachhaltig</div>
+        <div class="tk-card-name">modern basics blue<sup style="font-size:.55em;vertical-align:super">®</sup></div>
+        <div class="tk-card-tag">Nachhaltiger Sonnenschutz</div>
+        <p class="tk-card-desc">Nachhaltig produzierte Stoffe in zeitlosen Grau- und Blautönen. Zertifiziert nach Global Recycled Standard — Sonnenschutz mit gutem Gewissen.</p>
+      </div>
+    </div>
+
+    <div class="tk-card">
+      <img src="Markise/collections/col-evermore.jpg" alt="evermore Kollektion" loading="lazy">
+      <div class="tk-card-ov"></div>
+      <div class="tk-card-info">
+        <div class="tk-card-badge">Premium</div>
+        <div class="tk-card-name">evermore</div>
+        <div class="tk-card-tag">Zeitlose Grau- &amp; Beigetöne</div>
+        <p class="tk-card-desc">Ruhige, erdige Töne für eine zeitlose Ästhetik. Die evermore-Kollektion bringt natürliche Eleganz auf Ihre Terrasse — Jahr für Jahr.</p>
+      </div>
+    </div>
+
+    <div class="tk-card">
+      <img src="Markise/collections/col-hi-hello.jpg" alt="hi hello! Kollektion" loading="lazy">
+      <div class="tk-card-ov"></div>
+      <div class="tk-card-info">
+        <div class="tk-card-badge">Lebendige Farben</div>
+        <div class="tk-card-name">hi hello!</div>
+        <div class="tk-card-tag">Lebendige Farben</div>
+        <p class="tk-card-desc">Lebendige Farben für ausdrucksstarke Außenräume. Türkis, Orange, Grün — die hi hello!-Kollektion setzt Akzente und bringt Freude ins Freie.</p>
+      </div>
+    </div>
+
+    <div class="tk-card">
+      <img src="Markise/collections/col-my-lines.jpg" alt="my lines Kollektion" loading="lazy">
+      <div class="tk-card-ov"></div>
+      <div class="tk-card-info">
+        <div class="tk-card-badge">NEU · Exklusiv</div>
+        <div class="tk-card-name">my lines</div>
+        <div class="tk-card-tag">NEU — limitierte Kollektion</div>
+        <p class="tk-card-desc">Klare Linien, starke Kontraste. Die neue my lines-Kollektion kombiniert geometrische Muster mit neutralen Grundtönen — nur in ausgewählten Fachbetrieben erhältlich.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ══ SMAILA SPOTLIGHT — removed ══ -->
 <section class="sm-spot" id="smSpot" style="display:none">
 
@@ -1463,7 +1595,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
   </div>
 
   <div class="sm-info">
-    <div class="sm-eye">weinor · TopPartner Motiv · NEU</div>
+    <div class="sm-eye">· TopPartner Motiv · NEU</div>
 
     <div class="sm-title"><span>Smaila</span></div>
     <div class="sm-sub">Die kleine kubische Markise</div>
@@ -1485,7 +1617,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
         </div>
         <div>
           <div class="sm-feat-name">Smart Home</div>
-          <div class="sm-feat-desc">weinor BiConnect<br>& Somfy kompatibel</div>
+          <div class="sm-feat-desc">BiConnect<br>& Somfy kompatibel</div>
         </div>
       </div>
       <div class="sm-feat">
@@ -1524,7 +1656,7 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
     </div>
 
     <div class="sm-cta-row">
-      <a href="mailto:info@motiv-fenster.de?subject=Anfrage Weinor Smaila" class="sm-btn-gold">Jetzt anfragen →</a>
+      <a href="motiv-site.html?von=markisen#kontakt" class="sm-btn-gold">Jetzt anfragen →</a>
       <a href="https://www.weinor.de" target="_blank" rel="noopener" class="sm-btn-outline">Mehr erfahren</a>
     </div>
   </div>
@@ -1546,6 +1678,90 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
     <span class="sm-gal-cap">Urban Living</span>
   </div>
 </div>
+
+<!-- ══ DRAUSSEN WELT ══ -->
+<section class="dw-sec" id="dwSec">
+  <div class="dw-hero">
+    <div class="dw-bg">
+      <img src="Gallery/weinorvision/terrasse-hero.webp" alt="">
+    </div>
+    <div class="dw-head">
+      <div class="dw-kicker rv">Draußen Leben · VR-Erlebnis</div>
+      <h2 class="dw-title rv d1">Ihre Terrasse.<br><em>Schon vorab erleben.</em></h2>
+      <p class="dw-sub rv d2">Erleben Sie Ihren zukünftigen Außenbereich in Virtual Reality — bevor die erste Markise montiert wird. Unser Team begleitet Sie durch die virtuelle Welt.</p>
+    </div>
+  </div>
+
+    <div class="dw-strip">
+      <div class="dw-strip-img rv">
+        <img src="Gallery/weinorvision/vr-01.webp" alt="VR-Erlebnis Terrasse" loading="lazy">
+      </div>
+      <div class="dw-strip-img rv d1">
+        <img src="Gallery/weinorvision/vr-02.webp" alt="VR-Headset Beratung" loading="lazy">
+      </div>
+      <div class="dw-strip-img rv d2">
+        <img src="Gallery/weinorvision/vr-03.webp" alt="VR-Planung Außenbereich" loading="lazy">
+      </div>
+      <div class="dw-strip-img rv d3">
+        <img src="Gallery/weinorvision/vr-04.webp" alt="Virtueller Showroom" loading="lazy">
+      </div>
+    </div>
+
+    <div class="dw-lower">
+      <div class="dw-feats rv d1">
+        <div class="dw-feats-title">Das erwartet Sie</div>
+        <div class="dw-feat">
+          <div class="dw-feat-num">01</div>
+          <div>
+            <strong>Live in der Ausstellung erleben</strong>
+            <p>Setzen Sie die VR-Brille auf und stehen Sie virtuell auf Ihrer eigenen Terrasse — mit echten Maßen, realen Produkten.</p>
+          </div>
+        </div>
+        <div class="dw-feat">
+          <div class="dw-feat-num">02</div>
+          <div>
+            <strong>Farben &amp; Modelle in Echtgröße wählen</strong>
+            <p>Vergleichen Sie Markisen, Überdachungen und Sonnenschutz direkt in der virtuellen Umgebung Ihres Zuhauses.</p>
+          </div>
+        </div>
+        <div class="dw-feat">
+          <div class="dw-feat-num">03</div>
+          <div>
+            <strong>Persönlich begleitet — ganz ohne Druck</strong>
+            <p>Unser Team führt Sie durch das Erlebnis und steht für alle Fragen zur Verfügung. Kostenfrei und unverbindlich.</p>
+          </div>
+        </div>
+        <a href="#kontakt" class="dw-feat-cta">VR-Termin vereinbaren</a>
+      </div>
+
+      <div class="dw-video-col rv d2">
+        <div class="dw-video-lbl">Video ansehen</div>
+        <div class="dw-video" id="dwVideo">
+          <img class="dw-video-thumb" src="Gallery/weinorvision/vr-headset.webp" alt="weinorVision VR-Erlebnis">
+          <div class="dw-video-overlay" id="dwOverlay" onclick="dwLoadVideo()">
+            <div class="dw-vplay-ring"></div>
+            <button class="dw-vplay-btn" aria-label="Video starten">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <span class="dw-vplay-lbl">VR-Erlebnis ansehen</span>
+          </div>
+          <!-- YouTube: src wird per JS gesetzt — Video-ID hier eintragen: -->
+          <iframe class="dw-video-frame" id="dwFrame" src="" allowfullscreen allow="autoplay"></iframe>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script>
+function dwLoadVideo(){
+  var YT_ID = 'HqRqBi0MZDY'; /* ← YouTube-Video-ID hier anpassen */
+  var frame = document.getElementById('dwFrame');
+  var overlay = document.getElementById('dwOverlay');
+  frame.src = 'https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0';
+  frame.classList.add('active');
+  overlay.style.display = 'none';
+}
+</script>
 
 <!-- ══ BERATUNGSPROZESS ══ -->
 <section class="bp-sec" id="bpSec">
@@ -1596,8 +1812,8 @@ nav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 
     <h2 class="cta-title">Ihre Markise.<br><em>Nach Maß.</em></h2>
     <p class="cta-sub">Kostenlose Beratung, persönliche Planung und professionelle Montage — alles aus einer Hand. Seit über 20 Jahren in Recklinghausen.</p>
     <div class="cta-btns">
-      <a href="#" class="sm-btn-gold">Jetzt anfragen →</a>
-      <a href="#" class="sm-btn-outline">Modelle entdecken</a>
+      <a href="motiv-site.html?von=markisen#kontakt" class="sm-btn-gold">Jetzt anfragen →</a>
+      <a href="#markiesen-katalog" class="sm-btn-outline">Modelle entdecken</a>
     </div>
     <div class="cta-line">
       <div class="cta-line-bar"></div>
@@ -1629,124 +1845,21 @@ window.addEventListener('scroll',()=>{
   $('mainNav').classList.toggle('scrolled',window.scrollY>60);
 },{passive:true});
 
-/* ── HERO FRAME SEQUENCE ── */
+/* ── HERO INTRO ANIMATION ── */
+setTimeout(()=>{
+  $('hTitle')?.classList.add('ready');
+  $('hSub')?.classList.add('ready');
+  $('hPills')?.classList.add('ready');
+}, 300);
+
+/* ── TERASSENDACHLÖSUNG REVEAL ── */
 (function(){
-  const canvas  = $('heroCanvas');
-  const ctx     = canvas.getContext('2d');
-  const section = $('heroSeq');
-
-  const heroIntro = $('heroIntro');
-  const heroStats = $('heroStats');
-  const heroProg  = $('heroProg');
-  const heroFill  = $('heroFill');
-  const heroPct   = $('heroPct');
-  const hScroll   = $('hScroll');
-  const heroInfo  = $('heroInfo');
-
-  /* Sequence 1: 200 frames  (scroll 0 → 45%)
-     Sequence 2: 208 frames  (scroll 45 → 90%)
-     Final panel: 90 → 100% */
-  const TOTAL1 = 200, TOTAL2 = 208;
-  const P1 = 0.45, P2 = 0.90;
-  const P_INTRO_OUT = 0.02, P_INTRO_GONE = 0.07;
-
-  /* ── Panel timings [el, s0, e0] with G=0.03 cross-fade window ── */
-  const PANELS = [
-    [$('hiP1'), 0.01, 0.20],
-    [$('hiP2'), 0.20, 0.38],
-    [$('hiP3'), 0.38, 0.54],   // seq switch at 0.45 mid-panel
-    [$('hiP4'), 0.54, 0.68],
-    [$('hiPV'), 0.68, 0.79],
-    [$('hiPH'), 0.79, 0.88],
-    [$('hiP7'), 0.88, 0.93],
-    [$('hiP5'), 0.93, 1.01],
-  ];
-
-  function panelState(ip, s0, e0){
-    const G   = 0.03;
-    const ent = Math.max(0, Math.min(1, (ip-s0)/G));
-    const ex  = e0 >= 1.0 ? 0 : Math.max(0, Math.min(1, (ip-e0)/G));
-    return { alpha:ent*(1-ex), ty:(1-ent)*64+ex*-44, blur:(1-ent)*7+ex*3, isIn:ent>0.5&&ex<0.5 };
-  }
-
-  function applyPanel(el, s){
-    if(!el) return;
-    el.style.opacity        = s.alpha;
-    el.style.transform      = `translateY(${s.ty}px)`;
-    el.style.filter         = `blur(${Math.round(s.blur*10)/10}px)`;
-    el.style.pointerEvents  = s.alpha > 0.1 ? 'auto' : 'none';
-    if(s.isIn) el.classList.add('p-in');
-    else       el.classList.remove('p-in');
-  }
-
-  function drawAt(i, seq){
-    const img = (seq===1 ? imgs1 : imgs2)[i];
-    if(!img?.complete || !img.naturalWidth) return;
-    const cw=canvas.width, ch=canvas.height, iw=img.naturalWidth, ih=img.naturalHeight;
-    const s = Math.max(cw/iw, ch/ih);
-    ctx.clearRect(0,0,cw,ch);
-    ctx.drawImage(img, (cw-iw*s)/2, (ch-ih*s)/2, iw*s, ih*s);
-  }
-
-  function resize(){
-    canvas.width  = canvas.clientWidth  * devicePixelRatio;
-    canvas.height = canvas.clientHeight * devicePixelRatio;
-    drawAt(currentFrame, currentSeq);
-  }
-
-  /* preload all frames */
-  const imgs1=[], imgs2=[];
-  for(let i=0;i<TOTAL1;i++){const m=new Image();m.src=`Markise/markiese01/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs1.push(m);}
-  for(let i=0;i<TOTAL2;i++){const m=new Image();m.src=`Markise/markiese02/ezgif-frame-${String(i+1).padStart(3,'0')}.webp`;imgs2.push(m);}
-
-  let currentFrame=0, currentSeq=1;
-
-  function tick(){
-    const r = section.getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
-
-    /* ── frame picker ── */
-    if(p <= P1){
-      const idx = Math.min(TOTAL1-1, Math.floor((p/P1)*TOTAL1));
-      if(idx!==currentFrame || currentSeq!==1){ currentFrame=idx; currentSeq=1; drawAt(idx,1); }
-    } else {
-      const idx = Math.min(TOTAL2-1, Math.floor(Math.min(1,(p-P1)/(P2-P1))*TOTAL2));
-      if(idx!==currentFrame || currentSeq!==2){ currentFrame=idx; currentSeq=2; drawAt(idx,2); }
-    }
-
-    /* ── progress indicator ── */
-    const seg = 0.5;
-    const ap = p<=P1 ? Math.round((p/P1)*seg*100) : Math.min(100,Math.round(seg*100+((p-P1)/(P2-P1))*seg*100));
-    heroFill.style.width = ap+'%';
-    heroPct.textContent  = ap+'%';
-    heroProg.style.opacity = p>0.03&&p<P2 ? String(Math.min(1,(p-0.03)*14)) : p>=P2 ? String(Math.max(0,(P2+0.02-p)*25)) : '0';
-
-    /* ── Intro text fade ── */
-    const introFade = p < P_INTRO_OUT ? 1 : Math.max(0, 1-(p-P_INTRO_OUT)/(P_INTRO_GONE-P_INTRO_OUT));
-    heroIntro.style.opacity        = introFade;
-    heroIntro.style.transform      = `translateY(calc(-52% + ${(1-introFade)*-32}px))`;
-    heroIntro.style.pointerEvents  = introFade > 0.05 ? 'auto' : 'none';
-
-    hScroll.style.opacity = Math.max(0, 1-p*14);
-    heroStats.style.opacity = '0';
-
-    /* ── Panels ── */
-    heroInfo.style.pointerEvents = p >= 0.01 ? 'auto' : 'none';
-    PANELS.forEach(([el, s0, e0]) => applyPanel(el, panelState(p, s0, e0)));
-
-    requestAnimationFrame(tick);
-  }
-
-  window.addEventListener('resize', resize, {passive:true});
-  resize();
-  tick();
-
-  /* trigger intro animation on load */
-  setTimeout(()=>{
-    $('hTitle')?.classList.add('ready');
-    $('hSub')?.classList.add('ready');
-    $('hPills')?.classList.add('ready');
-  }, 300);
+  const sec = $('tdSec');
+  if(!sec) return;
+  const io = new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){ sec.classList.add('vis'); io.disconnect(); }
+  },{threshold:.06});
+  io.observe(sec);
 })();
 
 /* ── MODELLE REVEAL + DRAG SCROLL ── */
@@ -1806,9 +1919,9 @@ window.addEventListener('scroll',()=>{
         { title:'Topas II',
           tags:['Offenmarkise','Bis 12 m Breite','Mehrfeld-Anlage'],
           text:'Offene Markise ohne Kassette — ideal für überdachte Terrassen, Hotels & Gastronomie. Optional mit Dach-Volant und LED. Als Mehrfeld-Anlage bis 12 m Breite konfigurierbar.',
-          img:'Markise/modelle/offene-markise-topas.jpg' },
-        { title:'Semina',
-          tags:['Halbkassette','Bis 7 m Breite','Balkon & Terrasse'],
+          img:'Gallery/topas2-new.jpg' },
+        { title:'Semina Life',
+          tags:['Halbkassette','Komplett geschlossen','Bis 7 m Breite'],
           text:'Halbrunde Kassette schützt Tuch und Gelenkarm von oben und vorne. Kompakt und wandsicher — ideal für Balkone. Wand-, Decken- und Dachsparren-Montage möglich.',
           img:'Markise/modelle/halbkassetten-markise-semina.jpg' },
         { title:'Cassita II',
@@ -1825,12 +1938,16 @@ window.addEventListener('scroll',()=>{
           img:'Markise/modelle/kassetten-markise-kubata.jpg' },
         { title:'I · K · N 2000',
           tags:['3 Varianten','Bis 7 m','Kassetten-Klassiker'],
-          text:'Das bewährte weinor Kassetten-System in drei Varianten: I für glatte Wände, K für unebene Flächen, N für Einputz-Nischen. Flexibel, zuverlässig, langlebig.',
+          text:'Das bewährte Kassetten-System in drei Varianten: I für glatte Wände, K für unebene Flächen, N für Einputz-Nischen. Flexibel, zuverlässig, langlebig.',
           img:'Markise/modelle/kassetten-markise-i-k-n-2000.jpg' },
         { title:'Smaila',
-          tags:['LED · Solar','Bis 5,5 m','weinor BiConnect'],
-          text:'Kompakte kubische Kassette mit integriertem Solarmodul für den elektrischen Antrieb. LED-Spots, Volant-Plus und weinor BiConnect Smart Home — die moderne Balkon-Markise.',
+          tags:['LED · Solar','Bis 5,5 m','BiConnect'],
+          text:'Kompakte kubische Kassette mit integriertem Solarmodul für den elektrischen Antrieb. LED-Spots, Volant-Plus und BiConnect Smart Home — die moderne Balkon-Markise.',
           img:'Markise/smaila/smaila-balkon.jpg' },
+        { title:'Semina Life',
+          tags:['Kassette · LED','Bis 6,5 m','reddot 2016'],
+          text:'Das klassische Einsteigermodell — Kassettenmarkise mit formschönem Kopfplattenring in Edelstahloptik und LongLife-Arm. Optionale LED-Spots, 171 Tuchdessins, über 200 Gestellfarben.',
+          img:'Markise/modelle/semina-life-lifestyle.jpg' },
       ]
     },
     pergola:{
@@ -1844,38 +1961,14 @@ window.addEventListener('scroll',()=>{
           tags:['100% Wasserdicht','Bis 7 m Breite','Faltsystem'],
           text:'Stabiles PVC-Gewebe, vollständig wasserdicht — auch bei kräftigem Regen trockene Terrasse. Retraktables Faltsystem mit integrierter Entwässerung. LED-Crossbeam-Option.',
           img:'Markise/pergola/Teaser_Produktu__bersicht_PergoTex_IIn_700x490px_220729.jpg' },
-        { title:'Artares',
-          tags:['Lamellenpergola','Freistehend','LED · Heizstrahler'],
-          text:'Bioklimatische Lamellenpergola mit drehbaren Aluminium-Lamellen — steuert Licht, Luft und Regen stufenlos. Mit integrierten Heizstrahlern und LED für die Abendnutzung.',
-          img:'Markise/pergola/csm_Bildergalerie_Highlights_Artares_1000x700_210803_02_721103e127.jpg' },
         { title:'Gastro & Hotel',
           tags:['Großanlage','Mehrfeld','Hotel & Gastronomie'],
           text:'Pergola-Markisen für Gastronomie, Hotels und öffentliche Außenbereiche. Großflächige Mehrfeld-Konfiguration — windstabil, repräsentativ, maßgefertigt.',
           img:'Markise/pergola/csm_weinor-schlosshotel-goebel-fp-2_f083126577.jpg' },
-        { title:'Artares · Abendstimmung',
-          tags:['Lamellenpergola','Bergpanorama','Screens'],
-          text:'Artares bei Sonnenuntergang — drehbare Lamellen filtern das letzte Tageslicht, ausgefahrene Seitenscreens schützen vor Westwind. Ideal für Panoramaterrassen mit Bergblick.',
-          img:'Markise/pergola/csm_Bildergalerie_Highlights_Artares_1000x700_210803_05_56f27fa1c2.jpg' },
-        { title:'Artares · Wohnkomfort',
-          tags:['Lamellenpergola','Outdoor-Wohnen','Sichtschutz'],
-          text:'Gartenzimmer unter freiem Himmel: Artares mit grauem Seitenscreen schafft einen windgeschützten Loungebereich direkt am Golfplatz — vollständig automatisierbar.',
-          img:'Markise/pergola/csm_Bildergalerie_Highlights_Artares_1000x700_210803_07_4b889d30c4.jpg' },
-        { title:'Artares · Innenansicht',
-          tags:['Lamellenpergola','Ganzjährig','Glas-Faltwand'],
-          text:'Artares nahtlos mit der Architektur verbunden — offene Glas-Faltwand, Esstisch auf der Terrasse, Wald- und Bergblick. Wohnraumqualität im Freien das ganze Jahr.',
-          img:'Markise/pergola/csm_Bildergalerie_Highlights_Artares_1000x700_210803_08_351566258d.jpg' },
-        { title:'TopTotaal Lamellenpergola',
-          tags:['Freistehend','Anthrazit','Real-Installation'],
-          text:'Freistehende Lamellenpergola TopTotaal in Anthrazit — großzügige Überdachung für den Hausgarten. Robustes Aluminium-Profil, wetterfest und langlebig für den täglichen Einsatz.',
-          img:'Markise/pergola/csm_Bildergalerie_LAR1A0020_PR_TopTotaal_NL_2206_1000x700_220722_1e457a1d51.jpg' },
-        { title:'Atrox · Bioklimatisch',
-          tags:['Bioklimatisch','Pool','Freistehend'],
-          text:'Atrox — die bioklimatische Designpergola am Pool. Drehbare Lamellen regulieren Beschattung und Luftzirkulation stufenlos. Freistehend, elegant, für exklusive Außenbereiche.',
-          img:'Markise/pergola/csm_LAR1A0024_PR_Atrox_BE_2206_30c7408cb1.jpg' },
       ]
     },
     seiten:{
-      label:'Seiten-Markise', sub:'Windschutz · Sichtschutz · Sonne',
+      label:'Sicht- & Sonnenschutz', sub:'Screens · Zip · Seitenmarkise',
       styles:[
         { title:'Paravento',
           tags:['Seitenmarkise','Bis 4 m Ausfall','Screens-Gewebe'],
@@ -1900,37 +1993,41 @@ window.addEventListener('scroll',()=>{
       ]
     },
     wintergarten:{
-      label:'Wintergarten-Markise', sub:'Innen · Außen · Ganzjährig',
+      label:'Terrassendach', sub:'Terrazza · Terrazza PUR · Ganzjährig',
       styles:[
-        { title:'WGM Top',
-          tags:['Außen-Montage','Bis 6,5 m','Windstärke 6'],
-          text:'Außenmontage auf Terrassendach oder Wintergarten — vollständig geschlossene Kassette für Tuchschutz. OptiStretch-Seitenabschluss, leiser Motorlauf, bis Windstärke 6 belastbar.',
-          img:'Markise/wintergarten/csm_WGM_Top_Bildergalerie_170407_06_a3451efdf7.jpg' },
-        { title:'WGM Top · Modern',
-          tags:['Terrasse & Haus','Smart Home','Elektrisch'],
-          text:'WGM Top für moderne Architektur — elegant integriert, elektrisch mit Smart-Home-Anbindung. Für Terrassen, Wintergärten und Vordächer aller Art.',
+        { title:'Terrazza',
+          tags:['Terrassenüberdachung','Aluminium','Ganzjährig'],
+          text:'Die Terrazza — elegantes Aluminium-Terrassendach für ganzjährige Nutzung. Klares Design, maximaler Wetterschutz und individuelle Maßanfertigung für jede Terrassengröße.',
+          img:'Markise/pergola/terrassendach-glas-neu.webp' },
+        { title:'Terrazza PUR',
+          tags:['Premium','Glas-Dach','Smart Home'],
+          text:'Terrazza PUR — die Premium-Terrassenüberdachung mit Glas-Lamellendach. Elektrisch steuerbar, Smart-Home-fähig und mit LED-Beleuchtung ausstatttbar. Höchster Komfort für die Terrasse.',
           img:'Markise/wintergarten/csm_WGM_Top_Bildergalerie_2020_01_88f30dca06.jpg' },
-        { title:'Sottezza II',
-          tags:['Innen-Montage','Unter Glas','OptiStretch · LED'],
-          text:'Innenmontage unter Glas — vierseitige Tuchspannung via OptiStretch. Verwandelt den Wintergarten in einen kühlen Rückzugsort. Optional mit warmweißer LED-Beleuchtung.',
-          img:'Markise/wintergarten/csm_WGM_Top_Bildergalerie_170407_08_7a35c7dc3a.jpg' },
+        { title:'Terrazza · LED und Screens',
+          tags:['LED-Beleuchtung','Screens','Ganzjährig'],
+          text:'Terrazza mit integrierter LED-Beleuchtung und seitlichen Screens — der vollständige wetterunabhängige Außenwohnraum. Kombinierbar mit Heizsystemen und Smart-Home-Steuerung.',
+          img:'Markise/wintergarten/csm_WGM_Top_Bildergalerie_2020_05_55b7b33543.jpg' },
       ]
     },
-    fenster:{
-      label:'Fenster-Markise', sub:'UV-Schutz · Blendschutz · Sichtschutz',
+    lamellendach:{
+      label:'Lamellendächer', sub:'Artares · Motorisiert · Ganzjährig',
       styles:[
-        { title:'VertiTex II Zip',
-          tags:['Reißverschluss','Bis 6 m','Windstabil'],
-          text:'Beidseitig geführtes Gewebe im Reißverschlussprinzip — höchste Windstabilität, kein Lichtspalt. Teflon-Beschichtung: öl-, wasser- und schmutzabweisend. Für Fenster, Balkon und Fassade.',
-          img:'Markise/seiten/csm_Bildergalerie_Highlights_VertiTex-II_1000x700_170928_03_ae1e112d26.jpg' },
-        { title:'VertiTex II Schiene',
-          tags:['Schienenführung','Kompakt','Balkon & Fenster'],
-          text:'Schienengeführtes System mit minimaler Bautiefe. Robust, wartungsarm, geringer Lichtspalt — ideal für Balkone, Loggien und Fensterflächen jeder Größe.',
-          img:'Markise/seiten/csm_Bildergalerie_Highlights_VertiTex-II_1000x700_170928_04_ca11f6bcfe.jpg' },
-        { title:'VertiTex II Seil',
-          tags:['Seilführung','Filigran','Bis 15 m²'],
-          text:'Leichtestes System mit Seilführung — filigran, optional einziehbar. Bis 15 m² und 6 m Breite. UV-Absorption und Teflon-Beschichtung für dauerhaften Schutz.',
-          img:'Markise/seiten/csm_Bildergalerie_Highlights_VertiTex-II_1000x700_170928_09_08e78cf0f0.jpg' },
+        { title:'Artares',
+          tags:['Lamellendach','Ganzjährig nutzbar','Smart Home'],
+          text:'Das Lamellendach Artares — motorisierte Aluminium-Lamellen für individuelle Beschattung, Belüftung und Regenschutz. Mit intelligenter Sensorik und Smart-Home-Anbindung. Made in Germany.',
+          img:'Markise/pergola/artares-lamellendach-neu.jpg' },
+        { title:'Artares · Wohnkomfort',
+          tags:['Outdoor-Living-System','Ganzglas-Schiebewände','Rundum geschlossen'],
+          text:'Das komplette Outdoor-Living-System — Artares Lamellendach kombiniert mit Ganzglas-Schiebewänden w17easy. Rundum wetterfest, vierseitig schließbar. Für Terrassen, die das ganze Jahr genutzt werden.',
+          img:'Markise/pergola/csm_Bildergalerie_Highlights_Artares_1000x700_210803_07_4b889d30c4.jpg' },
+        { title:'Artares · Abendstimmung',
+          tags:['Lamellendach','Bergpanorama','LED · Screens'],
+          text:'Artares bei Sonnenuntergang — drehbare Lamellen filtern das letzte Tageslicht, ausgefahrene Seitenscreens schützen vor Westwind. Ideal für Panoramaterrassen mit Bergblick.',
+          img:'Markise/pergola/csm_Bildergalerie_Highlights_Artares_1000x700_210803_05_56f27fa1c2.jpg' },
+        { title:'Artares · Innenansicht',
+          tags:['Lamellendach','Ganzjährig','Glas-Faltwand'],
+          text:'Artares nahtlos mit der Architektur verbunden — offene Glas-Faltwand, Esstisch auf der Terrasse, Wald- und Bergblick. Wohnraumqualität im Freien das ganze Jahr.',
+          img:'Markise/pergola/csm_Bildergalerie_Highlights_Artares_1000x700_210803_08_351566258d.jpg' },
       ]
     },
   };
@@ -1972,6 +2069,7 @@ window.addEventListener('scroll',()=>{
             '<span class="dr-card-num">' + pad(i+1) + ' / ' + pad(styles.length) + '</span>' +
             '<h4 class="dr-card-title">' + style.title + '</h4>' +
             '<span class="dr-card-tag">' + (style.tags[0]||'') + '</span>' +
+            '<a class="mod-auswahl" style="margin-top:10px;padding:6px 14px;font-size:0.62rem" href="motiv-site.html?von=markiesen&modell=' + encodeURIComponent(style.title) + '#kontakt" onclick="event.stopPropagation()">Auswählen →</a>' +
           '</div>' +
         '</div>';
       card.addEventListener('click', function(){
@@ -1993,6 +2091,8 @@ window.addEventListener('scroll',()=>{
     chipSub.textContent    = markData[activeBrand].sub;
     stageTitle.textContent = current.title;
     stageText.textContent  = current.text;
+    var ctaEl = section.querySelector('.dr-cta');
+    if(ctaEl) ctaEl.href = 'motiv-site.html?von=markiesen&modell=' + encodeURIComponent(current.title) + '#kontakt';
     stageTags.innerHTML = '';
     current.tags.forEach(function(t){
       var s=document.createElement('span'); s.textContent=t; stageTags.appendChild(s);
@@ -2003,9 +2103,10 @@ window.addEventListener('scroll',()=>{
   }
 
   function cardCenter(i){
-    var card = cards[i];
-    if(!card) return 0;
-    return card.offsetLeft + card.offsetWidth / 2;
+    var p   = parseFloat(carousel.style.paddingLeft) || 0;
+    var gap = 20;
+    var cw  = (cards[0] && cards[0].offsetWidth > 10) ? cards[0].offsetWidth : 560;
+    return p + i*(cw+gap) + cw/2;
   }
 
   function scrollToCard(idx, smooth){
@@ -2019,6 +2120,22 @@ window.addEventListener('scroll',()=>{
     scrollToCard(activeIndex, smooth);
   }
 
+  function setCarouselPadding(){
+    var cardW = (cards[0] && cards[0].offsetWidth > 10) ? cards[0].offsetWidth : 560;
+    var wrapW = carouselWrap.offsetWidth || 800;
+    var p = Math.max(20, Math.ceil(wrapW/2 - cardW/2));
+    carousel.style.paddingLeft  = p+'px';
+    carousel.style.paddingRight = '0';
+    var spacer = carousel.querySelector('.dr-end-spacer');
+    if(!spacer){
+      spacer = document.createElement('div');
+      spacer.className = 'dr-end-spacer';
+      spacer.style.cssText = 'flex-shrink:0;width:0;height:1px;pointer-events:none;';
+      carousel.appendChild(spacer);
+    }
+    spacer.style.width = p+'px';
+  }
+
   function switchBrand(brandKey){
     if(!markData[brandKey]) return;
     activeBrand = brandKey;
@@ -2028,6 +2145,7 @@ window.addEventListener('scroll',()=>{
     buildCarousel(brandKey);
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
+        setCarouselPadding();
         carouselWrap.scrollLeft = 0;
         updateCarousel(false);
       });
@@ -2035,10 +2153,18 @@ window.addEventListener('scroll',()=>{
   }
 
   window.addEventListener('resize', function(){
-    scrollToCard(activeIndex, false);
+    requestAnimationFrame(function(){
+      setCarouselPadding();
+      scrollToCard(activeIndex, false);
+    });
   },{passive:true});
 
   brandButtons.forEach(function(b){ b.addEventListener('click', function(){ switchBrand(b.dataset.brand); }); });
+
+  var btnPrev = section.querySelector('#dr-nav-prev');
+  var btnNext = section.querySelector('#dr-nav-next');
+  if(btnPrev) btnPrev.addEventListener('click', function(){ activeIndex=(activeIndex-1+cards.length)%cards.length; updateCarousel(); });
+  if(btnNext) btnNext.addEventListener('click', function(){ activeIndex=(activeIndex+1)%cards.length; updateCarousel(); });
 
   document.addEventListener('keydown', function(e){
     var t=markData[activeBrand].styles.length;
@@ -2126,40 +2252,42 @@ window.addEventListener('scroll',()=>{
   },{threshold:.1});
   io.observe(sec);
 })();
+
+/* ── HAMBURGER MENU ── */
+;(function(){
+  var btn=$('navHamburger'),menu=$('navMobileMenu'),close=$('navMobileClose');
+  if(!btn||!menu) return;
+  btn.addEventListener('click',function(){menu.classList.toggle('open')});
+  if(close) close.addEventListener('click',function(){menu.classList.remove('open')});
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){menu.classList.remove('open')});
+  });
+  document.addEventListener('click',function(e){
+    if(!menu.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){
+      menu.classList.remove('open');
+    }
+  });
+})();
 </script>
 
 <!-- FOOTER -->
 <footer class="ft">
-  <div class="ft-brand-bar">
-    <img src="Logos/motiv-logo.svg" alt="motiv" class="ft-brand-logo">
-    <div class="ft-brand-info">
-      <p class="ft-brand-sub">Ihr Fachbetrieb für Fenster, Türen und Sonnenschutz in Recklinghausen — seit über 20 Jahren Qualität aus einer Hand.</p>
-      <div class="ft-brand-badges">
-        <span class="ft-badge">Seit 2001</span>
-        <span class="ft-badge">Familienbetrieb</span>
-        <span class="ft-badge">1.000 m² Ausstellung</span>
-        <span class="ft-badge">Internorm Partner Plus</span>
-      </div>
-    </div>
-  </div>
   <div class="ft-cols">
     <div class="ft-col">
       <div class="ft-col-head">Leistungen</div>
       <div class="ft-nav">
         <a href="hausturen.html">Haustüren</a>
-        <a href="motiv-site.html#fensterSec">Fenster</a>
+        <a href="fenster.html">Fenster</a>
         <a href="markiese.html">Markisen &amp; Pergolas</a>
-        <a href="motiv-site.html#smartSec">Smart Home</a>
-        <a href="motiv-site.html#kontakt">Beratungstermin</a>
+        <a href="rolllaeden.html">Sonnenschutz</a>
+        <a href="motiv-site.html?von=markisen#kontakt">Beratungstermin</a>
       </div>
     </div>
     <div class="ft-col">
       <div class="ft-col-head">Unternehmen</div>
       <div class="ft-nav">
-        <a href="motiv-site.html#willkommenSec">Über uns</a>
-        <a href="motiv-site.html#bewertungenSec">Referenzen</a>
-        <a href="motiv-site.html#partnerSec">Unsere Partner</a>
-        <a href="motiv-site.html#kontakt">Kontakt</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="service-reparatur.html">Kontakt</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
       </div>
@@ -2182,16 +2310,20 @@ window.addEventListener('scroll',()=>{
         <div class="ft-citem">
           <span class="ft-citem-lbl">Öffnungszeiten</span>
           <div class="ft-hours">
-            <strong>Mo – Fr</strong><span>09:00 – 18:00 Uhr</span>
-            <strong>Samstag</strong><span>10:00 – 14:00 Uhr</span>
+            <strong>Mo – Fr</strong><span>10:00 – 17:00 Uhr</span>
+            <strong>Samstag</strong><span>10:00 – 13:00 Uhr</span>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="ft-bottom">
-    <span class="ft-copy">© 2025 motiv Bauelemente GmbH · Recklinghausen · Alle Rechte vorbehalten.</span>
+    <span class="ft-copy">© 2026 motiv Bauelemente GmbH · Recklinghausen · Alle Rechte vorbehalten.</span>
     <div class="ft-legal">
+      <a href="https://www.instagram.com/motivgmbh/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="mailto:info@motiv-fenster.de">Kontakt</a>
@@ -2199,5 +2331,73 @@ window.addEventListener('scroll',()=>{
   </div>
 </footer>
 
+<style>
+/* ── DRAUSSEN WELT ── */
+.dw-sec{background:var(--black)}
+.dw-hero{position:relative;overflow:hidden;padding:110px 5vw 90px;text-align:center}
+.dw-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.dw-bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%;filter:saturate(.85) brightness(.78)}
+.dw-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(16,29,50,.42) 0%,rgba(16,29,50,.04) 28%,rgba(16,29,50,.04) 72%,rgba(16,29,50,.55) 100%)}
+.dw-head{position:relative;z-index:1;text-align:center;max-width:760px;margin:0 auto}
+.dw-kicker{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:26px}
+.dw-kicker::before,.dw-kicker::after{content:'';flex:1;max-width:60px;height:1px;background:currentColor;opacity:.4}
+.dw-title{font-family:'Inter',serif;font-size:clamp(44px,5.5vw,88px);font-weight:400;line-height:1.01;letter-spacing:-.035em;color:var(--white);margin-bottom:22px}
+.dw-title em{font-style:normal;color:var(--gold)}
+.dw-sub{font-size:15px;line-height:1.82;color:var(--dim);max-width:520px;margin:0 auto}
+.dw-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:0;overflow:hidden;position:relative;z-index:2;background:var(--black)}
+.dw-strip-img{position:relative;overflow:hidden;cursor:default}
+.dw-strip-img img{width:100%;height:340px;object-fit:cover;display:block;filter:saturate(.8) brightness(.82);transition:filter .6s ease,transform .8s ease}
+.dw-strip-img:hover img{filter:saturate(1.05) brightness(.95);transform:scale(1.04)}
+.dw-strip-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(16,29,50,.55) 0%,transparent 50%);pointer-events:none}
+.dw-lower{display:grid;grid-template-columns:1fr 1.4fr;gap:0 72px;max-width:1300px;margin:0 auto;padding:80px 5vw 110px;align-items:start;position:relative;z-index:2;background:var(--black)}
+.dw-feats{padding-top:6px}
+.dw-feats-title{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:32px}
+.dw-feat{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--border)}
+.dw-feat:first-of-type{border-top:1px solid var(--border)}
+.dw-feat-num{font-family:'Inter',serif;font-size:28px;font-weight:400;color:rgba(200,160,106,.3);line-height:1;flex-shrink:0;min-width:32px}
+.dw-feat strong{display:block;font-family:'Inter',serif;font-size:clamp(17px,1.5vw,20px);font-weight:400;color:var(--white);margin-bottom:6px;letter-spacing:-.01em}
+.dw-feat p{font-size:13px;line-height:1.78;color:var(--dim);margin:0}
+.dw-feat-cta{display:inline-flex;align-items:center;gap:10px;margin-top:36px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap .25s}
+.dw-feat-cta::after{content:'→';transition:transform .25s}
+.dw-feat-cta:hover{gap:16px}
+.dw-video-col{}
+.dw-video-lbl{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
+.dw-video{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:16/9;background:#0a0e18}
+.dw-video-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.65) brightness(.6)}
+.dw-video-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;cursor:pointer;transition:background .3s}
+.dw-video-overlay:hover{background:rgba(16,29,50,.15)}
+.dw-vplay-ring{position:absolute;width:110px;height:110px;border:1px solid rgba(200,160,106,.18);border-radius:50%;animation:dwpulse 3s ease-in-out infinite}
+@keyframes dwpulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.18);opacity:.12}}
+.dw-vplay-btn{width:76px;height:76px;border-radius:50%;border:1px solid rgba(200,160,106,.55);background:rgba(200,160,106,.1);color:var(--gold);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);transition:all .3s;z-index:1}
+.dw-vplay-btn:hover,.dw-video-overlay:hover .dw-vplay-btn{background:rgba(200,160,106,.22);border-color:var(--gold);transform:scale(1.08)}
+.dw-vplay-btn svg{width:24px;height:24px;margin-left:5px}
+.dw-vplay-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.55);z-index:1}
+.dw-video-frame{position:absolute;inset:0;width:100%;height:100%;border:none;display:none}
+.dw-video-frame.active{display:block}
+.dw-border-top{height:1px;background:linear-gradient(to right,transparent,var(--gold) 30%,var(--gold) 70%,transparent);opacity:.15;margin:0}
+@media(max-width:1100px){.dw-lower{grid-template-columns:1fr;gap:64px 0}.dw-strip-img img{height:260px}}
+@media(max-width:700px){.dw-strip{grid-template-columns:repeat(2,1fr)}.dw-strip-img img{height:200px}.dw-inner{padding-top:80px}.dw-lower{padding:60px 5vw 80px}}
+.fab-stack{position:fixed;bottom:90px;right:24px;display:flex;flex-direction:column;align-items:center;gap:12px;z-index:8000}
+.fab-contact{width:48px;height:48px;border-radius:50%;background:var(--black);border:1px solid rgba(200,160,106,.45);display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;transition:background .3s,border-color .3s,transform .3s;box-shadow:0 4px 20px rgba(0,0,0,.5);position:relative}
+.fab-contact:hover{background:rgba(200,160,106,.12);border-color:var(--gold);transform:translateY(-2px)}
+.fab-contact svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fab-tooltip{position:absolute;right:58px;top:50%;transform:translateY(-50%);background:rgba(6,10,20,.92);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:11px;letter-spacing:.08em;color:var(--white);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s}
+.fab-contact:hover .fab-tooltip{opacity:1}
+@media(max-width:768px){.fab-stack{bottom:80px;right:16px}.fab-contact{width:44px;height:44px}}
+@media(max-width:1300px){.nav-links,.nav-btn{display:none!important}.nav-hamburger{display:flex!important}}
+</style>
+<div class="fab-stack">
+  <a href="mailto:info@motiv-fenster.de" class="fab-contact" title="E-Mail schreiben">
+    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.5 6.5a2 2 0 0 0 3 0L22 7"/></svg>
+    <span class="fab-tooltip">info@motiv-fenster.de</span>
+  </a>
+  <a href="tel:+4923619042400" class="fab-contact" title="Jetzt anrufen">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.62 1.24h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.91a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.02-.98a2 2 0 0 1 2.11-.45c.94.35 1.91.59 2.91.72a2 2 0 0 1 1.72 2.03z"/></svg>
+    <span class="fab-tooltip">02361 / 90424-0</span>
+  </a>
+</div>
+
+
+<script src="cookie-consent.js"></script>
 </body>
 </html>

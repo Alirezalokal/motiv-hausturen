@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- Consent Mode v2 default – muss VOR GTM stehen -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{
+  ad_storage:'denied',
+  analytics_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:500
+});
+if(localStorage.getItem('motiv_consent')==='accepted'){
+  gtag('consent','update',{
+    ad_storage:'granted',
+    analytics_storage:'granted',
+    ad_user_data:'granted',
+    ad_personalization:'granted'
+  });
+}
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSXMBDGV');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung | motiv GmbH &amp; Co. KG · Recklinghausen</title>
+<meta name="google-site-verification" content="IjpS5JbGm2Bc5r8Uc4FLKoqDCnW8fjLhkQZXmVcp8zY">
+<meta name="description" content="Datenschutzerklärung der motiv GmbH &amp; Co. KG. Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.motiv-fenster.de/datenschutz.html">
+<script>(function(){document.documentElement.classList.toggle('is-mobile',window.innerWidth<=900);window.addEventListener('resize',function(){document.documentElement.classList.toggle('is-mobile',window.innerWidth<=900);},{passive:true});})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#101d32;
+  --off-black:#162540;
+  --white:#f5f0e8;
+  --dim:rgba(245,240,232,.6);
+  --gold:#c8a06a;
+  --gold-a:rgba(200,160,106,.08);
+  --gold-b:rgba(200,160,106,.15);
+  --border:rgba(245,240,232,.09);
+  --border2:rgba(245,240,232,.18);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:auto;cursor:none}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+#noise{position:fixed;inset:-200%;width:400%;height:400%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  opacity:.025;pointer-events:none;z-index:9998;animation:noiseDrift 7s steps(8,end) infinite}
+@keyframes noiseDrift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-5%)}50%{transform:translate(-3%,6%)}90%{transform:translate(-6%,1%)}}
+
+#cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:10px;height:10px;background:var(--white);z-index:10000;mix-blend-mode:difference}
+#cur2{width:38px;height:38px;border:1px solid rgba(245,240,232,.3);background:transparent;transition:width .4s var(--ease),height .4s var(--ease),border-color .3s}
+#cur.big{width:52px;height:52px}
+#cur2.big{width:68px;height:68px;border-color:var(--gold)}
+
+#scrollBar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--gold),var(--white));z-index:9999;width:0;pointer-events:none}
+
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:600;padding:26px 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(6,10,20,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);
+  transition:padding .4s}
+#mainNav.scrolled{padding:16px 6vw}
+.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:80px;width:auto;transition:opacity .2s}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;cursor:none;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--gold);transition:right .3s var(--ease)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{right:0}
+.nav-btn{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:11px 26px;border:1px solid var(--border2);border-radius:100px;cursor:none;transition:background .3s,color .3s,border-color .3s}
+.nav-btn:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;outline:none;-webkit-appearance:none;appearance:none}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--white)}
+.nav-mobile-menu{display:none;position:fixed;top:98px;left:0;right:0;background:rgba(6,10,20,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:590;flex-direction:column;padding:20px 5vw 24px;gap:0;border-bottom:1px solid var(--border)}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{font-size:15px;font-weight:300;color:var(--dim);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(245,240,232,.06)}
+.nav-mobile-menu a:last-child{border-bottom:none;color:var(--gold);margin-top:8px}
+html.is-mobile #mainNav{padding:14px 5vw!important;background:rgba(6,10,20,.75)!important;backdrop-filter:blur(12px)!important}
+html.is-mobile #mainNav.scrolled{padding:12px 5vw!important}
+html.is-mobile .nav-links,html.is-mobile .nav-btn{display:none!important}
+html.is-mobile .nav-hamburger{display:flex!important}
+html.is-mobile .nav-logo img{height:62px!important}
+
+/* ── LEGAL PAGE ── */
+.legal-header{padding:140px 7vw 60px;border-bottom:1px solid var(--border)}
+.legal-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.legal-eyebrow-bar{width:36px;height:1px;background:var(--gold);flex-shrink:0}
+.legal-eyebrow-txt{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:400}
+.legal-title{font-family:'Inter',serif;font-size:clamp(40px,5vw,80px);font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--white)}
+
+.legal-body{max-width:760px;margin:0 auto;padding:64px 7vw 96px}
+.legal-section{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.legal-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.legal-h2{font-family:'Inter',serif;font-size:26px;font-weight:300;color:var(--white);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.legal-h2::before{content:'';width:20px;height:1px;background:var(--gold);flex-shrink:0}
+.legal-h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:10px;margin-top:24px}
+.legal-h4{font-size:13px;font-weight:500;color:var(--white);margin-bottom:8px;margin-top:20px}
+.legal-body p{font-size:14px;font-weight:300;color:var(--dim);line-height:1.85;margin-bottom:12px}
+.legal-body p:last-child{margin-bottom:0}
+.legal-body a{color:var(--gold);text-decoration:none;transition:opacity .2s}
+.legal-body a:hover{opacity:.7}
+.legal-body ul{margin:10px 0 12px 20px}
+.legal-body ul li{font-size:14px;font-weight:300;color:var(--dim);line-height:1.85;margin-bottom:4px}
+.legal-warn{font-size:12px;font-weight:400;color:rgba(245,240,232,.45);line-height:1.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.04em}
+
+/* ── FOOTER ── */
+.ft-cols{display:grid;grid-template-columns:1fr 1fr 1fr;padding:48px 7vw 56px;gap:0}
+.ft-col{padding-right:56px}
+.ft-col:last-child{padding-right:0}
+.ft-col-head{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.ft-col-head::after{content:'';flex:1;height:1px;background:rgba(200,160,106,.18)}
+.ft-nav{display:flex;flex-direction:column;gap:12px}
+.ft-nav a{font-size:13px;font-weight:300;color:rgba(245,240,232,.5);text-decoration:none;transition:color .22s;display:flex;align-items:center;gap:8px}
+.ft-nav a::before{content:'';width:4px;height:1px;background:var(--gold);opacity:.35;transition:width .22s,opacity .22s;flex-shrink:0}
+.ft-nav a:hover{color:var(--white)}
+.ft-nav a:hover::before{width:10px;opacity:.7}
+.ft-contact{display:flex;flex-direction:column;gap:18px}
+.ft-citem{display:flex;flex-direction:column;gap:3px}
+.ft-citem-lbl{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,160,106,.4);margin-bottom:2px}
+.ft-citem-val{font-size:13px;font-weight:300;color:rgba(245,240,232,.65);line-height:1.7}
+.ft-citem-val a{color:inherit;text-decoration:none;transition:color .2s}
+.ft-citem-val a:hover{color:var(--gold)}
+.ft-hours{display:grid;grid-template-columns:auto 1fr;column-gap:12px;font-size:12px;font-weight:300;color:rgba(245,240,232,.42);line-height:1.8}
+.ft-hours strong{color:rgba(245,240,232,.6);font-weight:400}
+.ft-bottom{padding:18px 7vw;border-top:1px solid rgba(245,240,232,.06);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.ft-copy{font-size:11px;font-weight:300;color:rgba(245,240,232,.2);letter-spacing:.04em}
+.ft-legal{display:flex;gap:20px}
+.ft-legal a{font-size:11px;font-weight:300;color:rgba(245,240,232,.26);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.ft-legal a:hover{color:var(--gold)}
+@media(max-width:900px){.ft-cols{grid-template-columns:1fr 1fr;gap:40px;padding:40px 5vw 48px}.ft-col{padding-right:0}.ft-col:last-child{grid-column:1/-1}}
+@media(max-width:560px){.ft-cols{grid-template-columns:1fr;gap:36px}.ft-col:last-child{grid-column:auto}.ft-bottom{flex-direction:column;align-items:flex-start;gap:12px}}
+.fab-stack{position:fixed;bottom:90px;right:24px;display:flex;flex-direction:column;align-items:center;gap:12px;z-index:8000}
+.fab-contact{width:48px;height:48px;border-radius:50%;background:var(--black);border:1px solid rgba(200,160,106,.45);display:flex;align-items:center;justify-content:center;cursor:none;text-decoration:none;transition:background .3s,border-color .3s,transform .3s;box-shadow:0 4px 20px rgba(0,0,0,.5);position:relative}
+.fab-contact:hover{background:rgba(200,160,106,.12);border-color:var(--gold);transform:translateY(-2px)}
+.fab-contact svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fab-tooltip{position:absolute;right:58px;top:50%;transform:translateY(-50%);background:rgba(6,10,20,.92);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:11px;letter-spacing:.08em;color:var(--white);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s}
+.fab-contact:hover .fab-tooltip{opacity:1}
+@media(max-width:768px){.fab-stack{bottom:80px;right:16px}.fab-contact{width:44px;height:44px}}
+@media(max-width:900px){.legal-header{padding:120px 5vw 48px}.legal-body{padding:48px 5vw 72px}}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSXMBDGV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="noise"></div>
+<div id="cur"></div>
+<div id="cur2"></div>
+<div id="scrollBar"></div>
+
+<nav id="mainNav">
+  <a href="motiv-site.html" class="nav-logo"><img src="Logos/motiv-logo-transparent.png" alt="motiv"></a>
+  <ul class="nav-links">
+    <li><a href="hausturen.html">Haustüren</a></li>
+    <li><a href="fenster.html">Fenster</a></li>
+    <li><a href="markiese.html">Terrassen</a></li>
+    <li><a href="rolllaeden.html">Sonnenschutz</a></li>
+    <li><a href="service-reparatur.html">Service</a></li>
+    <li><a href="ueber-uns.html">Über uns</a></li>
+  </ul>
+  <a href="service-reparatur.html" class="nav-btn">Beratung anfragen</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="hausturen.html">Haustüren</a>
+  <a href="fenster.html">Fenster</a>
+  <a href="markiese.html">Terrassen</a>
+  <a href="rolllaeden.html">Sonnenschutz</a>
+  <a href="service-reparatur.html">Service</a>
+  <a href="ueber-uns.html">Über uns</a>
+  <a href="service-reparatur.html">Beratung anfragen</a>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header class="legal-header">
+  <div class="legal-eyebrow">
+    <div class="legal-eyebrow-bar"></div>
+    <div class="legal-eyebrow-txt">Rechtliches</div>
+  </div>
+  <h1 class="legal-title">Datenschutz&shy;erklärung</h1>
+</header>
+
+<!-- ══ CONTENT ══ -->
+<main class="legal-body">
+
+  <div class="legal-section">
+    <h2 class="legal-h2">1. Datenschutz auf einen Blick</h2>
+    <h3 class="legal-h3">Allgemeine Hinweise</h3>
+    <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+
+    <h3 class="legal-h3">Datenerfassung auf dieser Website</h3>
+    <h4 class="legal-h4">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
+    <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle" in dieser Datenschutzerklärung entnehmen.</p>
+
+    <h4 class="legal-h4">Wie erfassen wir Ihre Daten?</h4>
+    <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+    <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+
+    <h4 class="legal-h4">Wofür nutzen wir Ihre Daten?</h4>
+    <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+
+    <h4 class="legal-h4">Welche Rechte haben Sie bezüglich Ihrer Daten?</h4>
+    <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
+    <p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-h2">2. Hosting</h2>
+    <h3 class="legal-h3">Cloudflare Workers</h3>
+    <p>Wir hosten die Inhalte unserer Website bei Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA. Wenn Sie unsere Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Details entnehmen Sie der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a>.</p>
+    <p>Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen und sicheren Darstellung unserer Website.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-h2">3. Allgemeine Hinweise und Pflichtinformationen</h2>
+    <h3 class="legal-h3">Datenschutz</h3>
+    <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+    <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+
+    <h3 class="legal-h3">Hinweis zur verantwortlichen Stelle</h3>
+    <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+    <p>motiv GmbH &amp; Co. KG<br>
+    Hubertusstraße 65<br>
+    45657 Recklinghausen<br><br>
+    Telefon: <a href="tel:+4923619042400">0 23 61 / 90 42 40</a><br>
+    E-Mail: <a href="mailto:info@motiv-fenster.de">info@motiv-fenster.de</a></p>
+
+    <h3 class="legal-h3">Datenschutzbeauftragter</h3>
+    <p>Wir haben einen Datenschutzbeauftragten benannt:</p>
+    <p>Herr Friedrich Paul Böhm<br>
+    Universitätsstraße 60<br>
+    44789 Bochum<br><br>
+    Telefon: <a href="tel:+4923436185">0234 - 36185-0</a><br>
+    E-Mail: <a href="mailto:fb@fboe.de">fb@fboe.de</a></p>
+
+    <h3 class="legal-h3">Speicherdauer</h3>
+    <p>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen).</p>
+
+    <h3 class="legal-h3">SSL- bzw. TLS-Verschlüsselung</h3>
+    <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+
+    <h3 class="legal-h3">Widerspruch gegen Werbe-E-Mails</h3>
+    <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
+
+    <h3 class="legal-h3">Widerspruchsrecht</h3>
+    <p class="legal-warn">Wenn die Datenverarbeitung auf Grundlage von Art. 6 Abs. 1 lit. e oder f DSGVO erfolgt, haben Sie jederzeit das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, gegen die Verarbeitung Ihrer personenbezogenen Daten Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmungen gestütztes Profiling. Die jeweilige Rechtsgrundlage, auf denen eine Verarbeitung beruht, entnehmen Sie dieser Datenschutzerklärung. Wenn Sie Widerspruch einlegen, werden wir Ihre betroffenen personenbezogenen Daten nicht mehr verarbeiten, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen (Widerspruch nach Art. 21 Abs. 1 DSGVO).</p>
+    <p class="legal-warn">Werden Ihre personenbezogenen Daten verarbeitet, um Direktwerbung zu betreiben, so haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung Sie betreffender personenbezogener Daten zum Zwecke derartiger Werbung einzulegen; dies gilt auch für das Profiling, soweit es mit solcher Direktwerbung in Verbindung steht. Wenn Sie widersprechen, werden Ihre personenbezogenen Daten anschließend nicht mehr zum Zwecke der Direktwerbung verwendet (Widerspruch nach Art. 21 Abs. 2 DSGVO).</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-h2">4. Datenerfassung auf dieser Website</h2>
+    <h3 class="legal-h3">Cookies</h3>
+    <p>Unsere Internetseiten verwenden so genannte „Cookies". Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht.</p>
+    <p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p>
+
+    <h3 class="legal-h3">Server-Log-Dateien</h3>
+    <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+    <ul>
+      <li>Browsertyp und Browserversion</li>
+      <li>verwendetes Betriebssystem</li>
+      <li>Referrer URL</li>
+      <li>Hostname des zugreifenden Rechners</li>
+      <li>Uhrzeit der Serveranfrage</li>
+      <li>IP-Adresse</li>
+    </ul>
+    <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.</p>
+
+    <h3 class="legal-h3">Kontaktformular</h3>
+    <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+    <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist.</p>
+
+    <h3 class="legal-h3">Anfrage per E-Mail oder Telefon</h3>
+    <p>Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+    <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO).</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-h2">5. Analyse-Tools und Werbung</h2>
+    <h3 class="legal-h3">Google Analytics</h3>
+    <p>Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+    <p>Google Analytics ermöglicht es dem Websitebetreiber, das Verhalten der Websitebesucher zu analysieren. Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+    <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://privacy.google.com/businesses/controllerterms/mccs/" target="_blank" rel="noopener">privacy.google.com</a>.</p>
+    <p>Sie können die Erfassung Ihrer Daten durch Google Analytics verhindern, indem Sie das unter folgendem Link verfügbare Browser-Plugin herunterladen: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>.</p>
+
+    <h3 class="legal-h3">Google Ads &amp; Conversion-Tracking</h3>
+    <p>Der Websitebetreiber verwendet Google Ads. Google Ads ist ein Online-Werbeprogramm der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Mit Hilfe von Google Conversion-Tracking können Google und wir erkennen, ob der Nutzer bestimmte Aktionen durchgeführt hat.</p>
+    <p>Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-h2">6. Plugins und Tools</h2>
+    <h3 class="legal-h3">YouTube (erweiterter Datenschutzmodus)</h3>
+    <p>Diese Website bindet Videos der Website YouTube ein. Betreiber der Website ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+    <p>Wir nutzen YouTube im erweiterten Datenschutzmodus. Videos, die im erweiterten Datenschutzmodus abgespielt werden, werden nach Aussage von YouTube nicht zur Personalisierung des Surfens auf YouTube eingesetzt. Im erweiterten Datenschutzmodus werden keine Cookies gesetzt.</p>
+    <p>Die Nutzung von YouTube erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote (Art. 6 Abs. 1 lit. f DSGVO). Weitere Informationen: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+    <h3 class="legal-h3">Google Maps</h3>
+    <p>Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern.</p>
+    <p>Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
+
+    <h3 class="legal-h3">Google reCAPTCHA</h3>
+    <p>Wir nutzen „Google reCAPTCHA" auf dieser Website. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Mit reCAPTCHA soll überprüft werden, ob die Dateneingabe auf dieser Website durch einen Menschen oder durch ein automatisiertes Programm erfolgt.</p>
+    <p>Weitere Informationen: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-h2">7. Social Media</h2>
+    <h3 class="legal-h3">Unsere Auftritte</h3>
+    <p>Wir unterhalten öffentlich zugängliche Profile in sozialen Netzwerken:</p>
+    <ul>
+      <li><a href="https://www.facebook.com/MotivGmbH/" target="_blank" rel="noopener">facebook.com/MotivGmbH</a></li>
+      <li><a href="https://www.instagram.com/motivgmbh/" target="_blank" rel="noopener">instagram.com/motivgmbh</a></li>
+    </ul>
+    <p>Soziale Netzwerke können Ihr Nutzerverhalten in der Regel umfassend analysieren, wenn Sie deren Website oder eine Website mit integrierten Social-Media-Inhalten besuchen. Durch den Besuch unserer Social-Media-Präsenzen werden zahlreiche datenschutzrelevante Verarbeitungsvorgänge ausgelöst.</p>
+
+    <h3 class="legal-h3">Facebook / Instagram</h3>
+    <p>Wir verfügen über Profile bei Facebook und Instagram. Anbieter ist die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland. Die erfassten Daten werden nach Aussage von Meta auch in die USA und in andere Drittländer übertragen.</p>
+    <p>Details entnehmen Sie der Datenschutzerklärung von Facebook: <a href="https://www.facebook.com/about/privacy/" target="_blank" rel="noopener">facebook.com/about/privacy</a> und Instagram: <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener">privacycenter.instagram.com/policy</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-h2">8. Bewerberdaten</h2>
+    <p>Wir bieten Ihnen die Möglichkeit, sich bei uns zu bewerben (z. B. per E-Mail). Wir verarbeiten Ihre damit verbundenen personenbezogenen Daten (z. B. Kontakt- und Kommunikationsdaten, Bewerbungsunterlagen) soweit dies zur Entscheidung über die Begründung eines Beschäftigungsverhältnisses erforderlich ist. Rechtsgrundlage hierfür ist § 26 BDSG (Anbahnung eines Beschäftigungsverhältnisses) und Art. 6 Abs. 1 lit. b DSGVO.</p>
+    <p>Sofern wir Ihnen kein Stellenangebot machen können, behalten wir uns das Recht vor, die übermittelten Daten bis zu 6 Monate nach Abschluss des Bewerbungsverfahrens aufzubewahren. Anschließend werden die Daten gelöscht.</p>
+  </div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="ft">
+  <div class="ft-cols">
+    <div class="ft-col">
+      <div class="ft-col-head">Leistungen</div>
+      <div class="ft-nav">
+        <a href="hausturen.html">Haustüren</a>
+        <a href="fenster.html">Fenster</a>
+        <a href="markiese.html">Markisen &amp; Pergolas</a>
+        <a href="rolllaeden.html">Sonnenschutz</a>
+        <a href="service-reparatur.html">Beratungstermin</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-head">Unternehmen</div>
+      <div class="ft-nav">
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="motiv-site.html">Referenzen</a>
+        <a href="service-reparatur.html">Kontakt</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-head">Kontakt</div>
+      <div class="ft-contact">
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Adresse</span>
+          <span class="ft-citem-val">Hubertusstraße 65<br>45657 Recklinghausen</span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Telefon</span>
+          <span class="ft-citem-val"><a href="tel:+4923619042400">02361 / 90424-0</a></span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Öffnungszeiten</span>
+          <div class="ft-hours">
+            <strong>Mo – Fr</strong><span>10:00 – 17:00 Uhr</span>
+            <strong>Samstag</strong><span>10:00 – 13:00 Uhr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span class="ft-copy">© 2026 motiv GmbH &amp; Co. KG · Recklinghausen · Alle Rechte vorbehalten.</span>
+    <div class="ft-legal">
+      <a href="https://www.instagram.com/motivgmbh/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="mailto:info@motiv-fenster.de">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-stack">
+  <a href="mailto:info@motiv-fenster.de" class="fab-contact" title="E-Mail">
+    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.5 6.5a2 2 0 0 0 3 0L22 7"/></svg>
+    <span class="fab-tooltip">info@motiv-fenster.de</span>
+  </a>
+  <a href="tel:+4923619042400" class="fab-contact" title="Anrufen">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.62 1.24h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.91a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.02-.98a2 2 0 0 1 2.11-.45c.94.35 1.91.59 2.91.72a2 2 0 0 1 1.72 2.03z"/></svg>
+    <span class="fab-tooltip">02361 / 90424-0</span>
+  </a>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+window.addEventListener('scroll',()=>{
+  const p=scrollY/(document.documentElement.scrollHeight-innerHeight);
+  $('scrollBar').style.width=(p*100)+'%';
+  $('mainNav').classList.toggle('scrolled',scrollY>50);
+},{passive:true});
+(function(){
+  const dot=$('cur'),ring=$('cur2');
+  let rx=0,ry=0,mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{dot.classList.add('big');ring.classList.add('big');});
+    el.addEventListener('mouseleave',()=>{dot.classList.remove('big');ring.classList.remove('big');});
+  });
+})();
+(function(){
+  var btn=$('navHamburger'),menu=$('navMobileMenu');
+  if(!btn||!menu) return;
+  btn.addEventListener('click',function(){menu.classList.toggle('open');});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+  document.addEventListener('click',function(e){if(!menu.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){menu.classList.remove('open');}});
+})();
+</script>
+</body>
+</html>

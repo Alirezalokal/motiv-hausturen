@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- Consent Mode v2 default – muss VOR GTM stehen -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{
+  ad_storage:'denied',
+  analytics_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:500
+});
+if(localStorage.getItem('motiv_consent')==='accepted'){
+  gtag('consent','update',{
+    ad_storage:'granted',
+    analytics_storage:'granted',
+    ad_user_data:'granted',
+    ad_personalization:'granted'
+  });
+}
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSXMBDGV');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>motiv — Vordächer | Recklinghausen</title>
+<script>document.documentElement.classList.toggle('is-mobile',window.innerWidth<=900);window.addEventListener('resize',()=>document.documentElement.classList.toggle('is-mobile',window.innerWidth<=900),{passive:true});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#101d32;--off-black:#162540;
+  --white:#f5f0e8;--dim:rgba(245,240,232,.6);
+  --gold:#c8a06a;--gold-a:rgba(200,160,106,.15);
+  --border:rgba(245,240,232,.09);--border2:rgba(245,240,232,.18);
+  --ease:cubic-bezier(.16,1,.3,1);--ease2:cubic-bezier(.76,0,.24,1)
+}
+html{scroll-behavior:auto;cursor:none}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NOISE ── */
+#noise{position:fixed;inset:-200%;width:400%;height:400%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  opacity:.025;pointer-events:none;z-index:9998;
+  animation:noiseDrift 7s steps(8,end) infinite}
+@keyframes noiseDrift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-5%)}30%{transform:translate(-7%,3%)}50%{transform:translate(-3%,6%)}70%{transform:translate(-4%,4%)}90%{transform:translate(-6%,1%)}}
+
+/* ── CURSOR ── */
+#cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:10px;height:10px;background:var(--white);z-index:10000;mix-blend-mode:difference}
+#cur2{width:38px;height:38px;border:1px solid rgba(245,240,232,.3);transition:width .4s var(--ease),height .4s var(--ease),border-color .3s}
+#cur.big{width:52px;height:52px}
+#cur2.big{width:68px;height:68px;border-color:var(--gold)}
+
+/* ── SCROLL PROGRESS ── */
+#scrollBar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--gold),var(--white));z-index:9999;width:0;pointer-events:none}
+
+/* ── NAV ── */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:600;padding:26px 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,padding .4s}
+#mainNav.scrolled{background:rgba(8,8,6,.88);backdrop-filter:blur(20px);padding:16px 6vw;border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:80px;width:auto;opacity:1;transition:opacity .2s}
+.nav-logo:hover img{opacity:1}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;cursor:none;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--gold);transition:right .3s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-links a:hover::after,.nav-links a.active::after{right:0}
+.nav-btn{font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:11px 26px;border:1px solid var(--border2);border-radius:100px;cursor:none;transition:background .3s,color .3s,border-color .3s}
+.nav-btn:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;outline:none;-webkit-appearance:none;appearance:none}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--white)}
+.nav-mobile-menu{display:none;position:fixed;top:98px;left:0;right:0;background:rgba(8,8,6,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:590;flex-direction:column;padding:20px 5vw 24px;gap:0;border-bottom:1px solid var(--border)}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{font-size:15px;font-weight:300;color:var(--dim);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(245,240,232,.06)}
+.nav-mobile-menu a:last-child{border-bottom:none;color:var(--gold);margin-top:8px}
+@media(max-width:768px){#mainNav{padding:18px 5vw}#mainNav.scrolled{padding:12px 5vw}.nav-links,.nav-btn{display:none}.nav-hamburger{display:flex!important}}
+
+/* ══ VIDEO HERO ══ */
+.vd-hero{position:relative;min-height:100svh;overflow:hidden}
+.vd-hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.vd-hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to right,rgba(8,8,6,.88) 0%,rgba(8,8,6,.55) 48%,rgba(8,8,6,.18) 75%,transparent 100%),
+    linear-gradient(to top,rgba(8,8,6,.75) 0%,transparent 42%),
+    linear-gradient(to bottom,rgba(8,8,6,.5) 0%,transparent 26%)
+}
+.vd-hero-intro{
+  position:absolute;left:7vw;top:50%;transform:translateY(-50%);
+  z-index:2;max-width:700px
+}
+.h-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.h-eyebrow-bar{width:36px;height:1px;background:var(--gold);flex-shrink:0}
+.h-eyebrow-txt{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.h-title-row{display:block;overflow:hidden}
+.h-title-row span{
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,8vw,118px);line-height:.93;font-weight:300;letter-spacing:-.03em;
+  transform:translateY(110%);transition:transform 1.3s var(--ease)
+}
+.h-title-row:nth-child(1) span{transition-delay:.38s}
+.h-title-row:nth-child(2) span{transition-delay:.54s}
+.h-title-row:nth-child(3) span{transition-delay:.70s}
+.h-title.ready .h-title-row span{transform:none}
+.italic-gold{font-style:normal;color:var(--gold)}
+.h-sub{
+  max-width:420px;margin-top:28px;
+  font-size:clamp(13px,1.25vw,17px);line-height:1.82;color:var(--dim);font-weight:300;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .9s var(--ease) 1.05s,transform .9s var(--ease) 1.05s
+}
+.h-sub.ready{opacity:1;transform:none}
+.h-pills{
+  display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .9s var(--ease) 1.25s,transform .9s var(--ease) 1.25s
+}
+.h-pills.ready{opacity:1;transform:none}
+.h-pill{padding:8px 18px;border:1px solid var(--border2);border-radius:100px;font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.h-statbar{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  display:flex;border-top:1px solid var(--border);
+  background:rgba(8,8,6,.72);backdrop-filter:blur(18px)
+}
+.h-stat{flex:1;padding:18px 30px;border-right:1px solid var(--border)}
+.h-stat:last-child{border-right:none}
+.h-stat-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;letter-spacing:-.02em;line-height:1}
+.h-stat-l{font-size:10px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+.h-scroll-ind{
+  position:absolute;bottom:120px;left:7vw;z-index:2;
+  display:flex;align-items:center;gap:14px;
+  opacity:0;animation:fadeInScroll 1s var(--ease) 2s forwards
+}
+@keyframes fadeInScroll{to{opacity:1}}
+.scroll-wire{width:56px;height:1px;background:rgba(245,240,232,.2);position:relative;overflow:hidden}
+.scroll-wire::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:wirePulse 2.4s var(--ease2) infinite}
+@keyframes wirePulse{0%{left:-100%}100%{left:100%}}
+.scroll-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:300}
+
+/* Mobile hero */
+html.is-mobile .vd-hero-vid{object-fit:contain!important;background:var(--black)}
+html.is-mobile .vd-hero-overlay{background:linear-gradient(to top,rgba(8,8,6,.82) 0%,transparent 42%),linear-gradient(to bottom,rgba(8,8,6,.62) 0%,transparent 32%)!important}
+html.is-mobile .vd-hero-intro{top:120px!important;left:5vw!important;right:5vw!important;max-width:none!important;transform:none!important}
+html.is-mobile .h-statbar{display:none!important}
+html.is-mobile .h-pills{display:none!important}
+html.is-mobile .h-sub{display:none!important}
+html.is-mobile .h-scroll-ind{display:none}
+.vd-hero-mobile-cta{display:none;position:absolute;bottom:32px;left:5vw;right:5vw;z-index:4;text-align:center}
+html.is-mobile .vd-hero-mobile-cta{display:block!important}
+.vd-hero-mobile-cta a{display:block;padding:15px;border:1px solid rgba(200,160,106,.5);color:var(--gold);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;background:rgba(8,8,6,.4);backdrop-filter:blur(8px)}
+
+/* ── SHARED ── */
+.sec-kicker{display:inline-flex;align-items:center;min-height:26px;padding:0 12px;border-radius:100px;background:var(--gold-a);border:1px solid rgba(200,160,106,.28);color:var(--gold);font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.8vw,76px);font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--white);margin-bottom:16px}
+.sec-title em{font-style:normal;color:var(--gold)}
+.sec-lead{font-size:clamp(14px,1.25vw,16px);line-height:1.82;color:var(--dim);font-weight:300;max-width:540px}
+.vis-el{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.vis-el.vis{opacity:1;transform:none}
+.vis-el:nth-child(2){transition-delay:.12s}
+.vis-el:nth-child(3){transition-delay:.24s}
+.vis-el:nth-child(4){transition-delay:.36s}
+
+/* ══ KATEGORIE-KARTEN (3 Spalten) ══ */
+.vd-cats{padding:100px 7vw 120px;background:var(--off-black);border-top:1px solid var(--border)}
+.vd-cats-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:72px}
+.vd-cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vd-cat-card{position:relative;height:500px;border-radius:16px;overflow:hidden;cursor:none;
+  border:1px solid var(--border);
+  opacity:0;transform:translateY(44px);
+  transition:border-color .4s,transform .5s var(--ease),opacity .7s var(--ease)}
+.vd-cat-card.vis{opacity:1;transform:none}
+.vd-cat-card:nth-child(1){transition-delay:.06s}
+.vd-cat-card:nth-child(2){transition-delay:.18s}
+.vd-cat-card:nth-child(3){transition-delay:.30s}
+.vd-cat-card:hover{border-color:rgba(200,160,106,.35);transform:translateY(-6px) !important}
+.vd-cat-card-img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .7s}
+.vd-cat-card:hover .vd-cat-card-img{transform:scale(1.06);filter:brightness(.86) saturate(1.12)}
+.vd-cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,6,.92) 0%,rgba(8,8,6,.28) 55%,transparent 100%)}
+.vd-cat-body{position:absolute;bottom:0;left:0;right:0;padding:30px 30px 34px}
+.vd-cat-num{font-size:9px;letter-spacing:.22em;color:var(--gold);margin-bottom:10px}
+.vd-cat-name{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.6vw,38px);font-weight:300;letter-spacing:-.02em;color:var(--white);line-height:1.05;margin-bottom:8px}
+.vd-cat-sub{font-size:12px;font-weight:300;line-height:1.7;color:rgba(245,240,232,.6);margin-bottom:16px}
+.vd-cat-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid rgba(200,160,106,.3);border-radius:100px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+@media(max-width:900px){.vd-cat-grid{grid-template-columns:1fr 1fr}.vd-cats-header{grid-template-columns:1fr}}
+@media(max-width:600px){.vd-cat-grid{grid-template-columns:1fr}.vd-cat-card{height:72vw}.vd-cats{padding:72px 5vw 80px}}
+
+/* ══ PRODUKT-DETAIL (KompoTherm) ══ */
+.vd-detail{padding:100px 7vw 120px;background:var(--black);border-top:1px solid var(--border)}
+.vd-detail-inner{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start}
+.vd-detail-text{position:sticky;top:100px}
+.vd-detail-brand{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.vd-detail-brand::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.5}
+.vd-detail-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,62px);font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--white);margin-bottom:24px}
+.vd-detail-title em{font-style:normal;color:var(--gold)}
+.vd-detail-body{font-size:clamp(13px,1.2vw,16px);line-height:1.88;color:var(--dim);font-weight:300;margin-bottom:32px}
+.vd-detail-specs{list-style:none;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border)}
+.vd-detail-spec{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.vd-spec-key{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:300}
+.vd-spec-val{font-size:13px;font-weight:400;color:var(--white)}
+.vd-detail-imgs{display:flex;flex-direction:column;gap:16px}
+.vd-detail-img-main{border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.vd-detail-img-main.vis{opacity:1;transform:none}
+.vd-detail-img-main img{width:100%;display:block;object-fit:cover}
+.vd-detail-img-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vd-detail-img-sm{border-radius:10px;overflow:hidden;border:1px solid var(--border);
+  opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.vd-detail-img-sm.vis{opacity:1;transform:none}
+.vd-detail-img-sm:nth-child(1){transition-delay:.12s}
+.vd-detail-img-sm:nth-child(2){transition-delay:.22s}
+.vd-detail-img-sm img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.vd-detail-img-sm:hover img{transform:scale(1.04)}
+@media(max-width:900px){.vd-detail-inner{grid-template-columns:1fr}.vd-detail-text{position:static}.vd-detail{padding:72px 5vw 80px}}
+
+/* ══ DESIGN-MODELLE (2-Spalten Banner) ══ */
+.vd-models{padding:0 7vw 100px;background:var(--black)}
+.vd-models-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vd-model-card{position:relative;height:380px;border-radius:14px;overflow:hidden;cursor:none;border:1px solid var(--border);transition:border-color .4s,transform .5s var(--ease);
+  opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease),border-color .4s}
+.vd-model-card.vis{opacity:1;transform:none}
+.vd-model-card:nth-child(2){transition-delay:.14s}
+.vd-model-card:hover{border-color:rgba(200,160,106,.3);transform:translateY(-4px)!important}
+.vd-model-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .6s}
+.vd-model-card:hover img{transform:scale(1.06);filter:brightness(.85)}
+.vd-model-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,6,.88) 0%,rgba(8,8,6,.2) 55%,transparent 100%)}
+.vd-model-body{position:absolute;bottom:0;left:0;right:0;padding:24px 26px 28px}
+.vd-model-badge{display:inline-block;padding:4px 12px;border:1px solid rgba(200,160,106,.35);border-radius:100px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.vd-model-name{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.4vw,34px);font-weight:300;color:var(--white);letter-spacing:-.02em;line-height:1}
+.vd-model-sub{font-size:11px;font-weight:300;color:var(--dim);margin-top:6px}
+@media(max-width:720px){.vd-models-grid{grid-template-columns:1fr}.vd-model-card{height:64vw}.vd-models{padding:0 5vw 72px}}
+
+/* ══ MONTAGE-VIDEO ══ */
+.vd-install{padding:100px 7vw 120px;background:var(--black);border-top:1px solid var(--border)}
+.vd-install-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+.vd-install-vid-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);
+  opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease) .15s,transform 1s var(--ease) .15s}
+.vd-install-vid-wrap.vis{opacity:1;transform:none}
+.vd-install-vid-wrap video{width:100%;display:block}
+.vd-install-vid-label{position:absolute;bottom:18px;left:18px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);background:rgba(8,8,6,.65);backdrop-filter:blur(8px);padding:6px 14px;border-radius:100px;border:1px solid var(--border)}
+.vd-install-points{list-style:none;display:flex;flex-direction:column;gap:20px;margin-top:34px}
+.vd-install-point{display:flex;align-items:flex-start;gap:16px;
+  opacity:0;transform:translateX(-16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.vd-install-point.vis{opacity:1;transform:none}
+.vd-install-point:nth-child(1){transition-delay:.06s}
+.vd-install-point:nth-child(2){transition-delay:.18s}
+.vd-install-point:nth-child(3){transition-delay:.30s}
+.vd-install-point:nth-child(4){transition-delay:.42s}
+.vd-point-icon{width:32px;height:32px;border-radius:50%;background:var(--gold-a);border:1px solid rgba(200,160,106,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold)}
+.vd-point-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.vd-point-text{font-size:14px;font-weight:300;line-height:1.72;color:var(--dim)}
+@media(max-width:900px){.vd-install-inner{grid-template-columns:1fr}.vd-install{padding:72px 5vw 80px}}
+
+/* ══ CTA ══ */
+.vd-cta{position:relative;padding:120px 7vw;overflow:hidden;border-top:1px solid var(--border);background:var(--off-black)}
+.vd-cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(200,160,106,.07),transparent 70%);pointer-events:none}
+.vd-cta-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.vd-cta-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.vd-cta-eyebrow::before,.vd-cta-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gold);opacity:.35}
+.vd-cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5.5vw,86px);font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--white);margin-bottom:24px}
+.vd-cta-title em{font-style:normal;color:var(--gold)}
+.vd-cta-text{font-size:clamp(14px,1.3vw,17px);font-weight:300;line-height:1.82;color:var(--dim);max-width:480px;margin-bottom:48px}
+.vd-cta-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.vd-btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--gold);color:var(--black);border-radius:100px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:none;transition:background .3s,color .3s;border:1px solid var(--gold)}
+.vd-btn-primary:hover{background:transparent;color:var(--gold)}
+.vd-btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border:1px solid var(--border2);color:var(--white);border-radius:100px;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:none;transition:background .3s,border-color .3s}
+.vd-btn-secondary:hover{background:rgba(245,240,232,.06);border-color:var(--white)}
+@media(max-width:600px){.vd-cta{padding:80px 5vw}.vd-cta-btns{flex-direction:column;align-items:stretch}.vd-btn-primary,.vd-btn-secondary{justify-content:center}}
+
+/* ══ FOOTER ══ */
+.ft{background:var(--black);position:relative;overflow:hidden}
+.ft::before{content:'';position:absolute;top:0;left:7vw;right:7vw;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,106,.38) 30%,rgba(200,160,106,.38) 70%,transparent)}
+.ft-brand-bar{display:flex;align-items:flex-start;gap:64px;padding:64px 7vw 48px;border-bottom:1px solid rgba(245,240,232,.06)}
+.ft-brand-logo{height:48px;width:auto;flex-shrink:0;opacity:.9}
+.ft-brand-info{flex:1;display:flex;gap:28px;align-items:flex-start}
+.ft-brand-sub{font-size:13px;font-weight:300;color:var(--dim);line-height:1.82;flex:1;min-width:200px}
+.ft-brand-badges{display:flex;flex-wrap:wrap;gap:7px;flex:1}
+.ft-badge{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px;border:1px solid rgba(200,160,106,.2);color:rgba(200,160,106,.5);white-space:nowrap}
+.ft-cols{display:grid;grid-template-columns:1fr 1fr 1fr;padding:48px 7vw 56px}
+.ft-col{padding-right:56px}
+.ft-col:last-child{padding-right:0}
+.ft-col-head{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.ft-col-head::after{content:'';flex:1;height:1px;background:rgba(200,160,106,.18)}
+.ft-nav{display:flex;flex-direction:column;gap:7px}
+.ft-nav a{font-size:13px;font-weight:300;color:rgba(245,240,232,.5);text-decoration:none;transition:color .22s;display:flex;align-items:center;gap:8px;cursor:none}
+.ft-nav a::before{content:'';width:4px;height:1px;background:var(--gold);opacity:.35;transition:width .22s,opacity .22s;flex-shrink:0}
+.ft-nav a:hover{color:var(--white)}
+.ft-nav a:hover::before{width:10px;opacity:.7}
+.ft-contact{display:flex;flex-direction:column;gap:10px}
+.ft-citem{display:flex;flex-direction:column;gap:3px}
+.ft-citem-lbl{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,160,106,.4);margin-bottom:2px}
+.ft-citem-val{font-size:13px;font-weight:300;color:rgba(245,240,232,.65);line-height:1.7}
+.ft-citem-val a{color:inherit;text-decoration:none;transition:color .2s;cursor:none}
+.ft-citem-val a:hover{color:var(--gold)}
+.ft-hours{display:grid;grid-template-columns:auto 1fr;column-gap:12px;font-size:12px;font-weight:300;color:rgba(245,240,232,.42);line-height:1.8}
+.ft-hours strong{color:rgba(245,240,232,.6);font-weight:400}
+.ft-bottom{padding:18px 7vw;border-top:1px solid rgba(245,240,232,.06);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.ft-copy{font-size:11px;font-weight:300;color:rgba(245,240,232,.2);letter-spacing:.04em}
+.ft-legal{display:flex;gap:20px}
+.ft-legal a{font-size:11px;font-weight:300;color:rgba(245,240,232,.26);text-decoration:none;letter-spacing:.04em;transition:color .2s;cursor:none}
+.ft-legal a:hover{color:rgba(245,240,232,.5)}
+@media(max-width:768px){
+  .ft-brand-bar{flex-direction:column;gap:24px;padding:40px 5vw 32px}
+  .ft-brand-info{flex-direction:column;gap:24px}
+  .ft-cols{grid-template-columns:1fr;padding:32px 5vw 40px}
+  .ft-col{padding-right:0;margin-bottom:32px}
+  .ft-bottom{padding:16px 5vw;flex-direction:column;text-align:center}
+}
+
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSXMBDGV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="noise"></div>
+<div id="cur"></div>
+<div id="cur2"></div>
+<div id="scrollBar"></div>
+
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <a href="motiv-site.html" class="nav-logo"><img src="Logos/motiv-logo-transparent.png" alt="motiv"></a>
+  <ul class="nav-links">
+    <li><a href="hausturen.html">Haustüren</a></li>
+    <li><a href="fenster.html">Fenster</a></li>
+    <li><a href="markiese.html">Terrassen</a></li>
+    <li><a href="rolllaeden.html">Sonnenschutz</a></li>
+    <li><a href="vordaecher.html">Vordächer</a></li>
+    <li><a href="ueber-uns.html">Über uns</a></li>
+  </ul>
+  <a href="motiv-site.html?von=vordaecher#kontakt" class="nav-btn">Beratung anfragen</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="hausturen.html">Haustüren</a>
+  <a href="fenster.html">Fenster</a>
+  <a href="markiese.html">Terrassen</a>
+  <a href="rolllaeden.html">Sonnenschutz</a>
+  <a href="vordaecher.html">Vordächer</a>
+  <a href="ueber-uns.html">Über uns</a>
+  <a href="motiv-site.html?von=vordaecher#kontakt" style="color:var(--gold)">Beratung anfragen</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="vd-hero" id="vdHero">
+  <video class="vd-hero-vid" autoplay muted loop playsinline>
+    <source src="Vordaecher/hf_20260608_122510_a66f5e15-184a-4758-b7dc-bfea1d0703bc.mp4" type="video/mp4">
+  </video>
+  <div class="vd-hero-overlay"></div>
+
+  <div class="vd-hero-intro" id="heroIntro">
+    <div class="h-eyebrow">
+      <span class="h-eyebrow-bar"></span>
+      <span class="h-eyebrow-txt">Recklinghausen · Vordächer</span>
+    </div>
+    <h1 class="h-title" id="hTitle">
+      <span class="h-title-row"><span>Der erste</span></span>
+      <span class="h-title-row"><span><em class="italic-gold">Eindruck</em></span></span>
+      <span class="h-title-row"><span>beginnt hier.</span></span>
+    </h1>
+    <p class="h-sub" id="hSub">
+      Aluminium-Vordächer &amp; Überdachungen —<br>
+      maßgefertigt, wetterfest und zeitlos elegant.
+    </p>
+    <div class="h-pills" id="hPills">
+      <span class="h-pill">Aluminium</span>
+      <span class="h-pill">Glas</span>
+      <span class="h-pill">Edelstahl</span>
+      <span class="h-pill">100% Maßanfertigung</span>
+    </div>
+  </div>
+
+  <div class="vd-hero-mobile-cta">
+    <a href="#vdKategorien">Produkte entdecken ↓</a>
+  </div>
+
+  <div class="h-scroll-ind">
+    <span class="scroll-wire"></span>
+    <span class="scroll-lbl">Scrollen</span>
+  </div>
+
+  <div class="h-statbar">
+    <div class="h-stat">
+      <div class="h-stat-n">25+</div>
+      <div class="h-stat-l">Jahre Erfahrung</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-n">500+</div>
+      <div class="h-stat-l">Referenzen</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-n">100%</div>
+      <div class="h-stat-l">Maßanfertigung</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KATEGORIE-KARTEN ══ -->
+<section class="vd-cats" id="vdKategorien">
+  <div class="vd-cats-header">
+    <div>
+      <div class="sec-kicker vis-el">motiv · Vordächer Kollektion</div>
+      <h2 class="sec-title vis-el">Schutz,<br>der <em>Eindruck</em> macht.</h2>
+    </div>
+    <div>
+      <p class="sec-lead vis-el">Vom eleganten Aluminium-Vordach bis zum vollverglasten Eingangsportal — wir fertigen individuelle Lösungen für jeden Stil und jede Fassade.</p>
+    </div>
+  </div>
+  <div class="vd-cat-grid">
+
+    <article class="vd-cat-card">
+      <img class="vd-cat-card-img" src="Vordaecher/kompotherm-vordach-ueberschub.jpg" alt="KompoTherm Aluminium-Vordach" loading="lazy">
+      <div class="vd-cat-overlay"></div>
+      <div class="vd-cat-body">
+        <div class="vd-cat-num">01</div>
+        <div class="vd-cat-name">Aluminium-Vordach</div>
+        <p class="vd-cat-sub">Flaches, solides Aluminium-System — minimalistisch und langlebig für jeden Eingang.</p>
+        <span class="vd-cat-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Aluminium · RAL nach Wunsch
+        </span>
+      </div>
+    </article>
+
+    <article class="vd-cat-card">
+      <img class="vd-cat-card-img" src="Vordaecher/kompotherm-vordach-abenddaemmerung.jpg" alt="LED Vordach Nacht" loading="lazy">
+      <div class="vd-cat-overlay"></div>
+      <div class="vd-cat-body">
+        <div class="vd-cat-num">02</div>
+        <div class="vd-cat-name">LED-Vordach</div>
+        <p class="vd-cat-sub">Integrierte LED-Beleuchtung für eine eindrucksvolle Wirkung — auch nach Einbruch der Dunkelheit.</p>
+        <span class="vd-cat-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          LED · Glas · Edelstahlträger
+        </span>
+      </div>
+    </article>
+
+    <article class="vd-cat-card">
+      <img class="vd-cat-card-img" src="Vordaecher/vordach-edelstahl-von-portal.jpg" alt="Glas-Vordach Edelstahl" loading="lazy">
+      <div class="vd-cat-overlay"></div>
+      <div class="vd-cat-body">
+        <div class="vd-cat-num">03</div>
+        <div class="vd-cat-name">Glas-Vordach</div>
+        <p class="vd-cat-sub">Vollverglaste Systeme auf Edelstahlträgern — maximale Transparenz, minimale Optik.</p>
+        <span class="vd-cat-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          VSG-Glas · Edelstahl
+        </span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══ PRODUKT-DETAIL: KompoTherm ══ -->
+<section class="vd-detail" id="vdDetail">
+  <div class="vd-detail-inner">
+
+    <div class="vd-detail-text vis-el">
+      <div class="vd-detail-brand">Aluminium-Vordach</div>
+      <h2 class="vd-detail-title">Das <em>Überschub-</em><br>System.</h2>
+      <p class="vd-detail-body">Das Überschub-Vordach vereint präzise Aluminium-Verarbeitung mit elegantem Design. Dank des patentierten Überschub-Systems lässt es sich passgenau an jede Fassade anpassen — ob Neubau oder Bestand, ohne sichtbare Löcher oder Fugen.</p>
+      <ul class="vd-detail-specs">
+        <li class="vd-detail-spec"><span class="vd-spec-key">Material</span><span class="vd-spec-val">Aluminium, pulverbeschichtet</span></li>
+        <li class="vd-detail-spec"><span class="vd-spec-key">Farbgebung</span><span class="vd-spec-val">Alle RAL-Farben möglich</span></li>
+        <li class="vd-detail-spec"><span class="vd-spec-key">Beleuchtung</span><span class="vd-spec-val">Optional: LED-Spots integriert</span></li>
+        <li class="vd-detail-spec"><span class="vd-spec-key">Montage</span><span class="vd-spec-val">Ohne Kernbohrung, überschubartig</span></li>
+        <li class="vd-detail-spec"><span class="vd-spec-key">Entwässerung</span><span class="vd-spec-val">Integrierter Ablauf</span></li>
+      </ul>
+    </div>
+
+    <div class="vd-detail-imgs">
+      <div class="vd-detail-img-main">
+        <img src="Vordaecher/kompotherm-haustuer-mit-vordach.jpg" alt="KompoTherm mit Haustür" loading="lazy">
+      </div>
+      <div class="vd-detail-img-row">
+        <div class="vd-detail-img-sm">
+          <img src="Vordaecher/kompotherm-vordach-ueberschub-geschlossen.jpg" alt="KompoTherm geschlossen" loading="lazy">
+        </div>
+        <div class="vd-detail-img-sm">
+          <img src="Vordaecher/kompotherm-vordach-ueberschub-mit-traeger.jpg" alt="KompoTherm Montageprinzip" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ DESIGN-MODELLE ══ -->
+<section class="vd-models" id="vdModelle">
+  <div class="vd-models-grid">
+
+    <div class="vd-model-card">
+      <img src="Vordaecher/vordach-kompotherm-legada.jpg" alt="Legada Design-Vordach" loading="lazy">
+      <div class="vd-model-overlay"></div>
+      <div class="vd-model-body">
+        <div class="vd-model-badge">Aluminium · Design</div>
+        <div class="vd-model-name">Legada</div>
+        <div class="vd-model-sub">Ausladende Diagonalstreben · Glas · Anthrazit</div>
+      </div>
+    </div>
+
+    <div class="vd-model-card">
+      <img src="Vordaecher/vordach-koos-von-ariane.jpg" alt="Koos Ariane Design-Vordach" loading="lazy">
+      <div class="vd-model-overlay"></div>
+      <div class="vd-model-body">
+        <div class="vd-model-badge">Ariane · Exklusiv</div>
+        <div class="vd-model-name">Koos</div>
+        <div class="vd-model-sub">Dramatische Diagonalstreben · Glas · Edelstahl</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ MONTAGE VIDEO ══ -->
+<section class="vd-install" id="vdMontage">
+  <div class="vd-install-inner">
+
+    <div class="vd-install-vid-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="Vordaecher/hf_20260610_122955_147eddc7-7153-4afa-a127-8efb10aee4c1.mp4" type="video/mp4">
+      </video>
+      <div class="vd-install-vid-label">Glasvordach-Montage · Recklinghausen</div>
+    </div>
+
+    <div>
+      <div class="sec-kicker vis-el">Montage · Qualität · Präzision</div>
+      <h2 class="sec-title vis-el">Professionell<br>montiert —<br><em>garantiert.</em></h2>
+      <p class="sec-lead vis-el" style="margin-top:16px">Unser erfahrenes Monteurteam übernimmt alles — von der Vermessung bis zur Übergabe.</p>
+      <ul class="vd-install-points">
+        <li class="vd-install-point">
+          <div class="vd-point-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="vd-point-label">Schritt 01</div>
+            <div class="vd-point-text">Vor-Ort-Vermessung &amp; kostenlose Beratung — unverbindlich und ohne Verpflichtung.</div>
+          </div>
+        </li>
+        <li class="vd-install-point">
+          <div class="vd-point-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="vd-point-label">Schritt 02</div>
+            <div class="vd-point-text">Saubere, schnelle Montage durch unser eingespieltes Team — ohne Bauschutt, ohne lange Wartezeiten.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="vd-cta" id="vdKontakt">
+  <div class="vd-cta-bg"></div>
+  <div class="vd-cta-inner">
+    <div class="vd-cta-eyebrow vis-el">Jetzt anfragen</div>
+    <h2 class="vd-cta-title vis-el">Ihr Vordach.<br><em>Ihr Stil.</em></h2>
+    <p class="vd-cta-text vis-el">Wir beraten Sie kostenlos &amp; unverbindlich — persönlich, telefonisch oder vor Ort in Recklinghausen.</p>
+    <div class="vd-cta-btns vis-el">
+      <a href="motiv-site.html?von=vordaecher#kontakt" class="vd-btn-primary">
+        Beratung anfragen
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="tel:+4923618900" class="vd-btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.44h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Anrufen
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="ft">
+  <div class="ft-cols">
+    <div class="ft-col">
+      <div class="ft-col-head">Navigation</div>
+      <nav class="ft-nav">
+        <a href="hausturen.html">Haustüren</a>
+        <a href="markiese.html">Terrassen</a>
+        <a href="fenster.html">Fenster</a>
+        <a href="motiv-site.html">Startseite</a>
+      </nav>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-head">Vordächer</div>
+      <nav class="ft-nav">
+        <a href="#vdKategorien">Aluminium-Vordach</a>
+        <a href="#vdKategorien">LED-Vordach</a>
+        <a href="#vdKategorien">Glas-Vordach</a>
+        <a href="#vdModelle">Design-Modelle</a>
+        <a href="#vdMontage">Montage &amp; Service</a>
+      </nav>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-head">Kontakt</div>
+      <div class="ft-contact">
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Telefon</span>
+          <span class="ft-citem-val"><a href="tel:+4923618900">02361 8900</a></span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">E-Mail</span>
+          <span class="ft-citem-val"><a href="mailto:info@motiv-fenster.de">info@motiv-fenster.de</a></span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Adresse</span>
+          <span class="ft-citem-val">Recklinghausen &amp; Umgebung</span>
+        </div>
+        <div class="ft-citem">
+          <span class="ft-citem-lbl">Öffnungszeiten</span>
+          <div class="ft-hours">
+            <strong>Mo–Fr</strong><span>08:00 – 17:00 Uhr</span>
+            <strong>Sa</strong><span>09:00 – 13:00 Uhr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span class="ft-copy">© 2026 motiv · Alle Rechte vorbehalten</span>
+    <div class="ft-legal">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  /* cursor */
+  const c1=document.getElementById('cur'),c2=document.getElementById('cur2');
+  let mx=0,my=0,lx=0,ly=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px'});
+  (function loop(){lx+=(mx-lx)*.14;ly+=(my-ly)*.14;c2.style.left=lx+'px';c2.style.top=ly+'px';requestAnimationFrame(loop)})();
+  document.querySelectorAll('a,button,.vd-cat-card,.vd-model-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{c1.classList.add('big');c2.classList.add('big')});
+    el.addEventListener('mouseleave',()=>{c1.classList.remove('big');c2.classList.remove('big')});
+  });
+
+  /* hamburger */
+  const hbtn=document.getElementById('navHamburger'),hmenu=document.getElementById('navMobileMenu');
+  if(hbtn)hbtn.addEventListener('click',()=>hmenu.classList.toggle('open'));
+  document.addEventListener('click',e=>{if(hmenu&&!hmenu.contains(e.target)&&e.target!==hbtn)hmenu.classList.remove('open')});
+
+  /* scroll bar */
+  const sb=document.getElementById('scrollBar');
+  const nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',()=>{
+    const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+    sb.style.width=pct+'%';
+    nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+
+  /* hero text */
+  setTimeout(()=>{
+    document.getElementById('hTitle')?.classList.add('ready');
+    document.getElementById('hSub')?.classList.add('ready');
+    document.getElementById('hPills')?.classList.add('ready');
+  },300);
+
+  /* scroll reveal */
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}});
+  },{threshold:.1});
+  document.querySelectorAll('.vis-el,.vd-cat-card,.vd-model-card,.vd-install-point,.vd-install-vid-wrap,.vd-detail-img-main,.vd-detail-img-sm').forEach(el=>io.observe(el));
+
+})();
+</script>
+
+<style>
+.fab-stack{position:fixed;bottom:90px;right:24px;display:flex;flex-direction:column;align-items:center;gap:12px;z-index:8000}
+.fab-contact{width:48px;height:48px;border-radius:50%;background:var(--black);border:1px solid rgba(200,160,106,.45);display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;transition:background .3s,border-color .3s,transform .3s;box-shadow:0 4px 20px rgba(0,0,0,.5);position:relative}
+.fab-contact:hover{background:rgba(200,160,106,.12);border-color:var(--gold);transform:translateY(-2px)}
+.fab-contact svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fab-tooltip{position:absolute;right:58px;top:50%;transform:translateY(-50%);background:rgba(6,10,20,.92);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:11px;letter-spacing:.08em;color:var(--white);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .25s}
+.fab-contact:hover .fab-tooltip{opacity:1}
+@media(max-width:768px){.fab-stack{bottom:80px;right:16px}.fab-contact{width:44px;height:44px}}
+</style>
+<div class="fab-stack">
+  <a href="mailto:info@motiv-fenster.de" class="fab-contact" title="E-Mail schreiben">
+    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.5 6.5a2 2 0 0 0 3 0L22 7"/></svg>
+    <span class="fab-tooltip">info@motiv-fenster.de</span>
+  </a>
+  <a href="tel:+4923619042400" class="fab-contact" title="Jetzt anrufen">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.62 1.24h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.91a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.02-.98a2 2 0 0 1 2.11-.45c.94.35 1.91.59 2.91.72a2 2 0 0 1 1.72 2.03z"/></svg>
+    <span class="fab-tooltip">02361 / 90424-0</span>
+  </a>
+</div>
+
+<script src="cookie-consent.js"></script>
+</body>
+</html>
