@@ -5,6 +5,7 @@
   var GHL_RES    = 'https://widgets.leadconnectorhq.com/chat-widget/loader.js';
   var GHL_ID     = '69aebb41d72daa22e5a8e193';
   var ELF_SRC    = 'https://elfsightcdn.com/platform.js';
+  var TI_SRC     = 'https://cdn.trustindex.io/loader.js?1b1ea5f76c46914b05866348176';
 
   /* ── Chat consent overlay ── */
   function showChatConsent(onAccept) {
@@ -133,7 +134,16 @@
     document.head.appendChild(s);
   }
 
-  function loadAll(){ loadGHL(); loadElfsight(); }
+  function loadTrustindex(){
+    if(document.querySelector('script[src*="trustindex.io"]')) return;
+    var s = document.createElement('script');
+    s.src = TI_SRC;
+    s.defer = true;
+    s.async = true;
+    document.head.appendChild(s);
+  }
+
+  function loadAll(){ loadGHL(); loadElfsight(); loadTrustindex(); }
 
   function hideBanner(){
     var b = document.getElementById('mc-banner');
