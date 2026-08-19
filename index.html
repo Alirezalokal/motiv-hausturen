@@ -292,7 +292,7 @@ nav.scrolled{background:rgba(6,10,20,.88);backdrop-filter:blur(20px);padding:16p
 .h-stat-n{font-family:'Inter',serif;font-size:28px;font-weight:400;letter-spacing:-.02em;line-height:1}
 .h-stat-l{font-size:9px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:4px}
 .italic-gold{font-style:normal;color:var(--gold)}
-.hv-jubil-wrap{display:block;margin-top:32px;mix-blend-mode:screen;pointer-events:none}
+.hv-jubil-wrap{display:block;margin-top:32px;pointer-events:none}
 .hv-jubil{width:200px;display:block;opacity:.92}
 .hv-jubil-btn{display:inline-block;margin-top:12px;font-size:10px;
   letter-spacing:.15em;text-transform:uppercase;color:var(--gold);
@@ -300,8 +300,8 @@ nav.scrolled{background:rgba(6,10,20,.88);backdrop-filter:blur(20px);padding:16p
   padding-bottom:2px;transition:opacity .2s}
 .hv-jubil-btn:hover{opacity:.7}
 @media(max-width:900px){
-  .hv-jubil-wrap{display:none}
-  .hv-jubil-btn{display:none}
+  .hv-jubil-wrap{margin-top:16px}
+  .hv-jubil{width:110px}
 }
 
 /* ── AUSSTELLUNG CALLOUT ── */
@@ -1258,9 +1258,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="hv-jubil-wrap">
-      <video class="hv-jubil" id="jubilVid" autoplay muted loop playsinline>
-        <source src="jubileum-animation.webm" type="video/webm">
-        <source src="jubileum-animation.mp4" type="video/mp4">
+      <canvas class="hv-jubil" id="jubilCanvas"></canvas>
+      <video id="jubilVid" muted loop playsinline preload="auto" style="position:fixed;left:-9999px;top:-9999px;width:400px;height:400px;pointer-events:none">
+        <source src="jubileum-animation-small.mp4" type="video/mp4">
       </video>
     </div>
     <a class="hv-jubil-btn" href="#jubSec" onclick="event.preventDefault();document.getElementById('jubSec').scrollIntoView({behavior:'smooth'})">Zum Jubiläumsangebot →</a>
@@ -2912,6 +2912,46 @@ function startVR(){
   var btnNext = document.getElementById('tsmNext');
   if(btnPrev) btnPrev.addEventListener('click', function(e){ e.stopPropagation(); showCard(cur - 1); });
   if(btnNext) btnNext.addEventListener('click', function(e){ e.stopPropagation(); showCard(cur + 1); });
+})();
+</script>
+<script>
+(function(){
+  var vid=document.getElementById('jubilVid');
+  var canvas=document.getElementById('jubilCanvas');
+  if(!vid||!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var running=false;
+  function setSize(){canvas.width=vid.videoWidth||400;canvas.height=vid.videoHeight||400;}
+  function draw(){
+    if(!running)return;
+    if(vid.readyState>=2){
+      ctx.drawImage(vid,0,0,canvas.width,canvas.height);
+      var img=ctx.getImageData(0,0,canvas.width,canvas.height);
+      var d=img.data;
+      for(var i=0;i<d.length;i+=4){
+        var b=Math.max(d[i],d[i+1],d[i+2]);
+        if(b<40){d[i+3]=0;}else if(b<80){d[i+3]=Math.round((b-40)/40*255);}
+      }
+      ctx.putImageData(img,0,0);
+    }
+    requestAnimationFrame(draw);
+  }
+  function start(){setSize();if(!running){running=true;draw();}}
+  vid.addEventListener('loadedmetadata',start);
+  vid.addEventListener('play',start);
+  if(!vid.paused&&vid.readyState>=2){running=true;draw();}
+  // Blob fallback for servers without range-request support
+  function tryPlay(){
+    if(vid.readyState>=2)return;
+    var src=(vid.querySelector('source')||{}).src;
+    if(!src)return;
+    fetch(src).then(function(r){return r.blob();}).then(function(blob){
+      vid.src=URL.createObjectURL(blob);
+      vid.load();vid.play();
+    });
+  }
+  vid.play().catch(function(){tryPlay();});
+  setTimeout(function(){if(vid.readyState<2)tryPlay();},2000);
 })();
 </script>
 </body>
